@@ -1,3 +1,3 @@
-export function Header() {
-   return <div></div>
+export const Header = () => {
+  return <div>Header</div>
 }

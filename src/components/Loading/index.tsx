@@ -1,3 +1,3 @@
-export function Loading() {
-   return <div></div>
+export const Loading = () => {
+  return <div>Loading</div>
 }

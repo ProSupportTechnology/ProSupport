@@ -1,15 +1,5 @@
-interface iInputProps {
-   className?: string
-   register: any
-   errors: any
+export const Input = () => {
+  return <div>Input</div>
 }
 
-export function Input({ className, register, errors }: iInputProps) {
-   return (
-      <div className={className}>
-         <input />
-         <label>Email</label>
-         {errors?.message && <span>{errors?.message}</span>}
-      </div>
-   )
-}
+// criar uma forma de exibir o erro do yup como balãozinho

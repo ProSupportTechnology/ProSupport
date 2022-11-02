@@ -1,3 +1,3 @@
-export function TextArea() {
-   return <div></div>
+export const TextArea = () => {
+  return <div>TextArea</div>
 }

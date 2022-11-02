@@ -1,3 +1,3 @@
-export function DashboardAdm() {
-   return <div></div>
+export const DashboardAdm = () => {
+  return <div>DashboardAdm</div>
 }

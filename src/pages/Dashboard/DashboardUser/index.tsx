@@ -1,3 +1,3 @@
-export function DashboardUser() {
-   return <div></div>
+export const DashboardUser = () => {
+  return <div>DashboardUser</div>
 }

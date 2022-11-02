@@ -1,3 +1,3 @@
-export function AuthRoutes() {
-   return <div></div>
+export const AuthRoutes = () => {
+  return <div>AuthRoutes</div>
 }

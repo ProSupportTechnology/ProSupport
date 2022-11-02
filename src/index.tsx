@@ -7,11 +7,11 @@ import { ToastContainer } from "react-toastify"
 
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 root.render(
-   <React.StrictMode>
-      <BrowserRouter>
-         <GlobalStyle />
-         <ToastContainer />
-         <App />
-      </BrowserRouter>
-   </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <GlobalStyle />
+      <ToastContainer autoClose={2000} theme="dark" />
+      <App />
+    </BrowserRouter>
+  </React.StrictMode>
 )
