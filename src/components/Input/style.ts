@@ -1,4 +1,4 @@
 import { Input } from "."
 import styled from "styled-components"
 
-export const StyledTextArea = styled(Input)``
+export const StyledInput = styled(Input)``
