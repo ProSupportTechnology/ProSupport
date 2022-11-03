@@ -7,13 +7,13 @@ import thomas from "../../assets/thomas.png";
 import victoria from "../../assets/victoria.png";
 import wesley from "../../assets/wesley.png";
 import { BsLinkedin, BsInstagram, BsGithub } from "react-icons/bs";
-import { SectionServices, SectionTeam } from "./style";
+import { MainLandingPage, SectionServices, SectionTeam } from "./style";
 
 export const LandingPage = () => {
   return (
     <>
       <HeaderLandingPage />
-      <main>
+      <MainLandingPage>
         <SectionServices>
           <div className="servicesContent">
             <div>
@@ -184,7 +184,7 @@ export const LandingPage = () => {
             </li>
           </ul>
         </SectionTeam>
-      </main>
+      </MainLandingPage>
     </>
   );
 };

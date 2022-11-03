@@ -1,15 +1,15 @@
 import styled from "styled-components";
 
-export const StyledLandingPage = styled.div`
+export const MainLandingPage = styled.div`
   display: flex;
   flex-direction: column;
+  /* background-image: url("../../assets/Background1.png");
+  background-size: cover; */
+  /* background-color: red; */
+  height: calc(100vh - 120px);
 
-  main {
-    background: linear-gradient(
-      270deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(38, 38, 38, 1) 48%
-    );
+  @media (min-width: 1024px) {
+    justify-content: space-around;
   }
 `;
 
