@@ -57,7 +57,7 @@ export const SectionTeam = styled.section`
     justify-content: space-around;
     width: 100vw;
     gap: 10px;
-    color: #ffff;
+    color: var(--white);
 
     li {
       display: flex;
@@ -97,7 +97,7 @@ export const SectionTeam = styled.section`
       display: flex;
       gap: 5px;
       text-decoration: none;
-      color: #ffff;
+      color: var(--white);
     }
   }
 `;

@@ -4,7 +4,7 @@ export const StyledHeaderLandingPage = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #262626;
+  background-color: var(--background);
   width: 100vw;
   height: 320px;
 
@@ -15,7 +15,7 @@ export const StyledHeaderLandingPage = styled.header`
     }
 
     p {
-      color: #ffffff;
+      color: var(--white);
     }
   }
 
@@ -34,8 +34,8 @@ export const StyledHeaderLandingPage = styled.header`
       width: 210px;
       text-align: center;
       text-decoration: none;
-      border: 2px solid #ffffff;
-      color: #ffffff;
+      border: 2px solid var(--white);
+      color: var(--white);
     }
   }
 
