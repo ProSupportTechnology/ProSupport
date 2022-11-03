@@ -3,6 +3,14 @@ import styled from "styled-components";
 export const StyledLandingPage = styled.div`
   display: flex;
   flex-direction: column;
+
+  main {
+    background: linear-gradient(
+      270deg,
+      rgba(255, 255, 255, 1) 0%,
+      rgba(38, 38, 38, 1) 48%
+    );
+  }
 `;
 
 export const SectionServices = styled.section`
@@ -46,6 +54,7 @@ export const SectionTeam = styled.section`
   ul {
     overflow: auto;
     display: flex;
+    justify-content: space-around;
     width: 100vw;
     gap: 10px;
     color: #ffff;
@@ -57,7 +66,11 @@ export const SectionTeam = styled.section`
       border-radius: 10px;
       min-width: 280px;
       height: 200px;
-      background-color: #4f4d8c;
+      background: radial-gradient(
+        circle,
+        rgba(252, 70, 107, 1) 0%,
+        rgba(63, 94, 251, 1) 100%
+      );
     }
   }
 
@@ -81,6 +94,8 @@ export const SectionTeam = styled.section`
     margin-top: 5px;
 
     a {
+      display: flex;
+      gap: 5px;
       text-decoration: none;
       color: #ffff;
     }
