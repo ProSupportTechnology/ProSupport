@@ -10,7 +10,7 @@ export const StyledHeaderLandingPage = styled.header`
 
   div {
     img {
-      width: 210px;
+      width: 230px;
       height: 165px;
     }
 
@@ -39,17 +39,20 @@ export const StyledHeaderLandingPage = styled.header`
     }
   }
 
-  @media (min-width: 1024px) {
-    flex-direction: row;
-    align-items: center;
+  @media (min-width: 768px) {
     justify-content: space-between;
+    flex-direction: row;
     height: 120px;
 
-    .headerInfos {
-      display: flex;
-      align-items: center;
-      gap: 50px;
+    .headerButtons {
+      flex-direction: row;
+      gap: 20px;
+      margin-right: 50px;
     }
+  }
+
+  @media (min-width: 1024px) {
+    align-items: center;
 
     .headerDetails {
       display: flex;
@@ -57,10 +60,10 @@ export const StyledHeaderLandingPage = styled.header`
       gap: 5px;
     }
 
-    .headerButtons {
-      flex-direction: row;
-      gap: 20px;
-      margin-right: 50px;
+    .headerInfos {
+      display: flex;
+      align-items: center;
+      gap: 50px;
     }
   }
 `;

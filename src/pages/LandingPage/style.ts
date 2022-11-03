@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const MainLandingPage = styled.div`
   display: flex;
   flex-direction: column;
-  /* background-image: url("../../assets/Background1.png");
-  background-size: cover; */
-  /* background-color: red; */
-  height: calc(100vh - 120px);
+  background-image: url("https://i.imgur.com/xNMEX8F.png");
+  background-size: cover;
+  background-repeat: no-repeat;
 
   @media (min-width: 1024px) {
+    height: calc(100vh - 120px);
     justify-content: space-around;
   }
 `;
@@ -20,12 +20,21 @@ export const SectionServices = styled.section`
 
   .servicesContent {
     padding: 0 30px;
+    color: var(--white);
 
     div {
       display: flex;
       flex-direction: column;
       gap: 5px;
       margin-bottom: 15px;
+
+      p {
+        margin-bottom: 30px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
     }
   }
 
@@ -33,17 +42,34 @@ export const SectionServices = styled.section`
     display: none;
   }
 
+  @media (min-width: 768px) {
+    .servicesImage {
+      align-self: center;
+      display: block;
+
+      img {
+        margin-top: 10px;
+        width: 400px;
+        height: 300px;
+      }
+    }
+  }
+
   @media (min-width: 1024px) {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
 
-    .servicesContent {
-      padding: 0;
+    .servicesImage {
+      img {
+        margin-top: 0;
+        width: auto;
+        height: auto;
+      }
     }
 
-    .servicesImage {
-      display: block;
+    .servicesContent {
+      padding: 0;
     }
   }
 `;
@@ -54,10 +80,11 @@ export const SectionTeam = styled.section`
   ul {
     overflow: auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     width: 100vw;
     gap: 10px;
     color: var(--white);
+    padding: 0 10px;
 
     li {
       display: flex;
@@ -71,6 +98,11 @@ export const SectionTeam = styled.section`
         rgba(252, 70, 107, 1) 0%,
         rgba(63, 94, 251, 1) 100%
       );
+    }
+
+    @media (min-width: 1024px) {
+      justify-content: space-around;
+      padding: 0;
     }
   }
 
