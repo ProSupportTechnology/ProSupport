@@ -4,7 +4,7 @@ import { iNavbarProps } from "./types";
 export const HeaderContainer = styled.header`
   width: 100%;
   height: 100px;
-  background-color: black;
+  background-color: var(--gray-3);
   display: flex;
   align-content: center;
   justify-content: space-between;
@@ -186,11 +186,7 @@ export const LiNavBar = styled.li`
       height: 100%;
       width: 40px;
       display: flex;
-      background: radial-gradient(
-        circle,
-        rgba(63, 94, 251, 1) 0%,
-        rgba(252, 70, 107, 1) 100%
-      );
+      background: var(--linear-gradient-btn);
       border-radius: 5px;
       justify-content: center;
       align-items: center;
@@ -230,11 +226,7 @@ export const LogoutCont = styled.div`
       height: 100%;
       width: 40px;
       display: flex;
-      background: radial-gradient(
-        circle,
-        rgba(63, 94, 251, 1) 0%,
-        rgba(252, 70, 107, 1) 100%
-      );
+      background: var(--linear-gradient-btn);
       border-radius: 5px;
       justify-content: center;
       align-items: center;
