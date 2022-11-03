@@ -1,3 +1,10 @@
+import { Header } from "../../components/Header";
+import { Teste } from "./style";
+
 export const LandingPage = () => {
-  return <div></div>;
+  return (
+    <Teste>
+      <Header />
+    </Teste>
+  );
 };

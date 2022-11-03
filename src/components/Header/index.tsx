@@ -22,12 +22,14 @@ import {
   HiUsers,
 } from "react-icons/hi2";
 import { GiEntryDoor, GiMagnifyingGlass } from "react-icons/gi";
+import { useState } from "react";
 
 export const Header = () => {
+  const [navbarMobile, setNavbarMobile] = useState(false);
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
-      <NavBar>
+      <NavBar navbarMobile={navbarMobile}>
         <NavBarProfileContainer>
           <ImgProfile src={photo} alt="imagem-profile" />
           <h2 className="title three">Admin name</h2>
@@ -41,39 +43,52 @@ export const Header = () => {
         </InputCont>
         <UlNavBar>
           <LiNavBar>
-            <h3 className="title two">Home</h3>
             <Link to={`/`}>
-              <HiHome />
+              <h3 className="title two">Home</h3>
+              <div>
+                <HiHome />
+              </div>
             </Link>
           </LiNavBar>
           <LiNavBar>
-            <h3 className="title two">Perfil</h3>
             <Link to={`/`}>
-              <HiUser />
+              <h3 className="title two">Perfil</h3>
+              <div>
+                <HiUser />
+              </div>
             </Link>
           </LiNavBar>
           <LiNavBar>
-            <h3 className="title two">Perguntas/Respostas</h3>
             <Link to={`/`}>
-              <HiChatBubbleLeftRight />
+              <h3 className="title two">Perguntas/Respostas</h3>
+              <div>
+                <HiChatBubbleLeftRight />
+              </div>
             </Link>
           </LiNavBar>
           <LiNavBar>
-            <h3 className="title two">Usuarios</h3>
             <Link to={`/`}>
-              <HiUsers />
+              <h3 className="title two">Usuarios</h3>
+              <div>
+                <HiUsers />
+              </div>
             </Link>
           </LiNavBar>
         </UlNavBar>
         <LogoutCont>
-          <h3 className="title two">Sair</h3>
           <Link to={`/`}>
-            <GiEntryDoor />
+            <h3 className="title two">Sair</h3>
+            <div>
+              <GiEntryDoor />
+            </div>
           </Link>
         </LogoutCont>
       </NavBar>
       <MenuMobile>
-        <CheckBox type="checkbox" />
+        <CheckBox
+          type="checkbox"
+          onChange={(event) => setNavbarMobile(event.target.checked)}
+        />
         <label htmlFor="checkbox-menu">
           <Barra />
           <Barra />
