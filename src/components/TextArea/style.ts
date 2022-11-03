@@ -1,4 +1,4 @@
-import { TextArea } from "."
-import styled from "styled-components"
+import { TextArea } from ".";
+import styled from "styled-components";
 
-export const StyledTextArea = styled(TextArea)``
+export const StyledTextArea = styled(TextArea)``;
