@@ -6,7 +6,7 @@ export const StyledHeaderLandingPage = styled.header`
   align-items: center;
   background-color: #262626;
   width: 100vw;
-  height: 300px;
+  height: 260px;
 
   div {
     img {
@@ -33,7 +33,7 @@ export const StyledHeaderLandingPage = styled.header`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    height: 171px;
+    height: 120px;
 
     .headerInfos {
       display: flex;
