@@ -87,6 +87,7 @@ export const NavBar = styled.nav<iNavbarProps>`
   height: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0.3rem;
   background: #434343;
   border-radius: 0 0 0 15px;
@@ -133,7 +134,7 @@ export const InputCont = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 0.3rem;
+  margin: -49px 0.3rem;
   border: 1px solid var(--gray-0);
   border-radius: 5px;
   background-color: var(--gray-3);
@@ -171,6 +172,11 @@ export const LiNavBar = styled.li`
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
+    :hover {
+      border: solid 1px var(--gray-2);
+      border-radius: 5px;
+      opacity: 50%;
+    }
     div {
       height: 100%;
       width: 40px;
@@ -210,6 +216,11 @@ export const LogoutCont = styled.div`
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
+    :hover {
+      border: solid 1px var(--gray-2);
+      border-radius: 5px;
+      opacity: 50%;
+    }
     div {
       height: 100%;
       width: 40px;

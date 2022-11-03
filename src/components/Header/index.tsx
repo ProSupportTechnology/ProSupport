@@ -43,7 +43,7 @@ export const Header = () => {
         </InputCont>
         <UlNavBar>
           <LiNavBar>
-            <Link to={`/`}>
+            <Link to={`/dashboard`}>
               <h3 className="title two">Home</h3>
               <div>
                 <HiHome />
@@ -51,7 +51,7 @@ export const Header = () => {
             </Link>
           </LiNavBar>
           <LiNavBar>
-            <Link to={`/`}>
+            <Link to={`/profile`}>
               <h3 className="title two">Perfil</h3>
               <div>
                 <HiUser />
