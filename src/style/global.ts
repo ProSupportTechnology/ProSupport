@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {     
@@ -32,6 +32,8 @@ ul, ol, li {
   --gray-2: #343B41;
   --gray-1: #868E96;
   --gray-0: #F8F9FA;
+  --white: #ffffff;
+  --background: #262626;
 }
 
 
@@ -75,4 +77,4 @@ ul, ol, li {
 }
 
 
-`
+`;
