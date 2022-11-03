@@ -6,7 +6,7 @@ export const StyledHeaderLandingPage = styled.header`
   align-items: center;
   background-color: #262626;
   width: 100vw;
-  height: 390px;
+  height: 300px;
 
   div {
     img {
