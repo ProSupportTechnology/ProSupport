@@ -1,3 +1,9 @@
+import { HeaderLandingPage } from "../../components/HeaderLandingPage";
+
 export const LandingPage = () => {
-  return <div>LandingPage</div>
-}
+  return (
+    <>
+      <HeaderLandingPage />
+    </>
+  );
+};
