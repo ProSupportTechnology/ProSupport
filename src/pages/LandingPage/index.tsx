@@ -6,6 +6,7 @@ import henrique from "../../assets/henrique.png";
 import thomas from "../../assets/thomas.png";
 import victoria from "../../assets/victoria.png";
 import wesley from "../../assets/wesley.png";
+import { BsLinkedin, BsInstagram, BsGithub } from "react-icons/bs";
 import { SectionServices, SectionTeam } from "./style";
 
 export const LandingPage = () => {
@@ -35,90 +36,151 @@ export const LandingPage = () => {
                 <img src={altieris} alt="Foto Altieris" />
                 <h2>Altieris Souza</h2>
               </div>
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/altierissouza/"
-              >
-                LinkedIn
-              </a>
-              <a target="blank" href="https://github.com/Altieris-Souza">
-                Git Hub
-              </a>
+
+              <div className="memberLinks">
+                <a target="blank" href="https://www.instagram.com/altieris.sf/">
+                  <BsInstagram />
+                  -Instagram
+                </a>
+                <a
+                  target="blank"
+                  href="https://www.linkedin.com/in/altierissouza/"
+                >
+                  <BsLinkedin />
+                  LinkedIn
+                </a>
+                <a target="blank" href="https://github.com/Altieris-Souza">
+                  <BsGithub />
+                  Git Hub
+                </a>
+              </div>
             </li>
+
             <li>
               <div className="infoMember">
                 <img src={bianca} alt="Foto Bianca" />
                 <h2>Bianca Vallego</h2>
               </div>
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/biancavellego/"
-              >
-                LinkedIn
-              </a>
-              <a target="blank" href="https://github.com/biancavellego">
-                Git Hub
-              </a>
+
+              <div className="memberLinks">
+                <a
+                  target="blank"
+                  href="https://www.linkedin.com/in/biancavellego/"
+                >
+                  <BsLinkedin />
+                  LinkedIn
+                </a>
+                <a target="blank" href="https://github.com/biancavellego">
+                  <BsGithub />
+                  Git Hub
+                </a>
+              </div>
             </li>
+
             <li>
               <div className="infoMember">
                 <img src={henrique} alt="Foto Henrique" />
                 <h2>Henrique Jesus</h2>
               </div>
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/henrique-jesus128/"
-              >
-                LinkedIn
-              </a>
-              <a target="blank" href="https://github.com/henriquejesus128">
-                Git Hub
-              </a>
+
+              <div className="memberLinks">
+                <a target="blank" href="https://www.instagram.com/rik_zn/">
+                  <BsInstagram />
+                  Instagram
+                </a>
+                <a
+                  target="blank"
+                  href="https://www.linkedin.com/in/henrique-jesus128/"
+                >
+                  <BsLinkedin />
+                  LinkedIn
+                </a>
+                <a target="blank" href="https://github.com/henriquejesus128">
+                  <BsGithub />
+                  Git Hub
+                </a>
+              </div>
             </li>
+
             <li>
               <div className="infoMember">
                 <img src={thomas} alt="Foto Thomas" />
                 <h2>Thomas Schreiner</h2>
               </div>
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/thomschreiner/"
-              >
-                LinkedIn
-              </a>
-              <a target="blank" href="https://github.com/ThomSchreiner">
-                Git Hub
-              </a>
+
+              <div className="memberLinks">
+                <a
+                  target="blank"
+                  href="https://www.instagram.com/thomas__schreiner/"
+                >
+                  <BsInstagram />
+                  Instagram
+                </a>
+                <a
+                  target="blank"
+                  href="https://www.linkedin.com/in/thomschreiner/"
+                >
+                  <BsLinkedin />
+                  LinkedIn
+                </a>
+                <a target="blank" href="https://github.com/ThomSchreiner">
+                  <BsGithub />
+                  Git Hub
+                </a>
+              </div>
             </li>
+
             <li>
               <div className="infoMember">
                 <img src={victoria} alt="Foto Victoria" />
                 <h2>Victoria Milan</h2>
               </div>
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/victoriapmilan/"
-              >
-                LinkedIn
-              </a>
-              <a target="blank" href="https://github.com/victoriamilans">
-                Git Hub
-              </a>
+
+              <div className="memberLinks">
+                <a target="blank" href="https://www.instagram.com/not.find/">
+                  <BsInstagram />
+                  Instagram
+                </a>
+                <a
+                  target="blank"
+                  href="https://www.linkedin.com/in/victoriapmilan/"
+                >
+                  <BsLinkedin />
+                  LinkedIn
+                </a>
+                <a target="blank" href="https://github.com/victoriamilans">
+                  <BsGithub />
+                  Git Hub
+                </a>
+              </div>
             </li>
+
             <li>
               <div className="infoMember">
                 <img src={wesley} alt="Foto Wesley" />
                 <h2>Wesley Matos</h2>
               </div>
-              <a
-                target="blank"
-                href="https://www.linkedin.com/in/wesley-matos/"
-              >
-                LinkedIn
-              </a>
-              <a target="blank" href="https://github.com/wesleydematos">
-                Git Hub
-              </a>
+
+              <div className="memberLinks">
+                <a
+                  target="blank"
+                  href="https://www.instagram.com/wesleymatoos_/"
+                >
+                  <BsInstagram />
+                  Instagram
+                </a>
+                <a
+                  target="blank"
+                  href="https://www.linkedin.com/in/wesley-matos/"
+                >
+                  <BsLinkedin />
+                  LinkedIn
+                </a>
+                <a target="blank" href="https://github.com/wesleydematos">
+                  <BsGithub />
+                  Git Hub
+                </a>
+              </div>
             </li>
           </ul>
         </SectionTeam>
