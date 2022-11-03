@@ -6,13 +6,14 @@ import henrique from "../../assets/henrique.jpg";
 import thomas from "../../assets/thomas.jpg";
 import victoria from "../../assets/victoria.jpg";
 import wesley from "../../assets/wesley.png";
+import { SectionServices, SectionTeam } from "./style";
 
 export const LandingPage = () => {
   return (
     <>
       <HeaderLandingPage />
       <main>
-        <section className="sectionServices">
+        <SectionServices>
           <div className="servicesContent">
             <div>
               <p>Contrate nossos serviços</p>
@@ -25,9 +26,9 @@ export const LandingPage = () => {
           <figure className="servicesImage">
             <img src={imageService} alt="Imagem serviços oferecidos" />
           </figure>
-        </section>
+        </SectionServices>
 
-        <section className="sectionTeam">
+        {/* <SectionTeam>
           <ul>
             <li>
               <div className="infoMember">
@@ -120,7 +121,7 @@ export const LandingPage = () => {
               </a>
             </li>
           </ul>
-        </section>
+        </SectionTeam> */}
       </main>
     </>
   );
