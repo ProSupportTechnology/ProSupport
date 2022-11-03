@@ -6,11 +6,11 @@ export const StyledHeaderLandingPage = styled.header`
   align-items: center;
   background-color: #262626;
   width: 100vw;
-  height: 260px;
+  height: 320px;
 
   div {
     img {
-      width: 209px;
+      width: 210px;
       height: 165px;
     }
 
@@ -27,6 +27,16 @@ export const StyledHeaderLandingPage = styled.header`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    a {
+      padding: 10px 0;
+      border-radius: 30px;
+      width: 210px;
+      text-align: center;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      color: #ffffff;
+    }
   }
 
   @media (min-width: 1024px) {
