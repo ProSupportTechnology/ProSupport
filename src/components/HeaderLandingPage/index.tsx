@@ -15,8 +15,12 @@ export const HeaderLandingPage = () => {
         </div>
       </div>
       <div className="headerButtons">
-        <Link to="/login">Login</Link>
-        <Link to="/signup">Criar conta</Link>
+        <Link to="/login" className="text one">
+          Login
+        </Link>
+        <Link to="/signup" className="text one">
+          Criar conta
+        </Link>
       </div>
     </StyledHeaderLandingPage>
   );

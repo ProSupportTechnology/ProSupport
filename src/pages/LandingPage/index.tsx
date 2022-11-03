@@ -17,12 +17,14 @@ export const LandingPage = () => {
         <SectionServices>
           <div className="servicesContent">
             <div>
-              <p>Contrate nossos serviços</p>
-              <h1>
+              <p className="text one">Contrate nossos serviços</p>
+              <h1 className="title one">
                 Seus desenvolvedores têm perguntas, nós temos as respostas!
               </h1>
             </div>
-            <p>Obtenha nosso suporte em desenvolvimento web para sua empresa</p>
+            <p className="text one">
+              Obtenha nosso suporte em desenvolvimento web para sua empresa
+            </p>
           </div>
           <figure className="servicesImage">
             <img src={imageService} alt="Imagem serviços oferecidos" />
