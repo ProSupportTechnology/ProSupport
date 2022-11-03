@@ -1,10 +1,10 @@
 import { HeaderLandingPage } from "../../components/HeaderLandingPage";
 import imageService from "../../assets/Landing1.png";
-import altieris from "../../assets/altieris.jpg";
+import altieris from "../../assets/altieris.png";
 import bianca from "../../assets/bianca.png";
-import henrique from "../../assets/henrique.jpg";
-import thomas from "../../assets/thomas.jpg";
-import victoria from "../../assets/victoria.jpg";
+import henrique from "../../assets/henrique.png";
+import thomas from "../../assets/thomas.png";
+import victoria from "../../assets/victoria.png";
 import wesley from "../../assets/wesley.png";
 import { SectionServices, SectionTeam } from "./style";
 
@@ -28,7 +28,7 @@ export const LandingPage = () => {
           </figure>
         </SectionServices>
 
-        {/* <SectionTeam>
+        <SectionTeam>
           <ul>
             <li>
               <div className="infoMember">
@@ -121,7 +121,7 @@ export const LandingPage = () => {
               </a>
             </li>
           </ul>
-        </SectionTeam> */}
+        </SectionTeam>
       </main>
     </>
   );
