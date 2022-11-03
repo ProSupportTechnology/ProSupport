@@ -40,7 +40,7 @@ export const LandingPage = () => {
               <div className="memberLinks">
                 <a target="blank" href="https://www.instagram.com/altieris.sf/">
                   <BsInstagram />
-                  -Instagram
+                  Instagram
                 </a>
                 <a
                   target="blank"
