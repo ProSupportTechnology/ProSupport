@@ -150,6 +150,11 @@ export const InputCont = styled.div`
     height: 100%;
     width: 83%;
     background-color: var(--gray-3);
+    color: var(--gray-0);
+    padding-left: 0.3rem;
+    ::placeholder {
+      color: var(--gray-0);
+    }
   }
   @media (min-width: 768px) {
     display: none;
