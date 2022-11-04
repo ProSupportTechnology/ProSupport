@@ -14,12 +14,3 @@ export const StyledFormSignup = styled.form`
     color: var(--gray-0);
   }
 `;
-export const StyledContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  svg {
-    color: white;
-    font-size: 2rem;
-  }
-`;
