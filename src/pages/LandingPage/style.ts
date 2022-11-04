@@ -1,15 +1,28 @@
 import styled from "styled-components";
 
-export const MainLandingPage = styled.div`
+export const StyledLandingPage = styled.div`
   display: flex;
   flex-direction: column;
   background-image: url("https://i.imgur.com/xNMEX8F.png");
   background-size: cover;
   background-repeat: no-repeat;
+  min-height: 100vh;
 
   @media (min-width: 1024px) {
-    height: calc(100vh - 120px);
-    justify-content: space-around;
+    overflow-x: hidden;
+
+    main {
+      margin: 20px 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: space-around;
+
+      @media (min-width: 1440px) {
+        margin: 0;
+        height: calc(100vh - 120px);
+      }
+    }
   }
 `;
 
@@ -55,10 +68,11 @@ export const SectionServices = styled.section`
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1440px) {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    padding: 0 20px;
 
     .servicesImage {
       img {
@@ -80,7 +94,6 @@ export const SectionTeam = styled.section`
   ul {
     overflow: auto;
     display: flex;
-    justify-content: flex-start;
     width: 100vw;
     gap: 10px;
     color: var(--white);
@@ -91,7 +104,7 @@ export const SectionTeam = styled.section`
       flex-direction: column;
       align-items: center;
       border-radius: 10px;
-      min-width: 280px;
+      min-width: 260px;
       height: 200px;
       background: radial-gradient(
         circle,
@@ -100,9 +113,13 @@ export const SectionTeam = styled.section`
       );
     }
 
-    @media (min-width: 1024px) {
+    @media (min-width: 768px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @media (min-width: 1440px) {
       justify-content: space-around;
-      padding: 0;
     }
   }
 
