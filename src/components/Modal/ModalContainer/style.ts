@@ -19,7 +19,7 @@ export const Modal = styled.div`
     display: flex;
     justify-content: center;
     width: 300px;
-    min-height: 300px;
+    min-height: 200px;
     border: 2px solid var(--gray-1);
     background-color: #434343;
     border-radius: 30px;
@@ -37,6 +37,7 @@ export const Modal = styled.div`
 
     @media (min-width: 768px) {
       width: 570px;
+      min-height: 270px;
     }
   }
 `;
