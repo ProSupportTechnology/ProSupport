@@ -32,7 +32,7 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
           }
         `;
 
-      case "theme-1":
+      case "theme-desktop-menu":
         return css`
           position: relative;
           margin: 10px;
@@ -51,7 +51,7 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
           }
         `;
 
-      case "theme-2":
+      case "theme-mobile-menu":
         return css`
           position: relative;
           margin: 10px;
@@ -61,7 +61,7 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
           border-radius: 10px;
         `;
 
-      case "theme-3":
+      case "theme-register-login":
         return css`
           background-color: transparent;
           border-radius: 3px;

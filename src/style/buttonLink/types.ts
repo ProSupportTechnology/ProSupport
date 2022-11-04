@@ -1,3 +1,7 @@
 export interface iStyledButtonLink {
-  variant: "default" | "theme-1" | "theme-2" | "theme-3";
+  variant:
+    | "default"
+    | "theme-desktop-menu"
+    | "theme-mobile-menu"
+    | "theme-register-login";
 }
