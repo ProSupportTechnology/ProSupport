@@ -1,5 +1,5 @@
-import { ReactNode } from "react"
-import { RiCheckboxBlankFill } from "react-icons/ri"
+// import { ReactNode } from "react"
+// import { RiCheckboxBlankFill } from "react-icons/ri"
 import { iInputProps } from "./types"
 
 export const Input = ({ className, label, name, type, register, errors }: iInputProps) => {
