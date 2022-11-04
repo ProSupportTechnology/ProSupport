@@ -3,17 +3,21 @@ import { StyledInput } from "../../../../components/Input/style";
 import { useForm } from "react-hook-form";
 import { iSignup } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { registerSchema } from "../../../../schemas/signupSchema";
+import { useUserContext } from "../../../../contexts/UserContext";
 
 export const FormSignup = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iSignup>({ resolver: yupResolver() });
+  } = useForm<iSignup>({ resolver: yupResolver(registerSchema) });
+
+  const { handleRegister } = useUserContext()
 
   return (
     <>
-      <StyledFormSignup onSubmit={handleSubmit()}>
+      <StyledFormSignup onSubmit={handleSubmit(handleRegister)}>
         <h1 className="title one">Cadastra-se</h1>
         <StyledInput
           errors={errors.name}
