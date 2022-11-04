@@ -6,5 +6,5 @@ export interface iGlobalButton {
 }
 
 export interface iStyledButton {
-  theme: string;
+  theme: "default" | "theme-1";
 }

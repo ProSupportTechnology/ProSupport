@@ -1,11 +1,5 @@
-import React, { ReactNode } from "react";
 import { Link } from "react-router-dom";
-
-interface iButtonLink {
-  to: string;
-  children: ReactNode;
-  className?: string | undefined;
-}
+import { iButtonLink } from "./types";
 
 const ButtonLink = ({ to, children, className }: iButtonLink) => {
   return (

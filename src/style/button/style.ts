@@ -12,22 +12,6 @@ export const StyledButton = styled(GlobalButton)<iStyledButton>`
     switch (theme) {
       default:
         return css`
-          padding: 7px 25px;
-          border-radius: 20px;
-          border: 2px solid var(--grey-0);
-          background-color: transparent;
-          &:hover {
-            border: 2px solid transparent;
-            background-image: linear-gradient(
-              90deg,
-              #4f4d8c 0%,
-              #807ddb 55%,
-              #5f5da6 100%
-            );
-          }
-        `;
-      case "theme-1":
-        return css`
            {
             font-size: 0.7rem;
             padding: 5px 20px;
@@ -44,7 +28,7 @@ export const StyledButton = styled(GlobalButton)<iStyledButton>`
             }
           }
         `;
-      case "theme-2":
+      case "theme-1":
         return css`
            {
             font-size: 0.7rem;
