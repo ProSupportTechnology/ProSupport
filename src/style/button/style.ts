@@ -1,8 +1,7 @@
 import styled, { css } from "styled-components";
-import GlobalButton from ".";
 import { iStyledButton } from "./types";
 
-export const StyledButton = styled(GlobalButton)<iStyledButton>`
+export const StyledButton = styled.button<iStyledButton>`
   font-size: 0.8rem;
   color: var(--grey-0);
   cursor: pointer;

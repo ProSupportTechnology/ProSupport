@@ -1,10 +1,14 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
-import ButtonLink from ".";
 import { iStyledButtonLink } from "./types";
 
-export const StyledButtonLink = styled(ButtonLink)<iStyledButtonLink>`
+export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   transition: 0.5s;
+  color: var(--grey-0);
   text-decoration: none;
 
   ${({ variant }) => {
@@ -28,9 +32,6 @@ export const StyledButtonLink = styled(ButtonLink)<iStyledButtonLink>`
 
       case "theme-1":
         return css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
           position: relative;
           margin: 10px;
           width: 50px;
@@ -50,21 +51,16 @@ export const StyledButtonLink = styled(ButtonLink)<iStyledButtonLink>`
 
       case "theme-2":
         return css`
-          display: flex;
-          align-items: center;
-          justify-content: center;
           position: relative;
           margin: 10px;
           width: 35px;
           height: 35px;
-          color: var(--grey-0);
           background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
           border-radius: 10px;
         `;
 
       case "theme-3":
         return css`
-          color: var(--grey-0);
           background-color: transparent;
           border-radius: 3px;
           border: 2px solid var(--grey-0);
