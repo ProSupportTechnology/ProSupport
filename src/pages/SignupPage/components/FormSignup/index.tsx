@@ -1,53 +1,76 @@
 import { useState } from "react";
 import { MdEmail } from "react-icons/md";
-import { RiUser3Fill } from "react-icons/ri";
+import { HiUser } from "react-icons/hi2";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
-import { StyledFormSignup } from "./style";
+import { StyledContainer, StyledFormSignup } from "./style";
 import { StyledInput } from "../../../../components/Input/style";
-import { StyledButtonLink } from "../../../../style/buttonLink/style";
+import { useForm } from "react-hook-form";
+import { iSignup } from "./types";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export const FormSignup = () => {
   const [password, SetPassword] = useState(false);
   const [confirmPassword, SetConfirmPassword] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iSignup>({ resolver: yupResolver() });
+
   return (
     <>
-      <StyledFormSignup>
-        <h1>Cadastras-se</h1>
-        <div>
-          <StyledInput type="text" name="name" label="Nome do Usuario" />
-          <RiUser3Fill />
-        </div>
-        <div>
-          <StyledInput type="email" name="email" label="Email do Usuario" />
-          <MdEmail />
-        </div>
-        <div>
+      <StyledFormSignup onSubmit={handleSubmit()}>
+        <h1 className="title one">Cadastra-se</h1>
+        <StyledContainer>
           <StyledInput
-            type={password ? "password" : "text"}
+            errors={errors.name}
+            register={register(`name`)}
+            type="text"
+            name="name"
+            label="Nome do Usuario"
+          />
+          <HiUser />
+        </StyledContainer>
+        <StyledContainer>
+          <StyledInput
+            errors={errors.email}
+            register={register(`email`)}
+            type="email"
+            name="email"
+            label="Email do Usuario"
+          />
+          <MdEmail />
+        </StyledContainer>
+        <StyledContainer>
+          <StyledInput
+            type={password ? "text" : "password"}
             name="password"
             label="Senha do Usuario"
+            errors={errors.password}
+            register={register(`password`)}
           />
           {password ? (
-            <AiFillEye onClick={() => SetPassword(true)} />
+            <AiFillEye onClick={() => SetPassword(false)} />
           ) : (
-            <AiFillEyeInvisible onClick={() => SetPassword(false)} />
+            <AiFillEyeInvisible onClick={() => SetPassword(true)} />
           )}
-        </div>
-        <div>
+        </StyledContainer>
+        <StyledContainer>
           <StyledInput
-            type={confirmPassword ? "password" : "text"}
-            name="confirmpassword"
+            type={confirmPassword ? "text" : "password"}
+            name="confirmPassword"
             label="Confirme sua senha"
+            errors={errors.confirmPassword}
+            register={register(`confirmPassword`)}
           />
           {confirmPassword ? (
-            <AiFillEye onClick={() => SetConfirmPassword(true)} />
+            <AiFillEye onClick={() => SetConfirmPassword(false)} />
           ) : (
-            <AiFillEyeInvisible onClick={() => SetConfirmPassword(false)} />
+            <AiFillEyeInvisible onClick={() => SetConfirmPassword(true)} />
           )}
-        </div>
-        <StyledButtonLink variant="theme-3" to="./singnup">
-          Cadastrar
-        </StyledButtonLink>
+        </StyledContainer>
+        <button type="submit">Cadastrar</button>
       </StyledFormSignup>
     </>
   );
