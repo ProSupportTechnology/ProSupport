@@ -15,14 +15,12 @@ export const StyledLandingPage = styled.div`
       margin: 20px 0;
       display: flex;
       flex-direction: column;
-      height: 100vh;
       justify-content: space-around;
-
-      @media (min-width: 1440px) {
-        margin: 0;
-        height: calc(100vh - 120px);
-      }
     }
+  }
+
+  @media (min-width: 1440px) {
+    justify-content: space-between;
   }
 `;
 
@@ -78,9 +76,9 @@ export const SectionServices = styled.section`
       margin-left: 15px;
 
       img {
-        margin-top: 30px;
-        width: auto;
-        height: auto;
+        margin-top: 0;
+        width: 495px;
+        height: 339px;
       }
     }
 
