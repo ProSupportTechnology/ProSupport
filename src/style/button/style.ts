@@ -8,8 +8,8 @@ export const StyledButton = styled(GlobalButton)<iStyledButton>`
   cursor: pointer;
   transition: 0.5s;
 
-  ${({ theme }) => {
-    switch (theme) {
+  ${({ variant }) => {
+    switch (variant) {
       default:
         return css`
            {

@@ -6,8 +6,8 @@ export const StyledButtonLink = styled(ButtonLink)<iStyledButtonLink>`
   cursor: pointer;
   transition: 0.5s;
 
-  ${({ theme }) => {
-    switch (theme) {
+  ${({ variant }) => {
+    switch (variant) {
       default:
         return css`
           padding: 7px 25px;

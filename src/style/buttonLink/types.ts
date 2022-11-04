@@ -6,5 +6,5 @@ export interface iButtonLink {
   className?: string | undefined;
 }
 export interface iStyledButtonLink {
-  theme: "default" | "theme-1";
+  variant: "default" | "theme-1";
 }
