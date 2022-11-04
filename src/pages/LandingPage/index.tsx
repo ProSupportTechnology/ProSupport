@@ -1,3 +1,9 @@
+import { StyledButtonLink } from "../../style/buttonLink/style";
+
 export const LandingPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <StyledButtonLink to=""></StyledButtonLink>
+    </div>
+  );
 };
