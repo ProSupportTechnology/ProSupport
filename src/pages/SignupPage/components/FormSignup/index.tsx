@@ -7,7 +7,7 @@ import { StyledInput } from "../../../../components/Input/style";
 import { useForm } from "react-hook-form";
 import { iSignup } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
-
+// Oi
 export const FormSignup = () => {
   const [password, SetPassword] = useState(false);
   const [confirmPassword, SetConfirmPassword] = useState(false);
