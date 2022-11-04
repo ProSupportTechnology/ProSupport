@@ -75,8 +75,10 @@ export const SectionServices = styled.section`
     padding: 0 20px;
 
     .servicesImage {
+      margin-left: 15px;
+
       img {
-        margin-top: 0;
+        margin-top: 30px;
         width: auto;
         height: auto;
       }
