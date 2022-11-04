@@ -27,7 +27,7 @@ export const StyledButton = styled.button<iStyledButton>`
             }
           }
         `;
-      case "theme-1":
+      case "theme-modal-red":
         return css`
            {
             font-size: 0.7rem;
