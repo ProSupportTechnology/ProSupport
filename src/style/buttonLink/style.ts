@@ -15,6 +15,8 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
     switch (variant) {
       default:
         return css`
+          text-align: center;
+          color: var(--grey-0);
           padding: 7px 25px;
           border-radius: 20px;
           border: 2px solid var(--grey-0);
