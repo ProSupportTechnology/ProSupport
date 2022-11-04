@@ -1,3 +1,9 @@
+import { FormSignup } from "./components/FormSignup";
+
 export const SignupPage = () => {
-  return <div>SignupPage</div>
-}
+  return (
+    <div>
+      <FormSignup />
+    </div>
+  );
+};
