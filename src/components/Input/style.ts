@@ -2,12 +2,10 @@ import { Input } from "."
 import styled from "styled-components"
 
 export const StyledInput = styled(Input)`
+  width: 100%;
   height: 52px;
   position: relative;
   inset: 0;
-
-  width: 500px;
-  margin: 0 auto;
 
   label {
     position: absolute;
@@ -16,8 +14,8 @@ export const StyledInput = styled(Input)`
   }
 
   input {
-    height: 100%;
     width: 100%;
+    height: 100%;
     padding: 10px 16px 0 16px;
     color: var(--gray-4);
     background-color: var(--gray-0);
