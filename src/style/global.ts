@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {     
@@ -35,6 +35,10 @@ ul, ol, li {
   --background: #262626;
 
   --linear-gradient-btn: linear-gradient(90deg, rgba(49,180,253,1) 0%, rgba(112,60,255,1) 100%);
+  --linear-gradient-form: linear-gradient(
+    180deg,
+    rgba(46, 65, 89, 1) 80%,
+    rgba(255, 255, 240, 1) 100%);
 }
 
 
@@ -78,4 +82,4 @@ ul, ol, li {
 }
 
 
-`
+`;
