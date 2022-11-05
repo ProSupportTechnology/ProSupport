@@ -3,17 +3,21 @@ import { StyledInput } from "../../../../components/Input/style";
 import { StyledFormLogin } from "./style";
 import { iLogin } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Loginschema } from "../../../../schemas/loginSchema";
+import { useUserContext } from "../../../../contexts/UserContext";
 
 export const FormLogin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iLogin>({ resolver: yupResolver() });
+  } = useForm<iLogin>({ resolver: yupResolver(Loginschema) });
+
+  const { handleLogin } = useUserContext()
 
   return (
     <>
-      <StyledFormLogin onSubmit={handleSubmit()}>
+      <StyledFormLogin onSubmit={handleSubmit(handleLogin)}>
         <h1 className="title one">Login</h1>
         <StyledInput
           errors={errors.email}
