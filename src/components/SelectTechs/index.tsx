@@ -1,9 +1,9 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useState, useEffect } from "react"
 import { ContainerSelectTechs } from "./style"
 import { RiCheckboxBlankFill } from "react-icons/ri"
 
 export const StyledSelectTechs = () => {
-  const allTechs = ["HTML", "CSS", "JavaScript", "React"]
+  const allTechs = ["HTML", "CSS", "JavaScript", "React", "TypeScript"]
   const [techs, setTechs] = useState(allTechs.map((tech) => ({ name: tech, checked: false })))
   const [isOpened, setIsOpened] = useState(false)
 
@@ -13,10 +13,15 @@ export const StyledSelectTechs = () => {
     )
   }
 
+  function selectInnerText() {
+    const actualTech = techs.map((tech) => tech.checked == true && tech.name).filter((tech) => tech !== false)
+    return actualTech.join("; ")
+  }
+
   return (
     <ContainerSelectTechs liCount={allTechs.length}>
       <button onClick={() => setIsOpened(!isOpened)} type="button">
-        {allTechs.join("; ")}
+        {selectInnerText() || "Selecione a tecnologia"}
       </button>
       <ul className={isOpened ? "is_opened" : ""}>
         <RiCheckboxBlankFill />
