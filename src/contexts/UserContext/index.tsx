@@ -21,7 +21,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<iUser>({} as iUser);
   const [token, setToken] = useState({});
-  console.log(user, token)
 
   async function handleRegister(data: iRegister) {
       //Loading(true)
@@ -41,7 +40,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     try{
       const response = await api.post<iUser>("/login", data)
       toast.success("Login efetuado com sucesso")
-      console.log(response.data.accessToken)
+      
       window.localStorage.setItem("@Token-ProSupport", response.data.accessToken);
       window.localStorage.setItem("@userID-ProSupport", response.data.user.id);
       setToken(response.data.accessToken)
