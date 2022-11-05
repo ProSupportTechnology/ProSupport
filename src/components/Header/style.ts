@@ -91,6 +91,12 @@ export const NavBar = styled.nav<iNavbarProps>`
   gap: 0.3rem;
   background: #434343;
   border-radius: 0 0 0 15px;
+  .divInput {
+    margin: -25px 5px;
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
   @media (min-width: 768px) {
     position: static;
     background-color: transparent;
@@ -129,41 +135,10 @@ export const ImgProfile = styled.img`
   height: 60px;
   margin-top: 0.3rem;
 `;
-export const InputCont = styled.div`
-  height: 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: -49px 0.3rem;
-  border: 1px solid var(--gray-0);
-  border-radius: 5px;
-  background-color: var(--gray-3);
-  svg {
-    font-size: 2rem;
-    color: var(--gray-0);
-    width: 17%;
-    height: 80%;
-    display: flex;
-    align-items: center;
-  }
-  input {
-    height: 100%;
-    width: 83%;
-    background-color: var(--gray-3);
-    color: var(--gray-0);
-    padding-left: 0.3rem;
-    ::placeholder {
-      color: var(--gray-0);
-    }
-  }
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
 export const UlNavBar = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 1rem;
 `;
 export const LiNavBar = styled.li`
   display: flex;

@@ -5,6 +5,7 @@ import Login from"../../assets/Login1.png"
 import { StyledButtonLink } from "../../style/buttonLink/style";
 
 export const LoginPage = () => {
+  return <div>LoginPage</div>;
   return (
     <StyledRegister style={{ backgroundImage: `url(${Background})` }}>
        <div className="containerRegisterLogin" style={{ backgroundImage: `url(${Login})`, backgroundPosition: "center" }}>
