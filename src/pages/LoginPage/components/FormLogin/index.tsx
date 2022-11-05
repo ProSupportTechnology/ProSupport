@@ -3,18 +3,26 @@ import { StyledInput } from "../../../../components/Input/style";
 import { StyledFormLogin } from "./style";
 import { iLogin } from "./types";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Loginschema } from "../../../../schemas/loginSchema";
+import { useUserContext } from "../../../../contexts/UserContext";
+import { StyledButtonLink } from "../../../../style/buttonLink/style";
 
 export const FormLogin = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<iLogin>({ resolver: yupResolver() });
+  } = useForm<iLogin>({ resolver: yupResolver(Loginschema) });
+
+  const { handleLogin } = useUserContext();
 
   return (
     <>
-      <StyledFormLogin onSubmit={handleSubmit()}>
-        <h1 className="title one">Login</h1>
+      <StyledFormLogin onSubmit={handleSubmit(handleLogin)}>
+        <div className="divClose">
+          <h1 className="title one">Login</h1>
+          <StyledButtonLink to="./" variant="theme-register-login">Voltar</StyledButtonLink>
+        </div>
         <StyledInput
           errors={errors.email}
           register={register(`email`)}
