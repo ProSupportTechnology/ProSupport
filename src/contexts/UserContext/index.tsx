@@ -11,7 +11,8 @@ interface iUserContextProps {
 
 export interface iUserContext{
   handleRegister(data: iRegister): Promise<void>;
-  handleLogin(data: iLogin): Promise<void>
+  handleLogin(data: iLogin): Promise<void>;
+  user: iLogin
 }
 
 
@@ -21,7 +22,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<iUser>({} as iUser);
   const [token, setToken] = useState({});
-
+console.log(user)
   async function handleRegister(data: iRegister) {
       //Loading(true)
       try{
@@ -45,7 +46,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       window.localStorage.setItem("@userID-ProSupport", response.data.user.id);
       setToken(response.data.accessToken)
       setUser(response.data)
-      // navigate("/dashboard")
+      navigate("/dashboard")
     } catch {
       toast.error("Falha ao efetuar o login")
     } finally {
@@ -58,7 +59,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   <UserContext.Provider 
     value={{
       handleRegister,
-      handleLogin
+      handleLogin,
+      user
     }}>
     {children}
   </UserContext.Provider>

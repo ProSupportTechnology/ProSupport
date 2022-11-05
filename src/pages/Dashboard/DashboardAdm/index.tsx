@@ -1,3 +1,11 @@
+import { useUserContext } from "../../../contexts/UserContext"
+
 export const DashboardAdm = () => {
-  return <div>DashboardAdm</div>
+  const { user } = useUserContext()
+  console.log(user)
+  return (
+    <>
+
+    </>
+    )
 }
