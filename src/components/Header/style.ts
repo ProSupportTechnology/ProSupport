@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { iNavbarProps } from "./types";
 
 export const HeaderContainer = styled.header`
-  width: 100%;
+  position: fixed;
+  inset: 0;
+  width: 100vw;
   height: 100px;
   background-color: var(--gray-3);
   display: flex;
@@ -11,7 +13,7 @@ export const HeaderContainer = styled.header`
   @media (min-width: 768px) {
     flex-direction: column;
     width: 130px;
-    height: 100%;
+    height: 100vh;
   }
 `;
 export const Logo = styled.img`
