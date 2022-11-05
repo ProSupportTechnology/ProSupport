@@ -12,54 +12,39 @@ export const StyledRegister = styled.div`
 
     .containerRegisterLogin{
         width: 90%;
+        max-width: 400px;
+        height: 50%;
         display: flex;
         align-items: center;
         flex-direction: column;
-    }
-
-    .loginBackground{
-        width: 90%;
-        height: 50%;
-        max-width: 400px;
-        border-radius: 20px 20px 0px 0px;
+        background-size: cover;
         margin-top: 20px;
+        justify-content: flex-end;
+        padding-bottom: 140px;
     }
 
     .btnLogin{
-        position: relative;
-        top: -620px;
         background-color: white;
-    }
+    } 
 
     @media(min-width: 1000px){
-        .containerRegisterLogin{
-            height: 100vh;
-            width: 100vw;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-        }
+        flex-direction: row;
+        justify-content: center;
 
-        .loginBackground{
-            min-width: 400px;
-            max-width: 30%;
+
+        .containerRegisterLogin{
+            width: 100%;
             height: 70%;
+            margin-top: 0px;
             border-radius: 20px 0px 0px 20px;
-            margin: 0px;
+            padding-bottom: 200px;
         }
 
         .btnLogin{
-        position: relative;
-        top: -50%;
-        left: -200px;
         background-color: white
+
         }
     }
 
-    /* @media(min-width: 300px){
-        .btnLogin{
-        top: -500px;
-        }
-    } */
 
 `

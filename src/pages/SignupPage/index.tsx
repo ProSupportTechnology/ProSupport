@@ -9,11 +9,11 @@ export const SignupPage = () => {
   return (
     <>
     <StyledRegister style={{ backgroundImage: `url(${Background})` }}>
-      <div className="containerRegisterLogin">
-        <img src={Login} alt="" className="loginBackground"/>
-        <FormSignup />
+      <div className="containerRegisterLogin" style={{ backgroundImage: `url(${Login})`, backgroundPosition: "center" }}>
+        <StyledButtonLink variant="theme-register-login" to="/login" className="btnLogin">Login</StyledButtonLink> 
       </div>
-      <StyledButtonLink variant="theme-register-login" to="/login" className="btnLogin">Login</StyledButtonLink> 
+      <FormSignup />
+      
     </StyledRegister>
     </>
   );

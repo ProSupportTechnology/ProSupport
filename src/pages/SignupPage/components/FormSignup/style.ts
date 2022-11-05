@@ -14,11 +14,15 @@ export const StyledFormSignup = styled.form`
   h1 {
     color: var(--gray-0);
   }
+  button{
+      margin: 20px 0px;
+      padding: 20px;
+    }
 
   @media(min-width: 1000px){
-    max-width: 30%;
     height: 70%;
     gap: 5%;
     border-radius: 0px 20px 20px 0px;
+    padding-top: 50px;
   }
-`;
+`
