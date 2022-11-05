@@ -48,7 +48,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       setUser(response.data)
       // navigate("/dashboard")
     } catch {
-      toast.error("Falha ao criar a conta")
+      toast.error("Falha ao efetuar o login")
     } finally {
       //Loading(false)
     }
