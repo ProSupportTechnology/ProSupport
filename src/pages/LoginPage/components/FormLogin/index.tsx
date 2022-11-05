@@ -21,7 +21,7 @@ export const FormLogin = () => {
       <StyledFormLogin onSubmit={handleSubmit(handleLogin)}>
         <div className="divClose">
           <h1 className="title one">Login</h1>
-          <StyledButtonLink to="./" variant="theme-register-login">Voltar</StyledButtonLink>
+          <StyledButtonLink to="/" variant="theme-register-login">Voltar</StyledButtonLink>
         </div>
         <StyledInput
           errors={errors.email}
