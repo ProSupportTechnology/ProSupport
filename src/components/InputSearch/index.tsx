@@ -15,11 +15,7 @@ export const InputSearch = () => {
 
   return (
     <>
-      <StyledForm
-        inputAnimation={true}
-        inputFixedMenu={false}
-        inputFixed={false}
-      >
+      <StyledForm>
         <input
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
