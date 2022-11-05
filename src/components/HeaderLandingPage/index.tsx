@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import logo from "../../assets/ProSupport.png";
+import { StyledButtonLink } from "../../style/buttonLink/style";
 import { StyledHeaderLandingPage } from "./style";
 
 export const HeaderLandingPage = () => {
@@ -15,12 +15,12 @@ export const HeaderLandingPage = () => {
         </div>
       </div>
       <div className="headerButtons">
-        <Link to="/login" className="text one">
+        <StyledButtonLink to="/login" variant="default">
           Login
-        </Link>
-        <Link to="/signup" className="text one">
+        </StyledButtonLink>
+        <StyledButtonLink to="/signup" variant="default">
           Criar conta
-        </Link>
+        </StyledButtonLink>
       </div>
     </StyledHeaderLandingPage>
   );
