@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledEditQuestion = styled.div`
+export const ModalQuestion = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
