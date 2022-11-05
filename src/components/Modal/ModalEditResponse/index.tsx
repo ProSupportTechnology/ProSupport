@@ -1,11 +1,11 @@
 import { StyledButton } from "../../../style/button/style";
+import { ModalResponse } from "../../../style/modalResponse/style";
 import { ModalContainer } from "../ModalContainer";
-import { StyledEditResponse } from "./style";
 
 export const ModalEditResponse = () => {
   return (
     <ModalContainer>
-      <StyledEditResponse>
+      <ModalResponse>
         <p>Editar resposta</p>
         <textarea
           name="textResponse"
@@ -13,7 +13,7 @@ export const ModalEditResponse = () => {
           placeholder="Insira sua resposta aqui..."
         ></textarea>
         <StyledButton variant="default">Editar</StyledButton>
-      </StyledEditResponse>
+      </ModalResponse>
     </ModalContainer>
   );
 };
