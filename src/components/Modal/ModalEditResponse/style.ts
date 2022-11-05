@@ -22,7 +22,7 @@ export const StyledEditResponse = styled.div`
     height: 220px;
     border-radius: 30px;
     border: 1px solid var(--gray-1);
-    background-color: var(--gray-4);
+    background-color: var(--background);
   }
 
   button {
