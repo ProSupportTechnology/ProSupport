@@ -21,7 +21,7 @@ export const FormSignup = () => {
       <StyledFormSignup onSubmit={handleSubmit(handleRegister)}>
         <div className="divClose">
           <h1 className="title one">Cadastra-se</h1>
-          <StyledButtonLink to="./" variant="theme-register-login">
+          <StyledButtonLink to="/" variant="theme-register-login">
             Voltar
           </StyledButtonLink>
         </div>
