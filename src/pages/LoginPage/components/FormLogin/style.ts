@@ -9,6 +9,14 @@ export const StyledFormLogin = styled.form`
   gap: 1rem;
   padding: 1rem;
   background: var(--linear-gradient-form);
+  .divClose {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    a {
+      padding: 7px 15px;
+    }
+  }
   h1 {
     color: var(--gray-0);
   }
@@ -17,8 +25,8 @@ export const StyledFormLogin = styled.form`
     padding: 20px;
     border-radius: 10px;
   }
-  
-  @media(min-width: 1000px){
+
+  @media (min-width: 1000px) {
     height: 70%;
     gap: 5%;
     border-radius: 0px 20px 20px 0px;
