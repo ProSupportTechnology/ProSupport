@@ -10,6 +10,7 @@ export const HeaderContainer = styled.header`
   align-content: center;
   justify-content: space-between;
   @media (min-width: 768px) {
+    position: static;
     flex-direction: column;
     width: 130px;
     height: 100%;

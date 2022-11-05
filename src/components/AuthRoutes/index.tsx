@@ -1,3 +1,9 @@
+import { Profile } from "../../pages/Profile";
+
 export const AuthRoutes = () => {
-  return <div>AuthRoutes</div>
-}
+  return (
+    <div>
+      <Profile/>
+    </div>
+  );
+};
