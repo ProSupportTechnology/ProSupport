@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { iNavbarProps } from "./types";
 
 export const HeaderContainer = styled.header`
+  position: fixed;
   width: 100%;
   height: 100px;
   background-color: var(--gray-3);
