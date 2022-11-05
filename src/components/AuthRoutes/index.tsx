@@ -1,3 +1,11 @@
+import { StyledSelectTechs } from "../SelectTechs"
+
 export const AuthRoutes = () => {
-  return <div>AuthRoutes</div>
+  return (
+    <div>
+      <br />
+      <br />
+      <StyledSelectTechs />
+    </div>
+  )
 }

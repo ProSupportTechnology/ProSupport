@@ -1,24 +1,34 @@
-import { useState } from "react"
+import { ChangeEvent, useState } from "react"
+import { ContainerSelectTechs } from "./style"
+import { RiCheckboxBlankFill } from "react-icons/ri"
 
-export const SelectTechs = () => {
+export const StyledSelectTechs = () => {
   const allTechs = ["HTML", "CSS", "JavaScript", "React"]
-  const [techs, setTechs] = useState({ HTML: false, CSS: false, JavaScript: false, React: false })
+  const [techs, setTechs] = useState(allTechs.map((tech) => ({ name: tech, checked: false })))
+  const [isOpened, setIsOpened] = useState(false)
 
-  function handleClick() {}
-  // setTechs({ ...techs, tech: event.target.value })
+  function handleEvent(event: ChangeEvent<HTMLInputElement>, actualTech: string) {
+    setTechs(
+      techs.map((tech) => (tech.name === actualTech ? { ...tech, checked: event.target.checked } : tech))
+    )
+  }
+
   return (
-    <div>
-      <button type="button">{allTechs.join("; ")}</button>
-      <ul>
+    <ContainerSelectTechs liCount={allTechs.length}>
+      <button onClick={() => setIsOpened(!isOpened)} type="button">
+        {allTechs.join("; ")}
+      </button>
+      <ul className={isOpened ? "is_opened" : ""}>
+        <RiCheckboxBlankFill />
         {allTechs.map((tech) => (
-          <li>
+          <li key={tech}>
             <label>
-              <input onChange={(event) => console.log(event.target)} type="checkbox" name={tech} />
+              <input onChange={(event) => handleEvent(event, tech)} type="checkbox" name={tech} />
               {tech}
             </label>
           </li>
         ))}
       </ul>
-    </div>
+    </ContainerSelectTechs>
   )
 }
