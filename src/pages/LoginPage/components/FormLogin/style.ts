@@ -13,4 +13,9 @@ export const StyledFormLogin = styled.form`
   h1 {
     color: var(--gray-0);
   }
+  button {
+    margin: 20px 0px;
+    padding: 20px;
+    border-radius: 10px;
+  }
 `;
