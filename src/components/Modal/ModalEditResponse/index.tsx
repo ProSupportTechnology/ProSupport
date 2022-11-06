@@ -1,19 +1,29 @@
+import { CgClose } from "react-icons/cg";
+import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { StyledButton } from "../../../style/button/style";
-import { ModalResponse } from "../../../style/modalResponse/style";
+import { StyledModalResponse } from "../../../style/modalResponse/style";
+import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
 export const ModalEditResponse = () => {
+  const { isModEditRespOpen, setIsModEditRespOpen } = useQuestionContext();
+
   return (
     <ModalContainer>
-      <ModalResponse>
+      <StyledModalResponse>
+        <span
+          onClick={() => {
+            setIsModEditRespOpen(isModEditRespOpen);
+          }}
+        >
+          <CgClose />
+        </span>
         <p>Editar resposta</p>
-        <textarea
-          name="textResponse"
-          id="textResponse"
-          placeholder="Insira sua resposta aqui..."
-        ></textarea>
-        <StyledButton variant="default">Editar</StyledButton>
-      </ModalResponse>
+        <form>
+          <StyledTextArea placeholder="Edite sua resposta aqui" />
+          <StyledButton variant="default">Editar</StyledButton>
+        </form>
+      </StyledModalResponse>
     </ModalContainer>
   );
 };

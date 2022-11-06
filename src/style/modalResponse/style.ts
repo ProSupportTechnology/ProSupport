@@ -34,7 +34,7 @@ export const StyledModalResponse = styled.div`
   }
 
   @media (min-width: 768px) {
-    height: 400px;
+    height: 320px;
     width: 530px;
     font-size: 25px;
 
@@ -43,10 +43,6 @@ export const StyledModalResponse = styled.div`
     }
 
     form {
-      textarea {
-        height: 250px;
-      }
-
       button {
         width: 105px;
         height: 40px;

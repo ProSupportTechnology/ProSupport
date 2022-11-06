@@ -11,6 +11,8 @@ export interface iQuestionContext {
   setIsModEditQuestOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isModCreateRespOpen: boolean;
   setIsModCreateRespOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isModEditRespOpen: boolean;
+  setIsModEditRespOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const QuestionContext = createContext<iQuestionContext>({} as iQuestionContext);
@@ -19,6 +21,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
   const [isModEditQuestOpen, setIsModEditQuestOpen] = useState(false);
   const [isModCreateRespOpen, setIsModCreateRespOpen] = useState(false);
+  const [isModEditRespOpen, setIsModEditRespOpen] = useState(false);
 
   return (
     <QuestionContext.Provider
@@ -29,6 +32,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         setIsModEditQuestOpen,
         isModCreateRespOpen,
         setIsModCreateRespOpen,
+        isModEditRespOpen,
+        setIsModEditRespOpen,
       }}
     >
       {children}
