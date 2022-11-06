@@ -7,13 +7,7 @@ import { ModalContainer } from "../ModalContainer";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { QuestionSchema } from "../../../schemas/questionSchema";
-
-//mover essa interface para o contexto de questions, ajustar o parametro techs caso seja usado o selectTechs
-export interface iDataQuestion {
-  title: string;
-  techs: string | string[];
-  description: string;
-}
+import { iDataQuestion } from "../../../contexts/QuestionContext/types";
 
 export const ModalCreateQuestion = () => {
   const { setIsModCreateQuestOpen } = useQuestionContext();
@@ -21,11 +15,11 @@ export const ModalCreateQuestion = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(QuestionSchema) });
+  } = useForm<iDataQuestion>({ resolver: yupResolver(QuestionSchema) });
 
   //mover essa função para o contexto quando houver a lógica de pegar o id do usuário ao abrir modal
   //alterar a tipagem do data para o iDataQuestion
-  function sendQuestion(data: any) {
+  function sendQuestion(data: iDataQuestion) {
     //pegar o id do user(simulei com um chumbado)
     const id = 1;
     const body = { ...data, userId: id };
@@ -51,8 +45,8 @@ export const ModalCreateQuestion = () => {
             modalPlaceholder="Insira o título"
           />
           <StyledInput
-            errors={errors.techs}
-            register={register("techs")}
+            errors={errors.tech}
+            register={register("tech")}
             label="Tecnologia"
             name="techs"
             type="text"

@@ -1,6 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
+import { iDataQuestion } from "../../../contexts/QuestionContext/types";
 import { QuestionSchema } from "../../../schemas/questionSchema";
 import { StyledButton } from "../../../style/button/style";
 import { StyledModalQuestion } from "../../../style/modalQuestion/style";
@@ -15,11 +16,10 @@ export const ModalEditQuestion = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(QuestionSchema) });
+  } = useForm<iDataQuestion>({ resolver: yupResolver(QuestionSchema) });
 
   //mover essa função para o contexto quando houver a lógica de pegar o id do usuário ao abrir modal
-  //alterar a tipagem do data para o iDataQuestion (vai estar no types do contexto)
-  function editQuestion(data: any) {
+  function editQuestion(data: iDataQuestion) {
     console.log(data);
     //receber o id da pergunta
     //realizar requisição da pergunta com o data como body
@@ -45,8 +45,8 @@ export const ModalEditQuestion = () => {
             modalPlaceholder="Edite o título"
           />
           <StyledInput
-            errors={errors.techs}
-            register={register("techs")}
+            errors={errors.tech}
+            register={register("tech")}
             label="Tecnologia"
             name="techs"
             type="text"
