@@ -45,6 +45,14 @@ export const StyledButton = styled.button<iStyledButton>`
             }
           }
         `;
+      case "theme-register-login":
+        return css`
+          background-color: transparent;
+          border-radius: 3px;
+          border: 2px solid var(--grey-0);
+          text-align: center;
+          padding: 15px 30px;
+        `;
     }
   }};
 `;
