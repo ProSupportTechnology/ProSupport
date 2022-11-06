@@ -29,7 +29,7 @@ export const ModalCreateResponse = () => {
   return (
     <ModalContainer setIsModOpen={setIsModCreateRespOpen}>
       <StyledModalResponse>
-        <p>Resposta</p>
+        <p>Responder</p>
         <form onSubmit={handleSubmit(sendResponse)}>
           <StyledTextArea
             register={register("description")}
