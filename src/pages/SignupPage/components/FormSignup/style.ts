@@ -20,6 +20,7 @@ export const StyledFormSignup = styled.form`
     }
   }
   h1 {
+    font-size: 2rem !important;
     color: var(--gray-0);
   }
   button {
