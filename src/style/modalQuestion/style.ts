@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-export const ModalQuestion = styled.div`
+export const StyledModalQuestion = styled.div`
   display: flex;
   flex-direction: column;
-  height: 450px;
   width: 290px;
   color: var(--gray-0);
 
@@ -54,7 +53,6 @@ export const ModalQuestion = styled.div`
 
     button {
       width: 105px;
-      height: 40px;
       margin: 15px 0;
     }
   }

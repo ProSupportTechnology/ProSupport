@@ -4,17 +4,8 @@ export const StyledModalResponse = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  height: 280px;
   width: 290px;
   color: var(--gray-0);
-
-  span {
-    color: white;
-    position: absolute;
-    right: 10px;
-    margin: 15px;
-    cursor: pointer;
-  }
 
   p {
     text-align: center;
@@ -34,7 +25,6 @@ export const StyledModalResponse = styled.div`
   }
 
   @media (min-width: 768px) {
-    height: 320px;
     width: 530px;
     font-size: 25px;
 
@@ -43,8 +33,12 @@ export const StyledModalResponse = styled.div`
     }
 
     form {
+      textarea {
+        height: 230px;
+      }
+
       button {
-        width: 105px;
+        width: 120px;
         height: 40px;
         margin: 15px 0;
       }
