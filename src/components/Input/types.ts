@@ -7,4 +7,5 @@ export interface iInputProps {
   type: string
   register: UseFormRegisterReturn<string>
   errors: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined
+  modalPlaceholder?: string
 }

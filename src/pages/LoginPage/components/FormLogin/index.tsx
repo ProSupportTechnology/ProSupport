@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Loginschema } from "../../../../schemas/loginSchema";
 import { useUserContext } from "../../../../contexts/UserContext";
 import { StyledButtonLink } from "../../../../style/buttonLink/style";
+import { StyledButton } from "../../../../style/button/style";
 
 export const FormLogin = () => {
   const {
@@ -37,7 +38,7 @@ export const FormLogin = () => {
           errors={errors.password}
           register={register(`password`)}
         />
-        <button type="submit">Logar</button>
+        <StyledButton variant="theme-register-login" type="submit">Logar</StyledButton>
       </StyledFormLogin>
     </>
   );

@@ -23,6 +23,7 @@ import {
 import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
 import { InputSearch } from "../InputSearch";
+import { StyledButtonLink } from "../../style/buttonLink/style";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
@@ -42,45 +43,45 @@ export const Header = () => {
         </div>
         <UlNavBar>
           <LiNavBar>
-            <Link to={`/dashboard`}>
+            <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
               <h3 className="title two">Home</h3>
               <div>
                 <HiHome />
               </div>
-            </Link>
+            </StyledButtonLink>
           </LiNavBar>
           <LiNavBar>
-            <Link to={`/profile`}>
+            <StyledButtonLink variant="theme-menu" to={`/profile`}>
               <h3 className="title two">Perfil</h3>
               <div>
                 <HiUser />
               </div>
-            </Link>
+            </StyledButtonLink>
           </LiNavBar>
           <LiNavBar>
-            <Link to={`/`}>
+            <StyledButtonLink variant="theme-menu" to={`/`}>
               <h3 className="title two">Perguntas/Respostas</h3>
               <div>
                 <HiChatBubbleLeftRight />
               </div>
-            </Link>
+            </StyledButtonLink>
           </LiNavBar>
           <LiNavBar>
-            <Link to={`/`}>
+            <StyledButtonLink variant="theme-menu" to={`/`}>
               <h3 className="title two">Usuarios</h3>
               <div>
                 <HiUsers />
               </div>
-            </Link>
+            </StyledButtonLink>
           </LiNavBar>
         </UlNavBar>
         <LogoutCont>
-          <Link to={`/`}>
+          <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
             <h3 className="title two">Sair</h3>
             <div>
               <GiEntryDoor />
             </div>
-          </Link>
+          </StyledButtonLink>
         </LogoutCont>
       </NavBar>
       <MenuMobile>
