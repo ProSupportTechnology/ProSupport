@@ -20,15 +20,15 @@ export const StyledInput = styled(Input)`
     color: var(--gray-4);
     background-color: var(--gray-0);
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
+
+    &:focus {
+      border: 2px solid var(--gray-2);
+    }
   }
 
   .input_red {
-    border: 1px solid #ed0000;
-  }
-
-  input:focus {
-    border: 1px solid var(--gray-2);
+    border: 2px solid var(--error);
   }
 
   svg {
@@ -40,11 +40,55 @@ export const StyledInput = styled(Input)`
     color: var(--gray-2);
   }
 
-  .input_red + svg {
-    color: #ed0000;
+  div {
+    z-index: -10;
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 120%;
+    background: var(--error);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    svg {
+      transform: rotate(45deg);
+      position: absolute;
+      top: unset;
+      bottom: -9px;
+      color: var(--error);
+    }
   }
 
-  .input_red:focus + svg {
-    color: var(--gray-2);
+  .input_red + svg {
+    color: var(--error);
+
+    &:focus + svg {
+      color: var(--gray-2);
+    }
+  }
+
+  .input_red:focus + svg + div {
+    z-index: 0;
+    display: unset;
+  }
+
+  &.isModal {
+    label {
+      position: unset;
+      inset: 0;
+      color: var(--gray-0);
+    }
+
+    input {
+      padding: 0 16px;
+      color: var(--gray-1);
+      background-color: var(--gray-3);
+
+      &:focus {
+        color: var(--gray-0);
+        border: 2px solid var(--gray-1);
+      }
+    }
   }
 `

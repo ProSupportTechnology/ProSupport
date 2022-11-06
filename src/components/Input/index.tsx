@@ -1,13 +1,11 @@
-// import { ReactNode } from "react"
-// import { RiCheckboxBlankFill } from "react-icons/ri"
-
+import { ReactNode, useState } from "react"
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
+import { RiCheckboxBlankFill } from "react-icons/ri"
 import { HiUser } from "react-icons/hi2"
 import { MdEmail } from "react-icons/md"
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import { iInputProps } from "./types"
-import { useState } from "react"
 
-export const Input = ({ className, label, name, type, register, errors }: iInputProps) => {
+export const Input = ({ className, label, name, type, register, errors, modalPlaceholder }: iInputProps) => {
   const [eyeVisible, setEyeVisible] = useState(false)
 
   function handleClickEye() {
@@ -15,13 +13,14 @@ export const Input = ({ className, label, name, type, register, errors }: iInput
   }
 
   return (
-    <div className={className}>
-      <label htmlFor={name} className="text three">
+    <div className={`${className} ${modalPlaceholder ? "isModal" : ""}  `}>
+      <label htmlFor={name} className={modalPlaceholder ? "text one" : "text three"}>
         {label}
       </label>
       <input
         id={name}
         type={eyeVisible ? "text" : type}
+        placeholder={modalPlaceholder ? modalPlaceholder : ""}
         {...register}
         className={`text one ${errors?.message ? "input_red" : ""}`}
       />
@@ -37,12 +36,12 @@ export const Input = ({ className, label, name, type, register, errors }: iInput
         ""
       )}
 
-      {/* {errors?.message && (
-        <>
+      {errors?.message && (
+        <div>
           <span className="text three">{errors?.message as ReactNode}</span>
           <RiCheckboxBlankFill />
-        </>
-      )} */}
+        </div>
+      )}
     </div>
   )
 }
