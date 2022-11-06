@@ -8,7 +8,7 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
   justify-content: center;
   cursor: pointer;
   transition: 0.5s;
-  color: var(--grey-0);
+  color: var(--gray-0);
   text-decoration: none;
 
   ${({ variant }) => {
@@ -16,10 +16,10 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
       default:
         return css`
           text-align: center;
-          color: var(--grey-0);
+          color: var(--gray-0);
           padding: 7px 25px;
           border-radius: 20px;
-          border: 2px solid var(--grey-0);
+          border: 2px solid var(--gray-0);
           background-color: transparent;
           &:hover {
             border: 2px solid transparent;
@@ -32,40 +32,35 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
           }
         `;
 
-      case "theme-desktop-menu":
+      case "theme-menu":
         return css`
-          position: relative;
           margin: 10px;
-          width: 50px;
-          height: 50px;
-          background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
-          border-radius: 10px;
-          &:hover {
+          div {
+            position: relative;
+            width: 40px;
+            height: 50px;
+            background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
+            border-radius: 10px;
+          }
+          :hover {
+            background-color: #262626;
+          }
+          &:hover div {
             :after {
               content: "";
               position: absolute;
               inset: -4px;
-              border-radius: 13px;
-              border: 2px solid var(--grey-0);
+              border-radius: 10px;
+              border: 2px solid var(--gray-0);
             }
           }
-        `;
-
-      case "theme-mobile-menu":
-        return css`
-          position: relative;
-          margin: 10px;
-          width: 35px;
-          height: 35px;
-          background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
-          border-radius: 10px;
         `;
 
       case "theme-register-login":
         return css`
           background-color: transparent;
           border-radius: 3px;
-          border: 2px solid var(--grey-0);
+          border: 2px solid var(--gray-0);
           text-align: center;
           padding: 15px 30px;
         `;

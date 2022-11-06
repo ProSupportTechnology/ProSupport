@@ -47,6 +47,32 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     }
   }
 
+  async function editUser(id: iUser, body:iUser){
+        //Loading(true)
+        try {
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+          const response = await api.patch<iUser>(`/users/${id}`, body);
+          setUser(response.data);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          //Loading(false)
+        }
+  }
+
+  async function deleteUser(id: iUser){
+        //Loading(true)
+        try {
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+          const response = await api.delete(`/users/${id}`);
+          console.log(response);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          //Loading(false)
+        }
+  }
+
 
   return (
   <UserContext.Provider 

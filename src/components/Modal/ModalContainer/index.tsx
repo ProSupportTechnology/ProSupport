@@ -1,3 +1,3 @@
 export const ModalContainer = () => {
-  return <div>ModalContainer</div>
-}
+  return <div>ModalContainer</div>;
+};
