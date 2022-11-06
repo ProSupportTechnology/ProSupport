@@ -20,15 +20,15 @@ export const StyledInput = styled(Input)`
     color: var(--gray-4);
     background-color: var(--gray-0);
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
+
+    &:focus {
+      border: 2px solid var(--gray-2);
+    }
   }
 
   .input_red {
-    border: 1px solid #ed0000;
-  }
-
-  input:focus {
-    border: 1px solid var(--gray-2);
+    border: 2px solid var(--error);
   }
 
   svg {
@@ -41,10 +41,10 @@ export const StyledInput = styled(Input)`
   }
 
   .input_red + svg {
-    color: #ed0000;
-  }
+    color: var(--error);
 
-  .input_red:focus + svg {
-    color: var(--gray-2);
+    &:focus + svg {
+      color: var(--gray-2);
+    }
   }
 `
