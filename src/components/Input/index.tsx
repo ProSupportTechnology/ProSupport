@@ -1,11 +1,9 @@
-// import { ReactNode } from "react"
-// import { RiCheckboxBlankFill } from "react-icons/ri"
-
+import { ReactNode, useState } from "react"
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
+import { RiCheckboxBlankFill } from "react-icons/ri"
 import { HiUser } from "react-icons/hi2"
 import { MdEmail } from "react-icons/md"
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
 import { iInputProps } from "./types"
-import { useState } from "react"
 
 export const Input = ({ className, label, name, type, register, errors, modalPlaceholder }: iInputProps) => {
   const [eyeVisible, setEyeVisible] = useState(false)
@@ -38,12 +36,12 @@ export const Input = ({ className, label, name, type, register, errors, modalPla
         ""
       )}
 
-      {/* {errors?.message && (
-        <>
+      {errors?.message && (
+        <div>
           <span className="text three">{errors?.message as ReactNode}</span>
           <RiCheckboxBlankFill />
-        </>
-      )} */}
+        </div>
+      )}
     </div>
   )
 }
