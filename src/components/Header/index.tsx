@@ -13,7 +13,6 @@ import {
 } from "./style";
 import logo from "../../assets/ProSupport.png";
 import photo from "../../assets/photo.png";
-import { Link } from "react-router-dom";
 import {
   HiHome,
   HiUser,
