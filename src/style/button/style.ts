@@ -47,9 +47,10 @@ export const StyledButton = styled.button<iStyledButton>`
         `;
       case "theme-register-login":
         return css`
+          font-size: 1rem;
           background-color: transparent;
           border-radius: 3px;
-          border: 2px solid var(--grey-0);
+          border: 2px solid var(--white);
           text-align: center;
           padding: 15px 30px;
         `;
