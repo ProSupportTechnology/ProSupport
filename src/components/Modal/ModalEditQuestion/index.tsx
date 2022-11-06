@@ -1,24 +1,16 @@
-import { CgClose } from "react-icons/cg";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { StyledButton } from "../../../style/button/style";
-import { ModalQuestion } from "../../../style/modalQuestion/style";
+import { StyledModalQuestion } from "../../../style/modalQuestion/style";
 import { StyledInput } from "../../Input/style";
 import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
 export const ModalEditQuestion = () => {
-  const { isModEditQuestOpen, setIsModEditQuestOpen } = useQuestionContext();
+  const { setIsModEditQuestOpen } = useQuestionContext();
 
   return (
-    <ModalContainer>
-      <ModalQuestion>
-        <span
-          onClick={() => {
-            setIsModEditQuestOpen(!isModEditQuestOpen);
-          }}
-        >
-          <CgClose />
-        </span>
+    <ModalContainer setIsModOpen={setIsModEditQuestOpen}>
+      <StyledModalQuestion>
         <p>Edite sua questão</p>
         <form>
           <StyledInput
@@ -38,7 +30,7 @@ export const ModalEditQuestion = () => {
           <StyledTextArea label="Descrição" placeholder="Edite sua Descrição" />
           <StyledButton variant="default">Responder</StyledButton>
         </form>
-      </ModalQuestion>
+      </StyledModalQuestion>
     </ModalContainer>
   );
 };
