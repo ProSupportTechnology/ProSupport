@@ -15,6 +15,8 @@ export interface iUser{
     email: string,
     password: string,
     name: string,
+    bio: string,
+    img: string,
     id: string,
     user: {
         accessToken: string,
@@ -22,7 +24,26 @@ export interface iUser{
         password: string,
         name: string,
         id: string,
+        bio: string,
+        img: string,
     }
 
+}
+
+
+export interface iUserContext{
+    handleRegister(data: iRegister): Promise<void>;
+    handleLogin(data: iLogin): Promise<void>;
+    user: iUser;
+}
+  
+export interface iQuestion{
+    title: string;
+    description: string;
+    techs: string[];
+    userId: number;
+    id: number;
+    responses: string[]
+    user: iUser
 }
 

@@ -1,15 +1,14 @@
 import styled from "styled-components";
 
 export const StyledImageProfile = styled.figure`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 
   background-color: blue;
 
-  border-radius: 20px;
+  border-radius: 27px;
   border: 1px solid black;
-
-  position: absolute;
+  
 
   button {
     width: 100%;
@@ -21,8 +20,7 @@ export const StyledImageProfile = styled.figure`
     border-radius: 0px 0px 20px 20px;
 
     position: relative;
-    top: 74%;
-
+    top: -45px;
     opacity: 20%;
   }
 
