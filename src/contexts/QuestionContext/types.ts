@@ -3,3 +3,7 @@ export interface iDataQuestion {
   tech: string;
   description: string;
 }
+
+export interface iDataResponse {
+  description: string;
+}
