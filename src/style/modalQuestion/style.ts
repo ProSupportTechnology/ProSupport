@@ -3,44 +3,31 @@ import styled from "styled-components";
 export const ModalQuestion = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
-  height: 340px;
+  height: 450px;
   width: 290px;
   color: var(--gray-0);
 
+  span {
+    color: white;
+    position: absolute;
+    right: 10px;
+    margin: 15px;
+    cursor: pointer;
+  }
+
   p {
     font-size: 20px;
-    margin: 15px 0;
+    margin: 10px 0;
+    text-align: center;
   }
 
-  label {
-    font-size: 12px;
+  form {
     display: flex;
-    margin-left: 10px;
-  }
+    flex-direction: column;
 
-  input {
-    font-size: 10px;
-    padding: 0 10px;
-    margin-bottom: 10px;
-    width: 280px;
-    height: 35px;
-    border-radius: 5px;
-    color: var(--gray-0);
-    border: 1px solid var(--gray-1);
-    background-color: var(--background);
-  }
-
-  textarea {
-    padding: 10px;
-    color: var(--gray-0);
-    resize: none;
-    align-self: center;
-    width: 280px;
-    height: 140px;
-    border-radius: 10px;
-    border: 1px solid var(--gray-1);
-    background-color: var(--background);
+    .isModal {
+      margin-bottom: 30px;
+    }
   }
 
   button {
@@ -51,26 +38,18 @@ export const ModalQuestion = styled.div`
   }
 
   @media (min-width: 768px) {
-    height: 450px;
+    height: 500px;
     width: 530px;
     font-size: 25px;
 
+    form {
+      .isModal {
+        margin-bottom: 35px;
+      }
+    }
+
     p {
-      margin: 25px 0;
-    }
-
-    textarea {
-      font-size: 20px;
-      width: 100%;
-    }
-
-    label {
-      margin-left: 0;
-    }
-
-    input {
-      width: 100%;
-      height: 45px;
+      margin: 20px 0;
     }
 
     button {

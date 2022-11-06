@@ -1,13 +1,26 @@
-import { createContext, ReactNode, useContext } from "react"
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface iQuestionContextProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
-const QuestionContext = createContext({})
+export interface iQuestionContext {
+  isModCreateQuestOpen: boolean;
+  setIsModCreateQuestOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const QuestionContext = createContext<iQuestionContext>({} as iQuestionContext);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
-  return <QuestionContext.Provider value={""}>{children}</QuestionContext.Provider>
-}
+  const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
 
-export const useQuestionContext = () => useContext(QuestionContext)
+  return (
+    <QuestionContext.Provider
+      value={{ isModCreateQuestOpen, setIsModCreateQuestOpen }}
+    >
+      {children}
+    </QuestionContext.Provider>
+  );
+};
+
+export const useQuestionContext = () => useContext(QuestionContext);
