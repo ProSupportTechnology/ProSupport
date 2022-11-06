@@ -6,6 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "../../../../schemas/signupSchema";
 import { useUserContext } from "../../../../contexts/UserContext";
 import { StyledButtonLink } from "../../../../style/buttonLink/style";
+import { StyledButton } from "../../../../style/button/style";
 
 export const FormSignup = () => {
   const {
@@ -20,7 +21,7 @@ export const FormSignup = () => {
     <>
       <StyledFormSignup onSubmit={handleSubmit(handleRegister)}>
         <div className="divClose">
-          <h1 className="title one">Cadastra-se</h1>
+          <h1 className="title one">Cadastre-se</h1>
           <StyledButtonLink to="/" variant="theme-register-login">
             Voltar
           </StyledButtonLink>
@@ -53,7 +54,7 @@ export const FormSignup = () => {
           errors={errors.confirmPassword}
           register={register(`confirmPassword`)}
         />
-        <button type="submit">Cadastrar</button>
+        <StyledButton variant="theme-register-login" type="submit">Cadastrar</StyledButton>
       </StyledFormSignup>
     </>
   );

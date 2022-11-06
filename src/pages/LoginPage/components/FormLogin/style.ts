@@ -13,11 +13,13 @@ export const StyledFormLogin = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
     a {
       padding: 7px 15px;
     }
   }
   h1 {
+    font-size: 2rem !important;
     color: var(--gray-0);
   }
   button {
