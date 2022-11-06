@@ -13,17 +13,18 @@ export const StyledFormLogin = styled.form`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
     a {
       padding: 7px 15px;
     }
   }
   h1 {
+    font-size: 2rem !important;
     color: var(--gray-0);
   }
   button {
     margin: 20px 0px;
     padding: 20px;
-    border-radius: 10px;
   }
 
   @media (min-width: 1000px) {

@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom"
-import styled, { css } from "styled-components"
-import { iStyledButtonLink } from "./types"
+import { Link } from "react-router-dom";
+import styled, { css } from "styled-components";
+import { iStyledButtonLink } from "./types";
 
 export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
   display: flex;
@@ -23,38 +23,38 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
           background-color: transparent;
           &:hover {
             border: 2px solid transparent;
-            background-image: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
+            background-image: linear-gradient(
+              90deg,
+              #4f4d8c 0%,
+              #807ddb 55%,
+              #5f5da6 100%
+            );
           }
-        `
+        `;
 
-      case "theme-desktop-menu":
+      case "theme-menu":
         return css`
-          position: relative;
           margin: 10px;
-          width: 50px;
-          height: 50px;
-          background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
-          border-radius: 10px;
-          &:hover {
+          div {
+            position: relative;
+            width: 40px;
+            height: 50px;
+            background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
+            border-radius: 10px;
+          }
+          :hover {
+            background-color: #262626;
+          }
+          &:hover div {
             :after {
               content: "";
               position: absolute;
               inset: -4px;
-              border-radius: 13px;
+              border-radius: 10px;
               border: 2px solid var(--gray-0);
             }
           }
-        `
-
-      case "theme-mobile-menu":
-        return css`
-          position: relative;
-          margin: 10px;
-          width: 35px;
-          height: 35px;
-          background-image: linear-gradient(45deg, #0095ff 20%, #8d09ed 90%);
-          border-radius: 10px;
-        `
+        `;
 
       case "theme-register-login":
         return css`
@@ -63,7 +63,7 @@ export const StyledButtonLink = styled(Link)<iStyledButtonLink>`
           border: 2px solid var(--gray-0);
           text-align: center;
           padding: 15px 30px;
-        `
+        `;
     }
   }}
-`
+`;
