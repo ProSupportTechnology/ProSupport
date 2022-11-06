@@ -1,3 +1,9 @@
+import { Header } from "../Header";
+
 export const AuthRoutes = () => {
-  return <div>AuthRoutes</div>
-}
+  return (
+    <div>
+      <Header></Header>
+    </div>
+  );
+};
