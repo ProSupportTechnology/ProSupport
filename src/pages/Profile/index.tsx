@@ -8,6 +8,7 @@ import {
   StyleMain,
   StyleProfile,
 } from "./style";
+import { StyledButton } from "../../style/button/style";
 
 export const Profile = () => {
   return (
@@ -26,9 +27,9 @@ export const Profile = () => {
               <span>Email: admin@prosupport.com</span>
             </ProfileText>
           </ProfileDiv>
-          <button>Editar Perfil</button>
+          <StyledButton variant="theme-register-login">Editar Perfil</StyledButton>
         </ProfileContainer>
-        <h1>Descrição</h1>
+        <h1>Descrição:</h1>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut l abore et dolore magna aliqua. Ut enim

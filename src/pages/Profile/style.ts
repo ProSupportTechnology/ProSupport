@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const StyleProfile = styled.div`
   width: 100vw;
-  height: 100%;
+  min-height: 100vh;
   display: flex;
   background-image: url("https://i.imgur.com/xNMEX8F.png");
   background-size: cover;
@@ -11,7 +11,6 @@ export const StyleProfile = styled.div`
 export const StyleMain = styled.main`
   margin-top: 120px;
   width: 100%;
-  height: 100vh;
   display: flex;
   align-content: center;
   flex-direction: column;
@@ -31,6 +30,7 @@ export const StyleMain = styled.main`
     border-radius: 15px;
     background-color: grey;
     padding: 15px;
+    overflow: hidden;
     text-overflow: ellipsis;
   }
 `;
@@ -40,12 +40,11 @@ export const ProfileContainer = styled.div`
   flex-direction: column;
   gap: 16px;
   button {
-    width: 120px;
-    padding: 8px 20px;
-    background-color: transparent;
-    border: solid 2px white;
-    border-radius: 15px;
-    color: white;
+    width: min-content;
+    white-space: nowrap;
+    border: solid 2px var(--white);
+    text-align: center;
+    padding: 10px 15px;
   }
 `;
 export const ProfileDiv = styled.div`
