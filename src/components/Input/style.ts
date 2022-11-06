@@ -7,9 +7,6 @@ export const StyledInput = styled(Input)`
   position: relative;
   inset: 0;
 
-  width: 500px;
-  margin: 0 auto;
-
   label {
     position: absolute;
     left: 16px;
