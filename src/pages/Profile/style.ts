@@ -26,13 +26,16 @@ export const StyleMain = styled.main`
     width: 90%;
     color: white;
     height: max-content;
-    text-align: center;
+    max-height: 320px;
+    text-align: justify;
     border-radius: 15px;
     background-color: grey;
-    padding: 30px;
+    padding: 15px;
+    text-overflow: ellipsis;
   }
 `;
 export const ProfileContainer = styled.div`
+  width: 90%;
   display: flex;
   flex-direction: column;
   gap: 16px;
