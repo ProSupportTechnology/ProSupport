@@ -32,6 +32,7 @@ ul, ol, li {
   --gray-1: #868E96;
   --gray-0: #F8F9FA;
   --white: #ffffff;
+  --error: #ed0000;
 
   --linear-gradient-btn: linear-gradient(90deg, rgba(49,180,253,1) 0%, rgba(112,60,255,1) 100%);
   --linear-gradient-form: linear-gradient(
