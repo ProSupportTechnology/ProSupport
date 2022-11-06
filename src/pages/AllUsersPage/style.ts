@@ -37,10 +37,12 @@ export const StyledAllUsersPage = styled.div`
 
         figure {
           width: 100px;
+          min-width: 100px;
           height: 100px;
 
           @media (min-width: 768px) {
             width: 150px;
+            min-width: 150px;
             height: 150px;
           }
 
@@ -50,14 +52,25 @@ export const StyledAllUsersPage = styled.div`
         }
 
         div {
+          max-height: 100px;
           display: flex;
           flex-direction: column;
           justify-content: space-around;
           flex: 1 1 auto;
           padding: 0 20px;
+          word-break: break-all;
+
+          @media (min-width: 768px) {
+            max-height: 150px;
+          }
+
+          span {
+            overflow: auto;
+          }
         }
 
         button {
+          min-width: 20px;
           height: fit-content;
           color: var(--gray-0);
           background-color: transparent;
@@ -66,6 +79,10 @@ export const StyledAllUsersPage = styled.div`
 
           &:hover {
             transform: scale(1.2);
+          }
+
+          &.confirmButton {
+            color: yellow;
           }
         }
       }

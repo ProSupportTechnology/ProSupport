@@ -1,42 +1,46 @@
+import { useEffect, useState } from "react"
+import { IoMdTrash } from "react-icons/io"
 import { Header } from "../../components/Header"
 import { ImageProfile } from "../../components/ImageProfile"
 import { api } from "../../services/api"
-import { ReactNode, useEffect, useState } from "react"
-import { IoMdTrash } from "react-icons/io"
 import { StyledAllUsersPage } from "./style"
 import defaultUser from "../../assets/photo.png"
-
-interface iAllUsers {
-  map(arg0: (user: iAllUsers) => JSX.Element): ReactNode
-  admin?: boolean
-  bio: string
-  email: string
-  id: number
-  image: string
-  name: string
-  password?: string
-}
+import { MdError } from "react-icons/md"
+import { iAllUsers, iConfirmDeleteUser } from "./types"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 export const AllUsersPage = () => {
   const [allUsers, setAllUsers] = useState<iAllUsers | null>(null)
-  const [confirmDeleteUser, setConfirmDeleteUser] = useState({})
-
-  function handleClickDelete() {}
+  const [confirmDeleteUser, setConfirmDeleteUser] = useState<iConfirmDeleteUser | null>(null)
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getAllUsers() {
       const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHByb3N1cHBvcnQuY29tIiwiaWF0IjoxNjY3NzYyMDY2LCJleHAiOjE2Njc3NjU2NjYsInN1YiI6IjEifQ.Ehy8YJvLeTys8h_qISyqd8hZbLEB4pFIeey4eR_0wLo"
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHByb3N1cHBvcnQuY29tIiwiaWF0IjoxNjY3NzY4ODcxLCJleHAiOjE2Njc3NzI0NzEsInN1YiI6IjEifQ.835hYOys4NR8tA8CmqyuqKXws8c6-faHmJt8NQYLSGI"
       try {
         api.defaults.headers.common.authorization = `Bearer ${token}`
         const { data } = await api.get<iAllUsers>("/users")
         setAllUsers(data)
       } catch (error) {
-        console.error(error)
+        toast.error("Sessão expirada! Faça login novamente.")
+        localStorage.clear()
+        navigate("/login")
       }
     }
     getAllUsers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  function handleClickDelete(userId: number) {
+    if (confirmDeleteUser?.id === userId) {
+      // chamar função de deletar usuário
+      setConfirmDeleteUser(null)
+    } else {
+      setConfirmDeleteUser({ id: userId })
+    }
+  }
 
   return (
     <StyledAllUsersPage className="backgroundDash">
@@ -52,8 +56,11 @@ export const AllUsersPage = () => {
                   <p className="text one">{user.name}</p>
                   <span className="text two">{user.bio}</span>
                 </div>
-                <button>
-                  <IoMdTrash />
+                <button
+                  onClick={() => handleClickDelete(user.id)}
+                  className={confirmDeleteUser?.id === user.id ? "confirmButton" : ""}
+                >
+                  {confirmDeleteUser?.id === user.id ? <MdError /> : <IoMdTrash />}
                 </button>
               </li>
             ))}
