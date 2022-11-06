@@ -1,11 +1,14 @@
+import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { StyledButton } from "../../../style/button/style";
 import { ModalContainer } from "../ModalContainer";
 import { StyledDeleteQuestion } from "./styles";
 
 export const ModalDeleteQuestion = () => {
+  const { setIsModDeleteQuestOpen } = useQuestionContext();
+
   return (
     <div>
-      <ModalContainer>
+      <ModalContainer setIsModOpen={setIsModDeleteQuestOpen}>
         <StyledDeleteQuestion>
           <p>Deseja deletar a pergunta?</p>
           <div>

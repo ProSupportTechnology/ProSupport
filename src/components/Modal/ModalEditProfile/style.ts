@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const StyledEditUser = styled.div`
+export const StyledEditUser = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   width: 90%;
 
   p {
@@ -15,35 +18,9 @@ export const StyledEditUser = styled.div`
     }
   }
 
-  div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-  }
-
-  label {
-    color: white;
-    margin-top: 5px;
-
-    @media (max-width: 768px) {
-      font-size: 5px;
-    }
-  }
-
-  input {
-    background-color: var(--background);
-    width: 100%;
-    color: white;
-
-    @media (max-width: 768px) {
-      height: 70px;
-    }
-  }
-
   button {
     margin-top: 30px;
+    margin-bottom: 20px;
     width: 100px;
     place-self: self-end;
     font-size: 16px;

@@ -9,6 +9,7 @@ export const ModalContainer = ({
 }: iContainerModalProps) => {
   function closeModal() {
     setIsModOpen((oldIsMod) => !oldIsMod);
+    console.log("Feshow");
   }
 
   function handleClick(e: MouseEvent) {
