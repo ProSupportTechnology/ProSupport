@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledHeaderLandingPage = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--background);
+  background-color: var(--gray-3);
   width: 100vw;
   height: 320px;
 
@@ -66,4 +66,4 @@ export const StyledHeaderLandingPage = styled.header`
       gap: 50px;
     }
   }
-`;
+`
