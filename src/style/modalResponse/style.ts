@@ -1,35 +1,36 @@
 import styled from "styled-components";
 
-export const ModalResponse = styled.div`
+export const StyledModalResponse = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
   font-size: 20px;
-  height: 320px;
+  height: 280px;
   width: 290px;
   color: var(--gray-0);
 
+  span {
+    color: white;
+    position: absolute;
+    right: 10px;
+    margin: 15px;
+    cursor: pointer;
+  }
+
   p {
+    text-align: center;
     margin: 15px 0;
   }
 
-  textarea {
-    padding: 10px;
-    color: var(--gray-0);
-    resize: none;
-    align-self: center;
-    width: 280px;
-    height: 220px;
-    border-radius: 30px;
-    border: 1px solid var(--gray-1);
-    background-color: var(--background);
-  }
+  form {
+    display: flex;
+    flex-direction: column;
 
-  button {
-    width: 97px;
-    height: 35px;
-    align-self: flex-end;
-    margin: 5px 10px;
+    button {
+      width: 97px;
+      height: 35px;
+      align-self: flex-end;
+      margin: 10px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -41,16 +42,16 @@ export const ModalResponse = styled.div`
       margin: 25px 0;
     }
 
-    textarea {
-      font-size: 20px;
-      height: 260px;
-      width: 100%;
-    }
+    form {
+      textarea {
+        height: 250px;
+      }
 
-    button {
-      width: 105px;
-      height: 40px;
-      margin: 15px 0;
+      button {
+        width: 105px;
+        height: 40px;
+        margin: 15px 0;
+      }
     }
   }
 `;
