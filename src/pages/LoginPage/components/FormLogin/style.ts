@@ -25,7 +25,6 @@ export const StyledFormLogin = styled.form`
   button {
     margin: 20px 0px;
     padding: 20px;
-    border-radius: 10px;
   }
 
   @media (min-width: 1000px) {
