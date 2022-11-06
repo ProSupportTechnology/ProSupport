@@ -11,12 +11,20 @@ export const Modal = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: 100%;
     height: 100vh;
     background: rgba(0, 0, 0, 0.6);
   }
 
   .content {
+    span {
+      color: white;
+      position: absolute;
+      right: 10px;
+      margin: 15px;
+      cursor: pointer;
+    }
     position: relative;
     display: flex;
     justify-content: center;
