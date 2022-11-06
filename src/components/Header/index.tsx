@@ -3,7 +3,6 @@ import {
   CheckBox,
   HeaderContainer,
   ImgProfile,
-  InputCont,
   LiNavBar,
   Logo,
   LogoutCont,
@@ -21,8 +20,9 @@ import {
   HiChatBubbleLeftRight,
   HiUsers,
 } from "react-icons/hi2";
-import { GiEntryDoor, GiMagnifyingGlass } from "react-icons/gi";
+import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
+import { InputSearch } from "../InputSearch";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
@@ -37,10 +37,9 @@ export const Header = () => {
           <span className="text three">Status: Online</span>
           <span className="text three">Email: admin@admin.com</span>
         </NavBarProfileContainer>
-        <InputCont>
-          <input type="text" />
-          <GiMagnifyingGlass />
-        </InputCont>
+        <div className="divInput">
+          <InputSearch />
+        </div>
         <UlNavBar>
           <LiNavBar>
             <Link to={`/dashboard`}>

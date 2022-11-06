@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;  
   border: none;
   font-family: 'Inter', sans-serif;
-  transition: 0.15s;
 }
 
 img {
@@ -32,8 +31,14 @@ ul, ol, li {
   --gray-2: #343B41;
   --gray-1: #868E96;
   --gray-0: #F8F9FA;
+  --white: #ffffff;
+  --background: #262626;
 
   --linear-gradient-btn: linear-gradient(90deg, rgba(49,180,253,1) 0%, rgba(112,60,255,1) 100%);
+  --linear-gradient-form: linear-gradient(
+    180deg,
+    rgba(46, 65, 89, 1) 80%,
+    transparent);
 }
 
 

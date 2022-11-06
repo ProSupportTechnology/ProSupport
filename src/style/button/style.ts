@@ -3,7 +3,7 @@ import { iStyledButton } from "./types";
 
 export const StyledButton = styled.button<iStyledButton>`
   font-size: 0.8rem;
-  color: var(--grey-0);
+  color: var(--gray-0);
   cursor: pointer;
   transition: 0.5s;
 
@@ -23,7 +23,7 @@ export const StyledButton = styled.button<iStyledButton>`
               #5f5da6 100%
             );
             &:hover {
-              border: 2px solid var(--grey-0);
+              border: 2px solid var(--gray-0);
             }
           }
         `;
@@ -41,7 +41,7 @@ export const StyledButton = styled.button<iStyledButton>`
               #d21143 93%
             );
             &:hover {
-              border: 2px solid var(--grey-0);
+              border: 2px solid var(--gray-0);
             }
           }
         `;
