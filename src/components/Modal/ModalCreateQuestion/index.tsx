@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { QuestionSchema } from "../../../schemas/questionSchema";
 
-//mover essa interface para o contexto de questions, ajustar o parametro techs caso seja usado
+//mover essa interface para o contexto de questions, ajustar o parametro techs caso seja usado o selectTechs
 export interface iDataQuestion {
   title: string;
   techs: string | string[];
@@ -23,16 +23,16 @@ export const ModalCreateQuestion = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(QuestionSchema) });
 
-  //mover essa função para o contexto quando houver a lógica do id
+  //mover essa função para o contexto quando houver a lógica de pegar o id do usuário ao abrir modal
+  //alterar a tipagem do data para o iDataQuestion
   function sendQuestion(data: any) {
-    //pegar o id do user
+    //pegar o id do user(simulei com um chumbado)
     const id = 1;
-    console.log(data);
     const body = { ...data, userId: id };
     console.log(body);
-    //realizar requisição da pergunta com o body
+    //realizar requisição da pergunta com o body acima
     //POST/questions
-    //Toast correpondentes
+    //Toast correpondentes no try/catch
     //setIsModCreateQuestOpen(false) em caso de sucesso
   }
 
