@@ -37,7 +37,7 @@ ul, ol, li {
   --linear-gradient-form: linear-gradient(
     180deg,
     rgba(46, 65, 89, 1) 80%,
-    rgba(255, 255, 240, 1) 100%);
+    transparent);
 }
 
 
