@@ -61,10 +61,14 @@ export const LandingPage = () => {
           <li>
             <div className="infoMember">
               <img src={bianca} alt="Foto Bianca" />
-              <h2>Bianca Vallego</h2>
+              <h2>Bianca Vellego</h2>
             </div>
 
             <div className="memberLinks">
+              <a target="blank" href="https://www.instagram.com/biancavellego/">
+                <BsInstagram />
+                Instagram
+              </a>
               <a
                 target="blank"
                 href="https://www.linkedin.com/in/biancavellego/"

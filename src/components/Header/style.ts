@@ -140,13 +140,19 @@ export const ImgProfile = styled.img`
 export const UlNavBar = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
+  @media (min-width: 768px) {
+    gap: 1rem;
+  }
 `;
 export const LiNavBar = styled.li`
   display: flex;
   align-items: center;
-  height: 40px;
-  margin: 0 0.3rem;
+  height: 50px;
+  @media (min-width: 768px) {
+    height: 45px;
+    width: 45px;
+  }
   a {
     height: 100%;
     width: 100%;
@@ -154,24 +160,29 @@ export const LiNavBar = styled.li`
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    :hover {
-      border: solid 1px var(--gray-2);
-      border-radius: 5px;
-      opacity: 50%;
+    padding: 0.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    @media (min-width: 768px) {
+      padding: 0;
     }
     div {
       height: 100%;
-      width: 40px;
       display: flex;
-      background: var(--linear-gradient-btn);
       border-radius: 5px;
       justify-content: center;
       align-items: center;
+      @media (min-width: 768px) {
+        width: 50px;
+      }
     }
   }
   svg {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--gray-0);
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
   }
   h3 {
     color: var(--gray-0);
@@ -184,9 +195,11 @@ export const LogoutCont = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 40px;
-  margin: 0 0.3rem;
-  margin-top: 48px;
+  height: 50px;
+  @media (min-width: 768px) {
+    height: 45px;
+    width: 45px;
+  }
   a {
     height: 100%;
     width: 100%;
@@ -194,25 +207,30 @@ export const LogoutCont = styled.div`
     justify-content: space-between;
     align-items: center;
     text-decoration: none;
-    :hover {
-      border: solid 1px var(--gray-2);
-      border-radius: 5px;
-      opacity: 50%;
+    padding: 0.5rem;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 0 0 0 15px;
+    @media (min-width: 768px) {
+      padding: 0;
     }
     div {
       height: 100%;
-      width: 40px;
       display: flex;
-      background: var(--linear-gradient-btn);
       border-radius: 5px;
       justify-content: center;
       align-items: center;
-      margin-bottom: 0.3rem;
+      @media (min-width: 768px) {
+        width: 50px;
+      }
     }
   }
   svg {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--gray-0);
+    @media (min-width: 768px) {
+      font-size: 2rem;
+    }
   }
   h3 {
     color: var(--gray-0);

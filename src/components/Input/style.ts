@@ -7,6 +7,9 @@ export const StyledInput = styled(Input)`
   position: relative;
   inset: 0;
 
+  width: 500px;
+  margin: 0 auto;
+
   label {
     position: absolute;
     left: 16px;
@@ -20,15 +23,15 @@ export const StyledInput = styled(Input)`
     color: var(--gray-4);
     background-color: var(--gray-0);
     border-radius: 10px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
+
+    &:focus {
+      border: 2px solid var(--gray-2);
+    }
   }
 
   .input_red {
-    border: 1px solid #ed0000;
-  }
-
-  input:focus {
-    border: 1px solid var(--gray-2);
+    border: 2px solid var(--error);
   }
 
   svg {
@@ -41,10 +44,29 @@ export const StyledInput = styled(Input)`
   }
 
   .input_red + svg {
-    color: #ed0000;
+    color: var(--error);
+
+    &:focus + svg {
+      color: var(--gray-2);
+    }
   }
 
-  .input_red:focus + svg {
-    color: var(--gray-2);
+  &.isModal {
+    label {
+      position: unset;
+      inset: 0;
+      color: var(--gray-0);
+    }
+
+    input {
+      padding: 0 16px;
+      color: var(--gray-1);
+      background-color: var(--gray-3);
+
+      &:focus {
+        color: var(--gray-0);
+        border: 2px solid var(--gray-1);
+      }
+    }
   }
 `
