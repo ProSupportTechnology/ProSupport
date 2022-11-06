@@ -7,6 +7,9 @@ export const StyledInput = styled(Input)`
   position: relative;
   inset: 0;
 
+  width: 500px;
+  margin: 0 auto;
+
   label {
     position: absolute;
     left: 16px;
@@ -45,6 +48,25 @@ export const StyledInput = styled(Input)`
 
     &:focus + svg {
       color: var(--gray-2);
+    }
+  }
+
+  &.isModal {
+    label {
+      position: unset;
+      inset: 0;
+      color: var(--gray-0);
+    }
+
+    input {
+      padding: 0 16px;
+      color: var(--gray-1);
+      background-color: var(--gray-3);
+
+      &:focus {
+        color: var(--gray-0);
+        border: 2px solid var(--gray-1);
+      }
     }
   }
 `
