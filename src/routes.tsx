@@ -13,10 +13,10 @@ const RoutesMain = () => {
       <Route path="/" element={<LandingPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/users" element={<AllUsersPage />} />
       <Route element={<AuthRoutes />}>
         <Route path="/dashboard" element={<DashboardAdm />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/users" element={<AllUsersPage />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" />} />
