@@ -40,12 +40,37 @@ export const StyledInput = styled(Input)`
     color: var(--gray-2);
   }
 
+  div {
+    z-index: -10;
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 120%;
+    background: var(--error);
+    color: var(--white);
+    padding: 8px 16px;
+    border-radius: 8px;
+
+    svg {
+      transform: rotate(45deg);
+      position: absolute;
+      top: unset;
+      bottom: -9px;
+      color: var(--error);
+    }
+  }
+
   .input_red + svg {
     color: var(--error);
 
     &:focus + svg {
       color: var(--gray-2);
     }
+  }
+
+  .input_red:focus + svg + div {
+    z-index: 0;
+    display: unset;
   }
 
   &.isModal {
