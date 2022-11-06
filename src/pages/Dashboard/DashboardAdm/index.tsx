@@ -9,8 +9,9 @@ import { InputSearch } from "../../../components/InputSearch";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
-  const { allQuestions } = useQuestionContext();
-  console.log(user)
+  const { allQuestions, searchedQuestion } = useQuestionContext();
+
+
 
   return (
     <StyledDashboard>
@@ -35,13 +36,35 @@ export const DashboardAdm = () => {
               <p>{user.user.bio}</p>
             </div>
           )}
-          <div className="teste">
+          <div className="search">
             <h3 className="questionAreaTitle">Perguntas</h3>
             <div className="searchArea">
               <InputSearch></InputSearch>
             </div>
           </div>
           <ul className="questionArea">
+            {searchedQuestion && searchedQuestion.map((element) => {
+              return (
+                <li key={element.id} className="questionCard">
+                  <div className="cardUserInfo">
+                    <div className="cardUserInfo">
+                      <img
+                        src={element.user.img ? element.user.img : userImg}
+                        alt=""
+                      />
+                      <p>{element.user.name}</p>
+                      <span>{element.techs}</span>
+                    </div>
+                    <CgClose></CgClose>
+                  </div>
+                  <div>
+                    <p>Resultado da busca</p>
+                    {element.description}
+                    <button>Responder</button>
+                  </div>
+                </li>
+              )
+            })}
             {allQuestions.length ? (
               allQuestions.map((element) => {
                 return (

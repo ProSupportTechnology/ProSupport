@@ -90,7 +90,7 @@ export const StyledDashboard = styled.div`
         margin: 20px;
     }
 
-    .teste{
+    .search{
         width: 100%;
         height: 60px;
         display: flex;
@@ -112,7 +112,7 @@ export const StyledDashboard = styled.div`
         margin: 20px;
         
     }
-    .teste{
+    .search{
         justify-content: flex-start
     }
     
