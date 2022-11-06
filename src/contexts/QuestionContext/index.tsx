@@ -1,4 +1,11 @@
-import { createContext, ReactNode, useContext, useState } from "react";
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useContext,
+  useState,
+} from "react";
 
 interface iQuestionContextProps {
   children: ReactNode;
@@ -6,13 +13,13 @@ interface iQuestionContextProps {
 
 export interface iQuestionContext {
   isModCreateQuestOpen: boolean;
-  setIsModCreateQuestOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModCreateQuestOpen: Dispatch<SetStateAction<boolean>>;
   isModEditQuestOpen: boolean;
-  setIsModEditQuestOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModEditQuestOpen: Dispatch<SetStateAction<boolean>>;
   isModCreateRespOpen: boolean;
-  setIsModCreateRespOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModCreateRespOpen: Dispatch<SetStateAction<boolean>>;
   isModEditRespOpen: boolean;
-  setIsModEditRespOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsModEditRespOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 const QuestionContext = createContext<iQuestionContext>({} as iQuestionContext);
