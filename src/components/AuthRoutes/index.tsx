@@ -1,13 +1,13 @@
 import { Outlet, Navigate } from "react-router-dom"
-import { UserProvider } from "../../contexts/UserContext"
+import { QuestionProvider } from "../../contexts/QuestionContext"
 
 export const AuthRoutes = () => {
   const token = window.localStorage.getItem("@Token-ProSupport")
   return (
     token ? (
-      <UserProvider>
+      <QuestionProvider>
         <Outlet />
-      </UserProvider>
+      </QuestionProvider>
     ) : (
       <Navigate to="/login"/>
     )

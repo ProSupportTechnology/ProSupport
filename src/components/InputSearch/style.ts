@@ -6,7 +6,7 @@ export const StyledForm = styled.div<iSearch>`
     props.inputAnimation &&
     `
       position: absolute;
-      top: 50%;
+      top: 55%;
       left: 50%;
       transform: translate(-50%, -50%);
       background-color: #262626;
