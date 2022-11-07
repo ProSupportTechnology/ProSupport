@@ -2,7 +2,6 @@ import { StyledImageProfile } from "../ImageProfile/style"
 import { StyledResponseCard } from "./style"
 import { TiPencil } from "react-icons/ti"
 import { iResponseCard } from "./types"
-import waterDrops from "../../assets/waterDrops.png"
 
 export const ResponseCard = ({ tech, description, username, image, date, children }: iResponseCard) => {
   return (
@@ -10,13 +9,13 @@ export const ResponseCard = ({ tech, description, username, image, date, childre
       <div>
         <div className="imageContainer">
           <StyledImageProfile>
-            <img src={waterDrops} alt="userphoto" />
+            <img src={image} alt="userphoto" />
           </StyledImageProfile>
           {username}
         </div>
         <div className="textContainer">
           <div>
-            <h2>Answer:</h2>
+            <h2>Resposta:</h2>
             <div className="containerTech">
               <div>{tech}</div>
               <TiPencil className="buttonEdit"></TiPencil>

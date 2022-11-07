@@ -5,6 +5,6 @@ export interface iResponseCard {
   description: string
   username: string
   date: string
-  image: HTMLImageElement | string
+  image: string
   children?: ReactNode
 }

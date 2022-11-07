@@ -3,10 +3,26 @@ import { useQuestionContext } from "../../contexts/QuestionContext";
 import { StyledDashboard } from "../Dashboard/DashboardAdm/style";
 import { InputSearch } from "../../components/InputSearch";
 import { QuestionCard } from "../../components/QuestionCard";
+import { ResponseCard } from "../../components/ResponseCard";
+import { useEffect, useState } from "react";
+import { iQuestion } from "../../contexts/UserContext/types";
+import userImg from "../../assets/photo.png";
 
 export const AnsweredQuestions = () => {
   const { allQuestions, searchedQuestion, setSearchedQuestion } =
     useQuestionContext();
+
+    const [searched, setsearched] = useState([] as iQuestion[]);
+
+    useEffect(() => {
+      const searched = allQuestions.filter((element) =>
+        element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
+      );
+      setsearched(searched);
+    }, [searchedQuestion]);
+
+
+  const asnwered = allQuestions.filter((element) => element.responses.length);
 
   return (
     <StyledDashboard>
@@ -19,18 +35,49 @@ export const AnsweredQuestions = () => {
             </div>
           </div>
           <ul className="questionArea">
-            {allQuestions.map((element) => {
-              return (
-                <QuestionCard
-                  title={element.title}
-                  tech={element.tech}
-                  description={element.description}
-                  username={element.user.name}
-                  image={element.user.image}
-                  date={new Date().toISOString()}
-                ></QuestionCard>
-              );
-            })}
+            {searched.length
+              ? searched.map((element) => {
+                  return (
+                    <li>
+                    <QuestionCard
+                      title={element.title}
+                      tech={element.tech}
+                      description={element.description}
+                      username={element.user.name}
+                      image={element.user.image}
+                      date={new Date().toISOString()}
+                    ></QuestionCard>
+                    <ResponseCard
+                    tech={element.tech}
+                    description={element.responses.description}
+                    username={element.user.name}
+                    image={element.user.image}
+                    date={new Date().toISOString()}
+                  ></ResponseCard>
+                  </li>
+                  );
+                })
+              : asnwered.map((element) => {
+                  return (
+                    <li>
+                      <QuestionCard
+                        title={element.title}
+                        tech={element.tech}
+                        description={element.description}
+                        username={element.user.name}
+                        image={element.user.image}
+                        date={new Date().toISOString()}
+                      ></QuestionCard>
+                      <ResponseCard
+                        tech={element.tech}
+                        description={element.responses.description}
+                        username={element.user.name}
+                        image={element.user.image ? element.user.image : userImg}
+                        date={new Date().toISOString()}
+                      ></ResponseCard>
+                    </li>
+                  );
+                })}
           </ul>
         </div>
       </div>

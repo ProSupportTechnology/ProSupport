@@ -41,13 +41,14 @@ export interface iQuestion {
   tech: string;
   userId: number;
   id: number;
-  responses: [
+  responses: {
     title: string,
     description: string,
-    tech: string[],
+    tech: string,
     userId: number,
     id: number,
     length: number
-  ];
+  }
+  ;
   user: iUser;
 }
