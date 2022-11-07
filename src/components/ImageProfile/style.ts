@@ -8,12 +8,7 @@ export const StyledImageProfile = styled.figure`
 
   border-radius: 27px;
 
-  img{
-    width: 100%;
-    border-radius: 20px;
-    object-fit: cover;
-  }
-  
+  position: relative;
 
   button {
     width: 100%;
@@ -24,9 +19,9 @@ export const StyledImageProfile = styled.figure`
 
     border-radius: 0px 0px 20px 20px;
 
-    position: relative;
-    z-index: 1;
-    top: -45px;
+    position: absolute;
+    top: 74%;
+
     opacity: 20%;
   }
 
