@@ -91,7 +91,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       await api.post<iDataQuestion>("/questions", body);
       toast.success("Pergunta enviada com sucesso.");
-      setIsModCreateRespOpen(false);
+      setIsModCreateQuestOpen(false);
     } catch (error) {
       toast.error("Erro ao enviar pergunta.");
       console.error(error);
