@@ -11,23 +11,13 @@ import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
 export const ModalEditQuestion = () => {
-  const { setIsModEditQuestOpen } = useQuestionContext();
+  const { setIsModEditQuestOpen, editQuestion } = useQuestionContext();
 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<iDataQuestion>({ resolver: yupResolver(QuestionSchema) });
-
-  //mover essa função para o contexto quando houver a lógica de pegar o id do usuário ao abrir modal
-  function editQuestion(data: iDataQuestion) {
-    console.log(data);
-    //receber o id da pergunta
-    //realizar requisição da pergunta com o data como body
-    //PATCH/questions/id
-    //Toast correpondentes no try/catch
-    //setIsModEditQuestOpen(false) em caso de sucesso
-  }
 
   //pensar em uma lógica para adicionar aos campos correspondentes(inputs e textarea) os valores já existentes para facilitar edição
 

@@ -100,13 +100,17 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     }
   }
 
-  async function editQuestion(body: iQuestion, id: iUser) {
+  async function editQuestion(data: iDataQuestion) {
+    //tem que capturar o id da pergunta
+    let id = 7;
     //Loading(true)
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.patch<iQuestion[]>(`/questions/${id}`, body);
-      console.log(response);
+      await api.patch<iDataQuestion>(`/questions/${id}`, data);
+      toast.success("Pergunta editada com sucesso.");
+      setIsModEditQuestOpen(false);
     } catch (error) {
+      toast.error("Erro ao editar pergunta.");
       console.error(error);
     } finally {
       //Loading(false)
@@ -149,6 +153,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         isModEditProfile,
         setIsModEditProfile,
         createQuestion,
+        editQuestion,
       }}
     >
       {children}
