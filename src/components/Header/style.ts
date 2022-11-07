@@ -107,7 +107,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     width: 120px;
   }
   .divInput {
-    margin: 0 5px;
+    margin: 10px 5px;
     @media (min-width: 768px) {
       display: none;
     }

@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledHeaderLandingPage = styled.header`
   display: flex;
@@ -7,7 +7,7 @@ export const StyledHeaderLandingPage = styled.header`
   background-color: var(--gray-3);
   width: 100vw;
   height: 320px;
-
+  position: fixed;
   div {
     img {
       width: 230px;
@@ -66,4 +66,4 @@ export const StyledHeaderLandingPage = styled.header`
       gap: 50px;
     }
   }
-`
+`;
