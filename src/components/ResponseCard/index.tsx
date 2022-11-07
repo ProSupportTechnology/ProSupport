@@ -1,17 +1,10 @@
-import { StyledImageProfile } from "../ImageProfile/style";
-import { StyledResponseCard } from "./style";
-import { TiPencil } from "react-icons/ti";
-import { iResponseCard } from "./types";
-import waterDrops from "../../assets/waterDrops.png";
+import { StyledImageProfile } from "../ImageProfile/style"
+import { StyledResponseCard } from "./style"
+import { TiPencil } from "react-icons/ti"
+import { iResponseCard } from "./types"
+import waterDrops from "../../assets/waterDrops.png"
 
-export const ResponseCard = ({
-  techs,
-  description,
-  username,
-  image,
-  date,
-  children,
-}: iResponseCard) => {
+export const ResponseCard = ({ tech, description, username, image, date, children }: iResponseCard) => {
   return (
     <StyledResponseCard>
       <div>
@@ -24,8 +17,8 @@ export const ResponseCard = ({
         <div className="textContainer">
           <div>
             <h2>Answer:</h2>
-            <div className="containerTechs">
-              <div>{techs}</div>
+            <div className="containerTech">
+              <div>{tech}</div>
               <TiPencil className="buttonEdit"></TiPencil>
             </div>
           </div>
@@ -35,5 +28,5 @@ export const ResponseCard = ({
       </div>
       <span>{date}</span>
     </StyledResponseCard>
-  );
-};
+  )
+}

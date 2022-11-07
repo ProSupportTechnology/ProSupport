@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledQuestionCard = styled.li`
   display: flex;
@@ -13,12 +13,7 @@ export const StyledQuestionCard = styled.li`
   &:hover > div {
     background: #4f4d8c;
     background: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
-    background: -webkit-linear-gradient(
-      90deg,
-      #4f4d8c 0%,
-      #807ddb 55%,
-      #5f5da6 100%
-    );
+    background: -webkit-linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
     box-shadow: 10px 10px 20px black;
   }
 
@@ -90,7 +85,7 @@ export const StyledQuestionCard = styled.li`
       border-radius: none;
 
       div {
-        .containerTechs {
+        .containerTech {
           position: absolute;
           right: 0;
           top: -40px;
@@ -147,7 +142,7 @@ export const StyledQuestionCard = styled.li`
         border-radius: none;
 
         div {
-          .containerTechs {
+          .containerTech {
             position: static;
           }
         }
@@ -162,4 +157,4 @@ export const StyledQuestionCard = styled.li`
       }
     }
   }
-`;
+`
