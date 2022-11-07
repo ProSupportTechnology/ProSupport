@@ -8,11 +8,7 @@ export const StyledLandingPage = styled.div`
   background-repeat: no-repeat;
   min-height: 100vh;
   main {
-    margin-top: 320px;
-    @media (min-width: 768px) {
-      margin-top: 120px;
-    }
-
+    margin-top: 120px;
   }
 
   @media (min-width: 1024px) {

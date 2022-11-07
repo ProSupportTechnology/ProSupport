@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const StyledHeaderLandingPage = styled.header`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
   background-color: var(--gray-3);
   width: 100vw;
-  height: 320px;
+  height: 120px;
   position: fixed;
+  padding: 0 1rem;
   div {
     img {
       width: 230px;
@@ -24,19 +26,22 @@ export const StyledHeaderLandingPage = styled.header`
   }
 
   .headerButtons {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-
     a {
       padding: 10px 0;
       border-radius: 30px;
-      width: 210px;
+      width: 110px;
       text-align: center;
       text-decoration: none;
       border: 2px solid var(--white);
       color: var(--white);
+      @media (min-width: 534px) {
+        width: 210px;
+      }
     }
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
   @media (min-width: 768px) {
