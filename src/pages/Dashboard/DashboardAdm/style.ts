@@ -39,7 +39,7 @@ export const StyledDashboard = styled.div`
     padding: 10px;
     margin-top: 30px;
 
-    overflow-x: scroll;
+    overflow-y: scroll;
     p {
       text-align: center;
       word-break: break-all;
