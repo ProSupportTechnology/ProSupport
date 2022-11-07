@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledImageProfile = styled.figure`
   width: 100px;
@@ -7,7 +7,8 @@ export const StyledImageProfile = styled.figure`
   border-radius: 27px;
   border: 1px solid black;
 
-  /* position: relative; */
+  position: relative;
+  inset: 0;
 
   button {
     width: 100%;
@@ -18,24 +19,22 @@ export const StyledImageProfile = styled.figure`
 
     border-radius: 0px 0px 20px 20px;
 
-    /* position: relative;
-    top: -45px; */
-    /* position: absolute; */
-    /* top: 74%; */
+    position: absolute;
+    top: 74%;
+    left: 0;
 
     opacity: 20%;
+    transition: 0.1s;
   }
 
   button:hover {
     opacity: 100%;
   }
-`;
+`
 
 export const StyledImageQuestion = styled.figure`
   width: 150px;
   height: 120px;
 
   border-radius: 20px;
-
-  /* position: absolute; */
-`;
+`
