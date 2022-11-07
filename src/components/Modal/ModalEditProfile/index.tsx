@@ -8,7 +8,7 @@ import { iDataEditUser } from "./types";
 import { StyledInput } from "../../Input/style";
 import { userSchema } from "../../../schemas/userSchema";
 
-export const ModalEditImageProfile = () => {
+export const ModalEditProfile = () => {
   const { setIsModDeleteQuestOpen } = useQuestionContext();
 
   const {
