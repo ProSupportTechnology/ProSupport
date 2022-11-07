@@ -13,7 +13,14 @@ export const ModalDeleteQuestion = () => {
           <p>Deseja deletar a pergunta?</p>
           <div>
             <StyledButton variant="default">Sim</StyledButton>
-            <StyledButton variant="theme-modal-red">Não</StyledButton>
+            <StyledButton
+              onClick={() => {
+                setIsModDeleteQuestOpen(false);
+              }}
+              variant="theme-modal-red"
+            >
+              Não
+            </StyledButton>
           </div>
         </StyledDeleteQuestion>
       </ModalContainer>

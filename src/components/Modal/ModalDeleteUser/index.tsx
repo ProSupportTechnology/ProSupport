@@ -13,7 +13,14 @@ export const ModalDeleteUser = () => {
           <p>Deseja deletar o usuário?</p>
           <div>
             <StyledButton variant="default">Sim</StyledButton>
-            <StyledButton variant="theme-modal-red">Não</StyledButton>
+            <StyledButton
+              onClick={() => {
+                setIsModDeleteUser(false);
+              }}
+              variant="theme-modal-red"
+            >
+              Não
+            </StyledButton>
           </div>
         </StyledDeleteUser>
       </ModalContainer>
