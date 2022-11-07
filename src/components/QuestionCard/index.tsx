@@ -3,7 +3,7 @@ import { StyledQuestionCard } from "./style";
 import { CgClose } from "react-icons/cg";
 import { iQuestionCard } from "./types";
 import waterDrops from "../../assets/waterDrops.png";
-
+//oi!!!
 export const QuestionCard = ({
   title,
   techs,
