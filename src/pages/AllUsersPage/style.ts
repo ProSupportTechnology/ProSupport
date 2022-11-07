@@ -46,8 +46,11 @@ export const StyledAllUsersPage = styled.div`
             height: 150px;
           }
 
-          button {
-            display: none;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
           }
         }
 
@@ -79,10 +82,6 @@ export const StyledAllUsersPage = styled.div`
 
           &:hover {
             transform: scale(1.2);
-          }
-
-          &.confirmButton {
-            color: yellow;
           }
         }
       }

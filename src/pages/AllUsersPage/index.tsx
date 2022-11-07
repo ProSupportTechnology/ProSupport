@@ -2,45 +2,75 @@ import { useEffect, useState } from "react"
 import { IoMdTrash } from "react-icons/io"
 import { Header } from "../../components/Header"
 import { ImageProfile } from "../../components/ImageProfile"
-import { api } from "../../services/api"
 import { StyledAllUsersPage } from "./style"
 import defaultUser from "../../assets/photo.png"
-import { MdError } from "react-icons/md"
-import { iAllUsers, iConfirmDeleteUser } from "./types"
-import { toast } from "react-toastify"
-import { useNavigate } from "react-router-dom"
+import { iAllUsers } from "./types"
+import { useUserContext } from "../../contexts/UserContext"
 
 export const AllUsersPage = () => {
   const [allUsers, setAllUsers] = useState<iAllUsers | null>(null)
-  const [confirmDeleteUser, setConfirmDeleteUser] = useState<iConfirmDeleteUser | null>(null)
-  const navigate = useNavigate()
+  // const { getAllUsers } = useUserContext()
+
+  //   useEffect(() => {
+  //     getUser()
+
+  //     // if(!user) {
+
+  //     //   api.defaults.headers.common.authorization = `Bearer ${token}`
+
+  //     // }
+  //   }, [])
+
+  //   async function getUser() {
+  //     //Loading(true)
+  //     const userId = localStorage.getItem("@userID-ProSupport")
+  //     console.log(userId)
+  //     if (userId) {
+  //       try {
+  //         const { data } = await api.get(`/users/${userId}?_embed=questions`)
+  //         console.log(data)
+  //         return data
+  //       } catch (error) {
+  //         // toast.error("Sessão expirada! Faça login novamente.")
+  //         // localStorage.clear()
+  //         // navigate("/login")
+  //       } finally {
+  //         //Loading(false)
+  //       }
+  //     }
+  //   }
+
+  // async function getAllUsers() {
+  //     //Loading(true)
+  //     const token = localStorage.getItem("@Token-ProSupport")
+  //     try {
+  //       api.defaults.headers.common.authorization = `Bearer ${token}`
+  //       const { data } = await api.get<iAllUsers>("/users")
+  //       return data
+  //     } catch (error) {
+  //       toast.error("Sessão expirada! Faça login novamente.")
+  //       localStorage.clear()
+  //       navigate("/login")
+  //     } finally {
+  //       //Loading(false)
+  //     }
+  //   }
 
   useEffect(() => {
-    async function getAllUsers() {
-      const token =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQHByb3N1cHBvcnQuY29tIiwiaWF0IjoxNjY3NzY4ODcxLCJleHAiOjE2Njc3NzI0NzEsInN1YiI6IjEifQ.835hYOys4NR8tA8CmqyuqKXws8c6-faHmJt8NQYLSGI"
-      try {
-        api.defaults.headers.common.authorization = `Bearer ${token}`
-        const { data } = await api.get<iAllUsers>("/users")
-        setAllUsers(data)
-      } catch (error) {
-        toast.error("Sessão expirada! Faça login novamente.")
-        localStorage.clear()
-        navigate("/login")
-      }
+    async function getUsers() {
+      const users = await getAllUsers()
+      users && setAllUsers(users)
     }
-    getAllUsers()
+    getUsers()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function handleClickDelete(userId: number) {
-    if (confirmDeleteUser?.id === userId) {
-      // chamar função de deletar usuário
-      setConfirmDeleteUser(null)
-    } else {
-      setConfirmDeleteUser({ id: userId })
-    }
+    // chamar o modal de deletar usuário
+    localStorage.setItem("@modalId-ProSupport", userId.toString())
   }
+
+  if (!allUsers) return null
 
   return (
     <StyledAllUsersPage className="backgroundDash">
@@ -51,16 +81,15 @@ export const AllUsersPage = () => {
           {allUsers &&
             allUsers.map((user) => (
               <li key={user.id}>
-                <ImageProfile image={user.image ? user.image : defaultUser} userName={user.name} />
+                <ImageProfile>
+                  <img src={user.image ? user.image : defaultUser} alt={user.name} />
+                </ImageProfile>
                 <div>
                   <p className="text one">{user.name}</p>
                   <span className="text two">{user.bio}</span>
                 </div>
-                <button
-                  onClick={() => handleClickDelete(user.id)}
-                  className={confirmDeleteUser?.id === user.id ? "confirmButton" : ""}
-                >
-                  {confirmDeleteUser?.id === user.id ? <MdError /> : <IoMdTrash />}
+                <button onClick={() => handleClickDelete(user.id)}>
+                  <IoMdTrash />
                 </button>
               </li>
             ))}

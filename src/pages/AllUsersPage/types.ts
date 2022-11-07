@@ -10,5 +10,3 @@ export interface iAllUsers {
   name: string
   password?: string
 }
-
-export type iConfirmDeleteUser = { id: number }
