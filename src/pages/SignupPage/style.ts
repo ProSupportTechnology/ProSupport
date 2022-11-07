@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledRegister = styled.div`
   background-image: url("Bg-images/Landing2.jpg");
@@ -14,14 +14,19 @@ export const StyledRegister = styled.div`
     background-image: url("Bg-images/Bg-login-signup.png");
     width: 90%;
     max-width: 400px;
-    height: 50%;
+    height: 40%;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    background-size: cover;
+    flex-direction: row;
+    align-items: center;
     margin-top: 20px;
-    justify-content: flex-end;
-    padding-bottom: 140px;
+    padding: 16px;
+    img {
+      width: 68%;
+      @media (min-width: 1000px) {
+        width: 100%;
+      }
+    }
   }
 
   @media (min-width: 1000px) {
@@ -29,11 +34,13 @@ export const StyledRegister = styled.div`
     justify-content: center;
 
     .containerRegisterLogin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
       width: 100%;
-      height: 70%;
-      margin-top: 0px;
+      height: 73%;
       border-radius: 20px 0px 0px 20px;
-      padding-bottom: 200px;
     }
   }
-`
+`;
