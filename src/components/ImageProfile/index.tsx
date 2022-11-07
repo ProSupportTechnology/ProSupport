@@ -1,13 +1,14 @@
+import { ReactNode } from "react"
 import { StyledImageProfile } from "../../components/ImageProfile/style"
-import { iImageProfile } from "./types"
 
-export const ImageProfile = ({ image, userName }: iImageProfile) => {
+interface iImageProps {
+  children: ReactNode
+}
+
+export const ImageProfile = ({ children }: iImageProps) => {
   return (
     <>
-      <StyledImageProfile>
-        <img src={image} alt={userName} />
-        <button>Editar imagem</button>
-      </StyledImageProfile>
+      <StyledImageProfile>{children}</StyledImageProfile>
     </>
   )
 }

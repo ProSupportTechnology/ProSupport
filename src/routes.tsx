@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 import { AuthRoutes } from "./components/AuthRoutes"
 import { AllUsersPage } from "./pages/AllUsersPage"
+import { AnsweredQuestions } from "./pages/AnsweredQuestions"
 import { DashboardAdm } from "./pages/Dashboard/DashboardAdm"
 import { LandingPage } from "./pages/LandingPage"
 import { LoginPage } from "./pages/LoginPage"
@@ -17,6 +18,7 @@ const RoutesMain = () => {
         <Route path="/dashboard" element={<DashboardAdm />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/users" element={<AllUsersPage />} />
+        <Route path="/answeredQuestions" element={<AnsweredQuestions />} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" />} />
