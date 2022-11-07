@@ -1,7 +1,7 @@
 import styled from "styled-components"
-import { StyledSelectTechs } from "."
+import { SelectTechs } from "."
 
-export const SelectTechs = styled(StyledSelectTechs)`
+export const StyledSelectTechs = styled(SelectTechs)`
   height: 52px;
   width: 100%;
   color: var(--gray-1);

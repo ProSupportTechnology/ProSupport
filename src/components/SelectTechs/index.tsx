@@ -1,6 +1,6 @@
 import { iStyledSelectTechs } from "./types"
 
-export const StyledSelectTechs = ({ className, register }: iStyledSelectTechs) => {
+export const SelectTechs = ({ className, register }: iStyledSelectTechs) => {
   const allTechs = ["HTML", "CSS", "JavaScript", "React", "TypeScript"]
 
   return (
