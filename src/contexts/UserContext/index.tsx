@@ -25,12 +25,13 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       if (userId) {
         try {
           const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions`)
-          console.log(data)
+          const token = localStorage.getItem("@Token-ProSupport")
+          api.defaults.headers.common.authorization = `Bearer ${token}`
           setUser(data)
         } catch (error) {
-          // toast.error("Sessão expirada! Faça login novamente.")
-          // localStorage.clear()
-          // navigate("/login")
+          toast.error("Sessão expirada! Faça login novamente.")
+          localStorage.clear()
+          navigate("/login")
         } finally {
           //Loading(false)
         }
@@ -42,15 +43,13 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
   async function getAllUsers() {
     //Loading(true)
-    const token = localStorage.getItem("@Token-ProSupport")
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`
       const { data } = await api.get<iAllUsers>("/users")
       return data
     } catch (error) {
-      toast.error("Sessão expirada! Faça login novamente.")
-      localStorage.clear()
-      navigate("/login")
+      // toast.error("Sessão expirada! Faça login novamente.")
+      // localStorage.clear()
+      // navigate("/login")
     } finally {
       //Loading(false)
     }
@@ -90,7 +89,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   async function editUser(id: iUser, body: iUser) {
     //Loading(true)
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`
       const response = await api.patch<iUser>(`/users/${id}`, body)
       setUser(response.data)
     } catch (error) {
@@ -103,7 +101,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   async function deleteUser(id: iUser) {
     //Loading(true)
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`
       const response = await api.delete(`/users/${id}`)
       console.log(response)
     } catch (error) {
