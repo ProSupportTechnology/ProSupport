@@ -11,31 +11,18 @@ import { iDataQuestion } from "../../../contexts/QuestionContext/types";
 import { StyledSelectTechs } from "../../SelectTechs/style";
 
 export const ModalCreateQuestion = () => {
-  const { setIsModCreateQuestOpen } = useQuestionContext();
+  const { setIsModCreateQuestOpen, createQuestion } = useQuestionContext();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<iDataQuestion>({ resolver: yupResolver(QuestionSchema) });
 
-  //mover essa função para o contexto quando houver a lógica de pegar o id do usuário ao abrir modal
-  //alterar a tipagem do data para o iDataQuestion
-  function sendQuestion(data: iDataQuestion) {
-    //pegar o id do user(simulei com um chumbado)
-    const id = 1;
-    const body = { ...data, userId: id };
-    console.log(body);
-    //realizar requisição da pergunta com o body acima
-    //POST/questions
-    //Toast correpondentes no try/catch
-    //setIsModCreateQuestOpen(false) em caso de sucesso
-  }
-
   return (
     <ModalContainer setIsModOpen={setIsModCreateQuestOpen}>
       <StyledModalQuestion>
         <p>Insira sua questão</p>
-        <form onSubmit={handleSubmit(sendQuestion)}>
+        <form onSubmit={handleSubmit(createQuestion)}>
           <StyledInput
             errors={errors.title}
             register={register("title")}

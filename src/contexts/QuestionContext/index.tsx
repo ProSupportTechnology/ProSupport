@@ -1,7 +1,12 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { iQuestion, iUser } from "../UserContext/types";
-import { iQuestionContextProps, iQuestionProvider } from "./types";
+import {
+  iDataQuestion,
+  iQuestionContextProps,
+  iQuestionProvider,
+} from "./types";
 
 const QuestionContext = createContext<iQuestionProvider>(
   {} as iQuestionProvider
@@ -78,13 +83,17 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     }
   }
 
-  async function createQuestion(body: iQuestion) {
+  async function createQuestion(data: iDataQuestion) {
+    let id = localStorage.getItem("@userID-ProSupport");
+    const body = { ...data, userId: id };
     //Loading(true)
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.post<iQuestion[]>("/questions", body);
-      console.log(response);
+      await api.post<iDataQuestion>("/questions", body);
+      toast.success("Pergunta enviada com sucesso.");
+      setIsModCreateRespOpen(false);
     } catch (error) {
+      toast.error("Erro ao enviar pergunta.");
       console.error(error);
     } finally {
       //Loading(false)
@@ -139,6 +148,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         setIsModDeleteUser,
         isModEditProfile,
         setIsModEditProfile,
+        createQuestion,
       }}
     >
       {children}
