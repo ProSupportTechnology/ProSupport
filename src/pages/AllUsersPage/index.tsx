@@ -9,52 +9,7 @@ import { useUserContext } from "../../contexts/UserContext"
 
 export const AllUsersPage = () => {
   const [allUsers, setAllUsers] = useState<iAllUsers | null>(null)
-  // const { getAllUsers } = useUserContext()
-
-  //   useEffect(() => {
-  //     getUser()
-
-  //     // if(!user) {
-
-  //     //   api.defaults.headers.common.authorization = `Bearer ${token}`
-
-  //     // }
-  //   }, [])
-
-  //   async function getUser() {
-  //     //Loading(true)
-  //     const userId = localStorage.getItem("@userID-ProSupport")
-  //     console.log(userId)
-  //     if (userId) {
-  //       try {
-  //         const { data } = await api.get(`/users/${userId}?_embed=questions`)
-  //         console.log(data)
-  //         return data
-  //       } catch (error) {
-  //         // toast.error("Sessão expirada! Faça login novamente.")
-  //         // localStorage.clear()
-  //         // navigate("/login")
-  //       } finally {
-  //         //Loading(false)
-  //       }
-  //     }
-  //   }
-
-  // async function getAllUsers() {
-  //     //Loading(true)
-  //     const token = localStorage.getItem("@Token-ProSupport")
-  //     try {
-  //       api.defaults.headers.common.authorization = `Bearer ${token}`
-  //       const { data } = await api.get<iAllUsers>("/users")
-  //       return data
-  //     } catch (error) {
-  //       toast.error("Sessão expirada! Faça login novamente.")
-  //       localStorage.clear()
-  //       navigate("/login")
-  //     } finally {
-  //       //Loading(false)
-  //     }
-  //   }
+  const { getAllUsers } = useUserContext()
 
   useEffect(() => {
     async function getUsers() {
