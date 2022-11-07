@@ -1,15 +1,17 @@
 import { StyledForm } from "./style";
 import { GiMagnifyingGlass } from "react-icons/gi";
 import { useState } from "react";
+import { useQuestionContext } from "../../contexts/QuestionContext";
 
 export const InputSearch = () => {
   const [inputValue, setInputValue] = useState("");
+  const { searchedQuestion, setSearchedQuestion } = useQuestionContext();
 
   function filterInput(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
     if (inputValue !== "") {
-      // console.log("Filter");
+      setSearchedQuestion(inputValue);
     }
   }
 

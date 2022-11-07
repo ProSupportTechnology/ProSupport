@@ -59,7 +59,7 @@ export const Header = () => {
             </StyledButtonLink>
           </LiNavBar>
           <LiNavBar>
-            <StyledButtonLink variant="theme-menu" to={`/`}>
+            <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
               <h3 className="title two">Perguntas/Respostas</h3>
               <div>
                 <HiChatBubbleLeftRight />
@@ -76,7 +76,7 @@ export const Header = () => {
           </LiNavBar>
         </UlNavBar>
         <LogoutCont>
-          <StyledButtonLink variant="theme-menu" to={`/`}>
+          <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
             <h3 className="title two">Sair</h3>
             <div>
               <GiEntryDoor />

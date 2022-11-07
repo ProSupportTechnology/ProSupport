@@ -20,8 +20,12 @@ export const StyledFormSignup = styled.form`
     }
   }
   h1 {
-    font-size: 2rem !important;
+    font-size: 1.5rem !important;
     color: var(--gray-0);
+    transition: 0.1s;
+    @media (min-width: 768px) {
+      font-size: 2rem !important;
+    }
   }
   button {
     margin: 20px 0px;
