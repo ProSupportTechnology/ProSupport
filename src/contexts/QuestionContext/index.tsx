@@ -1,34 +1,11 @@
-import {
-  createContext,
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { api } from "../../services/api";
+import { iQuestion, iUser } from "../UserContext/types";
+import { iQuestionContextProps, iQuestionProvider } from "./types";
 
-interface iQuestionContextProps {
-  children: ReactNode;
-}
-
-export interface iQuestionContext {
-  isModCreateQuestOpen: boolean;
-  setIsModCreateQuestOpen: Dispatch<SetStateAction<boolean>>;
-  isModEditQuestOpen: boolean;
-  setIsModEditQuestOpen: Dispatch<SetStateAction<boolean>>;
-  isModCreateRespOpen: boolean;
-  setIsModCreateRespOpen: Dispatch<SetStateAction<boolean>>;
-  isModEditRespOpen: boolean;
-  setIsModEditRespOpen: Dispatch<SetStateAction<boolean>>;
-  isModDeleteQuestOpen: boolean;
-  setIsModDeleteQuestOpen: Dispatch<SetStateAction<boolean>>;
-  isModDeleteUser: boolean;
-  setIsModDeleteUser: Dispatch<SetStateAction<boolean>>;
-  isModEditProfile: boolean;
-  setIsModEditProfile: Dispatch<SetStateAction<boolean>>;
-}
-
-const QuestionContext = createContext<iQuestionContext>({} as iQuestionContext);
+const QuestionContext = createContext<iQuestionProvider>(
+  {} as iQuestionProvider
+);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
@@ -39,9 +16,115 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModDeleteUser, setIsModDeleteUser] = useState(false);
   const [isModEditProfile, setIsModEditProfile] = useState(false);
 
+  const getToken = localStorage.getItem("@Token-ProSupport");
+  const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
+  const [searchedQuestion, setSearchedQuestion] = useState("");
+  const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
+
+  useEffect(() => {
+    async function getAllQuestions() {
+      //Loading(true)
+      try {
+        api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+        const response = await api.get<iQuestion[]>(
+          "/questions?_embed=responses&_limit=10&_sort=id&_order=desc&_expand=user"
+        );
+        setAllQuestions(response.data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        //Loading(false)
+      }
+    }
+    getAllQuestions();
+  }, [getToken]);
+
+  async function answerQuestion(body: iQuestion) {
+    //Loading(true)
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+      const response = await api.post<iQuestion[]>("/responses", body);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      //Loading(false)
+    }
+  }
+
+  async function editAnswer(body: iQuestion, id: iUser) {
+    //Loading(true)
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+      const response = await api.patch<iQuestion[]>(`/responses/${id}`, body);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      //Loading(false)
+    }
+  }
+
+  async function deleteAnswer(id: iUser) {
+    //Loading(true)
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+      const response = await api.delete(`/responses/${id}`);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      //Loading(false)
+    }
+  }
+
+  async function createQuestion(body: iQuestion) {
+    //Loading(true)
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+      const response = await api.post<iQuestion[]>("/questions", body);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      //Loading(false)
+    }
+  }
+
+  async function editQuestion(body: iQuestion, id: iUser) {
+    //Loading(true)
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+      const response = await api.patch<iQuestion[]>(`/questions/${id}`, body);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      //Loading(false)
+    }
+  }
+
+  async function deleteQuestion(id: iUser) {
+    //Loading(true)
+    try {
+      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
+      const response = await api.delete<iQuestion[]>(`/questions/${id}`);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      //Loading(false)
+    }
+  }
+
   return (
     <QuestionContext.Provider
       value={{
+        allQuestions,
+        searchedQuestion,
+        answeredQuestion,
+        setAnsweredQuention,
+        setSearchedQuestion,
         isModCreateQuestOpen,
         setIsModCreateQuestOpen,
         isModEditQuestOpen,
