@@ -16,7 +16,7 @@ export interface iUser {
   password: string;
   name: string;
   bio: string;
-  img: string;
+  image: string;
   id: string;
   user: {
     accessToken: string;
@@ -25,7 +25,7 @@ export interface iUser {
     name: string;
     id: string;
     bio: string;
-    img: string;
+    image: string;
   };
 }
 

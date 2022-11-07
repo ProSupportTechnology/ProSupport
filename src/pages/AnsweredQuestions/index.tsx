@@ -2,13 +2,11 @@ import { Header } from "../../components/Header";
 import { useQuestionContext } from "../../contexts/QuestionContext";
 import { StyledDashboard } from "../Dashboard/DashboardAdm/style";
 import { InputSearch } from "../../components/InputSearch";
+import { QuestionCard } from "../../components/QuestionCard";
 
 export const AnsweredQuestions = () => {
-  const {
-    allQuestions,
-    searchedQuestion,
-    setSearchedQuestion,
-  } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setSearchedQuestion } =
+    useQuestionContext();
 
   return (
     <StyledDashboard>
@@ -21,23 +19,18 @@ export const AnsweredQuestions = () => {
             </div>
           </div>
           <ul className="questionArea">
-            {searchedQuestion
-              ? allQuestions.map((element) => {
-                  console.log(element);
-                  if (element.tech.includes(searchedQuestion)) {
-                    return <div>{element.title}</div>;
-                  } else {
-                    setSearchedQuestion("");
-                  }
-                })
-              : allQuestions.map((element) => {
-                  return (
-                    <div>
-                      {element.title}
-                      {element.description}
-                    </div>
-                  );
-                })}
+            {allQuestions.map((element) => {
+              return (
+                <QuestionCard
+                  title={element.title}
+                  tech={element.tech}
+                  description={element.description}
+                  username={element.user.name}
+                  image={element.user.image}
+                  date={new Date().toISOString()}
+                ></QuestionCard>
+              );
+            })}
           </ul>
         </div>
       </div>

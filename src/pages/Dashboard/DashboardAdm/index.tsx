@@ -7,19 +7,18 @@ import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { InputSearch } from "../../../components/InputSearch";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
+import { QuestionCard } from "../../../components/QuestionCard";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
-  const { allQuestions, searchedQuestion } =
-    useQuestionContext();
-const [teste, setTeste] = useState([] as iQuestion[])
-
+  const { allQuestions, searchedQuestion } = useQuestionContext();
+  const [teste, setTeste] = useState([] as iQuestion[]);
 
   useEffect(() => {
-const testee = allQuestions.filter((element) =>
+    const testee = allQuestions.filter((element) =>
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
-    setTeste(testee)
+    setTeste(testee);
   }, [searchedQuestion]);
 
   return (
@@ -29,7 +28,7 @@ const testee = allQuestions.filter((element) =>
         <div className="containerDash">
           <StyledAdminCard>
             <StyledImageProfile>
-              <img src={user.user.img ? user.user.img : userImg} alt="" />
+              <img src={user.user.image ? user.user.image : userImg} alt="" />
               <button>Editar imagem</button>
             </StyledImageProfile>
             <div className="userContent">
@@ -54,14 +53,27 @@ const testee = allQuestions.filter((element) =>
           <ul className="questionArea">
             {teste.length
               ? teste.map((element) => {
-                  return <div>{element.title}</div>;
+                  return (
+                    <QuestionCard
+                      title={element.title}
+                      tech={element.tech}
+                      description={element.description}
+                      username={element.user.name}
+                      image={element.user.image}
+                      date={new Date().toISOString()}
+                    ></QuestionCard>
+                  );
                 })
               : allQuestions.map((element) => {
                   return (
-                    <div>
-                      {element.title}
-                      {element.description}
-                    </div>
+                    <QuestionCard
+                      title={element.title}
+                      tech={element.tech}
+                      description={element.description}
+                      username={element.user.name}
+                      image={element.user.image}
+                      date={new Date().toISOString()}
+                    ></QuestionCard>
                   );
                 })}
           </ul>
