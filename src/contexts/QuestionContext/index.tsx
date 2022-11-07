@@ -4,6 +4,7 @@ import { api } from "../../services/api";
 import { iQuestion, iUser } from "../UserContext/types";
 import {
   iDataQuestion,
+  iDataResponse,
   iQuestionContextProps,
   iQuestionProvider,
 } from "./types";
@@ -44,13 +45,20 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     getAllQuestions();
   }, [getToken]);
 
-  async function answerQuestion(body: iQuestion) {
+  async function answerQuestion(data: iDataResponse) {
+    //capturar id do usuário e da questão ao clicar em responder
+    const questionId = 1;
+    const userId = 5;
+    const body = { ...data, questionId: questionId, userId: userId };
+    console.log(body);
     //Loading(true)
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.post<iQuestion[]>("/responses", body);
-      console.log(response);
+      await api.post<iDataResponse>("/responses", body);
+      toast.success("Resposta enviada com sucesso!");
+      setIsModCreateRespOpen(false);
     } catch (error) {
+      toast.error("Resposta não enviada.");
       console.error(error);
     } finally {
       //Loading(false)
@@ -154,6 +162,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         setIsModEditProfile,
         createQuestion,
         editQuestion,
+        answerQuestion,
       }}
     >
       {children}

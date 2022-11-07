@@ -38,4 +38,5 @@ export interface iQuestionProvider {
   setSearchedQuestion: Dispatch<React.SetStateAction<string>>;
   createQuestion: (data: iDataQuestion) => Promise<void>;
   editQuestion: (data: iDataQuestion) => Promise<void>;
+  answerQuestion: (data: iDataResponse) => Promise<void>;
 }

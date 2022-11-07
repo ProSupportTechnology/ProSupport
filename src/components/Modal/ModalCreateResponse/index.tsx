@@ -9,28 +9,17 @@ import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
 export const ModalCreateResponse = () => {
-  const { setIsModCreateRespOpen } = useQuestionContext();
+  const { setIsModCreateRespOpen, answerQuestion } = useQuestionContext();
 
   const { register, handleSubmit } = useForm<iDataResponse>({
     resolver: yupResolver(ResponseSchema),
   });
 
-  function sendResponse(data: iDataResponse) {
-    //recebe userId
-    //recebe questionId
-    const body = { ...data, questionId: 1, userId: 1 };
-    console.log(body);
-    //realizar requisição da pergunta com o body acima
-    //POST/responses
-    //Toast correpondentes no try/catch
-    //setIsModCreateRespOpen(false) em caso de sucesso
-  }
-
   return (
     <ModalContainer setIsModOpen={setIsModCreateRespOpen}>
       <StyledModalResponse>
         <p>Responder</p>
-        <form onSubmit={handleSubmit(sendResponse)}>
+        <form onSubmit={handleSubmit(answerQuestion)}>
           <StyledTextArea
             register={register("description")}
             label="Resposta"
