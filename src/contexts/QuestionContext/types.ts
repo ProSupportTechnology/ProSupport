@@ -39,4 +39,5 @@ export interface iQuestionProvider {
   createQuestion: (data: iDataQuestion) => Promise<void>;
   editQuestion: (data: iDataQuestion) => Promise<void>;
   answerQuestion: (data: iDataResponse) => Promise<void>;
+  editAnswer: (data: iDataResponse) => Promise<void>;
 }

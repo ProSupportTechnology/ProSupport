@@ -9,20 +9,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { ResponseSchema } from "../../../schemas/responseSchemas";
 
 export const ModalEditResponse = () => {
-  const { setIsModEditRespOpen } = useQuestionContext();
+  const { setIsModEditRespOpen, editAnswer } = useQuestionContext();
 
   const { register, handleSubmit } = useForm<iDataResponse>({
     resolver: yupResolver(ResponseSchema),
   });
-
-  function editResponse(data: iDataResponse) {
-    console.log(data);
-    //RECEBE UM ID DA RESPOSTA
-    //realizar requisição da pergunta com o data como body
-    //PATCH/responses/IdResposta
-    //Toast correpondentes no try/catch
-    //setIsModEditRespOpen(false) em caso de sucesso
-  }
 
   //pensar numa lógica para renderizar o conteúdo da resposta no textarea
 
@@ -30,7 +21,7 @@ export const ModalEditResponse = () => {
     <ModalContainer setIsModOpen={setIsModEditRespOpen}>
       <StyledModalResponse>
         <p>Editar resposta</p>
-        <form onSubmit={handleSubmit(editResponse)}>
+        <form onSubmit={handleSubmit(editAnswer)}>
           <StyledTextArea
             register={register("description")}
             placeholder="Edite sua resposta aqui"

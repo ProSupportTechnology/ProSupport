@@ -65,13 +65,18 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     }
   }
 
-  async function editAnswer(body: iQuestion, id: iUser) {
+  async function editAnswer(data: iDataResponse) {
     //Loading(true)
+    //capturar id da resposta
+    const id = 1;
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.patch<iQuestion[]>(`/responses/${id}`, body);
+      const response = await api.patch<iDataResponse>(`/responses/${id}`, data);
       console.log(response);
+      toast.success("Resposta editada com sucesso!");
+      setIsModEditRespOpen(false);
     } catch (error) {
+      toast.error("Não foi possível editar a resposta.");
       console.error(error);
     } finally {
       //Loading(false)
@@ -163,6 +168,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         createQuestion,
         editQuestion,
         answerQuestion,
+        editAnswer,
       }}
     >
       {children}
