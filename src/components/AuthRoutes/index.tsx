@@ -1,9 +1,15 @@
-import { Profile } from "../../pages/Profile";
+import { Navigate, Outlet } from "react-router-dom";
+import { QuestionProvider } from "../../contexts/QuestionContext";
 
 export const AuthRoutes = () => {
+  const token = window.localStorage.getItem("@Token-ProSupport")
   return (
-    <div>
-      <Profile/>
-    </div>
-  );
-};
+    token ? (
+      <QuestionProvider>
+        <Outlet />
+      </QuestionProvider>
+    ) : (
+      <Navigate to="/login"/>
+    )
+  )
+}

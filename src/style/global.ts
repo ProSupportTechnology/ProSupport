@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {     
@@ -81,5 +81,21 @@ ul, ol, li {
   line-height: 1.375rem;
 }
 
+.containerDash{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 30px;
+        width: 100%;
+        height: 100vh;
+    }
 
-`
+
+    .backgroundDash{
+        background-image: url("https://i.imgur.com/xNMEX8F.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100vw;
+    }
+`;

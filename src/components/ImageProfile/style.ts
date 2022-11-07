@@ -6,6 +6,7 @@ export const StyledImageProfile = styled.figure`
   background-color: blue;
   border-radius: 27px;
   border: 1px solid black;
+
   position: relative;
 
   button {
