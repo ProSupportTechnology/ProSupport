@@ -2,7 +2,6 @@ import {
   Barra,
   CheckBox,
   HeaderContainer,
-  ImgProfile,
   LiNavBar,
   Logo,
   LogoutCont,
@@ -24,20 +23,27 @@ import { useState } from "react";
 import { InputSearch } from "../InputSearch";
 import { StyledButtonLink } from "../../style/buttonLink/style";
 import { useUserContext } from "../../contexts/UserContext";
+import { StyledImageQuestion } from "../ImageProfile/style";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
-  const { user } = useUserContext()
+  const { user } = useUserContext();
   const [animation, setAnimation] = useState(``);
- // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
- // verificar se tem img para coloca :D
-  const {email, name} = user.user
+  // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
+  // verificar se tem img para coloca :D
+  const { email, name } = user.user;
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
-      <NavBar navbarMobile={navbarMobile} setAnimation={setAnimation} className={animation}>
+      <NavBar
+        navbarMobile={navbarMobile}
+        setAnimation={setAnimation}
+        className={animation}
+      >
         <NavBarProfileContainer>
-          <ImgProfile src={photo} alt="imagem-profile" /> 
+          <StyledImageQuestion>
+            <img src={photo} alt="imagem-profile" />
+          </StyledImageQuestion>
           <h2 className="title three">{name}</h2>
           <span className="text three">Desenvolvedor</span>
           <span className="text three">Email: {email}</span>
@@ -80,7 +86,11 @@ export const Header = () => {
           </LiNavBar>
         </UlNavBar>
         <LogoutCont>
-          <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
+          <StyledButtonLink
+            variant="theme-menu"
+            to={`/`}
+            onClick={() => localStorage.clear()}
+          >
             <h3 className="title two">Sair</h3>
             <div>
               <GiEntryDoor />
