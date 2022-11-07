@@ -18,7 +18,7 @@ export const Modal = styled.div`
   }
 
   .content {
-    span {
+    & > span {
       color: white;
       position: absolute;
       right: 10px;
