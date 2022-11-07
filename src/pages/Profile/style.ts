@@ -16,6 +16,9 @@ export const StyleMain = styled.main`
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  @media (min-width: 768px) {
+      margin-top: 20px;
+    }
   h1 {
     color: white;
     width: 90%;

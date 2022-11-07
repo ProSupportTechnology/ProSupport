@@ -24,11 +24,13 @@ import { InputSearch } from "../InputSearch";
 import { StyledButtonLink } from "../../style/buttonLink/style";
 import { useUserContext } from "../../contexts/UserContext";
 import { StyledImageQuestion } from "../ImageProfile/style";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
   const { user } = useUserContext();
   const [animation, setAnimation] = useState(``);
+  const location = useLocation();
   // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
   // verificar se tem img para coloca :D
   const { email, name } = user.user;
@@ -38,7 +40,7 @@ export const Header = () => {
       <NavBar
         navbarMobile={navbarMobile}
         setAnimation={setAnimation}
-        className={animation}
+        // className={animation}
       >
         <NavBarProfileContainer>
           <StyledImageQuestion>
@@ -48,9 +50,11 @@ export const Header = () => {
           <span className="text three">Desenvolvedor</span>
           <span className="text three">Email: {email}</span>
         </NavBarProfileContainer>
-        <div className="divInput">
-          <InputSearch />
-        </div>
+        {location.pathname !== `/profile` && (
+          <div className="divInput">
+            <InputSearch />
+          </div>
+        )}
         <UlNavBar>
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>

@@ -1,5 +1,5 @@
 import { Header } from "../../components/Header";
-import { StyledImageProfile } from "../../components/ImageProfile/style";
+import { StyledImageProfile, StyledImageQuestion } from "../../components/ImageProfile/style";
 import photoProfile from "../../assets/photo-profile.png";
 import {
   ProfileContainer,
@@ -10,27 +10,29 @@ import {
 } from "./style";
 import { StyledButton } from "../../style/button/style";
 import { useUserContext } from "../../contexts/UserContext";
+import { StyledAdminCard } from "../Dashboard/DashboardAdm/style";
 
 export const Profile = () => {
   const { user } = useUserContext();
-  const {email, name} = user.user
+  const { email, name } = user.user;
   // Bio verificar na dashboard da Vih :D
   return (
     <StyleProfile>
       <Header />
       <StyleMain>
         <ProfileContainer>
-          <ProfileDiv>
-            <StyledImageProfile>
-              <img src={photoProfile} alt="foto de perfil" />
-              <button>editar</button>
-            </StyledImageProfile>
-            <ProfileText>
-              <h2>{name}</h2>
-              <span>Desenvolvedor</span>
-              <span>Email: {email}</span>
-            </ProfileText>
-          </ProfileDiv>
+          <StyledAdminCard>
+            <StyledImageQuestion>
+              <img
+                src={user.user.image ? user.user.image : photoProfile}
+                alt="foto de perfil"
+              />
+            </StyledImageQuestion>
+            <div className="userContent">
+              <h1>{user.user.name}</h1>
+              <span>{user.user.admin ? `admin` : `usuario`}</span>
+            </div>
+          </StyledAdminCard>
           <StyledButton variant="theme-register-login">
             Editar Perfil
           </StyledButton>

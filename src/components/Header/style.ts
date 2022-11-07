@@ -107,7 +107,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     width: 120px;
   }
   .divInput {
-    margin: -45px 5px;
+    margin: 0 5px;
     @media (min-width: 768px) {
       display: none;
     }
@@ -149,8 +149,12 @@ export const UlNavBar = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  overflow: auto;
   @media (min-width: 768px) {
     gap: 1rem;
+    overflow: hidden;
+    height: 100%;
+    padding-top: 0.3rem;
   }
 `;
 export const LiNavBar = styled.li`
