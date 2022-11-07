@@ -38,12 +38,12 @@ export const StyledAllUsersPage = styled.div`
         figure {
           width: 100px;
           min-width: 100px;
-          height: 100px;
+          height: 110px;
 
           @media (min-width: 768px) {
-            width: 150px;
-            min-width: 150px;
-            height: 150px;
+            width: 110px;
+            min-width: 110px;
+            height: 120px;
           }
 
           img {

@@ -1,10 +1,11 @@
-import styled from "styled-components";
-import { iNavbarProps } from "./types";
-import "animate.css";
+import styled from "styled-components"
+import { iNavbarProps } from "./types"
+import "animate.css"
 
 export const HeaderContainer = styled.header`
   position: fixed;
   inset: 0;
+  z-index: 1;
   width: 100vw;
   height: 100px;
   background-color: var(--gray-3);
@@ -12,12 +13,11 @@ export const HeaderContainer = styled.header`
   align-content: center;
   justify-content: space-between;
   @media (min-width: 768px) {
-    position: static;
     flex-direction: column;
     width: 130px;
     height: 100vh;
   }
-`;
+`
 export const Logo = styled.img`
   width: 130px;
   height: 100%;
@@ -25,14 +25,14 @@ export const Logo = styled.img`
     width: 100%;
     height: 100px;
   }
-`;
+`
 export const MenuMobile = styled.div`
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1px;
-  margin-right: 1rem;
+  margin-right: 1.6rem;
   position: relative;
   inset: 0;
   label {
@@ -45,7 +45,7 @@ export const MenuMobile = styled.div`
   @media (min-width: 768px) {
     display: none;
   }
-`;
+`
 export const CheckBox = styled.input`
   width: 100%;
   height: 16px;
@@ -63,7 +63,7 @@ export const CheckBox = styled.input`
     transform: rotate(45deg);
     top: 8px;
   }
-`;
+`
 export const Barra = styled.span`
   position: absolute;
   display: block;
@@ -81,17 +81,17 @@ export const Barra = styled.span`
   :nth-child(3) {
     top: 16px;
   }
-`;
+`
 export const NavBar = styled.nav<iNavbarProps>`
   position: fixed;
   top: 100px;
   right: ${({ navbarMobile, setAnimation }) => {
     if (!navbarMobile) {
-      setAnimation(`animate__backOutRight`);
-      return "-325px";
+      setAnimation(`animate__backOutRight`)
+      return "-325px"
     } else {
-      setAnimation(`animate__backInRight`);
-      return "0";
+      setAnimation(`animate__backInRight`)
+      return "0"
     }
   }};
   width: 80%;
@@ -117,10 +117,10 @@ export const NavBar = styled.nav<iNavbarProps>`
     background-color: transparent;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.3rem;
+    margin-bottom: 2rem;
     width: 100%;
   }
-`;
+`
 export const NavBarProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -144,7 +144,7 @@ export const NavBarProfileContainer = styled.div`
   @media (min-width: 768px) {
     display: none;
   }
-`;
+`
 export const UlNavBar = styled.ul`
   display: flex;
   flex-direction: column;
@@ -156,7 +156,7 @@ export const UlNavBar = styled.ul`
     height: 100%;
     padding-top: 0.3rem;
   }
-`;
+`
 export const LiNavBar = styled.li`
   display: flex;
   align-items: center;
@@ -202,7 +202,7 @@ export const LiNavBar = styled.li`
       display: none;
     }
   }
-`;
+`
 export const LogoutCont = styled.div`
   display: flex;
   align-items: center;
@@ -250,4 +250,4 @@ export const LogoutCont = styled.div`
       display: none;
     }
   }
-`;
+`
