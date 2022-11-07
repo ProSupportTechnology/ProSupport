@@ -17,9 +17,9 @@ export const StyledForm = styled.div`
     font-size: 15px;
     color: var(--white);
     svg {
-    font-size: 1.5rem;
-    color: var(--gray-0);
-  }
+      font-size: 1.5rem;
+      color: var(--gray-0);
+    }
   }
   @media (min-width: 768px) {
     input {

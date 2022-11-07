@@ -18,6 +18,7 @@ export interface iUser {
   bio: string;
   image: string;
   id: string;
+  admin?: boolean;
   user: {
     accessToken: string;
     email: string;
@@ -26,6 +27,7 @@ export interface iUser {
     id: string;
     bio: string;
     image: string;
+    admin?: boolean;
   };
 }
 

@@ -2,7 +2,6 @@ import {
   Barra,
   CheckBox,
   HeaderContainer,
-  ImgProfile,
   LiNavBar,
   Logo,
   LogoutCont,
@@ -13,7 +12,6 @@ import {
 } from "./style";
 import logo from "../../assets/ProSupport.png";
 import photo from "../../assets/photo.png";
-import { Link } from "react-router-dom";
 import {
   HiHome,
   HiUser,
@@ -24,23 +22,39 @@ import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
 import { InputSearch } from "../InputSearch";
 import { StyledButtonLink } from "../../style/buttonLink/style";
+import { useUserContext } from "../../contexts/UserContext";
+import { StyledImageQuestion } from "../ImageProfile/style";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
+  const { user } = useUserContext();
+  const [animation, setAnimation] = useState(``);
+  const location = useLocation();
+  // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
+  // verificar se tem img para coloca :D
+  const { email, name } = user.user;
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
-      <NavBar navbarMobile={navbarMobile}>
+      <NavBar
+        navbarMobile={navbarMobile}
+        setAnimation={setAnimation}
+        // className={animation}
+      >
         <NavBarProfileContainer>
-          <ImgProfile src={photo} alt="imagem-profile" />
-          <h2 className="title three">Admin name</h2>
-          <span className="text three">Expert Coach</span>
-          <span className="text three">Status: Online</span>
-          <span className="text three">Email: admin@admin.com</span>
+          <StyledImageQuestion>
+            <img src={photo} alt="imagem-profile" />
+          </StyledImageQuestion>
+          <h2 className="title three">{name}</h2>
+          <span className="text three">Desenvolvedor</span>
+          <span className="text three">Email: {email}</span>
         </NavBarProfileContainer>
-        <div className="divInput">
-          <InputSearch />
-        </div>
+        {location.pathname !== `/profile` && (
+          <div className="divInput">
+            <InputSearch />
+          </div>
+        )}
         <UlNavBar>
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
@@ -76,7 +90,11 @@ export const Header = () => {
           </LiNavBar>
         </UlNavBar>
         <LogoutCont>
-          <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
+          <StyledButtonLink
+            variant="theme-menu"
+            to={`/`}
+            onClick={() => localStorage.clear()}
+          >
             <h3 className="title two">Sair</h3>
             <div>
               <GiEntryDoor />
@@ -87,7 +105,7 @@ export const Header = () => {
       <MenuMobile>
         <CheckBox
           type="checkbox"
-          onChange={(event) => setNavbarMobile(event.target.checked)}
+          onChange={(event) => [setNavbarMobile(event.target.checked)]}
         />
         <label htmlFor="checkbox-menu">
           <Barra />

@@ -3,12 +3,11 @@ import styled from "styled-components";
 export const StyledImageProfile = styled.figure`
   width: 100px;
   height: 100px;
-
   background-color: blue;
-
   border-radius: 27px;
+  border: 1px solid black;
 
-  position: relative;
+  /* position: relative; */
 
   button {
     width: 100%;
@@ -19,8 +18,10 @@ export const StyledImageProfile = styled.figure`
 
     border-radius: 0px 0px 20px 20px;
 
-    position: absolute;
-    top: 74%;
+    /* position: relative;
+    top: -45px; */
+    /* position: absolute; */
+    /* top: 74%; */
 
     opacity: 20%;
   }
@@ -36,5 +37,5 @@ export const StyledImageQuestion = styled.figure`
 
   border-radius: 20px;
 
-  position: absolute;
+  /* position: absolute; */
 `;

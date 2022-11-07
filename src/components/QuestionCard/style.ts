@@ -68,7 +68,7 @@ export const StyledQuestionCard = styled.li`
     }
 
     .textContainer {
-      position: relative;
+      /* position: relative; */
       flex-direction: column;
       flex-wrap: wrap;
       padding: 0;
@@ -86,7 +86,7 @@ export const StyledQuestionCard = styled.li`
 
       div {
         .containerTech {
-          position: absolute;
+          /* position: absolute; */
           right: 0;
           top: -40px;
           display: flex;
@@ -143,7 +143,7 @@ export const StyledQuestionCard = styled.li`
 
         div {
           .containerTech {
-            position: static;
+            /* position: static; */
           }
         }
       }
