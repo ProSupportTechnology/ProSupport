@@ -38,6 +38,8 @@ export interface iUserContext {
   handleLogin(data: iLogin): Promise<void>
   user: iUser
   getAllUsers(): Promise<iAllUsers | undefined>
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface iQuestion {

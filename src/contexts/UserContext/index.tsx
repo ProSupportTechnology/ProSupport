@@ -16,6 +16,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const navigate = useNavigate()
   const [user, setUser] = useState<iUser>({} as iUser)
   const [token, setToken] = useState({})
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     async function getUser() {
@@ -56,7 +57,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   }
 
   async function handleRegister(data: iRegister) {
-    //Loading(true)
+    setLoading(true)
     try {
       await api.post<iRegister>("/users", data)
       toast.success("Conta criada com sucesso")
@@ -64,12 +65,12 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     } catch {
       toast.error("Falha ao criar a conta")
     } finally {
-      //Loading(false)
+      setLoading(false)
     }
   }
 
   async function handleLogin(data: iLogin) {
-    //Loading(true)
+    setLoading(true)
     try {
       const response = await api.post<iUser>("/login", data)
       toast.success("Login efetuado com sucesso")
@@ -82,31 +83,33 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     } catch {
       toast.error("Falha ao efetuar o login")
     } finally {
-      //Loading(false)
+      setLoading(false)
     }
   }
 
   async function editUser(id: iUser, body: iUser) {
-    //Loading(true)
+    setLoading(true)
     try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`
       const response = await api.patch<iUser>(`/users/${id}`, body)
       setUser(response.data)
     } catch (error) {
       console.error(error)
     } finally {
-      //Loading(false)
+      setLoading(false)
     }
   }
 
   async function deleteUser(id: iUser) {
-    //Loading(true)
+    setLoading(true)
     try {
+      api.defaults.headers.common.authorization = `Bearer ${token}`
       const response = await api.delete(`/users/${id}`)
       console.log(response)
     } catch (error) {
       console.error(error)
     } finally {
-      //Loading(false)
+      setLoading(false)
     }
   }
 
@@ -117,6 +120,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
         handleLogin,
         user,
         getAllUsers,
+        loading,
+        setLoading,
       }}
     >
       {children}
