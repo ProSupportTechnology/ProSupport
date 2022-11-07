@@ -6,6 +6,7 @@ import { QuestionSchema } from "../../../schemas/questionSchema";
 import { StyledButton } from "../../../style/button/style";
 import { StyledModalQuestion } from "../../../style/modalQuestion/style";
 import { StyledInput } from "../../Input/style";
+import { StyledSelectTechs } from "../../SelectTechs/style";
 import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
@@ -44,15 +45,10 @@ export const ModalEditQuestion = () => {
             className="isModal"
             modalPlaceholder="Edite o título"
           />
-          <StyledInput
-            errors={errors.tech}
-            register={register("tech")}
-            label="Tecnologia"
-            name="techs"
-            type="text"
-            className="isModal"
-            modalPlaceholder="Edite a tecnologia"
-          />
+          <label htmlFor="select" className="text one">
+            Tecnologias
+          </label>
+          <StyledSelectTechs register={register("tech")} id="select" />
           <StyledTextArea
             register={register("description")}
             label="Descrição"

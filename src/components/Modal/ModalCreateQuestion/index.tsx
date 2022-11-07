@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { QuestionSchema } from "../../../schemas/questionSchema";
 import { iDataQuestion } from "../../../contexts/QuestionContext/types";
+import { StyledSelectTechs } from "../../SelectTechs/style";
 
 export const ModalCreateQuestion = () => {
   const { setIsModCreateQuestOpen } = useQuestionContext();
@@ -44,15 +45,10 @@ export const ModalCreateQuestion = () => {
             className="isModal"
             modalPlaceholder="Insira o título"
           />
-          <StyledInput
-            errors={errors.tech}
-            register={register("tech")}
-            label="Tecnologia"
-            name="techs"
-            type="text"
-            className="isModal"
-            modalPlaceholder="Insira a tecnologia"
-          />
+          <label htmlFor="select" className="text one">
+            Tecnologias
+          </label>
+          <StyledSelectTechs register={register("tech")} id="select" />
           <StyledTextArea
             register={register("description")}
             label="Descrição"
