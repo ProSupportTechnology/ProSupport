@@ -9,7 +9,7 @@ export const StyledImageProfile = styled.figure`
   border-radius: 20px;
   border: 1px solid black;
 
-  position: absolute;
+  position: relative;
 
   button {
     width: 100%;
@@ -20,7 +20,7 @@ export const StyledImageProfile = styled.figure`
 
     border-radius: 0px 0px 20px 20px;
 
-    position: relative;
+    position: absolute;
     top: 74%;
 
     opacity: 20%;

@@ -1,4 +1,5 @@
 import { StyledImageProfile } from "../../components/ImageProfile/style";
+
 export const ImageProfile = () => {
   return (
     <>
