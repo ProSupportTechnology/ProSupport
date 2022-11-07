@@ -30,7 +30,7 @@ export const AllUsersPage = () => {
   return (
     <StyledAllUsersPage className="backgroundDash">
       <Header />
-      <main className="containerMain">
+      <main className="containerDash">
         <h1 className="title one">Todos os Usuários</h1>
         <ul>
           {allUsers &&

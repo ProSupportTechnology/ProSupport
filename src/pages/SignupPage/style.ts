@@ -1,6 +1,7 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledRegister = styled.div`
+  background-image: url("Bg-images/Landing2.jpg");
   display: flex;
   flex-direction: column;
 
@@ -10,6 +11,7 @@ export const StyledRegister = styled.div`
   align-items: center;
 
   .containerRegisterLogin {
+    background-image: url("Bg-images/Bg-login-signup.png");
     width: 90%;
     max-width: 400px;
     height: 50%;
@@ -34,4 +36,4 @@ export const StyledRegister = styled.div`
       padding-bottom: 200px;
     }
   }
-`;
+`

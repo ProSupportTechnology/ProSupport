@@ -36,6 +36,8 @@ export interface iUser {
 export interface iUserContext {
   handleRegister(data: iRegister): Promise<void>
   handleLogin(data: iLogin): Promise<void>
+  editUser(id: iUser, body: iUser): Promise<void>
+  deleteUser(id: iUser): Promise<void>
   user: iUser
   getAllUsers(): Promise<iAllUsers | undefined>
   loading: boolean

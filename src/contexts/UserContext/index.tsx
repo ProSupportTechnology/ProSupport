@@ -103,7 +103,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   async function deleteUser(id: iUser) {
     setLoading(true)
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`
       const response = await api.delete(`/users/${id}`)
       console.log(response)
     } catch (error) {
@@ -118,6 +117,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       value={{
         handleRegister,
         handleLogin,
+        editUser,
+        deleteUser,
         user,
         getAllUsers,
         loading,
