@@ -7,7 +7,12 @@ export const StyledImageProfile = styled.figure`
   background-color: blue;
 
   border-radius: 27px;
-  border: 1px solid black;
+
+  img{
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+  }
   
 
   button {
@@ -20,6 +25,7 @@ export const StyledImageProfile = styled.figure`
     border-radius: 0px 0px 20px 20px;
 
     position: relative;
+    z-index: 1;
     top: -45px;
     opacity: 20%;
   }

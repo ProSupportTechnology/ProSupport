@@ -5,14 +5,13 @@ import { useQuestionContext } from "../../contexts/QuestionContext";
 
 export const InputSearch = () => {
   const [inputValue, setInputValue] = useState("");
-  const { searchQuestion } = useQuestionContext();
-  console.log(inputValue)
+  const { searchedQuestion, setSearchedQuestion } = useQuestionContext();
 
   function filterInput(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     event.preventDefault();
 
     if (inputValue !== "") {
-      searchQuestion(inputValue);
+      setSearchedQuestion(inputValue);
     }
   }
 

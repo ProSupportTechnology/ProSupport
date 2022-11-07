@@ -15,9 +15,11 @@ interface iQuestionContextProps {
 
 interface iQuestionProvider {
   allQuestions: iQuestion[];
-  searchedQuestion: iQuestion[];
+  searchedQuestion: string;
   // setAllQuestions: Dispatch<React.SetStateAction<iQuestion[]>>
-  searchQuestion: Function
+  answeredQuestion: iQuestion[]
+  setAnsweredQuention:  Dispatch<React.SetStateAction<iQuestion[]>>
+  setSearchedQuestion: Dispatch<React.SetStateAction<string>>
 }
 
 const QuestionContext = createContext<iQuestionProvider>(
@@ -27,7 +29,8 @@ const QuestionContext = createContext<iQuestionProvider>(
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const getToken = localStorage.getItem("@Token-ProSupport");
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
-  const [searchedQuestion, setSearchedQuestion] = useState([] as iQuestion[]);
+  const [searchedQuestion, setSearchedQuestion] = useState("");
+  const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[])
 
   useEffect(() => {
     async function getAllQuestions() {
@@ -47,19 +50,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     getAllQuestions();
   }, [getToken]);
 
-  async function searchQuestion(body: iQuestion) {
-    //Loading(true)
-    try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.get<iQuestion[]>(`/questions?_embed=responses&q=${body}&_expand=user`);
-      setSearchedQuestion(response.data)
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      //Loading(false)
-    }
-  }
 
   async function answerQuestion(body: iQuestion) {
     //Loading(true)
@@ -143,8 +133,10 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     <QuestionContext.Provider
       value={{
         allQuestions,
-        searchQuestion,
-        searchedQuestion
+        searchedQuestion,
+        answeredQuestion,
+        setAnsweredQuention,
+        setSearchedQuestion
       }}
     >
       {children}

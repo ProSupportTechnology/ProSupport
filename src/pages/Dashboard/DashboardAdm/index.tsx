@@ -4,14 +4,23 @@ import { StyledAdminCard, StyledDashboard } from "./style";
 import userImg from "../../../assets/photo.png";
 import { StyledImageProfile } from "../../../components/ImageProfile/style";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
-import { CgClose } from "react-icons/cg";
 import { InputSearch } from "../../../components/InputSearch";
+import { useEffect, useState } from "react";
+import { iQuestion } from "../../../contexts/UserContext/types";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
-  const { allQuestions, searchedQuestion } = useQuestionContext();
+  const { allQuestions, searchedQuestion } =
+    useQuestionContext();
+const [teste, setTeste] = useState([] as iQuestion[])
 
 
+  useEffect(() => {
+const testee = allQuestions.filter((element) =>
+      element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
+    );
+    setTeste(testee)
+  }, [searchedQuestion]);
 
   return (
     <StyledDashboard>
@@ -20,12 +29,12 @@ export const DashboardAdm = () => {
         <div className="containerDash">
           <StyledAdminCard>
             <StyledImageProfile>
-              <img src={user.img ? user.img : userImg} alt="" />
+              <img src={user.user.img ? user.user.img : userImg} alt="" />
               <button>Editar imagem</button>
             </StyledImageProfile>
             <div className="userContent">
               <h1>{user.user.name}</h1>
-              <p>Expert coach</p>
+              <p>Desenvolvedor</p>
               <p>
                 Status: <span>Online</span>
               </p>
@@ -43,54 +52,18 @@ export const DashboardAdm = () => {
             </div>
           </div>
           <ul className="questionArea">
-            {searchedQuestion && searchedQuestion.map((element) => {
-              return (
-                <li key={element.id} className="questionCard">
-                  <div className="cardUserInfo">
-                    <div className="cardUserInfo">
-                      <img
-                        src={element.user.img ? element.user.img : userImg}
-                        alt=""
-                      />
-                      <p>{element.user.name}</p>
-                      <span>{element.techs}</span>
-                    </div>
-                    <CgClose></CgClose>
-                  </div>
-                  <div>
-                    <p>Resultado da busca</p>
-                    {element.description}
-                    <button>Responder</button>
-                  </div>
-                </li>
-              )
-            })}
-            {allQuestions.length ? (
-              allQuestions.map((element) => {
-                return (
-                  <li key={element.id} className="questionCard">
-                    <div className="cardUserInfo">
-                      <div className="cardUserInfo">
-                        <img
-                          src={element.user.img ? element.user.img : userImg}
-                          alt=""
-                        />
-                        <p>{element.user.name}</p>
-                        <span>{element.techs}</span>
-                      </div>
-                      <CgClose></CgClose>
-                    </div>
+            {teste.length
+              ? teste.map((element) => {
+                  return <div>{element.title}</div>;
+                })
+              : allQuestions.map((element) => {
+                  return (
                     <div>
+                      {element.title}
                       {element.description}
-                      <button>Responder</button>
                     </div>
-                  </li>
-                );
-              })
-            ) : (
-              <h1>oi</h1>
-              // <QuestionCard></QuestionCard>
-            )}
+                  );
+                })}
           </ul>
         </div>
       </div>
