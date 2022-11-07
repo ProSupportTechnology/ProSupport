@@ -9,12 +9,8 @@ import { InputSearch } from "../../../components/InputSearch"
 
 
 export const DashboardAdm = () => {
-<<<<<<< HEAD
-  return <div></div>
-=======
   const { user } = useUserContext()
   const  { allQuestions }  = useQuestionContext()
-
 
   return (
       <StyledDashboard>
@@ -69,5 +65,4 @@ export const DashboardAdm = () => {
         </div>
       </StyledDashboard>
     )
->>>>>>> 2c046015fb296b74a09b0801156ce3ac1b252553
 }

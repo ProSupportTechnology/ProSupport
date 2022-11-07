@@ -23,19 +23,24 @@ import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
 import { InputSearch } from "../InputSearch";
 import { StyledButtonLink } from "../../style/buttonLink/style";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
+  const { user } = useUserContext()
+  const [animation, setAnimation] = useState(``);
+ // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
+ // verificar se tem img para coloca :D
+  const {email, name} = user.user
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
-      <NavBar navbarMobile={navbarMobile}>
+      <NavBar navbarMobile={navbarMobile} setAnimation={setAnimation} className={animation}>
         <NavBarProfileContainer>
-          <ImgProfile src={photo} alt="imagem-profile" />
-          <h2 className="title three">Admin name</h2>
-          <span className="text three">Expert Coach</span>
-          <span className="text three">Status: Online</span>
-          <span className="text three">Email: admin@admin.com</span>
+          <ImgProfile src={photo} alt="imagem-profile" /> 
+          <h2 className="title three">{name}</h2>
+          <span className="text three">Desenvolvedor</span>
+          <span className="text three">Email: {email}</span>
         </NavBarProfileContainer>
         <div className="divInput">
           <InputSearch />
@@ -86,7 +91,7 @@ export const Header = () => {
       <MenuMobile>
         <CheckBox
           type="checkbox"
-          onChange={(event) => setNavbarMobile(event.target.checked)}
+          onChange={(event) => [setNavbarMobile(event.target.checked)]}
         />
         <label htmlFor="checkbox-menu">
           <Barra />

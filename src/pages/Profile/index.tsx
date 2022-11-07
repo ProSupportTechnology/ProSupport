@@ -9,8 +9,12 @@ import {
   StyleProfile,
 } from "./style";
 import { StyledButton } from "../../style/button/style";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const Profile = () => {
+  const { user } = useUserContext();
+  const {email, name} = user.user
+  // Bio verificar na dashboard da Vih :D
   return (
     <StyleProfile>
       <Header />
@@ -19,15 +23,17 @@ export const Profile = () => {
           <ProfileDiv>
             <StyledImageProfile>
               <img src={photoProfile} alt="foto de perfil" />
+              <button>editar</button>
             </StyledImageProfile>
             <ProfileText>
-              <h2>Admin</h2>
-              <span>Expert Monitor</span>
-              <span>Status: online</span>
-              <span>Email: admin@prosupport.com</span>
+              <h2>{name}</h2>
+              <span>Desenvolvedor</span>
+              <span>Email: {email}</span>
             </ProfileText>
           </ProfileDiv>
-          <StyledButton variant="theme-register-login">Editar Perfil</StyledButton>
+          <StyledButton variant="theme-register-login">
+            Editar Perfil
+          </StyledButton>
         </ProfileContainer>
         <h1>Descrição:</h1>
         <p>

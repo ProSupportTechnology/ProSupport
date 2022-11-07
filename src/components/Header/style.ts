@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { iNavbarProps } from "./types";
+import "animate.css";
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -84,18 +85,26 @@ export const Barra = styled.span`
 export const NavBar = styled.nav<iNavbarProps>`
   position: fixed;
   top: 100px;
-  right: ${({ navbarMobile }) => (!navbarMobile ? "-325px" : "0")};
+  right: ${({ navbarMobile, setAnimation }) => {
+    if (!navbarMobile) {
+      setAnimation(`animate__backOutRight`);
+      return "-325px";
+    } else {
+      setAnimation(`animate__backInRight`);
+      return "0";
+    }
+  }};
   width: 80%;
   max-width: 320px;
   height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.3rem;
-  background: #434343;
+  background: var(--gray-2);
   border-radius: 0 0 0 15px;
+  animation-duration: 1s;
   .divInput {
-    margin: -25px 5px;
+    margin: -11rem 5px;
     @media (min-width: 768px) {
       display: none;
     }

@@ -25,13 +25,16 @@ export const StyleMain = styled.main`
     width: 90%;
     color: white;
     height: max-content;
-    max-height: 320px;
+    min-height: 320px;
     text-align: justify;
     border-radius: 15px;
     background-color: grey;
     padding: 15px;
     overflow: hidden;
     text-overflow: ellipsis;
+    @media (min-width: 768px) {
+      min-height: 300px;
+    }
   }
 `;
 export const ProfileContainer = styled.div`
