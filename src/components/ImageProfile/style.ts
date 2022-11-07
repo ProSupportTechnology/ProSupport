@@ -3,20 +3,12 @@ import styled from "styled-components"
 export const StyledImageProfile = styled.figure`
   width: 100px;
   height: 100px;
-
   background-color: blue;
-
   border-radius: 27px;
+  border: 1px solid black;
 
   position: relative;
   inset: 0;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-  }
 
   button {
     width: 100%;
@@ -45,6 +37,4 @@ export const StyledImageQuestion = styled.figure`
   height: 120px;
 
   border-radius: 20px;
-
-  position: absolute;
 `

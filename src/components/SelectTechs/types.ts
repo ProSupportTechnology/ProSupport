@@ -1,8 +1,6 @@
-import { Dispatch, SetStateAction } from "react"
-
-type iSelectTechs = { name: string; checked: boolean }
+import { UseFormRegisterReturn } from "react-hook-form"
 
 export interface iStyledSelectTechs {
-  techs: iSelectTechs[]
-  setTechs: Dispatch<SetStateAction<iSelectTechs[]>>
+  className?: string
+  register: UseFormRegisterReturn<string>
 }

@@ -1,4 +1,5 @@
-export interface iImageProfile {
-  image: string
-  userName: string
+import { ReactNode } from "react"
+
+export interface iImageProps {
+  children: ReactNode
 }
