@@ -1,10 +1,15 @@
+import { ReactNode } from "react";
 import { StyledImageProfile } from "../../components/ImageProfile/style";
 
-export const ImageProfile = () => {
+interface iImageProps{
+  children: ReactNode
+}
+
+export const ImageProfile = ({children}: iImageProps) => {
   return (
     <>
       <StyledImageProfile>
-        <button>Editar imagem</button>
+        {children}
       </StyledImageProfile>
     </>
   );

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const StyledImageProfile = styled.figure`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 
   background-color: blue;
 
-  border-radius: 20px;
-  border: 1px solid black;
+  border-radius: 27px;
 
   position: relative;
 

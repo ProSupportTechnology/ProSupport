@@ -1,19 +1,13 @@
-import { createContext, ReactNode, useContext, useState } from "react"
+import { createContext, ReactNode, useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify"
 import { iLogin } from "../../pages/LoginPage/components/FormLogin/types"
 import { api } from "../../services/api"
-import { iRegister, iUser } from "./types"
+import { iRegister, iUser, iUserContext } from "./types"
 
 interface iUserContextProps {
   children: ReactNode
 }
-
-export interface iUserContext{
-  handleRegister(data: iRegister): Promise<void>;
-  handleLogin(data: iLogin): Promise<void>
-}
-
 
 const UserContext = createContext<iUserContext>({} as iUserContext)
 
@@ -45,7 +39,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       window.localStorage.setItem("@userID-ProSupport", response.data.user.id);
       setToken(response.data.accessToken)
       setUser(response.data)
-      // navigate("/dashboard")
+      navigate("/dashboard")
     } catch {
       toast.error("Falha ao efetuar o login")
     } finally {
@@ -53,12 +47,39 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     }
   }
 
+  async function editUser(id: iUser, body:iUser){
+        //Loading(true)
+        try {
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+          const response = await api.patch<iUser>(`/users/${id}`, body);
+          setUser(response.data);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          //Loading(false)
+        }
+  }
+
+  async function deleteUser(id: iUser){
+        //Loading(true)
+        try {
+          api.defaults.headers.common.authorization = `Bearer ${token}`;
+          const response = await api.delete(`/users/${id}`);
+          console.log(response);
+        } catch (error) {
+          console.error(error);
+        } finally {
+          //Loading(false)
+        }
+  }
+
 
   return (
   <UserContext.Provider 
     value={{
       handleRegister,
-      handleLogin
+      handleLogin,
+      user
     }}>
     {children}
   </UserContext.Provider>
