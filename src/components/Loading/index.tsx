@@ -1,3 +1,9 @@
+import { LoadingContainer, LoadingIcon } from "./style";
+
 export const Loading = () => {
-  return <div>Loading</div>
-}
+  return (
+    <LoadingContainer>
+      <LoadingIcon />
+    </LoadingContainer>
+  );
+};

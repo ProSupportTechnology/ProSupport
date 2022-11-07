@@ -1,3 +1,5 @@
+import { BlobOptions } from "buffer";
+
 export interface iRegister {
   name: string;
   email: string;
@@ -35,6 +37,8 @@ export interface iUserContext {
   handleRegister(data: iRegister): Promise<void>;
   handleLogin(data: iLogin): Promise<void>;
   user: iUser;
+  loading: boolean
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export interface iQuestion {
