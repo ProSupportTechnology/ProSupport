@@ -24,12 +24,11 @@ export const StyledFormLogin = styled.form`
   }
   button {
     margin: 20px 0px;
-    padding: 20px;
   }
 
   @media (min-width: 1000px) {
-    height: 70%;
-    gap: 5%;
+    height: 444px;
+    gap: 13px;
     border-radius: 0px 20px 20px 0px;
     padding-top: 50px;
   }

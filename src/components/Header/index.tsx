@@ -33,6 +33,8 @@ export const Header = () => {
 
   if (!user) return null;
 
+  const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true
+
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
@@ -49,7 +51,7 @@ export const Header = () => {
           <span className="text three">Desenvolvedor</span>
           <span className="text three">Email: {email}</span>
         </NavBarProfileContainer>
-        {location.pathname !== `/profile` && (
+        {(search &&
           <div className="divInput">
             <InputSearch />
           </div>
@@ -58,7 +60,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
               <h3 className="title two">Home</h3>
-              <div>
+              <div title="Home">
                 <HiHome />
               </div>
             </StyledButtonLink>
@@ -66,7 +68,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/profile`}>
               <h3 className="title two">Perfil</h3>
-              <div>
+              <div title="Perfil">
                 <HiUser />
               </div>
             </StyledButtonLink>
@@ -74,7 +76,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
               <h3 className="title two">Perguntas/Respostas</h3>
-              <div>
+              <div title="Perguntas/Respostas">
                 <HiChatBubbleLeftRight />
               </div>
             </StyledButtonLink>
@@ -82,7 +84,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/users`}>
               <h3 className="title two">Usuarios</h3>
-              <div>
+              <div title="Usuario">
                 <HiUsers />
               </div>
             </StyledButtonLink>
@@ -91,7 +93,7 @@ export const Header = () => {
         <LogoutCont>
           <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
             <h3 className="title two">Sair</h3>
-            <div>
+            <div title="Sair">
               <GiEntryDoor />
             </div>
           </StyledButtonLink>
