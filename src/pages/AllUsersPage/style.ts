@@ -55,7 +55,7 @@ export const StyledAllUsersPage = styled.div`
           height: fit-content;
           color: var(--gray-0);
           background-color: transparent;
-          font-size: 16px;
+          font-size: 1rem;
           transition: 0.1s;
 
           &:hover {

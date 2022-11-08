@@ -9,19 +9,11 @@ import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { StyledList } from "../../AnsweredQuestions/style";
-import { ModalCreateResponse } from "../../../components/Modal/ModalCreateResponse";
-import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuestion";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image, bio } = user;
-  const {
-    allQuestions,
-    searchedQuestion,
-    setQuestionId,
-    isModCreateRespOpen,
-    isModDeleteQuestOpen,
-  } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
   const [teste, setTeste] = useState([] as iQuestion[]);
 
   useEffect(() => {
@@ -36,9 +28,6 @@ export const DashboardAdm = () => {
 
   return (
     <StyledDashboard className="backgroundDash">
-      {isModCreateRespOpen && <ModalCreateResponse />}
-      {isModDeleteQuestOpen && <ModalDeleteQuestion />}
-
       <Header />
       <main className="containerDash">
         <div>
