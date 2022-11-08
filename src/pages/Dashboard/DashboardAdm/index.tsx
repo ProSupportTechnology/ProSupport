@@ -14,13 +14,8 @@ import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuesti
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
-  const {
-    allQuestions,
-    searchedQuestion,
-    setQuestionId,
-    isModCreateRespOpen,
-    isModDeleteQuestOpen,
-  } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
+    useQuestionContext();
   const [teste, setTeste] = useState([] as iQuestion[]);
 
   useEffect(() => {
@@ -43,10 +38,7 @@ export const DashboardAdm = () => {
         <div>
           <StyledAdminCard>
             <StyledImageQuestion>
-              <img
-                src={user.image ? user.image : userImg}
-                alt="foto de perfil"
-              />
+              <img src={user.image ? user.image : userImg} alt="foto de perfil" />
             </StyledImageQuestion>
             <div className="userContent">
               <h1>{user.name}</h1>
