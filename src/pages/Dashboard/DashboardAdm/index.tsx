@@ -40,64 +40,57 @@ export const DashboardAdm = () => {
 
       <Header />
       <main className="containerDash">
-        <div>
-          <StyledAdminCard>
-            <StyledImageQuestion>
-              <img src={image ? image : photoProfile} alt="foto de perfil" />
-            </StyledImageQuestion>
-            <div className="userContent">
-              <h1>{name}</h1>
-              <span>{admin ? `Admin` : `Usuario`}</span>
-              <span>{email}</span>
-            </div>
-          </StyledAdminCard>
-          {bio && (
-            <div className="userBio">
-              <p>{user.bio}</p>
-            </div>
-          )}
-          <div className="search">
-            <h3 className="questionAreaTitle">Perguntas</h3>
-            <div className="searchArea">
-              <InputSearch></InputSearch>
-            </div>
+        <StyledAdminCard>
+          <StyledImageQuestion>
+            <img src={image ? image : photoProfile} alt="foto de perfil" />
+          </StyledImageQuestion>
+          <div className="userContent">
+            <h1>{name}</h1>
+            <span>{admin ? `Admin` : `Usuario`}</span>
+            <span>{email}</span>
           </div>
-          <ul className="questionArea">
-            {teste.length
-              ? teste.map((element) => {
-                  return (
-                    <QuestionCard
-                      key={element.id}
-                      title={element.title}
-                      tech={element.tech}
-                      description={element.description}
-                      username={name}
-                      image={image}
-                      setQuestionId={setQuestionId}
-                      questionId={element.id}
-                      userQuestionId={element.userId}
-                      date={new Date().toISOString()}
-                    ></QuestionCard>
-                  );
-                })
-              : allQuestions.map((element) => {
-                  return (
-                    <QuestionCard
-                      key={element.id}
-                      title={element.title}
-                      tech={element.tech}
-                      description={element.description}
-                      username={user.name}
-                      image={user.image}
-                      setQuestionId={setQuestionId}
-                      questionId={element.id}
-                      userQuestionId={element.userId}
-                      date={new Date().toISOString()}
-                    ></QuestionCard>
-                  );
-                })}
-          </ul>
+        </StyledAdminCard>
+        <div className="search">
+          <h3 className="questionAreaTitle">Perguntas</h3>
+          <div className="searchArea">
+            <InputSearch></InputSearch>
+          </div>
         </div>
+        <ul className="questionArea">
+          {teste.length
+            ? teste.map((element) => {
+                return (
+                  <QuestionCard
+                    key={element.id}
+                    title={element.title}
+                    tech={element.tech}
+                    description={element.description}
+                    username={name}
+                    image={image}
+                    setQuestionId={setQuestionId}
+                    questionId={element.id}
+                    userQuestionId={element.userId}
+                    date={new Date().toISOString()}
+                  ></QuestionCard>
+                );
+              })
+            : allQuestions.map((element) => {
+                return (
+                  <QuestionCard
+                    key={element.id}
+                    title={element.title}
+                    tech={element.tech}
+                    description={element.description}
+                    username={user.name}
+                    image={user.image}
+                    setQuestionId={setQuestionId}
+                    questionId={element.id}
+                    userQuestionId={element.userId}
+                    date={new Date().toISOString()}
+                  ></QuestionCard>
+                );
+              })}
+        </ul>
       </main>
     </StyledDashboard>
   );
