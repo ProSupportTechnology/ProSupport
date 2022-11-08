@@ -6,7 +6,7 @@ export const StyledDashboard = styled.div`
   display: flex;
   align-items: center;
 
-  margin: 0px 0px 0px 130px;
+  /* margin: 0px 0px 0px 130px; */
 
   .backgroundDash {
     background-image: url("https://i.imgur.com/xNMEX8F.png");

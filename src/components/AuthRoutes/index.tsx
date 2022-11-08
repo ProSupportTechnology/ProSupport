@@ -1,5 +1,5 @@
-import { Outlet, Navigate } from "react-router-dom"
-import { QuestionProvider } from "../../contexts/QuestionContext"
+import { Navigate, Outlet } from "react-router-dom";
+import { QuestionProvider } from "../../contexts/QuestionContext";
 
 export const AuthRoutes = () => {
   const token = window.localStorage.getItem("@Token-ProSupport")
