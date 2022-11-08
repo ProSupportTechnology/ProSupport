@@ -54,7 +54,7 @@ export const StyledDashboard = styled.div`
     height: 100%;
 
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     margin-top: 30px;
   }

@@ -6,7 +6,6 @@ import { QuestionCard } from "../../components/QuestionCard";
 import { ResponseCard } from "../../components/ResponseCard";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../contexts/UserContext/types";
-import userImg from "../../assets/photo.png";
 import { StyledList } from "./style";
 import { ModalEditResponse } from "../../components/Modal/ModalEditResponse";
 import { ModalDeleteQuestion } from "../../components/Modal/ModalDeleteQuestion";
@@ -31,7 +30,7 @@ export const AnsweredQuestions = () => {
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
     setsearched(searched);
-  }, [searchedQuestion]);
+  }, [searchedQuestion, allQuestions]);
 
   const asnwered = allQuestions.filter((element) => element.responses.length);
 
