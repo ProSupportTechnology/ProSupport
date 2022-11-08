@@ -10,7 +10,7 @@ import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { ModalCreateResponse } from "../../../components/Modal/ModalCreateResponse";
 import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuestion";
-
+// Oi Thom
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image } = user;
