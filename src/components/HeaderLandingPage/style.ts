@@ -38,7 +38,6 @@ export const StyledHeaderLandingPage = styled.header`
         width: 210px;
       }
     }
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
