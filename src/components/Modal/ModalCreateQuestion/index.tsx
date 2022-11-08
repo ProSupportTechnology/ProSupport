@@ -41,7 +41,7 @@ export const ModalCreateQuestion = () => {
             label="Descrição"
             placeholder="Insira a descrição"
           />
-          <StyledButton variant="default">Responder</StyledButton>
+          <StyledButton variant="default">Postar</StyledButton>
         </form>
       </StyledModalQuestion>
     </ModalContainer>
