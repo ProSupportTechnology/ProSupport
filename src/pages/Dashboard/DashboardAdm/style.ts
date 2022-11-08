@@ -40,11 +40,9 @@ export const StyledDashboard = styled.div`
   }
 
   .questionAreaTitle {
-    margin: 40px 0px 20px 0px;
-    margin-left: 50px;
-
-    align-self: baseline;
-
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     color: var(--white);
   }
 
@@ -99,17 +97,22 @@ export const StyledDashboard = styled.div`
     }
   }
 
-  .questionAreaTitle {
-    margin-top: 70px;
-    margin: 20px;
-  }
-
   .search {
+    margin-top: 1rem;
     width: 100%;
     height: 60px;
 
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    & > div {
+      margin-right: 14px;
+      width: 70%;
+      display: none;
+      @media (min-width: 768px) {
+        display: flex;
+      }
+    }
   }
 
   @media (max-width: 770px) {

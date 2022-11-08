@@ -103,9 +103,6 @@ export const NavBar = styled.nav<iNavbarProps>`
   background: var(--gray-2);
   border-radius: 0 0 0 15px;
   animation-duration: 1s;
-  figure {
-    width: 120px;
-  }
   .divInput {
     margin: 10px 5px;
     @media (min-width: 768px) {
