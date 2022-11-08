@@ -4,6 +4,7 @@ export const StyledLandingPage = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
   main {
     margin-top: 120px;
   }
@@ -94,7 +95,7 @@ export const SectionTeam = styled.section`
   ul {
     overflow: auto;
     display: flex;
-    width: 100vw;
+    width: 100%;
     gap: 10px;
     color: var(--white);
     padding: 0 10px;
@@ -106,11 +107,7 @@ export const SectionTeam = styled.section`
       border-radius: 10px;
       min-width: 260px;
       height: 200px;
-      background: radial-gradient(
-        circle,
-        rgba(252, 70, 107, 1) 0%,
-        rgba(63, 94, 251, 1) 100%
-      );
+      background: radial-gradient(circle, rgba(252, 70, 107, 1) 0%, rgba(63, 94, 251, 1) 100%);
     }
 
     @media (min-width: 768px) {

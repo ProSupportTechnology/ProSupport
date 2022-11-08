@@ -13,6 +13,7 @@ export const StyledHeaderLandingPage = styled.header`
   div {
     img {
       width: 230px;
+      min-width: 230px;
       height: 165px;
     }
 
@@ -55,7 +56,7 @@ export const StyledHeaderLandingPage = styled.header`
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1060px) {
     align-items: center;
 
     .headerDetails {
@@ -67,7 +68,6 @@ export const StyledHeaderLandingPage = styled.header`
     .headerInfos {
       display: flex;
       align-items: center;
-      gap: 50px;
     }
   }
 `;
