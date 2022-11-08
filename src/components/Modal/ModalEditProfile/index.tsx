@@ -7,9 +7,11 @@ import { StyledEditUser } from "./style";
 import { iDataEditUser } from "./types";
 import { StyledInput } from "../../Input/style";
 import { userSchema } from "../../../schemas/userSchema";
+import { useUserContext } from "../../../contexts/UserContext";
 
 export const ModalEditProfile = () => {
-  const { setIsModDeleteQuestOpen } = useQuestionContext();
+  const { setIsModEditProfile } = useQuestionContext();
+  const { editUser } = useUserContext();
 
   const {
     register,
@@ -17,44 +19,47 @@ export const ModalEditProfile = () => {
     formState: { errors },
   } = useForm<iDataEditUser>({ resolver: yupResolver(userSchema) });
 
-  function editProfile(data: iDataEditUser) {
-    console.log(data);
+  function getData(data: iDataEditUser) {
+    editUser(data);
+    setIsModEditProfile(false);
   }
 
-  console.log(errors);
-
   return (
-    <ModalContainer setIsModOpen={setIsModDeleteQuestOpen}>
-      <StyledEditUser onSubmit={handleSubmit(editProfile)}>
+    <ModalContainer setIsModOpen={setIsModEditProfile}>
+      <StyledEditUser onSubmit={handleSubmit(getData)}>
         <p>Editar perfil</p>
         <StyledInput
-          errors={errors.title}
-          register={register("title")}
-          label="Editar título"
-          name="title"
+          className="isModal"
+          errors={errors.name}
+          register={register("name")}
+          label="Editar nome"
+          name="name"
           type="text"
-          modalPlaceholder="Digite o novo título"
+          modalPlaceholder="Digite o novo nome"
         />
 
         <StyledInput
+          className="isModal"
           errors={errors.email}
           register={register("email")}
           label="Editar email"
           name="email"
-          type="text"
+          type="email"
           modalPlaceholder="Digite o novo email"
         />
 
         <StyledInput
+          className="isModal"
           errors={errors.password}
           register={register("password")}
           label="Editar senha"
-          name="senha"
-          type="text"
+          name="password"
+          type="password"
           modalPlaceholder="Digite a nova senha"
         />
 
         <StyledInput
+          className="isModal"
           errors={errors.bio}
           register={register("bio")}
           label="Editar bio"
@@ -64,10 +69,11 @@ export const ModalEditProfile = () => {
         />
 
         <StyledInput
-          errors={errors.photo}
-          register={register("photo")}
+          className="isModal"
+          errors={errors.image}
+          register={register("image")}
           label="Editar foto"
-          name="photo"
+          name="image"
           type="text"
           modalPlaceholder="Digite o URL da nova foto"
         />
