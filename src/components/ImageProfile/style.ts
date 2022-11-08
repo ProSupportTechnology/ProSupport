@@ -52,6 +52,8 @@ export const StyledImageQuestion = styled.figure`
   height: 110px;
   border-radius: 22px;
 
+  border: 1px solid var(--white);
+
   @media (min-width: 768px) {
     width: 110px;
     min-width: 110px;

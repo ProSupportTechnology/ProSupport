@@ -1,7 +1,7 @@
 import { Header } from "../../../components/Header";
 import { useUserContext } from "../../../contexts/UserContext";
 import { StyledAdminCard, StyledDashboard } from "./style";
-import userImg from "../../../assets/photo.png";
+import photoProfile from "../../../assets/photo.png";
 import { StyledImageQuestion } from "../../../components/ImageProfile/style";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { InputSearch } from "../../../components/InputSearch";
@@ -14,6 +14,7 @@ import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuesti
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
+  const { email, name, admin, image, bio } = user;
   const {
     allQuestions,
     searchedQuestion,
@@ -43,20 +44,15 @@ export const DashboardAdm = () => {
         <div>
           <StyledAdminCard>
             <StyledImageQuestion>
-              <img
-                src={user.image ? user.image : userImg}
-                alt="foto de perfil"
-              />
+              <img src={image ? image : photoProfile} alt="foto de perfil" />
             </StyledImageQuestion>
             <div className="userContent">
-              <h1>{user.name}</h1>
-              <p>Desenvolvedor</p>
-              <p>
-                Status: <span>Online</span>
-              </p>
+              <h1>{name}</h1>
+              <span>{admin ? `Admin` : `Usuario`}</span>
+              <span>{email}</span>
             </div>
           </StyledAdminCard>
-          {user.bio && (
+          {bio && (
             <div className="userBio">
               <p>{user.bio}</p>
             </div>
@@ -77,8 +73,8 @@ export const DashboardAdm = () => {
                         title={element.title}
                         tech={element.tech}
                         description={element.description}
-                        username={element.user.name}
-                        image={element.user.image}
+                        username={name}
+                        image={image}
                         setQuestionId={setQuestionId}
                         questionId={element.id}
                         userQuestionId={element.userId}
@@ -88,7 +84,6 @@ export const DashboardAdm = () => {
                   );
                 })
               : allQuestions.map((element) => {
-                  console.log(element);
                   return (
                     <StyledList key={element.id}>
                       <QuestionCard
@@ -96,8 +91,8 @@ export const DashboardAdm = () => {
                         title={element.title}
                         tech={element.tech}
                         description={element.description}
-                        username={element.user.name}
-                        image={element.user.image}
+                        username={user.name}
+                        image={user.image}
                         setQuestionId={setQuestionId}
                         questionId={element.id}
                         userQuestionId={element.userId}
