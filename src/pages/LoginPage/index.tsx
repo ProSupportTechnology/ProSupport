@@ -1,7 +1,7 @@
-import { StyledRegister } from "../SignupPage/style"
-import { FormLogin } from "./components/FormLogin"
-import { StyledButtonLink } from "../../style/buttonLink/style"
-import logo from "../../assets/logo.png"
+import { StyledRegister } from "../SignupPage/style";
+import { FormLogin } from "./components/FormLogin";
+import { StyledButtonLink } from "../../style/buttonLink/style";
+import logo from "../../assets/logo.png";
 
 export const LoginPage = () => {
   return (
@@ -14,5 +14,5 @@ export const LoginPage = () => {
       </div>
       <FormLogin />
     </StyledRegister>
-  )
-}
+  );
+};

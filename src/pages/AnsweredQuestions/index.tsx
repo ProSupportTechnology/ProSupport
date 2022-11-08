@@ -7,9 +7,21 @@ import { ResponseCard } from "../../components/ResponseCard";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../contexts/UserContext/types";
 import { StyledList } from "./style";
+import { ModalEditResponse } from "../../components/Modal/ModalEditResponse";
+import { ModalDeleteQuestion } from "../../components/Modal/ModalDeleteQuestion";
+import { ModalCreateResponse } from "../../components/Modal/ModalCreateResponse";
+import { ModalDeleteResponse } from "../../components/Modal/ModalDeleteResponse";
 
 export const AnsweredQuestions = () => {
-  const { allQuestions, searchedQuestion } = useQuestionContext();
+  const {
+    allQuestions,
+    searchedQuestion,
+    setQuestionId,
+    isModEditRespOpen,
+    isModDeleteQuestOpen,
+    isModCreateRespOpen,
+    isModDeleteRespOpen,
+  } = useQuestionContext();
 
   const [searched, setsearched] = useState([] as iQuestion[]);
 
@@ -24,6 +36,11 @@ export const AnsweredQuestions = () => {
 
   return (
     <StyledDashboard>
+      {isModEditRespOpen && <ModalEditResponse />}
+      {isModDeleteQuestOpen && <ModalDeleteQuestion />}
+      {isModCreateRespOpen && <ModalCreateResponse />}
+      {isModDeleteRespOpen && <ModalDeleteResponse />}
+
       <Header></Header>
       <div className="backgroundDash">
         <div className="containerDash">
@@ -38,6 +55,9 @@ export const AnsweredQuestions = () => {
                   return (
                     <StyledList key={element.id}>
                       <QuestionCard
+                        setQuestionId={setQuestionId}
+                        questionId={element.id}
+                        userQuestionId={element.userId}
                         title={element.title}
                         tech={element.tech}
                         description={element.description}
@@ -54,10 +74,12 @@ export const AnsweredQuestions = () => {
                   );
                 })
               : asnwered.map((element) => {
-                  console.log(element.user.name);
                   return (
                     <StyledList key={element.id}>
                       <QuestionCard
+                        setQuestionId={setQuestionId}
+                        questionId={element.id}
+                        userQuestionId={element.userId}
                         title={element.title}
                         tech={element.tech}
                         description={element.description}
