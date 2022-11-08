@@ -82,9 +82,10 @@ ul, ol, li {
 }
 
 .containerDash{
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-
+  padding: 130px 15px 40px 15px;
+  
   @media (min-width: 768px) {
     padding: 50px 50px 40px 180px;
   }
