@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { AuthRoutesAdm } from "./components/AuthRoutesAdm";
-import { AuthRoutesUser } from "./components/AuthRoutesUser";
+import { AuthRoutes } from "./components/AuthRoutes";
 import { Loading } from "./components/Loading";
 import { ModalCreateResponse } from "./components/Modal/ModalCreateResponse";
 import { ModalDeleteQuestion } from "./components/Modal/ModalDeleteQuestion";
@@ -20,7 +19,7 @@ import { Profile } from "./pages/Profile";
 import { SignupPage } from "./pages/SignupPage";
 
 const RoutesMain = () => {
-  const { loading } = useUserContext();
+  const { loading, user } = useUserContext();
   const {
     isModCreateRespOpen,
     isModDeleteQuestOpen,
@@ -43,15 +42,14 @@ const RoutesMain = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route element={<AuthRoutesAdm />}>
-          <Route path="/dashboard" element={<DashboardAdm />} />
+        <Route element={<AuthRoutes />}>
+          <Route path="/dashboard" element={user.admin ? <DashboardAdm /> : <DashboardUser />} />
+          <Route path="/users" element={user.admin ? <AllUsersPage /> : <Navigate to="/" />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/users" element={<AllUsersPage />} />
-          <Route path="/answeredQuestions" element={<AnsweredQuestions />} />
-        </Route>
-        <Route element={<AuthRoutesUser />}>
-          <Route path="/dashboard" element={<DashboardUser />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/answeredQuestions"
+            element={user.admin ? <AnsweredQuestions /> : <Navigate to="/" />}
+          />
         </Route>
 
         <Route path="*" element={<Navigate to="/" />} />
