@@ -4,7 +4,8 @@ import { ModalContainer } from "../ModalContainer";
 import { StyledDeleteQuestion } from "./styles";
 
 export const ModalDeleteQuestion = () => {
-  const { setIsModDeleteQuestOpen } = useQuestionContext();
+  const { setIsModDeleteQuestOpen, deleteQuestion, questionId } =
+    useQuestionContext();
 
   return (
     <div>
@@ -12,12 +13,18 @@ export const ModalDeleteQuestion = () => {
         <StyledDeleteQuestion>
           <p>Deseja deletar a pergunta?</p>
           <div>
-            <StyledButton variant="default">Sim</StyledButton>
             <StyledButton
+              variant="default"
               onClick={() => {
+                deleteQuestion(questionId);
                 setIsModDeleteQuestOpen(false);
               }}
+            >
+              Sim
+            </StyledButton>
+            <StyledButton
               variant="theme-modal-red"
+              onClick={() => setIsModDeleteQuestOpen(false)}
             >
               Não
             </StyledButton>

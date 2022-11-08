@@ -4,20 +4,26 @@ import { ModalContainer } from "../ModalContainer";
 import { StyledDeleteUser } from "../ModalDeleteUser/style";
 
 export const ModalDeleteResponse = () => {
-  const { setIsModDeleteUser } = useQuestionContext();
+  const { setIsModDeleteRespOpen, deleteAnswer } = useQuestionContext();
 
   return (
     <div>
-      <ModalContainer setIsModOpen={setIsModDeleteUser}>
+      <ModalContainer setIsModOpen={setIsModDeleteRespOpen}>
         <StyledDeleteUser>
           <p>Deseja deletar sua resposta?</p>
           <div>
-            <StyledButton variant="default">Sim</StyledButton>
             <StyledButton
               onClick={() => {
-                setIsModDeleteUser(false);
+                deleteAnswer();
+                setIsModDeleteRespOpen(false);
               }}
+              variant="default"
+            >
+              Sim
+            </StyledButton>
+            <StyledButton
               variant="theme-modal-red"
+              onClick={() => setIsModDeleteRespOpen(false)}
             >
               Não
             </StyledButton>
