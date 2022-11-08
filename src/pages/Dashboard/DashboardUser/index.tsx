@@ -9,17 +9,24 @@ import { StyledAskQuestionsArea, StyledMainUser } from "./style";
 import { StyledList } from "../../AnsweredQuestions/style";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
+import { iQuestion } from "../../../contexts/UserContext/types";
 export const DashboardUser = () => {
   const { user, getMyProfile } = useUserContext();
-  const { allQuestions } = useQuestionContext();
-  console.log(allQuestions);
+  const {
+    allQuestions,
+    searchedQuestion,
+    setQuestionId,
+    isModCreateRespOpen,
+    isModDeleteQuestOpen,
+  } = useQuestionContext();
+
+  const [teste, setTeste] = useState([] as iQuestion[]);
 
   useEffect(() => {
     getMyProfile();
   }, []);
-  console.log(user.responses);
 
   if (!user.questions) return null;
 
@@ -54,8 +61,11 @@ export const DashboardUser = () => {
                       title={element.title}
                       tech={element.tech}
                       description={element.description}
-                      username={user.name}
-                      image={user.image}
+                      username={element.user.name}
+                      image={element.user.image}
+                      setQuestionId={setQuestionId}
+                      questionId={element.id}
+                      userQuestionId={element.userId}
                       date={new Date().toISOString()}
                     ></QuestionCard>
                   </StyledList>
@@ -69,30 +79,34 @@ export const DashboardUser = () => {
           </ul>
           <h2 className="title">Perguntas respondidas</h2>
           <ul className="userQuestionArea">
-            { user.questions.length ? (
-            allQuestions.map((element) => {
-              console.log(user);
-              if (user.id == element.userId && element.responses.length) {
-                return (
-                  <StyledList>
-                    <QuestionCard
-                      key={user.id}
-                      title={element.title}
-                      tech={element.tech}
-                      description={element.description}
-                      username={user.name}
-                      image={user.image}
-                      date={new Date().toISOString()}
-                    ></QuestionCard>
-                    <ResponseCard
-                      array={element.responses}
-                      username={user.name}
-                      image={user.image}
-                    ></ResponseCard>
-                  </StyledList>
-                );
-              } 
-            }) ) : (
+            {user.questions.length ? (
+              allQuestions.map((element) => {
+                console.log(user);
+                if (user.id == element.userId && element.responses.length) {
+                  return (
+                    <StyledList>
+                      <QuestionCard
+                        key={element.id}
+                        title={element.title}
+                        tech={element.tech}
+                        description={element.description}
+                        username={element.user.name}
+                        image={element.user.image}
+                        setQuestionId={setQuestionId}
+                        questionId={element.id}
+                        userQuestionId={element.userId}
+                        date={new Date().toISOString()}
+                      ></QuestionCard>
+                      <ResponseCard
+                        array={element.responses}
+                        username={user.name}
+                        image={user.image}
+                      ></ResponseCard>
+                    </StyledList>
+                  );
+                }
+              })
+            ) : (
               <h2 className="noQuestions">Nenhuma pergunta respondida</h2>
             )}
           </ul>
