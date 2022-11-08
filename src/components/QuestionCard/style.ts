@@ -92,12 +92,12 @@ export const StyledQuestionCard = styled.div`
       width: 100%;
       height: 100%;
 
-      h2{
+      h2 {
         font-size: 1rem;
         height: auto;
       }
 
-      .questionContent{
+      .questionContent {
         border: none;
         overflow: auto;
         min-height: 100%;
@@ -108,7 +108,7 @@ export const StyledQuestionCard = styled.div`
       }
     }
 
-    .techContainer{
+    .techContainer {
       width: 100%;
       height: 30px;
       display: flex;
@@ -119,7 +119,7 @@ export const StyledQuestionCard = styled.div`
       border: none;
       background: none;
 
-      div{
+      div {
         border: 1px solid var(--gray-1);
         border-radius: 5px;
         height: 25px;
@@ -132,13 +132,13 @@ export const StyledQuestionCard = styled.div`
         max-width: 100px;
       }
 
-      h2{
+      h2 {
         font-size: 0.8rem;
         padding: 0px;
       }
     }
 
-    .buttonClose {
+    .button {
       transform: scale(2);
 
       &:hover {
@@ -148,43 +148,45 @@ export const StyledQuestionCard = styled.div`
     }
   }
 
+  .buttonReply {
+    align-self: flex-end;
+  }
+
   @media (min-width: 768px) {
+    padding: 10px;
+    height: 250px;
 
-      padding: 10px;
-      height: 250px;
+    .imageContainer {
+      border-radius: 20px;
 
-      .imageContainer {
+      figure {
+        width: 150px;
+        height: 150px;
         border-radius: 20px;
-
-        figure {
-          width: 150px;
-          height: 150px;
-          border-radius: 20px;
-        }
-
-        img {
-          border-radius: 20px;
-        }
       }
 
-      div {
-        padding: 10px;
-        background: none;
-        border-radius: none;
+      img {
+        border-radius: 20px;
       }
-      .buttonClose {
-        cursor: pointer;
-        transform: scale(1);
+    }
 
-        &:hover {
-          transform: scale(1.5);
-        }
+    div {
+      padding: 10px;
+      background: none;
+      border-radius: none;
+    }
+    .button {
+      cursor: pointer;
+      transform: scale(1);
+
+      &:hover {
+        transform: scale(1.5);
       }
+    }
 
-      .questionContent{
+    .questionContent {
       min-height: 200px;
       background-color: #4f4d8c;
     }
-    }
-
+  }
 `;
