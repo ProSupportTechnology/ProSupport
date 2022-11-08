@@ -1,5 +1,4 @@
 import { Dispatch, ReactNode, SetStateAction } from "react";
-import { iDataEditUser } from "../../components/Modal/ModalEditProfile/types";
 import { iAllUsers } from "../../pages/AllUsersPage/types";
 
 export interface iRegister {
