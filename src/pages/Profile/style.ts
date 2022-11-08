@@ -9,7 +9,6 @@ export const StyleProfile = styled.div`
   background-repeat: no-repeat;
 `;
 export const StyleMain = styled.main`
-  width: 100%;
   display: flex;
   align-content: center;
   flex-direction: column;
@@ -18,11 +17,11 @@ export const StyleMain = styled.main`
 
   h1 {
     color: white;
-    width: 90%;
+    width: 100%;
     text-align: left;
   }
   p {
-    width: 90%;
+    width: 100%;
     color: white;
     height: max-content;
     min-height: 320px;
@@ -38,7 +37,7 @@ export const StyleMain = styled.main`
   }
 `;
 export const ProfileContainer = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;

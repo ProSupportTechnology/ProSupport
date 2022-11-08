@@ -4,7 +4,6 @@ export const StyledDashboard = styled.div`
   .userBio {
     color: white;
 
-    width: 90%;
     height: 150px;
 
     border: 1px solid var(--gray-1);
@@ -50,7 +49,6 @@ export const StyledDashboard = styled.div`
   }
 
   .questionArea {
-    width: 90%;
     height: 100%;
 
     overflow: hidden;
@@ -90,9 +88,8 @@ export const StyledDashboard = styled.div`
     align-self: flex-end;
 
     width: 70%;
-    height: 70px;
+    height: 60px;
 
-    margin-top: 30px;
     div {
       width: 100%;
     }
@@ -109,8 +106,6 @@ export const StyledDashboard = styled.div`
 
     display: flex;
     justify-content: space-around;
-
-    margin-top: 30px;
   }
 
   @media (max-width: 770px) {
@@ -132,12 +127,7 @@ export const StyledDashboard = styled.div`
 `;
 
 export const StyledAdminCard = styled.div`
-  width: 90%;
-  height: 120px;
-
   display: flex;
-
-  margin-top: 20px;
 
   img {
     width: 100%;

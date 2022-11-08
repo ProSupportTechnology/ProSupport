@@ -2,6 +2,13 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthRoutesAdm } from "./components/AuthRoutesAdm";
 import { AuthRoutesUser } from "./components/AuthRoutesUser";
 import { Loading } from "./components/Loading";
+import { ModalCreateResponse } from "./components/Modal/ModalCreateResponse";
+import { ModalDeleteQuestion } from "./components/Modal/ModalDeleteQuestion";
+import { ModalDeleteResponse } from "./components/Modal/ModalDeleteResponse";
+import { ModalDeleteUser } from "./components/Modal/ModalDeleteUser";
+import { ModalEditProfile } from "./components/Modal/ModalEditProfile";
+import { ModalEditResponse } from "./components/Modal/ModalEditResponse";
+import { useQuestionContext } from "./contexts/QuestionContext";
 import { useUserContext } from "./contexts/UserContext";
 import { AllUsersPage } from "./pages/AllUsersPage";
 import { AnsweredQuestions } from "./pages/AnsweredQuestions";
@@ -14,9 +21,24 @@ import { SignupPage } from "./pages/SignupPage";
 
 const RoutesMain = () => {
   const { loading } = useUserContext();
+  const {
+    isModCreateRespOpen,
+    isModDeleteQuestOpen,
+    isModDeleteUser,
+    isModEditRespOpen,
+    isModDeleteRespOpen,
+    isModEditProfile,
+  } = useQuestionContext();
   return (
     <>
       {loading && <Loading />}
+      {isModCreateRespOpen && <ModalCreateResponse />}
+      {isModDeleteQuestOpen && <ModalDeleteQuestion />}
+      {isModDeleteUser && <ModalDeleteUser />}
+      {isModEditRespOpen && <ModalEditResponse />}
+      {isModDeleteRespOpen && <ModalDeleteResponse />}
+      {isModEditProfile && <ModalEditProfile />}
+
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/signup" element={<SignupPage />} />
