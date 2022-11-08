@@ -1,31 +1,41 @@
-import { StyledImageProfile } from "../ImageProfile/style"
-import { StyledResponseCard } from "./style"
-import { TiPencil } from "react-icons/ti"
-import { iResponseCard } from "./types"
+import { StyledImageProfile } from "../ImageProfile/style";
+import { StyledResponseCard } from "./style";
+import { TiPencil } from "react-icons/ti";
+import { iResponseCard } from "./types";
+import userImg from "../../assets/photo.png";
 
-export const ResponseCard = ({ tech, description, username, image, date, children }: iResponseCard) => {
+export const ResponseCard = ({
+  username,
+  image,
+  array,
+  children,
+}: iResponseCard) => {
   return (
-    <StyledResponseCard>
-      <div>
-        <div className="imageContainer">
-          <StyledImageProfile>
-            <img src={image} alt="userphoto" />
-          </StyledImageProfile>
-          {username}
+    <>
+      {array.map((element: any) => {
+        return (
+          <StyledResponseCard>
+         <div>
+        <div className="techContainer">
+          <TiPencil className="buttonClose"></TiPencil>
         </div>
         <div className="textContainer">
-          <div>
-            <h2>Resposta:</h2>
-            <div className="containerTech">
-              <div>{tech}</div>
-              <TiPencil className="buttonEdit"></TiPencil>
-            </div>
+          <div className="imageContainer">
+            <StyledImageProfile>
+              <img src={image ? image : userImg} alt="userphoto" />
+            </StyledImageProfile>
+            <h2>{username}</h2>
           </div>
-          {description}
-          {children}
+          <div className="questionContent">
+            <h2>Resposta:</h2>
+            <p>{element.description}</p>
+            {children}
+          </div>
         </div>
       </div>
-      <span>{date}</span>
-    </StyledResponseCard>
-  )
-}
+          </StyledResponseCard>
+        );
+      })}
+    </>
+  );
+};

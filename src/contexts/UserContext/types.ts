@@ -1,3 +1,5 @@
+import { ReactNode } from "react"
+
 export interface iRegister {
   name: string;
   email: string;
@@ -42,6 +44,7 @@ export interface iQuestion {
   userId: number;
   id: number;
   responses: {
+    map(arg0: (element: iResponse) => void): ReactNode;
     title: string,
     description: string,
     tech: string,
@@ -49,6 +52,13 @@ export interface iQuestion {
     id: number,
     length: number
   }
-  ;
+  ; 
   user: iUser;
+}
+
+interface iResponse {
+  description: string,
+  id: number,
+  questionId: number,
+  userId: number,
 }
