@@ -13,30 +13,26 @@ export interface iLogin {
   password: string
 }
 
-export interface iUser {
+export interface iResponseLogin {
   accessToken: string
+  user: iUser
+}
+
+export interface iUser {
   email: string
-  password: string
+  password?: string
   name: string
   bio: string
   image: string
   id: string
   admin?: boolean
-  user: {
-    accessToken: string
-    email: string
-    password: string
-    name: string
-    id: string
-    bio: string
-    image: string
-    admin?: boolean
-  }
 }
 
 export interface iUserContext {
   handleRegister(data: iRegister): Promise<void>
   handleLogin(data: iLogin): Promise<void>
+  editUser(id: iUser, body: iUser): Promise<void>
+  deleteUser(id: iUser): Promise<void>
   user: iUser
   getAllUsers(): Promise<iAllUsers | undefined>
   loading: boolean

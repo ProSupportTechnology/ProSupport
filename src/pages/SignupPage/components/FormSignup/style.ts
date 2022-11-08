@@ -27,13 +27,9 @@ export const StyledFormSignup = styled.form`
       font-size: 2rem !important;
     }
   }
-  button {
-    margin: 20px 0px;
-    padding: 20px;
-  }
+
   @media (min-width: 1000px) {
-    height: 70%;
-    gap: 5%;
+    height: 444px;
     border-radius: 0px 20px 20px 0px;
     padding-top: 50px;
   }

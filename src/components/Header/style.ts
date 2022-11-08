@@ -5,6 +5,7 @@ import "animate.css";
 export const HeaderContainer = styled.header`
   position: fixed;
   inset: 0;
+  z-index: 1;
   width: 100vw;
   height: 100px;
   background-color: var(--gray-3);
@@ -12,7 +13,6 @@ export const HeaderContainer = styled.header`
   align-content: center;
   justify-content: space-between;
   @media (min-width: 768px) {
-    position: static;
     flex-direction: column;
     width: 130px;
     height: 100vh;
@@ -32,7 +32,7 @@ export const MenuMobile = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1px;
-  margin-right: 1rem;
+  margin-right: 1.6rem;
   position: relative;
   inset: 0;
   label {
@@ -107,7 +107,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     width: 120px;
   }
   .divInput {
-    margin: 0 5px;
+    margin: 10px 5px;
     @media (min-width: 768px) {
       display: none;
     }
@@ -117,7 +117,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     background-color: transparent;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.3rem;
+    margin-bottom: 2rem;
     width: 100%;
   }
 `;
@@ -150,7 +150,26 @@ export const UlNavBar = styled.ul`
   flex-direction: column;
   gap: 0.5rem;
   overflow: auto;
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 1px;
+  }
+  ::-webkit-scrollbar-track {
+    display: hidden;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--white);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--white);
+  }
   @media (min-width: 768px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
     gap: 1rem;
     overflow: hidden;
     height: 100%;
@@ -158,6 +177,7 @@ export const UlNavBar = styled.ul`
   }
 `;
 export const LiNavBar = styled.li`
+  width: 100%;
   display: flex;
   align-items: center;
   height: 50px;

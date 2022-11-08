@@ -9,16 +9,13 @@ export const StyleProfile = styled.div`
   background-repeat: no-repeat;
 `;
 export const StyleMain = styled.main`
-  margin-top: 120px;
   width: 100%;
   display: flex;
   align-content: center;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  @media (min-width: 768px) {
-      margin-top: 20px;
-    }
+
   h1 {
     color: white;
     width: 90%;
@@ -45,31 +42,12 @@ export const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  button {
+
+  & > button {
     width: min-content;
     white-space: nowrap;
     border: solid 2px var(--white);
     text-align: center;
     padding: 10px 15px;
-  }
-`;
-export const ProfileDiv = styled.div`
-  display: flex;
-  gap: 16px;
-  figure {
-    position: static;
-    width: 100px;
-    height: 100px;
-  }
-`;
-export const ProfileText = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  h2 {
-    color: white;
-  }
-  span {
-    color: white;
   }
 `;
