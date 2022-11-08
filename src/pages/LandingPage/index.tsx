@@ -11,7 +11,7 @@ import { SectionServices, SectionTeam, StyledLandingPage } from "./style";
 
 export const LandingPage = () => {
   return (
-    <StyledLandingPage>
+    <StyledLandingPage className="backgroundDash">
       <HeaderLandingPage />
       <main>
         <SectionServices>

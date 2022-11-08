@@ -158,6 +158,6 @@ export const StyledAdminCard = styled.div`
   }
 
   span {
-    color: green;
+    color: var(--white);
   }
 `;
