@@ -1,6 +1,7 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
+import { useUserContext } from "../UserContext";
 import { iQuestion, iUser } from "../UserContext/types";
 import {
   iDataQuestion,
@@ -20,16 +21,22 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModEditRespOpen, setIsModEditRespOpen] = useState(false);
   const [isModDeleteQuestOpen, setIsModDeleteQuestOpen] = useState(false);
   const [isModDeleteUser, setIsModDeleteUser] = useState(false);
+  const [isModDeleteRespOpen, setIsModDeleteRespOpen] = useState(false);
   const [isModEditProfile, setIsModEditProfile] = useState(false);
+  const [questionId, setQuestionId] = useState<string | number>("");
+  const [userQuestionId, setUserQuestionId] = useState<string | number>("");
+  const [responseId, setResponseId] = useState<string | number>("");
 
   const getToken = localStorage.getItem("@Token-ProSupport");
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
   const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
 
+  const { setLoading } = useUserContext();
+
   useEffect(() => {
     async function getAllQuestions() {
-      //Loading(true)
+      setLoading(true);
       try {
         api.defaults.headers.common.authorization = `Bearer ${getToken}`;
         const response = await api.get<iQuestion[]>(
@@ -39,19 +46,15 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       } catch (error) {
         console.error(error);
       } finally {
-        //Loading(false)
+        setLoading(false);
       }
     }
     getAllQuestions();
   }, [getToken]);
 
   async function answerQuestion(data: iDataResponse) {
-    //capturar id do usuário e da questão ao clicar em responder
-    const questionId = 1;
-    const userId = 5;
-    const body = { ...data, questionId: questionId, userId: userId };
-    console.log(body);
-    //Loading(true)
+    const body = { ...data, questionId: questionId, userId: userQuestionId };
+    setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       await api.post<iDataResponse>("/responses", body);
@@ -61,17 +64,18 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       toast.error("Resposta não enviada.");
       console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
   async function editAnswer(data: iDataResponse) {
-    //Loading(true)
-    //capturar id da resposta
-    const id = 1;
+    setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.patch<iDataResponse>(`/responses/${id}`, data);
+      const response = await api.patch<iDataResponse>(
+        `/responses/${responseId}`,
+        data
+      );
       console.log(response);
       toast.success("Resposta editada com sucesso!");
       setIsModEditRespOpen(false);
@@ -79,27 +83,29 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       toast.error("Não foi possível editar a resposta.");
       console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
-  async function deleteAnswer(id: iUser) {
-    //Loading(true)
+  async function deleteAnswer() {
+    setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.delete(`/responses/${id}`);
+      const response = await api.delete(`/responses/${responseId}`);
+      toast.success("Resposta deletada com sucesso!");
       console.log(response);
     } catch (error) {
-      console.error(error);
+      console.log(error);
+      toast.error("Não foi possível excluir a resposta.");
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
   async function createQuestion(data: iDataQuestion) {
     let id = localStorage.getItem("@userID-ProSupport");
     const body = { ...data, userId: id };
-    //Loading(true)
+    setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       await api.post<iDataQuestion>("/questions", body);
@@ -109,37 +115,36 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       toast.error("Erro ao enviar pergunta.");
       console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
   async function editQuestion(data: iDataQuestion) {
-    //tem que capturar o id da pergunta
-    let id = 7;
-    //Loading(true)
+    setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      await api.patch<iDataQuestion>(`/questions/${id}`, data);
+      await api.patch<iDataQuestion>(`/questions/${questionId}`, data);
       toast.success("Pergunta editada com sucesso.");
       setIsModEditQuestOpen(false);
     } catch (error) {
       toast.error("Erro ao editar pergunta.");
       console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
-  async function deleteQuestion(id: iUser) {
-    //Loading(true)
+  async function deleteQuestion(id: string | number) {
+    setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       const response = await api.delete<iQuestion[]>(`/questions/${id}`);
       console.log(response);
+      toast.success("Pergunta deletada com sucesso!");
     } catch (error) {
       console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
@@ -169,6 +174,16 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         editQuestion,
         answerQuestion,
         editAnswer,
+        setQuestionId,
+        questionId,
+        userQuestionId,
+        setUserQuestionId,
+        deleteQuestion,
+        setResponseId,
+        responseId,
+        isModDeleteRespOpen,
+        setIsModDeleteRespOpen,
+        deleteAnswer,
       }}
     >
       {children}

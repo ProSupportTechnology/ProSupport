@@ -40,4 +40,14 @@ export interface iQuestionProvider {
   editQuestion: (data: iDataQuestion) => Promise<void>;
   answerQuestion: (data: iDataResponse) => Promise<void>;
   editAnswer: (data: iDataResponse) => Promise<void>;
+  setQuestionId: Dispatch<SetStateAction<string | number>>;
+  questionId: string | number;
+  setUserQuestionId: Dispatch<SetStateAction<string | number>>;
+  userQuestionId: string | number;
+  deleteQuestion: (id: string | number) => Promise<void>;
+  responseId: string | number;
+  setResponseId: Dispatch<SetStateAction<string | number>>;
+  setIsModDeleteRespOpen: Dispatch<SetStateAction<boolean>>;
+  isModDeleteRespOpen: boolean;
+  deleteAnswer: () => Promise<void>;
 }
