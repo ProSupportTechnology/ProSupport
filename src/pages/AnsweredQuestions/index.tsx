@@ -7,20 +7,19 @@ import { ResponseCard } from "../../components/ResponseCard";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../contexts/UserContext/types";
 import userImg from "../../assets/photo.png";
+import { StyledList } from "./style";
 
 export const AnsweredQuestions = () => {
-  const { allQuestions, searchedQuestion, setSearchedQuestion } =
-    useQuestionContext();
+  const { allQuestions, searchedQuestion } = useQuestionContext();
 
-    const [searched, setsearched] = useState([] as iQuestion[]);
+  const [searched, setsearched] = useState([] as iQuestion[]);
 
-    useEffect(() => {
-      const searched = allQuestions.filter((element) =>
-        element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
-      );
-      setsearched(searched);
-    }, [searchedQuestion]);
-
+  useEffect(() => {
+    const searched = allQuestions.filter((element) =>
+      element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
+    );
+    setsearched(searched);
+  }, [searchedQuestion]);
 
   const asnwered = allQuestions.filter((element) => element.responses.length);
 
@@ -38,28 +37,7 @@ export const AnsweredQuestions = () => {
             {searched.length
               ? searched.map((element) => {
                   return (
-                    <li>
-                    <QuestionCard
-                      title={element.title}
-                      tech={element.tech}
-                      description={element.description}
-                      username={element.user.name}
-                      image={element.user.image}
-                      date={new Date().toISOString()}
-                    ></QuestionCard>
-                    <ResponseCard
-                    tech={element.tech}
-                    description={element.responses.description}
-                    username={element.user.name}
-                    image={element.user.image}
-                    date={new Date().toISOString()}
-                  ></ResponseCard>
-                  </li>
-                  );
-                })
-              : asnwered.map((element) => {
-                  return (
-                    <li>
+                    <StyledList key={element.id}>
                       <QuestionCard
                         title={element.title}
                         tech={element.tech}
@@ -69,13 +47,31 @@ export const AnsweredQuestions = () => {
                         date={new Date().toISOString()}
                       ></QuestionCard>
                       <ResponseCard
-                        tech={element.tech}
-                        description={element.responses.description}
+                        array={element.responses}
                         username={element.user.name}
-                        image={element.user.image ? element.user.image : userImg}
-                        date={new Date().toISOString()}
+                        image={element.user.image}
                       ></ResponseCard>
-                    </li>
+                    </StyledList>
+                  );
+                })
+              : asnwered.map((element) => {
+                  console.log(element.user.name);
+                  return (
+                    <StyledList key={element.id}>
+                      <QuestionCard
+                        title={element.title}
+                        tech={element.tech}
+                        description={element.description}
+                        username={element.user.name}
+                        image={element.user.image}
+                        date={new Date().toISOString()}
+                      ></QuestionCard>
+                      <ResponseCard
+                        array={element.responses}
+                        username={element.user.name}
+                        image={element.user.image}
+                      ></ResponseCard>
+                    </StyledList>
                   );
                 })}
           </ul>

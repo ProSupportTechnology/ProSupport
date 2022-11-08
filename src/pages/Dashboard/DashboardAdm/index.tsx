@@ -8,6 +8,7 @@ import { InputSearch } from "../../../components/InputSearch";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
+import { StyledList } from "../../AnsweredQuestions/style";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
@@ -56,6 +57,7 @@ export const DashboardAdm = () => {
             {teste.length
               ? teste.map((element) => {
                   return (
+                    <StyledList key={element.id}>
                     <QuestionCard
                       key={element.id}
                       title={element.title}
@@ -65,10 +67,12 @@ export const DashboardAdm = () => {
                       image={element.user.image}
                       date={new Date().toISOString()}
                     ></QuestionCard>
+                    </StyledList>
                   );
                 })
               : allQuestions.map((element) => {
                   return (
+                    <StyledList key={element.id}>
                     <QuestionCard
                       key={element.id}
                       title={element.title}
@@ -78,6 +82,7 @@ export const DashboardAdm = () => {
                       image={element.user.image}
                       date={new Date().toISOString()}
                     ></QuestionCard>
+                    </StyledList>
                   );
                 })}
           </ul>

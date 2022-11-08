@@ -12,11 +12,24 @@ export const StyledDashboard = styled.div`
     padding: 10px;
     margin-top: 30px;
 
-    overflow-y: scroll;
+    overflow-y: auto;
     p {
       text-align: center;
       word-break: break-all;
     }
+  }
+
+  .userBio::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .userBio::-webkit-scrollbar-track-piece {
+    background: var(--gray-1);
+    border-radius: 5px;
+  }
+  .userBio::-webkit-scrollbar-thumb {
+    background: var(--gray-3);
+    border-radius: 5px;
   }
 
   h2 {
@@ -44,6 +57,19 @@ export const StyledDashboard = styled.div`
     overflow-y: scroll;
 
     margin-top: 30px;
+  }
+
+  .questionArea::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .questionArea::-webkit-scrollbar-track-piece {
+    background: var(--gray-1);
+    border-radius: 5px;
+  }
+  .questionArea::-webkit-scrollbar-thumb {
+    background: var(--gray-3);
+    border-radius: 5px;
   }
 
   .questionCard {

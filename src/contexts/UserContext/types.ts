@@ -1,3 +1,4 @@
+import { ReactNode } from "react"
 import { iAllUsers } from "../../pages/AllUsersPage/types"
 
 export interface iRegister {
@@ -45,12 +46,21 @@ export interface iQuestion {
   userId: number
   id: number
   responses: {
-    title: string
-    description: string
-    tech: string
-    userId: number
-    id: number
+    map(arg0: (element: iResponse) => void): ReactNode;
+    title: string,
+    description: string,
+    tech: string,
+    userId: number,
+    id: number,
     length: number
   }
-  user: iUser
+  ; 
+  user: iUser;
+}
+
+interface iResponse {
+  description: string,
+  id: number,
+  questionId: number,
+  userId: number,
 }
