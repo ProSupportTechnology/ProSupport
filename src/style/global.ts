@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 * {     
@@ -81,21 +81,20 @@ ul, ol, li {
   line-height: 1.375rem;
 }
 
-  .containerDash{
-    padding: 130px 15px 40px 15px;
-    max-width: 1200px;
-    margin: 0 auto;
+.containerDash{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 130px 15px 40px 15px;
 
-    @media (min-width: 768px) {
-      padding: 50px 50px 40px 180px;
-    }
+  @media (min-width: 768px) {
+    padding: 50px 50px 40px 180px;
   }
+}
 
-
-  .backgroundDash{
-    background-image: url("Bg-images/Background1.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-  }
-`
+.backgroundDash{
+  background-image: url("Bg-images/Background1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+`;

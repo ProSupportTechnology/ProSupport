@@ -1,27 +1,31 @@
-import { Header } from "../../components/Header"
-import { StyledImageProfile, StyledImageQuestion } from "../../components/ImageProfile/style"
-import photoProfile from "../../assets/photo.png"
-import { ProfileContainer, ProfileDiv, ProfileText, StyleMain, StyleProfile } from "./style"
-import { StyledButton } from "../../style/button/style"
-import { useUserContext } from "../../contexts/UserContext"
-import { StyledAdminCard } from "../Dashboard/DashboardAdm/style"
+import { Header } from "../../components/Header";
+import photoProfile from "../../assets/photo.png";
+import { ProfileContainer, StyleMain, StyleProfile } from "./style";
+import { StyledButton } from "../../style/button/style";
+import { useUserContext } from "../../contexts/UserContext";
+import { StyledAdminCard } from "../Dashboard/DashboardAdm/style";
+import { ImageProfile } from "../../components/ImageProfile";
 
 export const Profile = () => {
-  const { user } = useUserContext()
-  const { email, name } = user.user
-  // Bio verificar na dashboard da Vih :D
+  const { user } = useUserContext();
+  const { email, name, admin, image } = user;
+
+  if (!user) return null;
+
   return (
     <StyleProfile>
       <Header />
-      <StyleMain>
+      <StyleMain className="containerDash">
         <ProfileContainer>
           <StyledAdminCard>
-            <StyledImageQuestion>
-              <img src={user.user.image ? user.user.image : photoProfile} alt="foto de perfil" />
-            </StyledImageQuestion>
+            <ImageProfile>
+              <img src={image ? image : photoProfile} alt="foto de perfil" />
+              <button>Editar foto</button>
+            </ImageProfile>
             <div className="userContent">
-              <h1>{user.user.name}</h1>
-              <span>{user.user.admin ? `admin` : `usuario`}</span>
+              <h1>{name}</h1>
+              <span>{admin ? `Admin` : `Usuario`}</span>
+              <span>{email}</span>
             </div>
           </StyledAdminCard>
           <StyledButton variant="theme-register-login">Editar Perfil</StyledButton>
@@ -36,5 +40,5 @@ export const Profile = () => {
         </p>
       </StyleMain>
     </StyleProfile>
-  )
-}
+  );
+};

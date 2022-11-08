@@ -1,33 +1,6 @@
 import styled from "styled-components";
 
 export const StyledDashboard = styled.div`
-  height: 100vh;
-
-  display: flex;
-  align-items: center;
-
-  /* margin: 0px 0px 0px 130px; */
-
-  .backgroundDash {
-    background-image: url("https://i.imgur.com/xNMEX8F.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    height: 100%;
-    width: 100vw;
-  }
-
-  .containerDash {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding: 30px;
-
-    width: 100%;
-    height: 100vh;
-  }
-
   .userBio {
     color: white;
 
@@ -57,9 +30,9 @@ export const StyledDashboard = styled.div`
   .questionAreaTitle {
     margin: 40px 0px 20px 0px;
     margin-left: 50px;
-    
+
     align-self: baseline;
-    
+
     color: var(--white);
   }
 
@@ -153,7 +126,7 @@ export const StyledAdminCard = styled.div`
 
     color: var(--white);
     font-size: 0.7rem;
-    
+
     width: 50%;
     height: 100px;
   }
