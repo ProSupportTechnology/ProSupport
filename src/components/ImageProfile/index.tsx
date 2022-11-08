@@ -1,16 +1,10 @@
-import { ReactNode } from "react";
-import { StyledImageProfile } from "../../components/ImageProfile/style";
+import { StyledImageProfile } from "../../components/ImageProfile/style"
+import { iImageProps } from "./types"
 
-interface iImageProps{
-  children: ReactNode
-}
-
-export const ImageProfile = ({children}: iImageProps) => {
+export const ImageProfile = ({ children }: iImageProps) => {
   return (
     <>
-      <StyledImageProfile>
-        {children}
-      </StyledImageProfile>
+      <StyledImageProfile>{children}</StyledImageProfile>
     </>
-  );
-};
+  )
+}

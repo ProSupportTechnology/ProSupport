@@ -6,7 +6,7 @@ export const StyledDashboard = styled.div`
   display: flex;
   align-items: center;
 
-  margin: 0px 0px 0px 130px;
+  /* margin: 0px 0px 0px 130px; */
 
   .backgroundDash {
     background-image: url("https://i.imgur.com/xNMEX8F.png");
@@ -39,11 +39,24 @@ export const StyledDashboard = styled.div`
     padding: 10px;
     margin-top: 30px;
 
-    overflow-x: scroll;
+    overflow-y: auto;
     p {
       text-align: center;
       word-break: break-all;
     }
+  }
+
+  .userBio::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .userBio::-webkit-scrollbar-track-piece {
+    background: var(--gray-1);
+    border-radius: 5px;
+  }
+  .userBio::-webkit-scrollbar-thumb {
+    background: var(--gray-3);
+    border-radius: 5px;
   }
 
   h2 {
@@ -57,9 +70,9 @@ export const StyledDashboard = styled.div`
   .questionAreaTitle {
     margin: 40px 0px 20px 0px;
     margin-left: 50px;
-    
+
     align-self: baseline;
-    
+
     color: var(--white);
   }
 
@@ -71,6 +84,19 @@ export const StyledDashboard = styled.div`
     overflow-y: scroll;
 
     margin-top: 30px;
+  }
+
+  .questionArea::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .questionArea::-webkit-scrollbar-track-piece {
+    background: var(--gray-1);
+    border-radius: 5px;
+  }
+  .questionArea::-webkit-scrollbar-thumb {
+    background: var(--gray-3);
+    border-radius: 5px;
   }
 
   .questionCard {
@@ -153,7 +179,7 @@ export const StyledAdminCard = styled.div`
 
     color: var(--white);
     font-size: 0.7rem;
-    
+
     width: 50%;
     height: 100px;
   }

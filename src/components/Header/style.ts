@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { iNavbarProps } from "./types";
+import "animate.css";
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -11,6 +12,7 @@ export const HeaderContainer = styled.header`
   align-content: center;
   justify-content: space-between;
   @media (min-width: 768px) {
+    position: static;
     flex-direction: column;
     width: 130px;
     height: 100vh;
@@ -83,18 +85,29 @@ export const Barra = styled.span`
 export const NavBar = styled.nav<iNavbarProps>`
   position: fixed;
   top: 100px;
-  right: ${({ navbarMobile }) => (!navbarMobile ? "-325px" : "0")};
+  right: ${({ navbarMobile, setAnimation }) => {
+    if (!navbarMobile) {
+      setAnimation(`animate__backOutRight`);
+      return "-325px";
+    } else {
+      setAnimation(`animate__backInRight`);
+      return "0";
+    }
+  }};
   width: 80%;
   max-width: 320px;
   height: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 0.3rem;
-  background: #434343;
+  background: var(--gray-2);
   border-radius: 0 0 0 15px;
+  animation-duration: 1s;
+  figure {
+    width: 120px;
+  }
   .divInput {
-    margin: -25px 5px;
+    margin: 0 5px;
     @media (min-width: 768px) {
       display: none;
     }
@@ -113,9 +126,8 @@ export const NavBarProfileContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 180px;
-  gap: 0.3rem;
-  margin-top: 0.3rem rem;
+  height: 200px;
+  padding: 1rem;
   background: linear-gradient(
     90deg,
     rgba(131, 58, 180, 1) 0%,
@@ -124,6 +136,7 @@ export const NavBarProfileContainer = styled.div`
   );
   h2 {
     color: var(--gray-0);
+    height: max-content;
   }
   span {
     color: var(--gray-0);
@@ -132,17 +145,16 @@ export const NavBarProfileContainer = styled.div`
     display: none;
   }
 `;
-export const ImgProfile = styled.img`
-  width: 60px;
-  height: 60px;
-  margin-top: 0.3rem;
-`;
 export const UlNavBar = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  overflow: auto;
   @media (min-width: 768px) {
     gap: 1rem;
+    overflow: hidden;
+    height: 100%;
+    padding-top: 0.3rem;
   }
 `;
 export const LiNavBar = styled.li`

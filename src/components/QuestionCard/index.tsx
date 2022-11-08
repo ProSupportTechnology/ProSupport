@@ -1,8 +1,8 @@
-import { StyledImageProfile } from "../ImageProfile/style"
-import { StyledQuestionCard } from "./style"
-import { CgClose } from "react-icons/cg"
-import { iQuestionCard } from "./types"
-import waterDrops from "../../assets/waterDrops.png"
+import { StyledImageProfile } from "../ImageProfile/style";
+import { StyledQuestionCard } from "./style";
+import { CgClose } from "react-icons/cg";
+import { iQuestionCard } from "./types";
+import waterDrops from "../../assets/waterDrops.png";
 
 export const QuestionCard = ({
   title,
@@ -16,25 +16,27 @@ export const QuestionCard = ({
   return (
     <StyledQuestionCard>
       <div>
-        <div className="imageContainer">
-          <StyledImageProfile>
-            <img src={waterDrops} alt="userphoto" />
-          </StyledImageProfile>
-          {username}
+        <div className="techContainer">
+          <div>
+          <h2>{tech}</h2>
+          </div>
+          <CgClose className="buttonClose"></CgClose>
         </div>
         <div className="textContainer">
-          <div>
-            <h2>{title}</h2>
-            <div className="containerTech">
-              <div>{tech}</div>
-              <CgClose className="buttonClose"></CgClose>
-            </div>
+          <div className="imageContainer">
+            <StyledImageProfile>
+              <img src={waterDrops} alt="userphoto" />
+            </StyledImageProfile>
+            <h2>{username}</h2>
           </div>
-          {description}
-          {children}
+          <div className="questionContent">
+            <h2>{title}</h2>
+            <p>{description}</p>
+            {children}
+          </div>
         </div>
       </div>
-      <span>{date}</span>
+      {/* <span>{date}</span> */}
     </StyledQuestionCard>
-  )
-}
+  );
+};

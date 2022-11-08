@@ -2,12 +2,13 @@ import { Header } from "../../../components/Header";
 import { useUserContext } from "../../../contexts/UserContext";
 import { StyledAdminCard, StyledDashboard } from "./style";
 import userImg from "../../../assets/photo.png";
-import { StyledImageProfile } from "../../../components/ImageProfile/style";
+import { StyledImageQuestion } from "../../../components/ImageProfile/style";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { InputSearch } from "../../../components/InputSearch";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
+import { StyledList } from "../../AnsweredQuestions/style";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
@@ -19,18 +20,18 @@ export const DashboardAdm = () => {
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
     setTeste(testee);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedQuestion]);
 
   return (
     <StyledDashboard>
-      <Header></Header>
+      <Header />
       <div className="backgroundDash">
         <div className="containerDash">
           <StyledAdminCard>
-            <StyledImageProfile>
-              <img src={user.user.image ? user.user.image : userImg} alt="" />
-              <button>Editar imagem</button>
-            </StyledImageProfile>
+            <StyledImageQuestion>
+              <img src={user.user.image ? user.user.image : userImg} alt="foto de perfil" />
+            </StyledImageQuestion>
             <div className="userContent">
               <h1>{user.user.name}</h1>
               <p>Desenvolvedor</p>
@@ -54,6 +55,7 @@ export const DashboardAdm = () => {
             {teste.length
               ? teste.map((element) => {
                   return (
+                    <StyledList key={element.id}>
                     <QuestionCard
                       title={element.title}
                       tech={element.tech}
@@ -62,10 +64,12 @@ export const DashboardAdm = () => {
                       image={element.user.image}
                       date={new Date().toISOString()}
                     ></QuestionCard>
+                    </StyledList>
                   );
                 })
               : allQuestions.map((element) => {
                   return (
+                    <StyledList key={element.id}>
                     <QuestionCard
                       title={element.title}
                       tech={element.tech}
@@ -74,6 +78,7 @@ export const DashboardAdm = () => {
                       image={element.user.image}
                       date={new Date().toISOString()}
                     ></QuestionCard>
+                    </StyledList>
                   );
                 })}
           </ul>

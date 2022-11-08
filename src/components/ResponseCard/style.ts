@@ -1,41 +1,40 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const StyledResponseCard = styled.li`
+export const StyledResponseCard = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
   color: var(--gray-0);
-  margin-bottom: 10px;
   gap: 0.5rem;
   transition: 0.5s;
+  padding: 0px;
 
   &:hover > div {
     background: #4f4d8c;
     background: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
-    background: -webkit-linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
+    background: -webkit-linear-gradient(
+      90deg,
+      #4f4d8c 0%,
+      #807ddb 55%,
+      #5f5da6 100%
+    );
     box-shadow: 10px 10px 20px black;
   }
 
-  span {
-    padding: 0 20px;
-    width: 100%;
-    text-align: right;
-    font-size: 0.9rem;
-  }
 
   div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     gap: 1rem;
     padding: 60px 35px;
-    background: #434343;
-    background: -webkit-linear-gradient(90deg, #434343 0%, #7b7e7b 100%);
-    background: linear-gradient(90deg, #434343 0%, #7b7e7b 100%);
+    background-color: var(--gray-2);
     border: 1px solid var(--gray-1);
     border-radius: 20px;
     transition: 0.5s;
+    width: 97%;
+    padding: 10px;
 
     .imageContainer {
       display: flex;
@@ -43,15 +42,18 @@ export const StyledResponseCard = styled.li`
       justify-content: flex-start;
       align-items: center;
       padding: 0;
+      min-width: 50px;
+      min-height: 50px;
       background: none;
       border: none;
       border-radius: 50%;
       cursor: pointer;
+      width: 20%;
 
       figure {
         border-radius: 50%;
-        width: 100px;
-        height: 100px;
+        width: 90px;
+        height: 90px;
         background: #000000;
         background: -webkit-linear-gradient(to left, #000000, #434343);
         background: linear-gradient(to left, #000000, #434343);
@@ -62,62 +64,85 @@ export const StyledResponseCard = styled.li`
         width: 100%;
         height: 100%;
         border-radius: 50%;
+        object-fit: cover;
       }
     }
 
     .textContainer {
-      position: relative;
-      flex-direction: column;
-      flex-wrap: wrap;
-      padding: 0;
+      display: flex;
+      flex-direction: row;
       background: none;
       border: none;
       border-radius: none;
-      width: 86%;
-    }
+      width: 100%;
 
-    div {
-      padding: 0;
+      padding: 0px;
       background: none;
       border: none;
-      border-radius: none;
+      align-items: center;
+      width: 100%;
+      height: 100%;
 
-      div {
-        .containerTech {
-          position: absolute;
-          right: 0;
-          top: -40px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          border: none;
-          width: auto;
-          font-size: 0.9rem;
-          font-weight: 300;
+      h2{
+        font-size: 1rem;
+        height: auto;
+      }
 
-          div {
-            margin-right: 10px;
-            border: 1px solid var(--gray-1);
-            border-radius: 3px;
-            padding: 5px 25px;
-          }
-        }
+      .questionContent{
+        border: none;
+        overflow: auto;
+        min-height: 100%;
+        padding: 5px;
+        text-align: center;
+        background: none;
+        overflow-y: auto;
       }
     }
 
-    .buttonEdit {
-      transform: scale(2.5);
+    .techContainer{
+      width: 100%;
+      height: 30px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      align-self: end;
+      border: none;
+      background: none;
+
+      div{
+        border: 1px solid var(--gray-1);
+        border-radius: 5px;
+        height: 25px;
+        width: 50%;
+        background: none;
+        display: flex;
+        align-items: center;
+        padding: 4px;
+        min-width: 85px;
+        max-width: 100px;
+      }
+
+      h2{
+        font-size: 0.8rem;
+        padding: 0px;
+      }
+    }
+
+    .buttonClose {
+      transform: scale(2);
 
       &:hover {
-        transform: scale(3);
+        transform: scale(2.5);
         transition: 0.5s;
       }
     }
   }
 
   @media (min-width: 768px) {
-    div {
-      padding: 35px;
+
+      padding: 10px;
+      height: 250px;
 
       .imageContainer {
         border-radius: 20px;
@@ -134,25 +159,21 @@ export const StyledResponseCard = styled.li`
       }
 
       div {
-        padding: 0;
-        background: none;
-        border: none;
+        padding: 10px;
         border-radius: none;
-
-        div {
-          .containerTech {
-            position: static;
-          }
-        }
       }
-      .buttonEdit {
+      .buttonClose {
         cursor: pointer;
-        transform: scale(2);
+        transform: scale(1);
 
         &:hover {
-          transform: scale(2.5);
+          transform: scale(1.5);
         }
       }
+
+      .questionContent{
+      min-height: 200px;
     }
-  }
-`
+    }
+
+`;
