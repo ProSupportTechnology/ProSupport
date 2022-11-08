@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledRegister = styled.div`
   background-image: url("Bg-images/Landing2.jpg");
@@ -6,7 +6,7 @@ export const StyledRegister = styled.div`
   flex-direction: column;
 
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
 
   align-items: center;
 
@@ -43,4 +43,4 @@ export const StyledRegister = styled.div`
       border-radius: 20px 0px 0px 20px;
     }
   }
-`;
+`

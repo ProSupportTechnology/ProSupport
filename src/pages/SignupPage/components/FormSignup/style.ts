@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 
 export const StyledFormSignup = styled.form`
   height: max-content;
@@ -27,14 +27,11 @@ export const StyledFormSignup = styled.form`
       font-size: 2rem !important;
     }
   }
-  button {
-    margin: 20px 0px;
-    padding: 20px;
-  }
+
   @media (min-width: 1000px) {
     height: 70%;
     gap: 5%;
     border-radius: 0px 20px 20px 0px;
     padding-top: 50px;
   }
-`;
+`
