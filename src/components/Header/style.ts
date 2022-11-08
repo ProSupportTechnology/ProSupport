@@ -1,6 +1,6 @@
-import styled from "styled-components"
-import { iNavbarProps } from "./types"
-import "animate.css"
+import styled from "styled-components";
+import { iNavbarProps } from "./types";
+import "animate.css";
 
 export const HeaderContainer = styled.header`
   position: fixed;
@@ -17,7 +17,7 @@ export const HeaderContainer = styled.header`
     width: 130px;
     height: 100vh;
   }
-`
+`;
 export const Logo = styled.img`
   width: 130px;
   height: 100%;
@@ -25,7 +25,7 @@ export const Logo = styled.img`
     width: 100%;
     height: 100px;
   }
-`
+`;
 export const MenuMobile = styled.div`
   height: 100%;
   display: flex;
@@ -45,7 +45,7 @@ export const MenuMobile = styled.div`
   @media (min-width: 768px) {
     display: none;
   }
-`
+`;
 export const CheckBox = styled.input`
   width: 100%;
   height: 16px;
@@ -63,7 +63,7 @@ export const CheckBox = styled.input`
     transform: rotate(45deg);
     top: 8px;
   }
-`
+`;
 export const Barra = styled.span`
   position: absolute;
   display: block;
@@ -81,17 +81,17 @@ export const Barra = styled.span`
   :nth-child(3) {
     top: 16px;
   }
-`
+`;
 export const NavBar = styled.nav<iNavbarProps>`
   position: fixed;
   top: 100px;
   right: ${({ navbarMobile, setAnimation }) => {
     if (!navbarMobile) {
-      setAnimation(`animate__backOutRight`)
-      return "-325px"
+      setAnimation(`animate__backOutRight`);
+      return "-325px";
     } else {
-      setAnimation(`animate__backInRight`)
-      return "0"
+      setAnimation(`animate__backInRight`);
+      return "0";
     }
   }};
   width: 80%;
@@ -120,7 +120,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     margin-bottom: 2rem;
     width: 100%;
   }
-`
+`;
 export const NavBarProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -144,20 +144,40 @@ export const NavBarProfileContainer = styled.div`
   @media (min-width: 768px) {
     display: none;
   }
-`
+`;
 export const UlNavBar = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   overflow: auto;
+  ::-webkit-scrollbar {
+    background-color: transparent;
+    width: 1px;
+  }
+  ::-webkit-scrollbar-track {
+    display: hidden;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+  ::-webkit-scrollbar-thumb:active {
+    background-color: var(--white);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--white);
+  }
   @media (min-width: 768px) {
+    width: 100%;
+    display: flex;
+    align-items: center;
     gap: 1rem;
     overflow: hidden;
     height: 100%;
     padding-top: 0.3rem;
   }
-`
+`;
 export const LiNavBar = styled.li`
+  width: 100%;
   display: flex;
   align-items: center;
   height: 50px;
@@ -202,7 +222,7 @@ export const LiNavBar = styled.li`
       display: none;
     }
   }
-`
+`;
 export const LogoutCont = styled.div`
   display: flex;
   align-items: center;
@@ -250,4 +270,4 @@ export const LogoutCont = styled.div`
       display: none;
     }
   }
-`
+`;
