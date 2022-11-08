@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iAllUsers } from "../../pages/AllUsersPage/types";
@@ -25,7 +31,9 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
       if (userId) {
         try {
-          const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions`);
+          const { data } = await api.get<iUser>(
+            `/users/${userId}?_embed=questions`
+          );
           const token = localStorage.getItem("@Token-ProSupport");
           api.defaults.headers.common.authorization = `Bearer ${token}`;
           setUser(data);
@@ -54,6 +62,18 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     } finally {
       //Loading(false)
     }
+  }
+
+  async function getMyProfile() {
+    const userId = localStorage.getItem("@userID-ProSupport");
+    try {
+      const { data } = await api.get<iUser>(
+        `/users/${userId}?_embed=questions&_embed=responses`
+      );
+      setUser(data);
+    } catch (error) {
+      console.log(error)
+    } 
   }
 
   async function handleRegister(data: iRegister) {
@@ -123,6 +143,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
         getAllUsers,
         loading,
         setLoading,
+        getMyProfile
       }}
     >
       {children}

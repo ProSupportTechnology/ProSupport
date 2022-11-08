@@ -26,6 +26,17 @@ export interface iUser {
   image: string
   id: string
   admin?: boolean
+  questions: iQuestion[]
+  map(arg0: (element: iResponse) => void): ReactNode;
+  responses?: {
+     map(arg0: (element: iResponse) => void): ReactNode;
+    title: string,
+    description: string,
+    tech: string,
+    userId: number,
+    id: number,
+    length: number
+  }
 }
 
 export interface iUserContext {
@@ -37,14 +48,15 @@ export interface iUserContext {
   getAllUsers(): Promise<iAllUsers | undefined>
   loading: boolean
   setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  getMyProfile(): Promise<void>
 }
 
 export interface iQuestion {
   title: string
   description: string
   tech: string
-  userId: number
-  id: number
+  userId: string
+  id: string
   responses: {
     map(arg0: (element: iResponse) => void): ReactNode;
     title: string,
