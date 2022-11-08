@@ -3,9 +3,6 @@ import styled from "styled-components";
 export const StyledLandingPage = styled.div`
   display: flex;
   flex-direction: column;
-  background-image: url("https://i.imgur.com/xNMEX8F.png");
-  background-size: cover;
-  background-repeat: no-repeat;
   min-height: 100vh;
   main {
     margin-top: 120px;
