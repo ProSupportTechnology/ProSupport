@@ -19,7 +19,7 @@ export const StyledMainUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
   height: 100vh;
   margin-top: 50px;
 
@@ -27,7 +27,7 @@ export const StyledMainUser = styled.div`
     color: var(--white);
     text-align: left;
     font-size: 1rem;
-    
+
     margin: 30px 10px;
     height: auto;
   }
@@ -59,4 +59,3 @@ export const StyledMainUser = styled.div`
     border-radius: 5px;
   }
 `;
-
