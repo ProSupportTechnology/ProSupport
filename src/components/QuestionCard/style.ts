@@ -6,7 +6,6 @@ export const StyledQuestionCard = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   color: var(--gray-0);
-  margin-bottom: 10px;
   gap: 0.5rem;
   transition: 0.5s;
   padding: 0px;

@@ -36,7 +36,7 @@ export const QuestionCard = ({
           </div>
         </div>
       </div>
-      <span>{date}</span>
+      {/* <span>{date}</span> */}
     </StyledQuestionCard>
   );
 };

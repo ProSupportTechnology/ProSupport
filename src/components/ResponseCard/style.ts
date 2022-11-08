@@ -6,11 +6,9 @@ export const StyledResponseCard = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   color: var(--gray-0);
-  margin-bottom: 10px;
   gap: 0.5rem;
   transition: 0.5s;
   padding: 0px;
-  margin-bottom: 20px;
 
   &:hover > div {
     background: #4f4d8c;
@@ -31,7 +29,7 @@ export const StyledResponseCard = styled.div`
     justify-content: space-between;
     gap: 1rem;
     padding: 60px 35px;
-    background-color: var(--color-primary);
+    background-color: var(--gray-2);
     border: 1px solid var(--gray-1);
     border-radius: 20px;
     transition: 0.5s;
