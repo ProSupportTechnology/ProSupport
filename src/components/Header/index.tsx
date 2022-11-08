@@ -11,7 +11,7 @@ import {
   UlNavBar,
 } from "./style";
 import logo from "../../assets/ProSupport.png";
-import photo from "../../assets/photo.png";
+import photoProfile from "../../assets/photo.png";
 import { HiHome, HiUser, HiChatBubbleLeftRight, HiUsers } from "react-icons/hi2";
 import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
@@ -29,7 +29,7 @@ export const Header = () => {
   // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
   // verificar se tem img para coloca :D
 
-  const { email, name } = user;
+  const { email, name, admin, image } = user;
 
   if (!user) return null;
 
@@ -45,11 +45,11 @@ export const Header = () => {
       >
         <NavBarProfileContainer>
           <StyledImageQuestion>
-            <img src={photo} alt="imagem-profile" />
+            <img src={image ? image : photoProfile} alt="foto de perfil" />
           </StyledImageQuestion>
           <h2 className="title three">{name}</h2>
-          <span className="text three">Desenvolvedor</span>
-          <span className="text three">Email: {email}</span>
+          <span>{admin ? `Admin` : `Usuario`}</span>
+          <span className="text three">{email}</span>
         </NavBarProfileContainer>
         {(search &&
           <div className="divInput">
