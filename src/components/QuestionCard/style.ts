@@ -4,15 +4,19 @@ export const StyledQuestionCard = styled.li`
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 200px;
-  width: 98%;
-  color: var(--gray-0);
   gap: 8px;
+  height: 150px;
+  width: 99%;
+  color: var(--gray-0);
+  padding: 12px;
   transition: 0.5s;
   background: -webkit-linear-gradient(to left, #000000, #434343);
   background: linear-gradient(to left, #000000, #434343);
   border: 2px solid var(--gray-1);
   border-radius: 20px;
+  @media (min-width: 768px) {
+    height: 180px;
+  }
 
   &:hover {
     background: #4f4d8c;
@@ -25,83 +29,73 @@ export const StyledQuestionCard = styled.li`
     );
     box-shadow: 10px 10px 20px black;
   }
-  .imageContainer {
+  .mobileContainer {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    width: 145px;
+    gap: 8px;
+    width: 70%;
+    height: 100%;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      width: 100%;
+    }
   }
-
+  .imageContainer {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    width: 145px;
+    @media (min-width: 768px) {
+      align-items: center;
+    }
+    figure {
+      display: none;
+      @media (min-width: 768px) {
+        display: unset;
+      }
+    }
+  }
   .textContainer {
     height: 100%;
-    width: 60%;
+    width: 100%;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     gap: 16px;
   }
   .btnContainer {
-    width: 20%;
+    width: 30%;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    @media (min-width: 768px) {
+      width: 20%;
+    }
   }
   .techConatiner {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    button {
+    & > p {
+      border: solid 1px var(--white);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      padding: 0 5px;
+      @media (min-width: 768px) {
+      }
+    }
+    & > button {
       background-color: transparent;
       color: var(--white);
-      font-size: 1rem;
+      font-size: 2rem;
       &:hover {
-      transform: scale(1.2);
-      transition: 0.1s;
-    }
-    }
-  }
-
-  .buttonReply {
-    align-self: flex-end;
-  }
-
-  @media (min-width: 768px) {
-    height: 200px;
-
-    .imageContainer {
-      border-radius: 20px;
-
-      figure {
-        width: 150px;
-        height: 150px;
-        border-radius: 20px;
+        transform: scale(1.2);
+        transition: 0.1s;
       }
-
-      img {
-        border-radius: 20px;
-      }
-    }
-
-    div {
-      padding: 10px;
-      background: none;
-      border-radius: none;
-    }
-    .button {
-      cursor: pointer;
-      transform: scale(1);
-
-      &:hover {
-        transform: scale(1.5);
-      }
-    }
-
-    .questionContent {
-      min-height: 200px;
-      background-color: #4f4d8c;
     }
   }
 `;
