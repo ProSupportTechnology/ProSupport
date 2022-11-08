@@ -13,7 +13,7 @@ import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuesti
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
-  const { email, name, admin, image, bio } = user;
+  const { email, name, admin, image } = user;
   const {
     allQuestions,
     searchedQuestion,
