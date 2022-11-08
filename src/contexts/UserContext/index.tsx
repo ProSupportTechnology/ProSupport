@@ -1,9 +1,17 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { iDataEditUser } from "../../components/Modal/ModalEditProfile/types";
 import { iAllUsers } from "../../pages/AllUsersPage/types";
 import { iLogin } from "../../pages/LoginPage/components/FormLogin/types";
 import { api } from "../../services/api";
+import { useQuestionContext } from "../QuestionContext";
 import { iRegister, iResponseLogin, iUser, iUserContext } from "./types";
 
 interface iUserContextProps {
@@ -15,8 +23,10 @@ const UserContext = createContext<iUserContext>({} as iUserContext);
 export const UserProvider = ({ children }: iUserContextProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<iUser>({} as iUser);
-  const [token, setToken] = useState({});
   const [loading, setLoading] = useState<boolean>(false);
+  const [idUserToDelete, setIdUserToDelete] = useState<string | number>("");
+
+  const { setIsModDeleteUser } = useQuestionContext();
 
   useEffect(() => {
     async function getUser() {
@@ -25,7 +35,9 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
       if (userId) {
         try {
-          const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions`);
+          const { data } = await api.get<iUser>(
+            `/users/${userId}?_embed=questions`
+          );
           const token = localStorage.getItem("@Token-ProSupport");
           api.defaults.headers.common.authorization = `Bearer ${token}`;
           setUser(data);
@@ -88,23 +100,26 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     }
   }
 
-  async function editUser(id: iUser, body: iUser) {
+  async function editUser(data: iDataEditUser) {
+    const id = localStorage.getItem("@userID-ProSupport");
     setLoading(true);
     try {
-      const response = await api.patch<iUser>(`/users/${id}`, body);
+      const response = await api.patch<iUser>(`/users/${id}`, data);
       setUser(response.data);
+      toast.success("Usuário editado com sucesso!");
     } catch (error) {
+      toast.error("Não foi possível editar o usuário.");
       console.error(error);
     } finally {
       setLoading(false);
     }
   }
 
-  async function deleteUser(id: iUser) {
+  async function deleteUser(id: number | string) {
     setLoading(true);
     try {
-      const response = await api.delete(`/users/${id}`);
-      console.log(response);
+      await api.delete(`/users/${id}`);
+      toast.success("Usuário deletado com sucesso!");
     } catch (error) {
       console.error(error);
     } finally {
@@ -123,6 +138,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
         getAllUsers,
         loading,
         setLoading,
+        setIdUserToDelete,
+        idUserToDelete,
       }}
     >
       {children}

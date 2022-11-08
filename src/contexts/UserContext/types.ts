@@ -1,66 +1,68 @@
-import { ReactNode } from "react"
-import { iAllUsers } from "../../pages/AllUsersPage/types"
+import { Dispatch, ReactNode, SetStateAction } from "react";
+import { iDataEditUser } from "../../components/Modal/ModalEditProfile/types";
+import { iAllUsers } from "../../pages/AllUsersPage/types";
 
 export interface iRegister {
-  name: string
-  email: string
-  password: string
-  confirmPassword: string
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
 }
 
 export interface iLogin {
-  email: string
-  password: string
+  email: string;
+  password: string;
 }
 
 export interface iResponseLogin {
-  accessToken: string
-  user: iUser
+  accessToken: string;
+  user: iUser;
 }
 
 export interface iUser {
-  email: string
-  password?: string
-  name: string
-  bio: string
-  image: string
-  id: string
-  admin?: boolean
+  email: string;
+  password?: string;
+  name: string;
+  bio: string;
+  image: string;
+  id: string;
+  admin?: boolean;
 }
 
 export interface iUserContext {
-  handleRegister(data: iRegister): Promise<void>
-  handleLogin(data: iLogin): Promise<void>
-  editUser(id: iUser, body: iUser): Promise<void>
-  deleteUser(id: iUser): Promise<void>
-  user: iUser
-  getAllUsers(): Promise<iAllUsers | undefined>
-  loading: boolean
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  handleRegister(data: iRegister): Promise<void>;
+  handleLogin(data: iLogin): Promise<void>;
+  editUser: any;
+  deleteUser: (id: number | string) => Promise<void>;
+  user: iUser;
+  getAllUsers(): Promise<iAllUsers | undefined>;
+  loading: boolean;
+  setLoading: Dispatch<SetStateAction<boolean>>;
+  setIdUserToDelete: Dispatch<SetStateAction<string | number>>;
+  idUserToDelete: string | number;
 }
 
 export interface iQuestion {
-  title: string
-  description: string
-  tech: string
-  userId: number
-  id: number
+  title: string;
+  description: string;
+  tech: string;
+  userId: number;
+  id: number;
   responses: {
     map(arg0: (element: iResponse) => void): ReactNode;
-    title: string,
-    description: string,
-    tech: string,
-    userId: number,
-    id: number,
-    length: number
-  }
-  ; 
+    title: string;
+    description: string;
+    tech: string;
+    userId: number;
+    id: number;
+    length: number;
+  };
   user: iUser;
 }
 
 interface iResponse {
-  description: string,
-  id: number,
-  questionId: number,
-  userId: number,
+  description: string;
+  id: number;
+  questionId: number;
+  userId: number;
 }

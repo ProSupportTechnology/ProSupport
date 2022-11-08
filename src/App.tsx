@@ -5,11 +5,11 @@ import Routes from "./routes";
 export const App = () => {
   return (
     <>
-      <QuestionProvider>
-        <UserProvider>
+      <UserProvider>
+        <QuestionProvider>
           <Routes />
-        </UserProvider>
-      </QuestionProvider>
+        </QuestionProvider>
+      </UserProvider>
     </>
   );
 };
