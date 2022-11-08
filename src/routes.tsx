@@ -5,6 +5,7 @@ import { useUserContext } from "./contexts/UserContext"
 import { AllUsersPage } from "./pages/AllUsersPage"
 import { AnsweredQuestions } from "./pages/AnsweredQuestions"
 import { DashboardAdm } from "./pages/Dashboard/DashboardAdm"
+import { DashboardUser } from "./pages/Dashboard/DashboardUser"
 import { LandingPage } from "./pages/LandingPage"
 import { LoginPage } from "./pages/LoginPage"
 import { Profile } from "./pages/Profile"
@@ -20,7 +21,7 @@ const RoutesMain = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route element={<AuthRoutes />}>
-          <Route path="/dashboard" element={<DashboardAdm />} />
+          <Route path="/dashboard" element={<DashboardUser />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<AllUsersPage />} />
           <Route path="/answeredQuestions" element={<AnsweredQuestions />} />

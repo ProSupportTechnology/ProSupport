@@ -27,6 +27,7 @@ export interface iUser {
   image: string;
   id: string;
   admin?: boolean;
+  questions?: iQuestion[]
 }
 
 export interface iUserContext {
@@ -40,14 +41,15 @@ export interface iUserContext {
   setLoading: Dispatch<SetStateAction<boolean>>;
   setIdUserToDelete: Dispatch<SetStateAction<string | number>>;
   idUserToDelete: string | number;
+  getMyProfile(): Promise<void>
 }
 
 export interface iQuestion {
   title: string;
   description: string;
   tech: string;
-  userId: number;
-  id: number;
+  userId: string;
+  id: string;
   responses: {
     map(arg0: (element: iResponse) => void): ReactNode;
     title: string;

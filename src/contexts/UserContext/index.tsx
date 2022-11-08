@@ -68,6 +68,18 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     }
   }
 
+  async function getMyProfile() {
+    const userId = localStorage.getItem("@userID-ProSupport");
+    try {
+      const { data } = await api.get<iUser>(
+        `/users/${userId}?_embed=questions&_embed=responses`
+      );
+      setUser(data);
+    } catch (error) {
+      console.log(error)
+    } 
+  }
+
   async function handleRegister(data: iRegister) {
     setLoading(true);
     try {
@@ -138,6 +150,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
         getAllUsers,
         loading,
         setLoading,
+        getMyProfile,
         setIdUserToDelete,
         idUserToDelete,
       }}
