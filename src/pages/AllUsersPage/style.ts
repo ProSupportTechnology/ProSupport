@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledAllUsersPage = styled.div`
   main {
@@ -29,13 +29,6 @@ export const StyledAllUsersPage = styled.div`
             width: 110px;
             min-width: 110px;
             height: 120px;
-          }
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
           }
         }
 
@@ -72,4 +65,4 @@ export const StyledAllUsersPage = styled.div`
       }
     }
   }
-`
+`;
