@@ -8,12 +8,19 @@ import { InputSearch } from "../../../components/InputSearch";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
-import { StyledList } from "../../AnsweredQuestions/style";
+import { ModalCreateResponse } from "../../../components/Modal/ModalCreateResponse";
+import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuestion";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image, bio } = user;
-  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
+  const {
+    allQuestions,
+    searchedQuestion,
+    setQuestionId,
+    isModCreateRespOpen,
+    isModDeleteQuestOpen,
+  } = useQuestionContext();
   const [teste, setTeste] = useState([] as iQuestion[]);
 
   useEffect(() => {
@@ -28,6 +35,9 @@ export const DashboardAdm = () => {
 
   return (
     <StyledDashboard className="backgroundDash">
+      {isModCreateRespOpen && <ModalCreateResponse />}
+      {isModDeleteQuestOpen && <ModalDeleteQuestion />}
+
       <Header />
       <main className="containerDash">
         <div>
@@ -56,38 +66,34 @@ export const DashboardAdm = () => {
             {teste.length
               ? teste.map((element) => {
                   return (
-                    <StyledList key={element.id}>
-                      <QuestionCard
-                        key={element.id}
-                        title={element.title}
-                        tech={element.tech}
-                        description={element.description}
-                        username={name}
-                        image={image}
-                        setQuestionId={setQuestionId}
-                        questionId={element.id}
-                        userQuestionId={element.userId}
-                        date={new Date().toISOString()}
-                      ></QuestionCard>
-                    </StyledList>
+                    <QuestionCard
+                      key={element.id}
+                      title={element.title}
+                      tech={element.tech}
+                      description={element.description}
+                      username={name}
+                      image={image}
+                      setQuestionId={setQuestionId}
+                      questionId={element.id}
+                      userQuestionId={element.userId}
+                      date={new Date().toISOString()}
+                    ></QuestionCard>
                   );
                 })
               : allQuestions.map((element) => {
                   return (
-                    <StyledList key={element.id}>
-                      <QuestionCard
-                        key={element.id}
-                        title={element.title}
-                        tech={element.tech}
-                        description={element.description}
-                        username={user.name}
-                        image={user.image}
-                        setQuestionId={setQuestionId}
-                        questionId={element.id}
-                        userQuestionId={element.userId}
-                        date={new Date().toISOString()}
-                      ></QuestionCard>
-                    </StyledList>
+                    <QuestionCard
+                      key={element.id}
+                      title={element.title}
+                      tech={element.tech}
+                      description={element.description}
+                      username={user.name}
+                      image={user.image}
+                      setQuestionId={setQuestionId}
+                      questionId={element.id}
+                      userQuestionId={element.userId}
+                      date={new Date().toISOString()}
+                    ></QuestionCard>
                   );
                 })}
           </ul>
