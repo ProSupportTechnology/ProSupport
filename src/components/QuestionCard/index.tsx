@@ -23,15 +23,17 @@ export const QuestionCard = ({
   return (
     <>
       <StyledQuestionCard>
-        <div className="imageContainer">
-          <StyledImageQuestion>
-            <img src={image ? image : photoProfile} alt="foto de perfil" />
-          </StyledImageQuestion>
-          <p>{username}</p>
-        </div>
-        <div className="textContainer">
-          <p className="text one">{title}</p>
-          <span className="text two">{description}</span>
+        <div className="mobileContainer">
+          <div className="imageContainer">
+            <StyledImageQuestion>
+              <img src={image ? image : photoProfile} alt="foto de perfil" />
+            </StyledImageQuestion>
+            <p>{username}</p>
+          </div>
+          <div className="textContainer">
+            <p className="text one">{title}</p>
+            <span className="text two">{description}</span>
+          </div>
         </div>
         <div className="btnContainer">
           <div className="techConatiner">
