@@ -82,20 +82,19 @@ ul, ol, li {
 }
 
 .containerDash{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 30px;
-        width: 100%;
-        height: 100vh;
-    }
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 130px 15px 40px 15px;
 
+  @media (min-width: 768px) {
+    padding: 50px 50px 40px 180px;
+  }
+}
 
-    .backgroundDash{
-        background-image: url("https://i.imgur.com/xNMEX8F.png");
-        background-size: cover;
-        background-repeat: no-repeat;
-        height: 100%;
-        width: 100vw;
-    }
+.backgroundDash{
+  background-image: url("Bg-images/Background1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
 `;

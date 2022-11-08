@@ -1,19 +1,13 @@
 import { StyledRegister } from "../SignupPage/style";
 import { FormLogin } from "./components/FormLogin";
-import Background from "../../assets/Landing2.jpg";
-import Login from "../../assets/Login1.png";
 import { StyledButtonLink } from "../../style/buttonLink/style";
+import logo from "../../assets/logo.png";
 
 export const LoginPage = () => {
   return (
-    <StyledRegister style={{ backgroundImage: `url(${Background})` }}>
-      <div
-        className="containerRegisterLogin"
-        style={{
-          backgroundImage: `url(${Login})`,
-          backgroundPosition: "center",
-        }}
-      >
+    <StyledRegister>
+      <div className="containerRegisterLogin">
+        <img src={logo} alt="Logo Pro Support" />
         <StyledButtonLink variant="theme-register-login" to="/signup">
           Cadastre-se
         </StyledButtonLink>

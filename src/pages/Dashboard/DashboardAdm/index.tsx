@@ -20,29 +20,31 @@ export const DashboardAdm = () => {
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
     setTeste(testee);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedQuestion]);
 
+  if (!user) return null;
+
   return (
-    <StyledDashboard>
+    <StyledDashboard className="backgroundDash">
       <Header />
-      <div className="backgroundDash">
-        <div className="containerDash">
+      <main className="containerDash">
+        <div>
           <StyledAdminCard>
             <StyledImageQuestion>
-              <img src={user.user.image ? user.user.image : userImg} alt="foto de perfil" />
+              <img src={user.image ? user.image : userImg} alt="foto de perfil" />
             </StyledImageQuestion>
             <div className="userContent">
-              <h1>{user.user.name}</h1>
+              <h1>{user.name}</h1>
               <p>Desenvolvedor</p>
               <p>
                 Status: <span>Online</span>
               </p>
             </div>
           </StyledAdminCard>
-          {user.user.bio && (
+          {user.bio && (
             <div className="userBio">
-              <p>{user.user.bio}</p>
+              <p>{user.bio}</p>
             </div>
           )}
           <div className="search">
@@ -57,6 +59,7 @@ export const DashboardAdm = () => {
                   return (
                     <StyledList key={element.id}>
                     <QuestionCard
+                      key={element.id}
                       title={element.title}
                       tech={element.tech}
                       description={element.description}
@@ -71,6 +74,7 @@ export const DashboardAdm = () => {
                   return (
                     <StyledList key={element.id}>
                     <QuestionCard
+                      key={element.id}
                       title={element.title}
                       tech={element.tech}
                       description={element.description}
@@ -83,7 +87,7 @@ export const DashboardAdm = () => {
                 })}
           </ul>
         </div>
-      </div>
+      </main>
     </StyledDashboard>
   );
 };

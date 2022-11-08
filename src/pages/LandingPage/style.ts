@@ -7,12 +7,15 @@ export const StyledLandingPage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  main {
+    margin-top: 120px;
+  }
 
   @media (min-width: 1024px) {
     overflow-x: hidden;
 
     main {
-      margin: 20px 0;
+      margin: 120px 0;
       display: flex;
       flex-direction: column;
       justify-content: space-around;

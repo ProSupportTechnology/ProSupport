@@ -9,29 +9,31 @@ import {
   NavBar,
   NavBarProfileContainer,
   UlNavBar,
-} from "./style"
-import logo from "../../assets/ProSupport.png"
-import photo from "../../assets/photo.png"
-import { HiHome, HiUser, HiChatBubbleLeftRight, HiUsers } from "react-icons/hi2"
-import { GiEntryDoor } from "react-icons/gi"
-import { useState } from "react"
-import { InputSearch } from "../InputSearch"
-import { StyledButtonLink } from "../../style/buttonLink/style"
-import { useUserContext } from "../../contexts/UserContext"
-import { StyledImageQuestion } from "../ImageProfile/style"
-import { useLocation } from "react-router-dom"
+} from "./style";
+import logo from "../../assets/ProSupport.png";
+import photo from "../../assets/photo.png";
+import { HiHome, HiUser, HiChatBubbleLeftRight, HiUsers } from "react-icons/hi2";
+import { GiEntryDoor } from "react-icons/gi";
+import { useState } from "react";
+import { InputSearch } from "../InputSearch";
+import { StyledButtonLink } from "../../style/buttonLink/style";
+import { useUserContext } from "../../contexts/UserContext";
+import { StyledImageQuestion } from "../ImageProfile/style";
+import { useLocation } from "react-router-dom";
 
 export const Header = () => {
-  const [navbarMobile, setNavbarMobile] = useState(false)
-  const { user } = useUserContext()
-  const [animation, setAnimation] = useState(``)
-  const location = useLocation()
+  const [navbarMobile, setNavbarMobile] = useState(false);
+  const { user } = useUserContext();
+  const [animation, setAnimation] = useState(``);
+  const location = useLocation();
   // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
   // verificar se tem img para coloca :D
 
-  const { email, name } = user.user || user
+  const { email, name } = user;
 
-  if (!user) return null
+  if (!user) return null;
+
+  const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true
 
   return (
     <HeaderContainer>
@@ -49,7 +51,7 @@ export const Header = () => {
           <span className="text three">Desenvolvedor</span>
           <span className="text three">Email: {email}</span>
         </NavBarProfileContainer>
-        {location.pathname !== `/profile` && (
+        {(search &&
           <div className="divInput">
             <InputSearch />
           </div>
@@ -58,7 +60,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
               <h3 className="title two">Home</h3>
-              <div>
+              <div title="Home">
                 <HiHome />
               </div>
             </StyledButtonLink>
@@ -66,7 +68,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/profile`}>
               <h3 className="title two">Perfil</h3>
-              <div>
+              <div title="Perfil">
                 <HiUser />
               </div>
             </StyledButtonLink>
@@ -74,7 +76,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
               <h3 className="title two">Perguntas/Respostas</h3>
-              <div>
+              <div title="Perguntas/Respostas">
                 <HiChatBubbleLeftRight />
               </div>
             </StyledButtonLink>
@@ -82,7 +84,7 @@ export const Header = () => {
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/users`}>
               <h3 className="title two">Usuarios</h3>
-              <div>
+              <div title="Usuario">
                 <HiUsers />
               </div>
             </StyledButtonLink>
@@ -91,7 +93,7 @@ export const Header = () => {
         <LogoutCont>
           <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
             <h3 className="title two">Sair</h3>
-            <div>
+            <div title="Sair">
               <GiEntryDoor />
             </div>
           </StyledButtonLink>
@@ -106,5 +108,5 @@ export const Header = () => {
         </label>
       </MenuMobile>
     </HeaderContainer>
-  )
-}
+  );
+};

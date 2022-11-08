@@ -1,4 +1,4 @@
-import logo from "../../assets/ProSupport.png";
+import logo from "../../assets/logo.png";
 import { StyledButtonLink } from "../../style/buttonLink/style";
 import { StyledHeaderLandingPage } from "./style";
 

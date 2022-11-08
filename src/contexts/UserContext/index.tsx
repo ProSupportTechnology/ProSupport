@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { iAllUsers } from "../../pages/AllUsersPage/types";
 import { iLogin } from "../../pages/LoginPage/components/FormLogin/types";
 import { api } from "../../services/api";
-import { iRegister, iUser, iUserContext } from "./types";
+import { iRegister, iResponseLogin, iUser, iUserContext } from "./types";
 
 interface iUserContextProps {
   children: ReactNode;
@@ -70,29 +70,27 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       await api.post<iRegister>("/users", data);
       toast.success("Conta criada com sucesso");
       navigate("/login");
-    } catch {
+    } catch (error) {
       toast.error("Falha ao criar a conta");
     } finally {
       setLoading(false);
     }
   }
 
-  async function handleLogin(data: iLogin) {
+  async function handleLogin(body: iLogin) {
     setLoading(true);
     try {
-      const response = await api.post<iUser>("/login", data);
+      const response = await api.post<iResponseLogin>("/login", body);
       toast.success("Login efetuado com sucesso");
+      console.log(response);
 
-      window.localStorage.setItem(
-        "@Token-ProSupport",
-        response.data.accessToken
-      );
-      window.localStorage.setItem("@userID-ProSupport", response.data.user.id);
-      setToken(response.data.accessToken);
-      setUser(response.data);
+      localStorage.setItem("@Token-ProSupport", response.data.accessToken);
+      localStorage.setItem("@userID-ProSupport", response.data.user.id);
+      setUser(response.data.user);
       navigate("/dashboard");
-    } catch {
-      toast.error("Falha ao criar a conta");
+    } catch (error) {
+      console.error(error);
+      toast.error("Falha ao efetuar o login");
     } finally {
       setLoading(false);
     }
@@ -101,7 +99,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   async function editUser(id: iUser, body: iUser) {
     setLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
       const response = await api.patch<iUser>(`/users/${id}`, body);
       setUser(response.data);
     } catch (error) {
@@ -114,7 +111,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   async function deleteUser(id: iUser) {
     setLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
       const response = await api.delete(`/users/${id}`);
       console.log(response);
     } catch (error) {
@@ -129,6 +125,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       value={{
         handleRegister,
         handleLogin,
+        editUser,
+        deleteUser,
         user,
         getAllUsers,
         loading,
