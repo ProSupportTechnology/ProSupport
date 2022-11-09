@@ -15,7 +15,7 @@ export const StyledRegister = styled.div`
     background-image: url("Bg-images/Bg-login-signup.png");
     width: 90%;
     max-width: 400px;
-    min-height: 270px;
+    /* min-height: 270px; */
     height: 40%;
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@ export const StyledRegister = styled.div`
       }
     }
     img {
-      width: 100%;
+      width: 78%;
       @media (min-width: 1000px) {
         width: 100%;
       }
