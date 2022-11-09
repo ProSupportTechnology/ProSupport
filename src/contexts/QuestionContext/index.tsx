@@ -94,7 +94,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const date = new Date().toISOString();
     const body = { ...data, userId: id, created_at: date };
     try {
-      await api.post<iDataQuestion>("/questions", body);
+      const response = await api.post<iDataQuestion>("/questions", body);
+      // setAllQuestions([...allQuestions, response])
       toast.success("Pergunta enviada com sucesso.");
       setIsModCreateQuestOpen(false);
     } catch (error) {

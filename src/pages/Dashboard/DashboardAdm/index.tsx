@@ -17,6 +17,7 @@ export const DashboardAdm = () => {
   const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
     useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
+  console.log(ask);
 
   useEffect(() => {
     const filtered = allQuestions.filter((element) =>
@@ -83,7 +84,7 @@ export const DashboardAdm = () => {
                   ></QuestionCard>
                 );
               })}
-          {ask.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
+          {allQuestions.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
         </ul>
       </main>
     </StyledDashboard>
