@@ -5,3 +5,5 @@ export interface iDataEditUser {
   bio: string;
   image: string;
 }
+
+export type iKeys = "name" | "email" | "password" | "password" | "bio" | "image";
