@@ -73,17 +73,15 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     setLoading(true);
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
-
     delete data.confirmPassword;
-
-    console.log(data.confirmPassword);
-    // try {
-    //   await api.post<iRegister>("/users", data);
-    //   toast.success("Conta criada com sucesso");
-    //   navigate("/login");
-    // } catch (error) {
-    //   toast.error("Falha ao criar a conta");
-    // } finally {
+    
+    try {
+      await api.post<iRegister>("/users", data);
+      toast.success("Conta criada com sucesso");
+      navigate("/login");
+    } catch (error) {
+      toast.error("Falha ao criar a conta");
+    } finally {
     setLoading(false);
     // }
   }
