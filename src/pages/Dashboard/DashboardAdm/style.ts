@@ -51,7 +51,7 @@ export const StyledDashboard = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    height: 100%;
+    height: 650px;
 
     overflow: hidden;
     overflow-y: auto;
@@ -119,6 +119,7 @@ export const StyledDashboard = styled.div`
     font-size: 1rem;
     color: var(--white);
     text-align: center;
+    margin-top: 40px;
   }
 
   @media (max-width: 770px) {

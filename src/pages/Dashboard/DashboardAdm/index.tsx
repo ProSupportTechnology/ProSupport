@@ -83,9 +83,37 @@ export const DashboardAdm = () => {
                     date={new Date().toISOString()}
                   ></QuestionCard>
                 );
-              })} : <h2 className="noQuestions">Não há perguntas no momento</h2>
+              })} 
+              {ask.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
         </ul>
       </main>
     </StyledDashboard>
   );
 };
+
+// : asnwered.length ? (
+//   asnwered.map((element) => {
+//     return (
+//       <li key={element.id}>
+//         <QuestionCard
+//           setQuestionId={setQuestionId}
+//           questionId={element.id}
+//           userQuestionId={element.userId}
+//           title={element.title}
+//           tech={element.tech}
+//           description={element.description}
+//           username={element.user.name}
+//           image={element.user.image}
+//           date={new Date().toISOString()}
+//         ></QuestionCard>
+//         <ResponseCard
+//           array={element.responses}
+//           username={element.user.name}
+//           image={element.user.image}
+//         ></ResponseCard>
+//       </li>
+//     );
+//   })
+// ) : (
+//   <h2 className="noQuestions">Não possui perguntas Respondidas</h2>
+// )}
