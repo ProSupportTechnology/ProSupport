@@ -20,7 +20,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [responseId, setResponseId] = useState<number>(0);
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
-  const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
+  const [answeredQuestion, setAnsweredQuestion] = useState([] as iQuestion[]);
   const { getMyProfile } = useUserContext();
 
   const { setLoading } = useUserContext();
@@ -144,7 +144,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         allQuestions,
         searchedQuestion,
         answeredQuestion,
-        setAnsweredQuention,
+        setAnsweredQuestion,
         setSearchedQuestion,
         isModCreateQuestOpen,
         setIsModCreateQuestOpen,

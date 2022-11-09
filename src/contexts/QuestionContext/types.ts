@@ -33,7 +33,7 @@ export interface iQuestionProvider {
   allQuestions: iQuestion[];
   searchedQuestion: string;
   answeredQuestion: iQuestion[];
-  setAnsweredQuention: Dispatch<React.SetStateAction<iQuestion[]>>;
+  setAnsweredQuestion: Dispatch<React.SetStateAction<iQuestion[]>>;
   setSearchedQuestion: Dispatch<React.SetStateAction<string>>;
   createQuestion: (data: iDataQuestion) => Promise<void>;
   editQuestion: (data: iDataQuestion) => Promise<void>;
