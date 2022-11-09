@@ -18,9 +18,14 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } = useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } = useQuestionContext();
   const { user } = useUserContext();
   const { admin } = user;
+
+  function normalizeDate() {
+    return date.split("T", 1).join("").split("-").reverse().join("/");
+  }
+
   return (
     <>
       <StyledQuestionCard>
@@ -41,7 +46,6 @@ export const QuestionCard = ({
             <p className="text one">{tech}</p>
             <button
               onClick={() => {
-                setUserQuestionId(userQuestionId);
                 setQuestionId(questionId);
                 setIsModDeleteQuestOpen(true);
               }}
@@ -54,7 +58,6 @@ export const QuestionCard = ({
               variant={"default"}
               type="button"
               onClick={() => {
-                setUserQuestionId(userQuestionId);
                 setQuestionId(questionId);
                 setIsModCreateRespOpen(true);
               }}
@@ -64,7 +67,7 @@ export const QuestionCard = ({
           )}
         </div>
       </StyledQuestionCard>
-      {/* <span>{date}</span> */}
+      <span>{normalizeDate()}</span>
     </>
   );
 };
