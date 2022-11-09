@@ -12,6 +12,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
   return (
     <>
       {array.map((element: any) => {
+        console.log(element);
         return (
           <StyledResponseCard>
             <div className="mobileContainer">
@@ -25,8 +26,8 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
                 <p>{username}</p>
               </div>
               <div className="textContainer">
-                <p className="text one">Titulo</p>
-                <span className="text two">Descrição</span>
+                <p className="text one">Resposta:</p>
+                <span className="text two">{element.description}</span>
               </div>
             </div>
             <div className="btnContainer">
