@@ -19,6 +19,22 @@ export const StyledAllUsersPage = styled.div`
         background-color: var(--gray-3);
         padding: 16px;
         border-radius: 20px;
+        &:hover {
+          background: #4f4d8c;
+          background: linear-gradient(
+            90deg,
+            #4f4d8c 0%,
+            #807ddb 55%,
+            #5f5da6 100%
+          );
+          background: -webkit-linear-gradient(
+            90deg,
+            #4f4d8c 0%,
+            #807ddb 55%,
+            #5f5da6 100%
+          );
+          box-shadow: 10px 10px 20px black;
+        }
 
         figure {
           width: 100px;
