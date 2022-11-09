@@ -22,6 +22,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
   const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
+  const { getMyProfile } = useUserContext();
 
   const { setLoading } = useUserContext();
 
@@ -95,7 +96,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const body = { ...data, userId: id, created_at: date };
     try {
       await api.post<iQuestion>("/questions", body);
-      await getAllQuestions();
+      await getMyProfile();
       toast.success("Pergunta enviada com sucesso.");
       setIsModCreateQuestOpen(false);
     } catch (error) {
@@ -125,8 +126,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     setLoading(true);
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
+      await getMyProfile();
       toast.success("Pergunta deletada com sucesso!");
-      await getAllQuestions();
     } catch (error) {
       console.error(error);
     } finally {
