@@ -1,5 +1,27 @@
 import styled from "styled-components";
+import { StyledDashboard } from "../Dashboard/DashboardAdm/style";
 
-export const StyledList = styled.li` 
-margin-bottom: 80px;
-`
+export const StyledAnsweredQuestions = styled(StyledDashboard)`
+  .containerDash {
+    & > div {
+      display: none;
+      @media (min-width: 768px) {
+        display: flex;
+        width: 99%;
+      }
+    }
+    .questionArea {
+      height: 800px;
+      margin-top: 0;
+      @media (min-width: 768px) {
+        margin-top: 1rem;
+      }
+    }
+
+    .noQuestions {
+      font-size: 1rem;
+      color: var(--white);
+      text-align: center;
+    }
+  }
+`;

@@ -2,17 +2,10 @@ import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useUserContext } from "../UserContext";
-import { iQuestion, iUser } from "../UserContext/types";
-import {
-  iDataQuestion,
-  iDataResponse,
-  iQuestionContextProps,
-  iQuestionProvider,
-} from "./types";
+import { iQuestion } from "../UserContext/types";
+import { iDataQuestion, iDataResponse, iQuestionContextProps, iQuestionProvider } from "./types";
 
-const QuestionContext = createContext<iQuestionProvider>(
-  {} as iQuestionProvider
-);
+const QuestionContext = createContext<iQuestionProvider>({} as iQuestionProvider);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
@@ -26,8 +19,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [questionId, setQuestionId] = useState<string | number>("");
   const [userQuestionId, setUserQuestionId] = useState<string | number>("");
   const [responseId, setResponseId] = useState<string | number>("");
-
-  const getToken = localStorage.getItem("@Token-ProSupport");
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
   const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
@@ -38,7 +29,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     async function getAllQuestions() {
       setLoading(true);
       try {
-        api.defaults.headers.common.authorization = `Bearer ${getToken}`;
         const response = await api.get<iQuestion[]>(
           "/questions?_embed=responses&_limit=10&_sort=id&_order=desc&_expand=user"
         );
@@ -50,13 +40,13 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       }
     }
     getAllQuestions();
-  }, [getToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function answerQuestion(data: iDataResponse) {
-    const body = { ...data, questionId: questionId, userId: userQuestionId };
     setLoading(true);
+    const body = { ...data, questionId: questionId, userId: userQuestionId };
     try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       await api.post<iDataResponse>("/responses", body);
       toast.success("Resposta enviada com sucesso!");
       setIsModCreateRespOpen(false);
@@ -71,11 +61,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function editAnswer(data: iDataResponse) {
     setLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.patch<iDataResponse>(
-        `/responses/${responseId}`,
-        data
-      );
+      const response = await api.patch<iDataResponse>(`/responses/${responseId}`, data);
       console.log(response);
       toast.success("Resposta editada com sucesso!");
       setIsModEditRespOpen(false);
@@ -90,7 +76,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function deleteAnswer() {
     setLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       const response = await api.delete(`/responses/${responseId}`);
       toast.success("Resposta deletada com sucesso!");
       console.log(response);
@@ -103,11 +88,11 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   }
 
   async function createQuestion(data: iDataQuestion) {
-    let id = localStorage.getItem("@userID-ProSupport");
-    const body = { ...data, userId: id };
     setLoading(true);
+    const id = localStorage.getItem("@userID-ProSupport");
+    const date = new Date().toISOString();
+    const body = { ...data, userId: id, created_at: date };
     try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       await api.post<iDataQuestion>("/questions", body);
       toast.success("Pergunta enviada com sucesso.");
       setIsModCreateQuestOpen(false);
@@ -122,7 +107,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function editQuestion(data: iDataQuestion) {
     setLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       await api.patch<iDataQuestion>(`/questions/${questionId}`, data);
       toast.success("Pergunta editada com sucesso.");
       setIsModEditQuestOpen(false);
@@ -137,7 +121,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function deleteQuestion(id: string | number) {
     setLoading(true);
     try {
-      api.defaults.headers.common.authorization = `Bearer ${getToken}`;
       const response = await api.delete<iQuestion[]>(`/questions/${id}`);
       console.log(response);
       toast.success("Pergunta deletada com sucesso!");

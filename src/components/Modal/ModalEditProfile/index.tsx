@@ -4,7 +4,7 @@ import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { StyledButton } from "../../../style/button/style";
 import { ModalContainer } from "../ModalContainer";
 import { StyledEditUser } from "./style";
-import { iDataEditUser } from "./types";
+import { iDataEditUser, iKeys } from "./types";
 import { StyledInput } from "../../Input/style";
 import { userSchema } from "../../../schemas/userSchema";
 import { useUserContext } from "../../../contexts/UserContext";
@@ -20,6 +20,15 @@ export const ModalEditProfile = () => {
   } = useForm<iDataEditUser>({ resolver: yupResolver(userSchema) });
 
   function getData(data: iDataEditUser) {
+    const body = data;
+
+    for (let key in body) {
+      const keyTyped = key as iKeys;
+      if (!body[keyTyped]) {
+        delete data[keyTyped];
+      }
+    }
+
     editUser(data);
     setIsModEditProfile(false);
   }

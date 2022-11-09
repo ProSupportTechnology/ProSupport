@@ -85,27 +85,17 @@ export const Barra = styled.span`
 export const NavBar = styled.nav<iNavbarProps>`
   position: fixed;
   top: 100px;
-  right: ${({ navbarMobile, setAnimation }) => {
-    if (!navbarMobile) {
-      setAnimation(`animate__backOutRight`);
-      return "-325px";
-    } else {
-      setAnimation(`animate__backInRight`);
-      return "0";
-    }
-  }};
+  right: ${({ navbarMobile }) => (!navbarMobile ? "-325px" : "0")};
   width: 80%;
   max-width: 320px;
-  height: 80%;
+  height: max-content;
+  gap: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: var(--gray-2);
   border-radius: 0 0 0 15px;
   animation-duration: 1s;
-  figure {
-    width: 120px;
-  }
   .divInput {
     margin: 10px 5px;
     @media (min-width: 768px) {
@@ -113,6 +103,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     }
   }
   @media (min-width: 768px) {
+    height: 100%;
     position: static;
     background-color: transparent;
     align-items: center;
@@ -150,6 +141,7 @@ export const UlNavBar = styled.ul`
   flex-direction: column;
   gap: 0.5rem;
   overflow: auto;
+  height: 140px;
   ::-webkit-scrollbar {
     background-color: transparent;
     width: 1px;

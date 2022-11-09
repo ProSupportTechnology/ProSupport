@@ -1,10 +1,10 @@
-import { StyledImageProfile } from "../ImageProfile/style";
 import { StyledQuestionCard } from "./style";
-import { CgClose } from "react-icons/cg";
 import { iQuestionCard } from "./types";
-import waterDrops from "../../assets/waterDrops.png";
+import photoProfile from "../../assets/photo.png";
 import { useQuestionContext } from "../../contexts/QuestionContext";
 import { StyledButton } from "../../style/button/style";
+import { StyledImageQuestion } from "../ImageProfile/style";
+import { IoMdTrash } from "react-icons/io";
 
 export const QuestionCard = ({
   title,
@@ -13,45 +13,42 @@ export const QuestionCard = ({
   username,
   image,
   date,
-  children,
   questionId,
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } =
-    useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } = useQuestionContext();
 
   return (
-    <StyledQuestionCard>
-      <div>
-        <div className="techContainer">
-          <div>
-            <h2>{tech}</h2>
-          </div>
-          <CgClose
-            className="button"
-            onClick={() => {
-              setUserQuestionId(userQuestionId);
-              setQuestionId(questionId);
-              setIsModDeleteQuestOpen(true);
-            }}
-          />
-        </div>
-        <div className="textContainer">
+    <>
+      <StyledQuestionCard>
+        <div className="mobileContainer">
           <div className="imageContainer">
-            <StyledImageProfile>
-              <img src={waterDrops} alt="userphoto" />
-            </StyledImageProfile>
-            <h2>{username}</h2>
+            <StyledImageQuestion>
+              <img src={image ? image : photoProfile} alt="foto de perfil" />
+            </StyledImageQuestion>
+            <p>{username}</p>
           </div>
-          <div className="questionContent">
-            <h2>{title}</h2>
-            <p>{description}</p>
-            {children}
+          <div className="textContainer">
+            <p className="text one">{title}</p>
+            <span className="text two">{description}</span>
+          </div>
+        </div>
+        <div className="btnContainer">
+          <div className="techConatiner">
+            <p className="text one">{tech}</p>
+            <button
+              onClick={() => {
+                setUserQuestionId(userQuestionId);
+                setQuestionId(questionId);
+                setIsModDeleteQuestOpen(true);
+              }}
+            >
+              <IoMdTrash />
+            </button>
           </div>
           <StyledButton
             variant={"default"}
-            className="buttonReply"
             type="button"
             onClick={() => {
               setUserQuestionId(userQuestionId);
@@ -59,11 +56,11 @@ export const QuestionCard = ({
               setIsModCreateRespOpen(true);
             }}
           >
-            Reply
+            Responder
           </StyledButton>
         </div>
-      </div>
+      </StyledQuestionCard>
       {/* <span>{date}</span> */}
-    </StyledQuestionCard>
+    </>
   );
 };

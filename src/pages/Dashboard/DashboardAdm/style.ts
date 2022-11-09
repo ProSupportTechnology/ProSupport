@@ -4,7 +4,6 @@ export const StyledDashboard = styled.div`
   .userBio {
     color: white;
 
-    width: 90%;
     height: 150px;
 
     border: 1px solid var(--gray-1);
@@ -41,17 +40,18 @@ export const StyledDashboard = styled.div`
   }
 
   .questionAreaTitle {
-    margin: 40px 0px 20px 0px;
-    margin-left: 50px;
-
-    align-self: baseline;
-
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     color: var(--white);
   }
 
   .questionArea {
-    width: 90%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    height: 650px;
 
     overflow: hidden;
     overflow-y: auto;
@@ -90,33 +90,40 @@ export const StyledDashboard = styled.div`
     align-self: flex-end;
 
     width: 70%;
-    height: 70px;
+    height: 60px;
 
-    margin-top: 30px;
     div {
       width: 100%;
     }
   }
 
-  .questionAreaTitle {
-    margin-top: 70px;
-    margin: 20px;
-  }
-
   .search {
+    margin-top: 1rem;
     width: 100%;
     height: 60px;
 
     display: flex;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: space-between;
+    & > div {
+      margin-right: 14px;
+      width: 70%;
+      display: none;
+      @media (min-width: 768px) {
+        display: flex;
+      }
+    }
+  }
 
-    margin-top: 30px;
+  .noQuestions {
+    font-size: 1rem;
+    color: var(--white);
+    text-align: center;
+    margin-top: 40px;
   }
 
   @media (max-width: 770px) {
     flex-direction: column;
-
-    margin: 100px 0px 0px 0px;
 
     .searchArea {
       display: none;
@@ -132,12 +139,7 @@ export const StyledDashboard = styled.div`
 `;
 
 export const StyledAdminCard = styled.div`
-  width: 90%;
-  height: 120px;
-
   display: flex;
-
-  margin-top: 20px;
 
   img {
     width: 100%;
@@ -158,6 +160,6 @@ export const StyledAdminCard = styled.div`
   }
 
   span {
-    color: green;
+    color: var(--white);
   }
 `;

@@ -1,17 +1,10 @@
-import {
-  createContext,
-  ReactNode,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iDataEditUser } from "../../components/Modal/ModalEditProfile/types";
 import { iAllUsers } from "../../pages/AllUsersPage/types";
 import { iLogin } from "../../pages/LoginPage/components/FormLogin/types";
 import { api } from "../../services/api";
-import { useQuestionContext } from "../QuestionContext";
 import { iRegister, iResponseLogin, iUser, iUserContext } from "./types";
 
 interface iUserContextProps {
@@ -26,18 +19,14 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [idUserToDelete, setIdUserToDelete] = useState<string | number>("");
 
-  const { setIsModDeleteUser } = useQuestionContext();
-
   useEffect(() => {
     async function getUser() {
-      //Loading(true)
+      setLoading(true);
       const userId = localStorage.getItem("@userID-ProSupport");
 
       if (userId) {
         try {
-          const { data } = await api.get<iUser>(
-            `/users/${userId}?_embed=questions`
-          );
+          const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
           const token = localStorage.getItem("@Token-ProSupport");
           api.defaults.headers.common.authorization = `Bearer ${token}`;
           setUser(data);
@@ -46,7 +35,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
           localStorage.clear();
           navigate("/login");
         } finally {
-          //Loading(false)
+          setLoading(false);
         }
       }
     }
@@ -55,29 +44,28 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   }, []);
 
   async function getAllUsers() {
-    //Loading(true)
+    setLoading(true);
     try {
       const { data } = await api.get<iAllUsers>("/users");
       return data;
     } catch (error) {
-      // toast.error("Sessão expirada! Faça login novamente.")
-      // localStorage.clear()
-      // navigate("/login")
+      console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
   async function getMyProfile() {
     const userId = localStorage.getItem("@userID-ProSupport");
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     try {
-      const { data } = await api.get<iUser>(
-        `/users/${userId}?_embed=questions&_embed=responses`
-      );
+      const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
       setUser(data);
     } catch (error) {
-      console.log(error)
-    } 
+      console.log(error);
+    }
   }
 
   async function handleRegister(data: iRegister) {
@@ -97,12 +85,13 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     setLoading(true);
     try {
       const response = await api.post<iResponseLogin>("/login", body);
-      toast.success("Login efetuado com sucesso");
-      console.log(response);
+      api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
 
       localStorage.setItem("@Token-ProSupport", response.data.accessToken);
       localStorage.setItem("@userID-ProSupport", response.data.user.id);
+
       setUser(response.data.user);
+      toast.success("Login efetuado com sucesso");
       navigate("/dashboard");
     } catch (error) {
       console.error(error);

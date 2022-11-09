@@ -6,7 +6,7 @@ export interface iQuestionCard {
   description: string;
   username: string;
   date: string;
-  image: HTMLImageElement | string;
+  image: string;
   children?: ReactNode;
   setQuestionId: React.Dispatch<React.SetStateAction<string | number>>;
   questionId: string | number;

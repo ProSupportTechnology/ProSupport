@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const StyledAskQuestionsArea = styled.div`
   width: 100%;
   height: 90px;
-  padding: 20px;
+  padding: 10px;
+  gap: 1rem;
 
   border: 1px solid var(--gray-1);
   border-radius: 20px;
@@ -13,21 +14,22 @@ export const StyledAskQuestionsArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  svg {
+    font-size: 4rem;
+  }
 `;
 
 export const StyledMainUser = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
-  height: 100vh;
-  margin-top: 50px;
 
   .title {
     color: var(--white);
     text-align: left;
-    font-size: 1rem;
-    
+    font-size: 1.5rem;
+
     margin: 30px 10px;
     height: auto;
   }
@@ -39,10 +41,11 @@ export const StyledMainUser = styled.div`
   }
 
   .userQuestionArea {
-    width: 90%;
-    min-height: 300px;
+    width: 100%;
     overflow-y: scroll;
-
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
     margin-top: 30px;
   }
 
@@ -59,4 +62,3 @@ export const StyledMainUser = styled.div`
     border-radius: 5px;
   }
 `;
-

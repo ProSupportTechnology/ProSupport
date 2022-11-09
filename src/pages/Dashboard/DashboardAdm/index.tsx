@@ -1,19 +1,19 @@
 import { Header } from "../../../components/Header";
 import { useUserContext } from "../../../contexts/UserContext";
 import { StyledAdminCard, StyledDashboard } from "./style";
-import userImg from "../../../assets/photo.png";
+import photoProfile from "../../../assets/photo.png";
 import { StyledImageQuestion } from "../../../components/ImageProfile/style";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { InputSearch } from "../../../components/InputSearch";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
-import { StyledList } from "../../AnsweredQuestions/style";
 import { ModalCreateResponse } from "../../../components/Modal/ModalCreateResponse";
 import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuestion";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
+  const { email, name, admin, image } = user;
   const {
     allQuestions,
     searchedQuestion,
@@ -21,14 +21,15 @@ export const DashboardAdm = () => {
     isModCreateRespOpen,
     isModDeleteQuestOpen,
   } = useQuestionContext();
-  const [teste, setTeste] = useState([] as iQuestion[]);
+  const [ask, setAsk] = useState([] as iQuestion[]);
 
   useEffect(() => {
-    const testee = allQuestions.filter((element) =>
+    const filtered = allQuestions.filter((element) =>
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
-    setTeste(testee);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setAsk(filtered);
+    console.log(filtered)
+
   }, [searchedQuestion]);
 
   if (!user) return null;
@@ -40,75 +41,84 @@ export const DashboardAdm = () => {
 
       <Header />
       <main className="containerDash">
-        <div>
-          <StyledAdminCard>
-            <StyledImageQuestion>
-              <img
-                src={user.image ? user.image : userImg}
-                alt="foto de perfil"
-              />
-            </StyledImageQuestion>
-            <div className="userContent">
-              <h1>{user.name}</h1>
-              <p>Desenvolvedor</p>
-              <p>
-                Status: <span>Online</span>
-              </p>
-            </div>
-          </StyledAdminCard>
-          {user.bio && (
-            <div className="userBio">
-              <p>{user.bio}</p>
-            </div>
-          )}
-          <div className="search">
-            <h3 className="questionAreaTitle">Perguntas</h3>
-            <div className="searchArea">
-              <InputSearch></InputSearch>
-            </div>
+        <StyledAdminCard>
+          <StyledImageQuestion>
+            <img src={image ? image : photoProfile} alt="foto de perfil" />
+          </StyledImageQuestion>
+          <div className="userContent">
+            <h1 className="title one">{name}</h1>
+            <span className="text one">{admin ? `Admin` : `Usuario`}</span>
+            <span className="text one">{email}</span>
           </div>
-          <ul className="questionArea">
-            {teste.length
-              ? teste.map((element) => {
-                  return (
-                    <StyledList key={element.id}>
-                      <QuestionCard
-                        key={element.id}
-                        title={element.title}
-                        tech={element.tech}
-                        description={element.description}
-                        username={element.user.name}
-                        image={element.user.image}
-                        setQuestionId={setQuestionId}
-                        questionId={element.id}
-                        userQuestionId={element.userId}
-                        date={new Date().toISOString()}
-                      ></QuestionCard>
-                    </StyledList>
-                  );
-                })
-              : allQuestions.map((element) => {
-                  console.log(element);
-                  return (
-                    <StyledList key={element.id}>
-                      <QuestionCard
-                        key={element.id}
-                        title={element.title}
-                        tech={element.tech}
-                        description={element.description}
-                        username={element.user.name}
-                        image={element.user.image}
-                        setQuestionId={setQuestionId}
-                        questionId={element.id}
-                        userQuestionId={element.userId}
-                        date={new Date().toISOString()}
-                      ></QuestionCard>
-                    </StyledList>
-                  );
-                })}
-          </ul>
+        </StyledAdminCard>
+        <div className="search">
+          <h3 className="questionAreaTitle">Perguntas: </h3>
+          <InputSearch />
         </div>
+        <ul className="questionArea">
+          {ask.length ? 
+             ask.map((element) => {
+                return (
+                  <QuestionCard
+                    key={element.id}
+                    title={element.title}
+                    tech={element.tech}
+                    description={element.description}
+                    username={name}
+                    image={image}
+                    setQuestionId={setQuestionId}
+                    questionId={element.id}
+                    userQuestionId={element.userId}
+                    date={new Date().toISOString()}
+                  ></QuestionCard>
+                );
+              })
+           :  allQuestions.map((element) => {
+                return (
+                  <QuestionCard
+                    key={element.id}
+                    title={element.title}
+                    tech={element.tech}
+                    description={element.description}
+                    username={user.name}
+                    image={user.image}
+                    setQuestionId={setQuestionId}
+                    questionId={element.id}
+                    userQuestionId={element.userId}
+                    date={new Date().toISOString()}
+                  ></QuestionCard>
+                );
+              })} 
+              {ask.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
+        </ul>
       </main>
     </StyledDashboard>
   );
 };
+
+// : asnwered.length ? (
+//   asnwered.map((element) => {
+//     return (
+//       <li key={element.id}>
+//         <QuestionCard
+//           setQuestionId={setQuestionId}
+//           questionId={element.id}
+//           userQuestionId={element.userId}
+//           title={element.title}
+//           tech={element.tech}
+//           description={element.description}
+//           username={element.user.name}
+//           image={element.user.image}
+//           date={new Date().toISOString()}
+//         ></QuestionCard>
+//         <ResponseCard
+//           array={element.responses}
+//           username={element.user.name}
+//           image={element.user.image}
+//         ></ResponseCard>
+//       </li>
+//     );
+//   })
+// ) : (
+//   <h2 className="noQuestions">Não possui perguntas Respondidas</h2>
+// )}

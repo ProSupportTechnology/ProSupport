@@ -15,13 +15,17 @@ export const StyledRegister = styled.div`
     background-image: url("Bg-images/Bg-login-signup.png");
     width: 90%;
     max-width: 400px;
-    height: 40%;
+
+
     display: flex;
     align-items: center;
     flex-direction: column;
     align-items: center;
-    padding: 16px;
+    padding: 0 0 16px 0;
     border-radius: 20px 20px 0px 0px;
+    @media (min-width: 1000px) {
+      height: 368px;
+    }
     a {
       padding: 8px 15px;
       @media (min-width: 379px) {
@@ -29,17 +33,18 @@ export const StyledRegister = styled.div`
       }
     }
     img {
-      width: 68%;
+      width: 50%;
       @media (min-width: 1000px) {
         width: 100%;
       }
     }
+    
   }
 
   @media (min-width: 1000px) {
     flex-direction: row;
     justify-content: center;
-    
+
     .containerRegisterLogin {
       height: 444px;
       display: flex;

@@ -2,13 +2,27 @@ import styled from "styled-components";
 
 export const StyledImageProfile = styled.figure`
   width: 100px;
-  height: 100px;
-  background-color: blue;
-  border-radius: 27px;
-  border: 1px solid black;
+  min-width: 100px;
+  height: 110px;
+
+  @media (min-width: 768px) {
+    width: 110px;
+    min-width: 110px;
+    height: 120px;
+  }
+
+  border-radius: 22px;
+  border: 1px solid var(--white);
 
   position: relative;
   inset: 0;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
 
   & > button {
     width: 100%;
@@ -33,8 +47,23 @@ export const StyledImageProfile = styled.figure`
 `;
 
 export const StyledImageQuestion = styled.figure`
-  width: 150px;
-  height: 120px;
+  width: 100px;
+  min-width: 100px;
+  height: 110px;
+  border-radius: 22px;
 
-  border-radius: 20px;
+  border: 1px solid var(--white);
+
+  @media (min-width: 768px) {
+    width: 110px;
+    min-width: 110px;
+    height: 120px;
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+  }
 `;

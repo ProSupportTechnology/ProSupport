@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const StyleProfile = styled.div`
-  width: 100vw;
   min-height: 100vh;
   display: flex;
   background-image: url("https://i.imgur.com/xNMEX8F.png");
@@ -14,15 +13,17 @@ export const StyleMain = styled.main`
   align-content: center;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
 
   h1 {
     color: white;
-    width: 90%;
+    width: 100%;
+    font-size: 1.6rem;
     text-align: left;
   }
+
   p {
-    width: 90%;
+    width: 100%;
     color: white;
     height: max-content;
     min-height: 320px;
@@ -33,21 +34,21 @@ export const StyleMain = styled.main`
     overflow: hidden;
     text-overflow: ellipsis;
     @media (min-width: 768px) {
-      min-height: 300px;
+      min-height: 250px;
     }
   }
 `;
 export const ProfileContainer = styled.div`
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1.5rem;
 
   & > button {
     width: min-content;
     white-space: nowrap;
     border: solid 2px var(--white);
     text-align: center;
-    padding: 10px 15px;
+    padding: 6px 9px;
   }
 `;

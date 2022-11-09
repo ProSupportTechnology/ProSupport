@@ -1,53 +1,53 @@
-import { StyledImageProfile } from "../ImageProfile/style";
+import { StyledImageQuestion } from "../ImageProfile/style";
 import { StyledResponseCard } from "./style";
 import { TiPencil } from "react-icons/ti";
 import { iResponseCard } from "./types";
-import userImg from "../../assets/photo.png";
 import { CgClose } from "react-icons/cg";
 import { useQuestionContext } from "../../contexts/QuestionContext";
+import photoProfile from "../../assets/photo.png";
 
-export const ResponseCard = ({
-  username,
-  image,
-  array,
-  children,
-}: iResponseCard) => {
+export const ResponseCard = ({ username, image, array }: iResponseCard) => {
   const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } =
     useQuestionContext();
   return (
     <>
       {array.map((element: any) => {
+        console.log(element);
         return (
           <StyledResponseCard>
-            <div>
-              <div className="techContainer">
-                <TiPencil
-                  className="buttonClose"
+            <div className="mobileContainer">
+              <div className="imageContainer">
+                <StyledImageQuestion>
+                  <img
+                    src={image ? image : photoProfile}
+                    alt="foto de perfil"
+                  />
+                </StyledImageQuestion>
+                <p>{username}</p>
+              </div>
+              <div className="textContainer">
+                <p className="text one">Resposta:</p>
+                <span className="text two">{element.description}</span>
+              </div>
+            </div>
+            <div className="btnContainer">
+              <div className="techConatiner">
+                <button
                   onClick={() => {
                     setIsModEditRespOpen(true);
                     setResponseId(element.id);
                   }}
-                />
-                <CgClose
-                  className="buttonClose"
+                >
+                  <TiPencil />
+                </button>
+                <button
                   onClick={() => {
                     setResponseId(element.id);
                     setIsModDeleteRespOpen(true);
                   }}
-                />
-              </div>
-              <div className="textContainer">
-                <div className="imageContainer">
-                  <StyledImageProfile>
-                    <img src={image ? image : userImg} alt="userphoto" />
-                  </StyledImageProfile>
-                  <h2>{username}</h2>
-                </div>
-                <div className="questionContent">
-                  <h2>Resposta:</h2>
-                  <p>{element.description}</p>
-                  {children}
-                </div>
+                >
+                  <CgClose />
+                </button>
               </div>
             </div>
           </StyledResponseCard>

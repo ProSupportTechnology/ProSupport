@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const StyledAllUsersPage = styled.div`
   main {
@@ -19,6 +19,22 @@ export const StyledAllUsersPage = styled.div`
         background-color: var(--gray-3);
         padding: 16px;
         border-radius: 20px;
+        &:hover {
+          background: #4f4d8c;
+          background: linear-gradient(
+            90deg,
+            #4f4d8c 0%,
+            #807ddb 55%,
+            #5f5da6 100%
+          );
+          background: -webkit-linear-gradient(
+            90deg,
+            #4f4d8c 0%,
+            #807ddb 55%,
+            #5f5da6 100%
+          );
+          box-shadow: 10px 10px 20px black;
+        }
 
         figure {
           width: 100px;
@@ -29,13 +45,6 @@ export const StyledAllUsersPage = styled.div`
             width: 110px;
             min-width: 110px;
             height: 120px;
-          }
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
           }
         }
 
@@ -62,7 +71,7 @@ export const StyledAllUsersPage = styled.div`
           height: fit-content;
           color: var(--gray-0);
           background-color: transparent;
-          font-size: 16px;
+          font-size: 1rem;
           transition: 0.1s;
 
           &:hover {
@@ -72,4 +81,4 @@ export const StyledAllUsersPage = styled.div`
       }
     }
   }
-`
+`;

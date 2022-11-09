@@ -11,7 +11,7 @@ import {
   UlNavBar,
 } from "./style";
 import logo from "../../assets/ProSupport.png";
-import photo from "../../assets/photo.png";
+import photoProfile from "../../assets/photo.png";
 import { HiHome, HiUser, HiChatBubbleLeftRight, HiUsers } from "react-icons/hi2";
 import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
@@ -24,38 +24,42 @@ import { useLocation } from "react-router-dom";
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
   const { user } = useUserContext();
-  const [animation, setAnimation] = useState(``);
   const location = useLocation();
   // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
   // verificar se tem img para coloca :D
 
-  const { email, name } = user;
+  const { email, name, admin, image } = user;
 
   if (!user) return null;
 
-  const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true
-
+  const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true;
+  const searchUser = location.pathname === `/profile` || location.pathname === `/dashboard` ? false : true;
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
       <NavBar
         navbarMobile={navbarMobile}
-        setAnimation={setAnimation}
         // className={animation}
       >
         <NavBarProfileContainer>
           <StyledImageQuestion>
-            <img src={photo} alt="imagem-profile" />
+            <img src={image ? image : photoProfile} alt="foto de perfil" />
           </StyledImageQuestion>
           <h2 className="title three">{name}</h2>
-          <span className="text three">Desenvolvedor</span>
-          <span className="text three">Email: {email}</span>
+          <span>{admin ? `Admin` : `Usuario`}</span>
+          <span className="text three">{email}</span>
         </NavBarProfileContainer>
-        {(search &&
-          <div className="divInput">
-            <InputSearch />
-          </div>
-        )}
+        {admin
+          ? search && (
+              <div className="divInput">
+                <InputSearch />
+              </div>
+            )
+          : searchUser && (
+              <div className="divInput">
+                <InputSearch />
+              </div>
+            )}
         <UlNavBar>
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
@@ -73,22 +77,26 @@ export const Header = () => {
               </div>
             </StyledButtonLink>
           </LiNavBar>
-          <LiNavBar>
-            <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
-              <h3 className="title two">Perguntas/Respostas</h3>
-              <div title="Perguntas/Respostas">
-                <HiChatBubbleLeftRight />
-              </div>
-            </StyledButtonLink>
-          </LiNavBar>
-          <LiNavBar>
-            <StyledButtonLink variant="theme-menu" to={`/users`}>
-              <h3 className="title two">Usuarios</h3>
-              <div title="Usuario">
-                <HiUsers />
-              </div>
-            </StyledButtonLink>
-          </LiNavBar>
+          {admin && (
+            <>
+              <LiNavBar>
+                <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
+                  <h3 className="title two">Perguntas/Respostas</h3>
+                  <div title="Perguntas/Respostas">
+                    <HiChatBubbleLeftRight />
+                  </div>
+                </StyledButtonLink>
+              </LiNavBar>
+              <LiNavBar>
+                <StyledButtonLink variant="theme-menu" to={`/users`}>
+                  <h3 className="title two">Usuarios</h3>
+                  <div title="Usuario">
+                    <HiUsers />
+                  </div>
+                </StyledButtonLink>
+              </LiNavBar>
+            </>
+          )}
         </UlNavBar>
         <LogoutCont>
           <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
