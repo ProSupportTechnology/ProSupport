@@ -21,7 +21,12 @@ export const StyledQuestionCard = styled.li`
   &:hover {
     background: #4f4d8c;
     background: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
-    background: -webkit-linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
+    background: -webkit-linear-gradient(
+      90deg,
+      #4f4d8c 0%,
+      #807ddb 55%,
+      #5f5da6 100%
+    );
     box-shadow: 10px 10px 20px black;
   }
   .mobileContainer {
@@ -32,7 +37,7 @@ export const StyledQuestionCard = styled.li`
     height: 100%;
     @media (min-width: 768px) {
       flex-direction: row;
-      width: 100%;
+      width: 80%;
     }
   }
   .imageContainer {
@@ -63,12 +68,24 @@ export const StyledQuestionCard = styled.li`
     }
   }
   .textContainer {
-    height: 100%;
+    height: 95%;
+    min-height: 95px;
     width: 100%;
+    min-width: 177px;
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
     gap: 16px;
+    @media (min-width: 768px) {
+      min-width: 278px;
+      min-height: 95px;
+    }
+    span {
+      width: 100%;
+      overflow-wrap: break-word;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .btnContainer {
     width: 30%;

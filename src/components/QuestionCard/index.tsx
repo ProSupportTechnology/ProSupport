@@ -5,6 +5,7 @@ import { useQuestionContext } from "../../contexts/QuestionContext";
 import { StyledButton } from "../../style/button/style";
 import { StyledImageQuestion } from "../ImageProfile/style";
 import { IoMdTrash } from "react-icons/io";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const QuestionCard = ({
   title,
@@ -17,8 +18,10 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } = useQuestionContext();
-
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } =
+    useQuestionContext();
+  const { user } = useUserContext();
+  const { admin } = user;
   return (
     <>
       <StyledQuestionCard>
@@ -47,17 +50,19 @@ export const QuestionCard = ({
               <IoMdTrash />
             </button>
           </div>
-          <StyledButton
-            variant={"default"}
-            type="button"
-            onClick={() => {
-              setUserQuestionId(userQuestionId);
-              setQuestionId(questionId);
-              setIsModCreateRespOpen(true);
-            }}
-          >
-            Responder
-          </StyledButton>
+          {admin && (
+            <StyledButton
+              variant={"default"}
+              type="button"
+              onClick={() => {
+                setUserQuestionId(userQuestionId);
+                setQuestionId(questionId);
+                setIsModCreateRespOpen(true);
+              }}
+            >
+              Responder
+            </StyledButton>
+          )}
         </div>
       </StyledQuestionCard>
       {/* <span>{date}</span> */}
