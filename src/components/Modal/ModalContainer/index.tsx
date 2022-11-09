@@ -17,15 +17,15 @@ export const ModalContainer = ({
   }
 
   return (
-    <Modal>
-      <div className="overlay" onClick={(e) => handleClick(e)}>
+    <Modal onClick={(e) => handleClick(e)}>
+      {/* <div className="overlay" > */}
         <div className="content">
           <span onClick={closeModal}>
             <CgClose />
           </span>
           {children}
         </div>
-      </div>
+      {/* </div> */}
     </Modal>
   );
 };

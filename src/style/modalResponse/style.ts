@@ -4,7 +4,7 @@ export const StyledModalResponse = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  width: 290px;
+  width: 100%;
   color: var(--gray-0);
 
   p {

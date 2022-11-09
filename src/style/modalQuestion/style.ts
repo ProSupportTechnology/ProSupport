@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledModalQuestion = styled.div`
   display: flex;
   flex-direction: column;
-  width: 290px;
+  width: 100%;
   color: var(--gray-0);
 
   span {

@@ -8,10 +8,9 @@ export const StyledEditUser = styled.form`
 
   p {
     color: var(--white);
-    margin-top: 50px;
     text-align: center;
-    font-size: 25px;
-    margin-bottom: 30px;
+    font-size: 1rem;
+    margin-top: 10px;
 
     @media (max-width: 768px) {
       font-size: 20px;
