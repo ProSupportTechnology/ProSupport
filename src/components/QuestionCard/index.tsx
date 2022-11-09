@@ -17,8 +17,7 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } =
-    useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } = useQuestionContext();
 
   return (
     <>
@@ -57,7 +56,7 @@ export const QuestionCard = ({
               setIsModCreateRespOpen(true);
             }}
           >
-            Abrir
+            Responder
           </StyledButton>
         </div>
       </StyledQuestionCard>

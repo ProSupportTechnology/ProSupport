@@ -21,12 +21,7 @@ export const StyledQuestionCard = styled.li`
   &:hover {
     background: #4f4d8c;
     background: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
-    background: -webkit-linear-gradient(
-      90deg,
-      #4f4d8c 0%,
-      #807ddb 55%,
-      #5f5da6 100%
-    );
+    background: -webkit-linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
     box-shadow: 10px 10px 20px black;
   }
   .mobileContainer {
@@ -55,6 +50,12 @@ export const StyledQuestionCard = styled.li`
       @media (min-width: 768px) {
         display: unset;
       }
+    }
+    p {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
   .textContainer {
@@ -85,16 +86,15 @@ export const StyledQuestionCard = styled.li`
       display: flex;
       align-items: center;
       padding: 0 5px;
-      @media (min-width: 768px) {
-      }
     }
     & > button {
       background-color: transparent;
       color: var(--white);
-      font-size: 2rem;
+      font-size: 1rem;
+      transition: 0.1s;
+
       &:hover {
         transform: scale(1.2);
-        transition: 0.1s;
       }
     }
   }

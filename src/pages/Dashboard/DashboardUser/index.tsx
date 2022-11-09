@@ -59,7 +59,7 @@ export const DashboardUser = () => {
                       questionId={element.id}
                       userQuestionId={element.userId}
                       date={new Date().toISOString()}
-                    ></QuestionCard>
+                    />
                   </StyledList>
                 );
               })
@@ -85,12 +85,8 @@ export const DashboardUser = () => {
                         questionId={element.id}
                         userQuestionId={element.userId}
                         date={new Date().toISOString()}
-                      ></QuestionCard>
-                      <ResponseCard
-                        array={element.responses}
-                        username={user.name}
-                        image={user.image}
-                      ></ResponseCard>
+                      />
+                      <ResponseCard array={element.responses} username={user.name} image={user.image} />
                     </StyledList>
                   );
                 }
