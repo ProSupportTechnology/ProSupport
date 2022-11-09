@@ -9,30 +9,22 @@ import { StyledAskQuestionsArea, StyledMainUser } from "./style";
 import { StyledList } from "../../AnsweredQuestions/style";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
-import { iQuestion } from "../../../contexts/UserContext/types";
 export const DashboardUser = () => {
   const { user, getMyProfile } = useUserContext();
-  const {
-    allQuestions,
-    searchedQuestion,
-    setQuestionId,
-    isModCreateRespOpen,
-    isModDeleteQuestOpen,
-  } = useQuestionContext();
-
-  const [teste, setTeste] = useState([] as iQuestion[]);
+  const { allQuestions, setQuestionId } = useQuestionContext();
 
   useEffect(() => {
     getMyProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!user.questions) return null;
 
   return (
     <StyledDashboard className="backgroundDash">
-      <Header></Header>
+      <Header />
       <main className="containerDash">
         <StyledAdminCard>
           <StyledImageQuestion>
@@ -61,8 +53,8 @@ export const DashboardUser = () => {
                       title={element.title}
                       tech={element.tech}
                       description={element.description}
-                      username={element.user.name}
-                      image={element.user.image}
+                      username={user.name}
+                      image={user.image}
                       setQuestionId={setQuestionId}
                       questionId={element.id}
                       userQuestionId={element.userId}
@@ -72,17 +64,14 @@ export const DashboardUser = () => {
                 );
               })
             ) : (
-              <h2 className="noQuestions">
-                Você ainda não fez nenhuma pergunta
-              </h2>
+              <h2 className="noQuestions">Você ainda não fez nenhuma pergunta</h2>
             )}
           </ul>
           <h2 className="title">Perguntas respondidas</h2>
           <ul className="userQuestionArea">
             {user.questions.length ? (
               allQuestions.map((element) => {
-                console.log(user);
-                if (user.id == element.userId && element.responses.length) {
+                if (user.id === element.userId && element.responses.length) {
                   return (
                     <StyledList>
                       <QuestionCard
@@ -90,8 +79,8 @@ export const DashboardUser = () => {
                         title={element.title}
                         tech={element.tech}
                         description={element.description}
-                        username={element.user.name}
-                        image={element.user.image}
+                        username={user.name}
+                        image={user.image}
                         setQuestionId={setQuestionId}
                         questionId={element.id}
                         userQuestionId={element.userId}
