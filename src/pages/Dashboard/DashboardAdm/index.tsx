@@ -17,7 +17,6 @@ export const DashboardAdm = () => {
   const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
     useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
-  console.log(ask);
 
   useEffect(() => {
     const filtered = allQuestions.filter((element) =>
