@@ -74,7 +74,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
     delete data.confirmPassword;
-    
+
     try {
       await api.post<iRegister>("/users", data);
       toast.success("Conta criada com sucesso");
@@ -82,8 +82,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     } catch (error) {
       toast.error("Falha ao criar a conta");
     } finally {
-    setLoading(false);
-    // }
+      setLoading(false);
+    }
   }
 
   async function handleLogin(body: iLogin) {
