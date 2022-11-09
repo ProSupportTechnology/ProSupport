@@ -46,5 +46,6 @@ export interface iQuestionProvider {
   setResponseId: Dispatch<SetStateAction<number>>;
   setIsModDeleteRespOpen: Dispatch<SetStateAction<boolean>>;
   isModDeleteRespOpen: boolean;
-  deleteAnswer: () => Promise<void>;
+  deleteAnswer(): Promise<void>;
+  getAllQuestions(): Promise<void>;
 }

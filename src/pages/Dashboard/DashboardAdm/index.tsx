@@ -13,8 +13,13 @@ import { LoadingPage } from "../../LoadingPage";
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image } = user;
-  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId, getAllQuestions } = useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
+
+  useEffect(() => {
+    getAllQuestions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const filtered = allQuestions.filter((element) =>

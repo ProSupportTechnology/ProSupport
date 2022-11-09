@@ -172,6 +172,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         isModDeleteRespOpen,
         setIsModDeleteRespOpen,
         deleteAnswer,
+        getAllQuestions,
       }}
     >
       {children}
