@@ -47,8 +47,8 @@ export interface iQuestion {
   title: string;
   description: string;
   tech: string;
-  userId: string;
-  id: string;
+  userId: number;
+  id: number;
   responses: {
     map(arg0: (element: iResponse) => void): ReactNode;
     title: string;

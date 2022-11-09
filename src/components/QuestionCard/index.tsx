@@ -18,8 +18,7 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } =
-    useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen, setUserQuestionId } = useQuestionContext();
   const { user } = useUserContext();
   const { admin } = user;
   return (

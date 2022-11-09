@@ -16,9 +16,9 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModDeleteUser, setIsModDeleteUser] = useState(false);
   const [isModDeleteRespOpen, setIsModDeleteRespOpen] = useState(false);
   const [isModEditProfile, setIsModEditProfile] = useState(false);
-  const [questionId, setQuestionId] = useState<string | number>("");
-  const [userQuestionId, setUserQuestionId] = useState<string | number>("");
-  const [responseId, setResponseId] = useState<string | number>("");
+  const [questionId, setQuestionId] = useState<number>(0);
+  const [userQuestionId, setUserQuestionId] = useState<number>(0);
+  const [responseId, setResponseId] = useState<number>(0);
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
   const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
@@ -94,8 +94,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const date = new Date().toISOString();
     const body = { ...data, userId: id, created_at: date };
     try {
-      const response = await api.post<iDataQuestion>("/questions", body);
-      // setAllQuestions([...allQuestions, response])
+      await api.post<iDataQuestion>("/questions", body);
       toast.success("Pergunta enviada com sucesso.");
       setIsModCreateQuestOpen(false);
     } catch (error) {
@@ -121,7 +120,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     }
   }
 
-  async function deleteQuestion(id: string | number) {
+  async function deleteQuestion(id: number) {
     setLoading(true);
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
