@@ -3,16 +3,9 @@ import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useUserContext } from "../UserContext";
 import { iQuestion, iUser } from "../UserContext/types";
-import {
-  iDataQuestion,
-  iDataResponse,
-  iQuestionContextProps,
-  iQuestionProvider,
-} from "./types";
+import { iDataQuestion, iDataResponse, iQuestionContextProps, iQuestionProvider } from "./types";
 
-const QuestionContext = createContext<iQuestionProvider>(
-  {} as iQuestionProvider
-);
+const QuestionContext = createContext<iQuestionProvider>({} as iQuestionProvider);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
@@ -50,7 +43,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       }
     }
     getAllQuestions();
-  }, [getToken]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function answerQuestion(data: iDataResponse) {
     const body = { ...data, questionId: questionId, userId: userQuestionId };
@@ -72,10 +66,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     setLoading(true);
     try {
       api.defaults.headers.common.authorization = `Bearer ${getToken}`;
-      const response = await api.patch<iDataResponse>(
-        `/responses/${responseId}`,
-        data
-      );
+      const response = await api.patch<iDataResponse>(`/responses/${responseId}`, data);
       console.log(response);
       toast.success("Resposta editada com sucesso!");
       setIsModEditRespOpen(false);
