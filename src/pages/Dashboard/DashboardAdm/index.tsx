@@ -16,14 +16,15 @@ export const DashboardAdm = () => {
   const { email, name, admin, image } = user;
   const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
     useQuestionContext();
-  const [teste, setTeste] = useState([] as iQuestion[]);
+  const [ask, setAsk] = useState([] as iQuestion[]);
 
   useEffect(() => {
-    const testee = allQuestions.filter((element) =>
+    const filtered = allQuestions.filter((element) =>
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
-    setTeste(testee);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setAsk(filtered);
+    console.log(filtered)
+
   }, [searchedQuestion]);
 
   if (!user) return null;
@@ -50,8 +51,8 @@ export const DashboardAdm = () => {
           <InputSearch />
         </div>
         <ul className="questionArea">
-          {teste.length
-            ? teste.map((element) => {
+          {ask.length ? 
+             ask.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -67,7 +68,7 @@ export const DashboardAdm = () => {
                   ></QuestionCard>
                 );
               })
-            : allQuestions.map((element) => {
+           :  allQuestions.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -82,7 +83,7 @@ export const DashboardAdm = () => {
                     date={new Date().toISOString()}
                   ></QuestionCard>
                 );
-              })}
+              })} : <h2 className="noQuestions">Não há perguntas no momento</h2>
         </ul>
       </main>
     </StyledDashboard>

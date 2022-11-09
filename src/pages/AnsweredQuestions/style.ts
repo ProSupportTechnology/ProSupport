@@ -16,5 +16,11 @@ export const StyledAnsweredQuestions = styled(StyledDashboard)`
         margin-top: 1rem;
       }
     }
+
+    .noQuestions {
+      font-size: 1rem;
+      color: var(--white);
+      text-align: center;
+    }
   }
 `;

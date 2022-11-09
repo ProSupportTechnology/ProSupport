@@ -16,7 +16,6 @@ export const DashboardUser = () => {
 
   useEffect(() => {
     getMyProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!user.questions) return null;

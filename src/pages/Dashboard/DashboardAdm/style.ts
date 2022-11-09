@@ -115,6 +115,12 @@ export const StyledDashboard = styled.div`
     }
   }
 
+  .noQuestions {
+    font-size: 1rem;
+    color: var(--white);
+    text-align: center;
+  }
+
   @media (max-width: 770px) {
     flex-direction: column;
 
