@@ -21,12 +21,7 @@ export const StyledQuestionCard = styled.li`
   &:hover {
     background: #4f4d8c;
     background: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
-    background: -webkit-linear-gradient(
-      90deg,
-      #4f4d8c 0%,
-      #807ddb 55%,
-      #5f5da6 100%
-    );
+    background: -webkit-linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
     box-shadow: 10px 10px 20px black;
   }
   .mobileContainer {
@@ -41,12 +36,13 @@ export const StyledQuestionCard = styled.li`
     }
   }
   .imageContainer {
+    width: 120px;
+    min-width: 120px;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
     align-content: center;
     justify-content: space-between;
-    width: 145px;
     @media (min-width: 768px) {
       align-items: center;
     }
