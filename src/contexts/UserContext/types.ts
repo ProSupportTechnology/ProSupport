@@ -24,7 +24,7 @@ export interface iUser {
   name: string;
   bio: string;
   image: string;
-  id: string;
+  id: number;
   admin?: boolean;
   questions?: iQuestion[];
 }
