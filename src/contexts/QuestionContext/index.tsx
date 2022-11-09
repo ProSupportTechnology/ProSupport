@@ -17,11 +17,10 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModDeleteRespOpen, setIsModDeleteRespOpen] = useState(false);
   const [isModEditProfile, setIsModEditProfile] = useState(false);
   const [questionId, setQuestionId] = useState<number>(0);
-  const [userQuestionId, setUserQuestionId] = useState<number>(0);
   const [responseId, setResponseId] = useState<number>(0);
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
-  const [answeredQuestion, setAnsweredQuention] = useState([] as iQuestion[]);
+  const [answeredQuestion, setAnsweredQuestion] = useState([] as iQuestion[]);
   const { getMyProfile } = useUserContext();
 
   const { setLoading } = useUserContext();
@@ -33,8 +32,10 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
   async function getAllQuestions() {
     setLoading(true);
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     try {
-      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user");
+      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user&_limit=10");
       setAllQuestions(response.data);
     } catch (error) {
       console.error(error);
@@ -46,7 +47,9 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function answerQuestion(data: iDataResponse) {
     setLoading(true);
     const date = new Date().toISOString();
-    const body = { ...data, questionId: questionId, userId: userQuestionId, created_at: date };
+    const userId = localStorage.getItem("@userID-ProSupport");
+    const body = { ...data, questionId: questionId, userId: userId, created_at: date };
+    console.log(body);
     try {
       await api.post<iDataResponse>("/responses", body);
       await getAllQuestions();
@@ -141,7 +144,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         allQuestions,
         searchedQuestion,
         answeredQuestion,
-        setAnsweredQuention,
+        setAnsweredQuestion,
         setSearchedQuestion,
         isModCreateQuestOpen,
         setIsModCreateQuestOpen,
@@ -163,8 +166,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         editAnswer,
         setQuestionId,
         questionId,
-        userQuestionId,
-        setUserQuestionId,
         deleteQuestion,
         setResponseId,
         responseId,

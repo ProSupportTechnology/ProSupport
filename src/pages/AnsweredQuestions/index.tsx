@@ -40,7 +40,7 @@ export const AnsweredQuestions = () => {
                     description={element.description}
                     username={element.user.name}
                     image={element.user.image}
-                    date={new Date().toISOString()}
+                    date={element.created_at}
                   ></QuestionCard>
                   <ResponseCard
                     array={element.responses}
@@ -63,7 +63,7 @@ export const AnsweredQuestions = () => {
                     description={element.description}
                     username={element.user.name}
                     image={element.user.image}
-                    date={new Date().toISOString()}
+                    date={element.created_at}
                   ></QuestionCard>
                   <ResponseCard
                     array={element.responses}

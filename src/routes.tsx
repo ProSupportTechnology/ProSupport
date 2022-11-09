@@ -47,12 +47,9 @@ const RoutesMain = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route element={<AuthRoutes />}>
           <Route path="/dashboard" element={user.admin ? <DashboardAdm /> : <DashboardUser />} />
-          <Route path="/users" element={user.admin ? <AllUsersPage /> : <Navigate to="/" />} />
+          <Route path="/users" element={user.admin && <AllUsersPage />} />
           <Route path="/profile" element={<Profile />} />
-          <Route
-            path="/answeredQuestions"
-            element={user.admin ? <AnsweredQuestions /> : <Navigate to="/" />}
-          />
+          <Route path="/answeredQuestions" element={user.admin && <AnsweredQuestions />} />
         </Route>
 
         <Route path="*" element={<Navigate to="/" />} />

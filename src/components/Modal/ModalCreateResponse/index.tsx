@@ -25,7 +25,9 @@ export const ModalCreateResponse = () => {
             label="Resposta"
             placeholder="Insira sua resposta aqui"
           />
-          <StyledButton variant="default">Responder</StyledButton>
+          <StyledButton type="submit" variant="default">
+            Responder
+          </StyledButton>
         </form>
       </StyledModalResponse>
     </ModalContainer>

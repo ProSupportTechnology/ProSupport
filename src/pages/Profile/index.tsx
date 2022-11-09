@@ -23,7 +23,9 @@ export const Profile = () => {
           <StyledAdminCard>
             <ImageProfile>
               <img src={image ? image : photoProfile} alt="foto de perfil" />
-              <button>Editar foto</button>
+              <button type="button" onClick={() => setIsModEditProfile(true)}>
+                Editar foto
+              </button>
             </ImageProfile>
             <div className="userContent">
               <h1 className="title one">{name}</h1>
@@ -31,10 +33,7 @@ export const Profile = () => {
               <span className="text one">{email}</span>
             </div>
           </StyledAdminCard>
-          <StyledButton
-            variant="theme-register-login"
-            onClick={() => setIsModEditProfile(true)}
-          >
+          <StyledButton variant="theme-register-login" onClick={() => setIsModEditProfile(true)}>
             Editar Perfil
           </StyledButton>
         </ProfileContainer>
