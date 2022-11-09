@@ -33,6 +33,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
   async function getAllQuestions() {
     setLoading(true);
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     try {
       const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user");
       setAllQuestions(response.data);

@@ -16,10 +16,10 @@ export const DashboardUser = () => {
   const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
   const { email, name, admin, image } = user;
 
-  useEffect(() => {
-    getMyProfile();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   getMyProfile();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   if (!user.questions) return null;
 

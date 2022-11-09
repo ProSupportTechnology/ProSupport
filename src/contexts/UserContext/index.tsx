@@ -20,25 +20,14 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const [idUserToDelete, setIdUserToDelete] = useState<string | number>("");
 
   useEffect(() => {
-    async function getUser() {
-      setLoading(true);
-      const userId = localStorage.getItem("@userID-ProSupport");
-      if (userId) {
-        try {
-          const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
-          const token = localStorage.getItem("@Token-ProSupport");
-          api.defaults.headers.common.authorization = `Bearer ${token}`;
-          setUser(data);
-        } catch (error) {
-          toast.error("Sessão expirada! Faça login novamente.");
-          localStorage.clear();
-          navigate("/login");
-        } finally {
-          setLoading(false);
-        }
-      }
+    const userId = localStorage.getItem("@userID-ProSupport");
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+    if (userId) {
+      getMyProfile();
     }
-    getUser();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -58,14 +47,17 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
   async function getMyProfile() {
     const userId = localStorage.getItem("@userID-ProSupport");
-    const token = localStorage.getItem("@Token-ProSupport");
-    api.defaults.headers.common.authorization = `Bearer ${token}`;
 
     try {
       const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
       setUser(data);
     } catch (error) {
       console.log(error);
+      toast.error("Sessão expirada! Faça login novamente.");
+      localStorage.clear();
+      navigate("/login");
+    } finally {
+      setLoading(false);
     }
   }
 
