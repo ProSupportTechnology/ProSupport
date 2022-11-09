@@ -51,7 +51,7 @@ export const StyledDashboard = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    height: 650px;
+    height: 395px;
 
     overflow: hidden;
     overflow-y: auto;
