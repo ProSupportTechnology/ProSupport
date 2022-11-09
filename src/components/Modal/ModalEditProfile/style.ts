@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledEditUser = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 30px;
   width: 90%;
 
   p {
@@ -18,8 +18,8 @@ export const StyledEditUser = styled.form`
   }
 
   button {
-    margin-top: 30px;
-    margin-bottom: 20px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     width: 100px;
     place-self: self-end;
     font-size: 16px;
