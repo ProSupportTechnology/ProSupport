@@ -1,5 +1,5 @@
-import { Input } from "."
-import styled from "styled-components"
+import { Input } from ".";
+import styled from "styled-components";
 
 export const StyledInput = styled(Input)`
   width: 100%;
@@ -81,6 +81,7 @@ export const StyledInput = styled(Input)`
     }
 
     input {
+      height: 48px;
       padding: 0 16px;
       color: var(--gray-1);
       background-color: var(--gray-3);
@@ -90,5 +91,9 @@ export const StyledInput = styled(Input)`
         border: 2px solid var(--gray-1);
       }
     }
+
+    svg {
+      top: 97%;
+    }
   }
-`
+`;
