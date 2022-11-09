@@ -56,6 +56,7 @@ export const StyledQuestionCard = styled.li`
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      text-align: center;
     }
   }
   .textContainer {

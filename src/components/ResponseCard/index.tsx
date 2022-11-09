@@ -25,7 +25,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
                 <p>{username}</p>
               </div>
               <div className="textContainer">
-                <p className="text one">Titulo</p>
+                <p className="text one">Resposta:</p>
                 <span className="text two">Descrição</span>
               </div>
             </div>
