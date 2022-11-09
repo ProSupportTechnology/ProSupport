@@ -21,14 +21,15 @@ export const DashboardAdm = () => {
     isModCreateRespOpen,
     isModDeleteQuestOpen,
   } = useQuestionContext();
-  const [teste, setTeste] = useState([] as iQuestion[]);
+  const [ask, setAsk] = useState([] as iQuestion[]);
 
   useEffect(() => {
-    const testee = allQuestions.filter((element) =>
+    const filtered = allQuestions.filter((element) =>
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
-    setTeste(testee);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setAsk(filtered);
+    console.log(filtered)
+
   }, [searchedQuestion]);
 
   if (!user) return null;
@@ -55,8 +56,8 @@ export const DashboardAdm = () => {
           <InputSearch />
         </div>
         <ul className="questionArea">
-          {teste.length
-            ? teste.map((element) => {
+          {ask.length ? 
+             ask.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -72,7 +73,7 @@ export const DashboardAdm = () => {
                   ></QuestionCard>
                 );
               })
-            : allQuestions.map((element) => {
+           :  allQuestions.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -87,9 +88,37 @@ export const DashboardAdm = () => {
                     date={new Date().toISOString()}
                   ></QuestionCard>
                 );
-              })}
+              })} 
+              {ask.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
         </ul>
       </main>
     </StyledDashboard>
   );
 };
+
+// : asnwered.length ? (
+//   asnwered.map((element) => {
+//     return (
+//       <li key={element.id}>
+//         <QuestionCard
+//           setQuestionId={setQuestionId}
+//           questionId={element.id}
+//           userQuestionId={element.userId}
+//           title={element.title}
+//           tech={element.tech}
+//           description={element.description}
+//           username={element.user.name}
+//           image={element.user.image}
+//           date={new Date().toISOString()}
+//         ></QuestionCard>
+//         <ResponseCard
+//           array={element.responses}
+//           username={element.user.name}
+//           image={element.user.image}
+//         ></ResponseCard>
+//       </li>
+//     );
+//   })
+// ) : (
+//   <h2 className="noQuestions">Não possui perguntas Respondidas</h2>
+// )}
