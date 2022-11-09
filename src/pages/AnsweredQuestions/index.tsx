@@ -6,7 +6,6 @@ import { QuestionCard } from "../../components/QuestionCard";
 import { ResponseCard } from "../../components/ResponseCard";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../contexts/UserContext/types";
-import { StyledList } from "./style";
 
 export const AnsweredQuestions = () => {
   const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
@@ -35,7 +34,7 @@ export const AnsweredQuestions = () => {
           {searched.length
             ? searched.map((element) => {
                 return (
-                  <StyledList key={element.id}>
+                  <li key={element.id}>
                     <QuestionCard
                       setQuestionId={setQuestionId}
                       questionId={element.id}
@@ -52,12 +51,12 @@ export const AnsweredQuestions = () => {
                       username={element.user.name}
                       image={element.user.image}
                     ></ResponseCard>
-                  </StyledList>
+                  </li>
                 );
               })
             : asnwered.map((element) => {
                 return (
-                  <StyledList key={element.id}>
+                  <li key={element.id}>
                     <QuestionCard
                       setQuestionId={setQuestionId}
                       questionId={element.id}
@@ -74,7 +73,7 @@ export const AnsweredQuestions = () => {
                       username={element.user.name}
                       image={element.user.image}
                     ></ResponseCard>
-                  </StyledList>
+                  </li>
                 );
               })}
         </ul>
