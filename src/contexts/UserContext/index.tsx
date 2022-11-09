@@ -45,6 +45,8 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
   async function getAllUsers() {
     setLoading(true);
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
     try {
       const { data } = await api.get<iAllUsers>("/users");
       return data;
@@ -70,6 +72,9 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
   async function handleRegister(data: iRegister) {
     setLoading(true);
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     try {
       await api.post<iRegister>("/users", data);
       toast.success("Conta criada com sucesso");
@@ -103,6 +108,9 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
   async function editUser(data: iDataEditUser) {
     const id = localStorage.getItem("@userID-ProSupport");
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     setLoading(true);
     try {
       const response = await api.patch<iUser>(`/users/${id}`, data);
@@ -118,6 +126,9 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
   async function deleteUser(id: number | string) {
     setLoading(true);
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     try {
       await api.delete(`/users/${id}`);
       toast.success("Usuário deletado com sucesso!");
