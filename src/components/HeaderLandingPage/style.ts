@@ -42,6 +42,7 @@ export const StyledHeaderLandingPage = styled.header`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-right: 2rem;
   }
 
   @media (min-width: 768px) {

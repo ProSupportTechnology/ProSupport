@@ -26,9 +26,9 @@ export const Profile = () => {
               <button>Editar foto</button>
             </ImageProfile>
             <div className="userContent">
-              <h1>{name}</h1>
-              <span>{admin ? `Admin` : `Usuario`}</span>
-              <span>{email}</span>
+              <h1 className="title one">{name}</h1>
+              <span className="text one">{admin ? `Admin` : `Usuario`}</span>
+              <span className="text one">{email}</span>
             </div>
           </StyledAdminCard>
           <StyledButton

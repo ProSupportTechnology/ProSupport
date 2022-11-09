@@ -13,6 +13,10 @@ export const StyledAskQuestionsArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  svg {
+    font-size: 4rem;
+  }
 `;
 
 export const StyledMainUser = styled.div`
@@ -20,12 +24,10 @@ export const StyledMainUser = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin-top: 50px;
-
   .title {
     color: var(--white);
     text-align: left;
-    font-size: 1rem;
+    font-size: 1.5rem;
 
     margin: 30px 10px;
     height: auto;
