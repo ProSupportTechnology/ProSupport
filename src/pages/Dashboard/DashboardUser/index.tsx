@@ -7,19 +7,13 @@ import { StyledButton } from "../../../style/button/style";
 import { StyledAskQuestionsArea, StyledMainUser } from "./style";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
-import { useEffect } from "react";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 export const DashboardUser = () => {
-  const { user, getMyProfile } = useUserContext();
+  const { user } = useUserContext();
   const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
   const { email, name, admin, image } = user;
-
-  // useEffect(() => {
-  //   getMyProfile();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   if (!user.questions) return null;
 

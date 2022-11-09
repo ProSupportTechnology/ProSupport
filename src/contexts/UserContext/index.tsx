@@ -88,6 +88,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       localStorage.setItem("@userID-ProSupport", JSON.stringify(data.user.id));
 
       setUser(data.user);
+      await getMyProfile();
       toast.success("Login efetuado com sucesso");
       navigate("/dashboard");
     } catch (error) {
