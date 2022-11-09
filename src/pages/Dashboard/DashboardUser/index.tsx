@@ -2,7 +2,7 @@ import { Header } from "../../../components/Header";
 import { useUserContext } from "../../../contexts/UserContext";
 import { StyledAdminCard, StyledDashboard } from "../DashboardAdm/style";
 import { StyledImageQuestion } from "../../../components/ImageProfile/style";
-import userImg from "../../../assets/photo.png";
+import photoProfile from "../../../assets/photo.png";
 import Chat from "../../../assets/chat.png";
 import { StyledButton } from "../../../style/button/style";
 import { StyledAskQuestionsArea, StyledMainUser } from "./style";
@@ -10,9 +10,12 @@ import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
 import { useEffect } from "react";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
+import { HiChatBubbleLeftRight } from "react-icons/hi2";
+
 export const DashboardUser = () => {
   const { user, getMyProfile } = useUserContext();
   const { allQuestions, setQuestionId } = useQuestionContext();
+  const { email, name, admin, image } = user;
 
   useEffect(() => {
     getMyProfile();
@@ -27,21 +30,22 @@ export const DashboardUser = () => {
       <main className="containerDash">
         <StyledAdminCard>
           <StyledImageQuestion>
-            <img src={user.image ? user.image : userImg} alt="foto de perfil" />
+            <img src={image ? image : photoProfile} alt="foto de perfil" />
           </StyledImageQuestion>
           <div className="userContent">
-            <h1>{user.name}</h1>
-            <p>Desenvolvedor</p>
+            <h1 className="title one">{name}</h1>
+            <span className="text one">{admin ? `Admin` : `Usuario`}</span>
+            <span className="text one">{email}</span>
           </div>
         </StyledAdminCard>
         <StyledMainUser>
           <h2 className="title">Envie uma pergunta</h2>
           <StyledAskQuestionsArea>
-            <img src={Chat} alt="" />
-            <p>O que você tem em mente?</p>
+            <HiChatBubbleLeftRight />
+            <p>Qual é sua duvida?</p>
             <StyledButton variant="default">Postar</StyledButton>
           </StyledAskQuestionsArea>
-          <h2 className="title">Perguntas feitas por você</h2>
+          <h2 className="title">Perguntas feitas por você:</h2>
           <ul className="userQuestionArea">
             {user.questions?.length ? (
               user.questions.map((element) => {
@@ -61,10 +65,12 @@ export const DashboardUser = () => {
                 );
               })
             ) : (
-              <h2 className="noQuestions">Você ainda não fez nenhuma pergunta</h2>
+              <h2 className="noQuestions">
+                Você ainda não fez nenhuma pergunta
+              </h2>
             )}
           </ul>
-          <h2 className="title">Perguntas respondidas</h2>
+          <h2 className="title">Perguntas respondidas:</h2>
           <ul className="userQuestionArea">
             {user.questions.length ? (
               allQuestions.map((element) => {
@@ -83,7 +89,11 @@ export const DashboardUser = () => {
                         userQuestionId={element.userId}
                         date={new Date().toISOString()}
                       />
-                      <ResponseCard array={element.responses} username={user.name} image={user.image} />
+                      <ResponseCard
+                        array={element.responses}
+                        username={user.name}
+                        image={user.image}
+                      />
                     </>
                   );
                 }
