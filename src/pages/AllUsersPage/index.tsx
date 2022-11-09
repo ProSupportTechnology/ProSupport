@@ -7,6 +7,7 @@ import defaultUser from "../../assets/photo.png";
 import { iAllUsers } from "./types";
 import { useUserContext } from "../../contexts/UserContext";
 import { useQuestionContext } from "../../contexts/QuestionContext";
+import { LoadingPage } from "../LoadingPage";
 
 export const AllUsersPage = () => {
   const [allUsers, setAllUsers] = useState<iAllUsers | null>(null);
@@ -22,7 +23,7 @@ export const AllUsersPage = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!allUsers) return null;
+  if (!allUsers) return <LoadingPage />;
 
   return (
     <StyledAllUsersPage className="backgroundDash">

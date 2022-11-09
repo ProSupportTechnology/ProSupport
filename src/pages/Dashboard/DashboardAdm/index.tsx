@@ -8,14 +8,12 @@ import { InputSearch } from "../../../components/InputSearch";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../../contexts/UserContext/types";
 import { QuestionCard } from "../../../components/QuestionCard";
-import { ModalCreateResponse } from "../../../components/Modal/ModalCreateResponse";
-import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuestion";
+import { LoadingPage } from "../../LoadingPage";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image } = user;
-  const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
-    useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
 
   useEffect(() => {
@@ -26,13 +24,10 @@ export const DashboardAdm = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedQuestion]);
 
-  if (!user) return null;
+  if (!user) return <LoadingPage />;
 
   return (
     <StyledDashboard className="backgroundDash">
-      {isModCreateRespOpen && <ModalCreateResponse />}
-      {isModDeleteQuestOpen && <ModalDeleteQuestion />}
-
       <Header />
       <main className="containerDash">
         <StyledAdminCard>

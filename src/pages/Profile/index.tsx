@@ -6,6 +6,7 @@ import { useUserContext } from "../../contexts/UserContext";
 import { StyledAdminCard } from "../Dashboard/DashboardAdm/style";
 import { ImageProfile } from "../../components/ImageProfile";
 import { useQuestionContext } from "../../contexts/QuestionContext";
+import { LoadingPage } from "../LoadingPage";
 
 export const Profile = () => {
   const { user } = useUserContext();
@@ -13,7 +14,7 @@ export const Profile = () => {
 
   const { setIsModEditProfile } = useQuestionContext();
 
-  if (!user) return null;
+  if (!user) return <LoadingPage />;
 
   return (
     <StyleProfile>

@@ -9,13 +9,14 @@ import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
+import { LoadingPage } from "../../LoadingPage";
 
 export const DashboardUser = () => {
   const { user } = useUserContext();
   const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
   const { email, name, admin, image } = user;
 
-  if (!user.questions) return null;
+  if (!user.questions) return <LoadingPage />;
 
   return (
     <StyledDashboard className="backgroundDash">

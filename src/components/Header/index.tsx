@@ -20,6 +20,7 @@ import { StyledButtonLink } from "../../style/buttonLink/style";
 import { useUserContext } from "../../contexts/UserContext";
 import { StyledImageQuestion } from "../ImageProfile/style";
 import { useLocation } from "react-router-dom";
+import { LoadingPage } from "../../pages/LoadingPage";
 
 export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
@@ -30,7 +31,7 @@ export const Header = () => {
 
   const { email, name, admin, image } = user;
 
-  if (!user) return null;
+  if (!user) return <LoadingPage />;
 
   const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true;
   const searchUser = location.pathname === `/profile` || location.pathname === `/dashboard` ? false : true;
