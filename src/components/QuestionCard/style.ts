@@ -61,7 +61,9 @@ export const StyledQuestionCard = styled.li`
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      text-align: center;
+      @media (min-width: 768px) {
+        text-align: center;
+      }
     }
   }
   .textContainer {
