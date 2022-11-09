@@ -96,7 +96,8 @@ export const NavBar = styled.nav<iNavbarProps>`
   }};
   width: 80%;
   max-width: 320px;
-  height: 80%;
+  height: max-content;
+  gap: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -110,6 +111,7 @@ export const NavBar = styled.nav<iNavbarProps>`
     }
   }
   @media (min-width: 768px) {
+    height: 100%;
     position: static;
     background-color: transparent;
     align-items: center;
@@ -147,6 +149,7 @@ export const UlNavBar = styled.ul`
   flex-direction: column;
   gap: 0.5rem;
   overflow: auto;
+  height: 140px;
   ::-webkit-scrollbar {
     background-color: transparent;
     width: 1px;

@@ -18,8 +18,8 @@ export const StyleMain = styled.main`
   h1 {
     color: white;
     width: 100%;
+    font-size: 1.6rem;
     text-align: left;
-    font-size: 26px;
   }
 
   p {
