@@ -33,7 +33,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function getAllQuestions() {
     setLoading(true);
     try {
-      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_limit=10&_expand=user");
+      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user");
       setAllQuestions(response.data);
     } catch (error) {
       console.error(error);
@@ -90,11 +90,12 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
   async function createQuestion(data: iDataQuestion) {
     setLoading(true);
-    const id = JSON.parse(localStorage.getItem("@userID-ProSupport") as string);
+    const id = Number(localStorage.getItem("@userID-ProSupport"));
     const date = new Date().toISOString();
     const body = { ...data, userId: id, created_at: date };
     try {
-      await api.post<iDataQuestion>("/questions", body);
+      await api.post<iQuestion>("/questions", body);
+      await getAllQuestions();
       toast.success("Pergunta enviada com sucesso.");
       setIsModCreateQuestOpen(false);
     } catch (error) {

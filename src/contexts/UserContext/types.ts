@@ -44,19 +44,20 @@ export interface iUserContext {
 }
 
 export interface iQuestion {
+  created_at: string;
   title: string;
   description: string;
   tech: string;
   userId: number;
   id: number;
   responses: {
-    map(arg0: (element: iResponse) => void): ReactNode;
+    map?(arg0: (element: iResponse) => void): ReactNode;
     title: string;
     description: string;
     tech: string;
     userId: number;
     id: number;
-    length: number;
+    length?: number;
   };
   user: iUser;
 }
