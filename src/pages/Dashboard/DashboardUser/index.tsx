@@ -12,7 +12,7 @@ import { useEffect } from "react";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 export const DashboardUser = () => {
   const { user, getMyProfile } = useUserContext();
-  const { allQuestions, setQuestionId } = useQuestionContext();
+  const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
 
   useEffect(() => {
     getMyProfile();
@@ -39,7 +39,9 @@ export const DashboardUser = () => {
           <StyledAskQuestionsArea>
             <img src={Chat} alt="" />
             <p>O que você tem em mente?</p>
-            <StyledButton variant="default">Postar</StyledButton>
+            <StyledButton onClick={() => setIsModCreateQuestOpen(true)} variant="default">
+              Postar
+            </StyledButton>
           </StyledAskQuestionsArea>
           <h2 className="title">Perguntas feitas por você</h2>
           <ul className="userQuestionArea">
@@ -67,6 +69,7 @@ export const DashboardUser = () => {
           <h2 className="title">Perguntas respondidas</h2>
           <ul className="userQuestionArea">
             {user.questions.length ? (
+              // eslint-disable-next-line array-callback-return
               allQuestions.map((element) => {
                 if (user.id === element.userId && element.responses.length) {
                   return (
