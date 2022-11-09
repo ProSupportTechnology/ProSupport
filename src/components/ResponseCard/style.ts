@@ -1,27 +1,11 @@
 import styled from "styled-components";
+import { StyledQuestionCard } from "../QuestionCard/style";
 
-export const StyledResponseCard = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+export const StyledResponseCard = styled(StyledQuestionCard)`
   color: var(--gray-0);
   gap: 0.5rem;
   transition: 0.5s;
   padding: 0px;
-
-  &:hover > div {
-    background: #4f4d8c;
-    background: linear-gradient(90deg, #4f4d8c 0%, #807ddb 55%, #5f5da6 100%);
-    background: -webkit-linear-gradient(
-      90deg,
-      #4f4d8c 0%,
-      #807ddb 55%,
-      #5f5da6 100%
-    );
-    box-shadow: 10px 10px 20px black;
-  }
-
 
   div {
     display: flex;
@@ -83,12 +67,12 @@ export const StyledResponseCard = styled.div`
       width: 100%;
       height: 100%;
 
-      h2{
+      h2 {
         font-size: 1rem;
         height: auto;
       }
 
-      .questionContent{
+      .questionContent {
         border: none;
         overflow: auto;
         min-height: 100%;
@@ -99,7 +83,7 @@ export const StyledResponseCard = styled.div`
       }
     }
 
-    .techContainer{
+    .techContainer {
       width: 100%;
       height: 30px;
       display: flex;
@@ -110,7 +94,7 @@ export const StyledResponseCard = styled.div`
       border: none;
       background: none;
 
-      div{
+      div {
         border: 1px solid var(--gray-1);
         border-radius: 5px;
         height: 25px;
@@ -123,7 +107,7 @@ export const StyledResponseCard = styled.div`
         max-width: 100px;
       }
 
-      h2{
+      h2 {
         font-size: 0.8rem;
         padding: 0px;
       }
@@ -140,40 +124,38 @@ export const StyledResponseCard = styled.div`
   }
 
   @media (min-width: 768px) {
+    padding: 10px;
+    height: 250px;
 
-      padding: 10px;
-      height: 250px;
+    .imageContainer {
+      border-radius: 20px;
 
-      .imageContainer {
+      figure {
+        width: 150px;
+        height: 150px;
         border-radius: 20px;
-
-        figure {
-          width: 150px;
-          height: 150px;
-          border-radius: 20px;
-        }
-
-        img {
-          border-radius: 20px;
-        }
       }
 
-      div {
-        padding: 10px;
-        border-radius: none;
+      img {
+        border-radius: 20px;
       }
-      .buttonClose {
-        cursor: pointer;
-        transform: scale(1);
+    }
 
-        &:hover {
-          transform: scale(1.5);
-        }
+    div {
+      padding: 10px;
+      border-radius: none;
+    }
+    .buttonClose {
+      cursor: pointer;
+      transform: scale(1);
+
+      &:hover {
+        transform: scale(1.5);
       }
+    }
 
-      .questionContent{
+    .questionContent {
       min-height: 200px;
     }
-    }
-
+  }
 `;
