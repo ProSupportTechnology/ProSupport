@@ -5,7 +5,6 @@ import { iDataEditUser } from "../../components/Modal/ModalEditProfile/types";
 import { iAllUsers } from "../../pages/AllUsersPage/types";
 import { iLogin } from "../../pages/LoginPage/components/FormLogin/types";
 import { api } from "../../services/api";
-import { useQuestionContext } from "../QuestionContext";
 import { iRegister, iResponseLogin, iUser, iUserContext } from "./types";
 
 interface iUserContextProps {
@@ -20,16 +19,14 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [idUserToDelete, setIdUserToDelete] = useState<string | number>("");
 
-  const { setIsModDeleteUser } = useQuestionContext();
-
   useEffect(() => {
     async function getUser() {
-      //Loading(true)
+      setLoading(true);
       const userId = localStorage.getItem("@userID-ProSupport");
 
       if (userId) {
         try {
-          const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions`);
+          const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
           const token = localStorage.getItem("@Token-ProSupport");
           api.defaults.headers.common.authorization = `Bearer ${token}`;
           setUser(data);
@@ -38,7 +35,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
           localStorage.clear();
           navigate("/login");
         } finally {
-          //Loading(false)
+          setLoading(false);
         }
       }
     }
@@ -47,21 +44,22 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   }, []);
 
   async function getAllUsers() {
-    //Loading(true)
+    setLoading(true);
     try {
       const { data } = await api.get<iAllUsers>("/users");
       return data;
     } catch (error) {
-      // toast.error("Sessão expirada! Faça login novamente.")
-      // localStorage.clear()
-      // navigate("/login")
+      console.error(error);
     } finally {
-      //Loading(false)
+      setLoading(false);
     }
   }
 
   async function getMyProfile() {
     const userId = localStorage.getItem("@userID-ProSupport");
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     try {
       const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
       setUser(data);
