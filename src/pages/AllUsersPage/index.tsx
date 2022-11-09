@@ -34,20 +34,25 @@ export const AllUsersPage = () => {
             allUsers.map((user) => (
               <li key={user.id}>
                 <ImageProfile>
-                  <img src={user.image ? user.image : defaultUser} alt={user.name} />
+                  <img
+                    src={user.image ? user.image : defaultUser}
+                    alt={user.name}
+                  />
                 </ImageProfile>
                 <div>
                   <p className="text one">{user.name}</p>
                   <span className="text two">{user.bio}</span>
                 </div>
-                <button
-                  onClick={() => {
-                    setIsModDeleteUser(true);
-                    setIdUserToDelete(user.id);
-                  }}
-                >
-                  <IoMdTrash />
-                </button>
+                {!user.admin && (
+                  <button
+                    onClick={() => {
+                      setIsModDeleteUser(true);
+                      setIdUserToDelete(user.id);
+                    }}
+                  >
+                    <IoMdTrash />
+                  </button>
+                )}
               </li>
             ))}
         </ul>

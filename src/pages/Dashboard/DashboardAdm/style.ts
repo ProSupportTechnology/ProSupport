@@ -118,8 +118,6 @@ export const StyledDashboard = styled.div`
   @media (max-width: 770px) {
     flex-direction: column;
 
-    margin: 100px 0px 0px 0px;
-
     .searchArea {
       display: none;
     }

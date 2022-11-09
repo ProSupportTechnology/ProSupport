@@ -42,7 +42,10 @@ export const Header = () => {
     location.pathname === `/profile` || location.pathname === `/users`
       ? false
       : true;
-
+  const searchUser =
+    location.pathname === `/profile` || location.pathname === `/dashboard`
+      ? false
+      : true;
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
@@ -59,11 +62,17 @@ export const Header = () => {
           <span>{admin ? `Admin` : `Usuario`}</span>
           <span className="text three">{email}</span>
         </NavBarProfileContainer>
-        {search && (
-          <div className="divInput">
-            <InputSearch />
-          </div>
-        )}
+        {admin
+          ? search && (
+              <div className="divInput">
+                <InputSearch />
+              </div>
+            )
+          : searchUser && (
+              <div className="divInput">
+                <InputSearch />
+              </div>
+            )}
         <UlNavBar>
           <LiNavBar>
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
