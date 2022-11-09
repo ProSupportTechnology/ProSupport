@@ -3,7 +3,8 @@ import styled from "styled-components";
 export const StyledAskQuestionsArea = styled.div`
   width: 100%;
   height: 90px;
-  padding: 20px;
+  padding: 10px;
+  gap: 1rem;
 
   border: 1px solid var(--gray-1);
   border-radius: 20px;
