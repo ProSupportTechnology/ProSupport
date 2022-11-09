@@ -17,7 +17,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModDeleteRespOpen, setIsModDeleteRespOpen] = useState(false);
   const [isModEditProfile, setIsModEditProfile] = useState(false);
   const [questionId, setQuestionId] = useState<number>(0);
-  const [userQuestionId, setUserQuestionId] = useState<number>(0);
   const [responseId, setResponseId] = useState<number>(0);
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
   const [searchedQuestion, setSearchedQuestion] = useState("");
@@ -48,7 +47,9 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function answerQuestion(data: iDataResponse) {
     setLoading(true);
     const date = new Date().toISOString();
-    const body = { ...data, questionId: questionId, userId: userQuestionId, created_at: date };
+    const userId = localStorage.getItem("@userID-ProSupport");
+    const body = { ...data, questionId: questionId, userId: userId, created_at: date };
+    console.log(body);
     try {
       await api.post<iDataResponse>("/responses", body);
       await getAllQuestions();
@@ -165,8 +166,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         editAnswer,
         setQuestionId,
         questionId,
-        userQuestionId,
-        setUserQuestionId,
         deleteQuestion,
         setResponseId,
         responseId,

@@ -32,7 +32,6 @@ export interface iQuestionProvider {
   setIsModEditProfile: Dispatch<SetStateAction<boolean>>;
   allQuestions: iQuestion[];
   searchedQuestion: string;
-  // setAllQuestions: Dispatch<React.SetStateAction<iQuestion[]>>
   answeredQuestion: iQuestion[];
   setAnsweredQuention: Dispatch<React.SetStateAction<iQuestion[]>>;
   setSearchedQuestion: Dispatch<React.SetStateAction<string>>;
@@ -42,8 +41,6 @@ export interface iQuestionProvider {
   editAnswer: (data: iDataResponse) => Promise<void>;
   setQuestionId: Dispatch<SetStateAction<number>>;
   questionId: number;
-  setUserQuestionId: Dispatch<SetStateAction<number>>;
-  userQuestionId: number;
   deleteQuestion: (id: number) => Promise<void>;
   responseId: number;
   setResponseId: Dispatch<SetStateAction<number>>;

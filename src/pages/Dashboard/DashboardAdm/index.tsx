@@ -63,7 +63,7 @@ export const DashboardAdm = () => {
                     setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
-                    date={new Date().toISOString()}
+                    date={element.created_at}
                   ></QuestionCard>
                 );
               })
@@ -79,7 +79,7 @@ export const DashboardAdm = () => {
                     setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
-                    date={new Date().toISOString()}
+                    date={element.created_at}
                   ></QuestionCard>
                 );
               })}
