@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthRoutes } from "./components/AuthRoutes";
 import { Loading } from "./components/Loading";
+import { ModalCreateQuestion } from "./components/Modal/ModalCreateQuestion";
 import { ModalCreateResponse } from "./components/Modal/ModalCreateResponse";
 import { ModalDeleteQuestion } from "./components/Modal/ModalDeleteQuestion";
 import { ModalDeleteResponse } from "./components/Modal/ModalDeleteResponse";
@@ -27,6 +28,7 @@ const RoutesMain = () => {
     isModEditRespOpen,
     isModDeleteRespOpen,
     isModEditProfile,
+    isModCreateQuestOpen,
   } = useQuestionContext();
   return (
     <>
@@ -37,6 +39,7 @@ const RoutesMain = () => {
       {isModEditRespOpen && <ModalEditResponse />}
       {isModDeleteRespOpen && <ModalDeleteResponse />}
       {isModEditProfile && <ModalEditProfile />}
+      {isModCreateQuestOpen && <ModalCreateQuestion />}
 
       <Routes>
         <Route path="/" element={<LandingPage />} />
