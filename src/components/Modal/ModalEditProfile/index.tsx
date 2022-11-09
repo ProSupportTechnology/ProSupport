@@ -11,7 +11,7 @@ import { useUserContext } from "../../../contexts/UserContext";
 
 export const ModalEditProfile = () => {
   const { setIsModEditProfile } = useQuestionContext();
-  const { editUser, handleRegister } = useUserContext();
+  const { editUser } = useUserContext();
 
   const {
     register,

@@ -3,7 +3,6 @@ import { useUserContext } from "../../../contexts/UserContext";
 import { StyledAdminCard, StyledDashboard } from "../DashboardAdm/style";
 import { StyledImageQuestion } from "../../../components/ImageProfile/style";
 import photoProfile from "../../../assets/photo.png";
-import Chat from "../../../assets/chat.png";
 import { StyledButton } from "../../../style/button/style";
 import { StyledAskQuestionsArea, StyledMainUser } from "./style";
 import { QuestionCard } from "../../../components/QuestionCard";
@@ -14,11 +13,12 @@ import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
 export const DashboardUser = () => {
   const { user, getMyProfile } = useUserContext();
-  const { allQuestions, setQuestionId } = useQuestionContext();
+  const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
   const { email, name, admin, image } = user;
 
   useEffect(() => {
     getMyProfile();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!user.questions) return null;
@@ -42,7 +42,9 @@ export const DashboardUser = () => {
           <StyledAskQuestionsArea>
             <HiChatBubbleLeftRight />
             <p>Qual é sua duvida?</p>
-            <StyledButton variant="default">Postar</StyledButton>
+            <StyledButton onClick={() => setIsModCreateQuestOpen(true)} variant="default">
+              Postar
+            </StyledButton>
           </StyledAskQuestionsArea>
           <h2 className="title">Perguntas feitas por você:</h2>
           <ul className="userQuestionArea">
@@ -64,14 +66,13 @@ export const DashboardUser = () => {
                 );
               })
             ) : (
-              <h2 className="noQuestions">
-                Você ainda não fez nenhuma pergunta
-              </h2>
+              <h2 className="noQuestions">Você ainda não fez nenhuma pergunta</h2>
             )}
           </ul>
           <h2 className="title">Perguntas respondidas:</h2>
           <ul className="userQuestionArea">
             {user.questions.length ? (
+              // eslint-disable-next-line array-callback-return
               allQuestions.map((element) => {
                 if (user.id === element.userId && element.responses.length) {
                   return (
@@ -88,11 +89,7 @@ export const DashboardUser = () => {
                         userQuestionId={element.userId}
                         date={new Date().toISOString()}
                       />
-                      <ResponseCard
-                        array={element.responses}
-                        username={user.name}
-                        image={user.image}
-                      />
+                      <ResponseCard array={element.responses} username={user.name} image={user.image} />
                     </>
                   );
                 }

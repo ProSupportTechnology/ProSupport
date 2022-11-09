@@ -85,15 +85,7 @@ export const Barra = styled.span`
 export const NavBar = styled.nav<iNavbarProps>`
   position: fixed;
   top: 100px;
-  right: ${({ navbarMobile, setAnimation }) => {
-    if (!navbarMobile) {
-      setAnimation(`animate__backOutRight`);
-      return "-325px";
-    } else {
-      setAnimation(`animate__backInRight`);
-      return "0";
-    }
-  }};
+  right: ${({ navbarMobile }) => (!navbarMobile ? "-325px" : "0")};
   width: 80%;
   max-width: 320px;
   height: max-content;

@@ -82,7 +82,7 @@ ul, ol, li {
 }
 
 .containerDash{
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 130px 15px 40px 15px;
   
@@ -96,6 +96,5 @@ ul, ol, li {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
-  /* overflow-y: auto */
 }
 `;
