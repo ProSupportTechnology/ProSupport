@@ -7,21 +7,16 @@ import { useQuestionContext } from "../../contexts/QuestionContext";
 import photoProfile from "../../assets/photo.png";
 
 export const ResponseCard = ({ username, image, array }: iResponseCard) => {
-  const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } =
-    useQuestionContext();
+  const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } = useQuestionContext();
   return (
     <>
       {array.map((element: any) => {
-        console.log(element);
         return (
           <StyledResponseCard>
             <div className="mobileContainer">
               <div className="imageContainer">
                 <StyledImageQuestion>
-                  <img
-                    src={image ? image : photoProfile}
-                    alt="foto de perfil"
-                  />
+                  <img src={image ? image : photoProfile} alt="foto de perfil" />
                 </StyledImageQuestion>
                 <p>{username}</p>
               </div>

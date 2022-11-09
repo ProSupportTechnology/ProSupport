@@ -1,6 +1,5 @@
 import { Header } from "../../components/Header";
 import { useQuestionContext } from "../../contexts/QuestionContext";
-import { StyledDashboard } from "../Dashboard/DashboardAdm/style";
 import { InputSearch } from "../../components/InputSearch";
 import { QuestionCard } from "../../components/QuestionCard";
 import { ResponseCard } from "../../components/ResponseCard";
@@ -9,8 +8,7 @@ import { iQuestion } from "../../contexts/UserContext/types";
 import { StyledAnsweredQuestions } from "./style";
 
 export const AnsweredQuestions = () => {
-  const { allQuestions, searchedQuestion, setQuestionId } =
-    useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
 
   const [searched, setsearched] = useState([] as iQuestion[]);
 

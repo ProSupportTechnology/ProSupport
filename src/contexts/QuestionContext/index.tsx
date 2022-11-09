@@ -26,28 +26,29 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const { setLoading } = useUserContext();
 
   useEffect(() => {
-    async function getAllQuestions() {
-      setLoading(true);
-      try {
-        const response = await api.get<iQuestion[]>(
-          "/questions?_embed=responses&_limit=10&_sort=id&_order=desc&_expand=user"
-        );
-        setAllQuestions(response.data);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    }
     getAllQuestions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  async function getAllQuestions() {
+    setLoading(true);
+    try {
+      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_limit=10&_expand=user");
+      setAllQuestions(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   async function answerQuestion(data: iDataResponse) {
     setLoading(true);
-    const body = { ...data, questionId: questionId, userId: userQuestionId };
+    const date = new Date().toISOString();
+    const body = { ...data, questionId: questionId, userId: userQuestionId, created_at: date };
     try {
       await api.post<iDataResponse>("/responses", body);
+      await getAllQuestions();
       toast.success("Resposta enviada com sucesso!");
       setIsModCreateRespOpen(false);
     } catch (error) {
@@ -63,6 +64,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     try {
       const response = await api.patch<iDataResponse>(`/responses/${responseId}`, data);
       console.log(response);
+      await getAllQuestions();
       toast.success("Resposta editada com sucesso!");
       setIsModEditRespOpen(false);
     } catch (error) {
@@ -75,12 +77,11 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
   async function deleteAnswer() {
     setLoading(true);
+
     try {
-      const response = await api.delete(`/responses/${responseId}`);
+      await api.delete(`/responses/${responseId}`);
       toast.success("Resposta deletada com sucesso!");
-      console.log(response);
     } catch (error) {
-      console.log(error);
       toast.error("Não foi possível excluir a resposta.");
     } finally {
       setLoading(false);
@@ -89,7 +90,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
   async function createQuestion(data: iDataQuestion) {
     setLoading(true);
-    const id = localStorage.getItem("@userID-ProSupport");
+    const id = JSON.parse(localStorage.getItem("@userID-ProSupport") as string);
     const date = new Date().toISOString();
     const body = { ...data, userId: id, created_at: date };
     try {
@@ -110,6 +111,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       await api.patch<iDataQuestion>(`/questions/${questionId}`, data);
       toast.success("Pergunta editada com sucesso.");
       setIsModEditQuestOpen(false);
+      await getAllQuestions();
     } catch (error) {
       toast.error("Erro ao editar pergunta.");
       console.error(error);
@@ -121,9 +123,9 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function deleteQuestion(id: string | number) {
     setLoading(true);
     try {
-      const response = await api.delete<iQuestion[]>(`/questions/${id}`);
-      console.log(response);
+      await api.delete<iQuestion[]>(`/questions/${id}`);
       toast.success("Pergunta deletada com sucesso!");
+      await getAllQuestions();
     } catch (error) {
       console.error(error);
     } finally {
