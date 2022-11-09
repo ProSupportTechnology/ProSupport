@@ -6,9 +6,11 @@ import { QuestionCard } from "../../components/QuestionCard";
 import { ResponseCard } from "../../components/ResponseCard";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../contexts/UserContext/types";
+import { StyledAnsweredQuestions } from "./style";
 
 export const AnsweredQuestions = () => {
-  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId } =
+    useQuestionContext();
 
   const [searched, setsearched] = useState([] as iQuestion[]);
 
@@ -22,19 +24,15 @@ export const AnsweredQuestions = () => {
   const asnwered = allQuestions.filter((element) => element.responses.length);
 
   return (
-    <StyledDashboard className="backgroundDash">
+    <StyledAnsweredQuestions className="backgroundDash">
       <Header />
       <main className="containerDash">
-        <div className="search">
-          <div className="searchArea">
-            <InputSearch />
-          </div>
-        </div>
+        <InputSearch />
         <ul className="questionArea">
           {searched.length
             ? searched.map((element) => {
                 return (
-                  <li key={element.id}>
+                  <>
                     <QuestionCard
                       setQuestionId={setQuestionId}
                       questionId={element.id}
@@ -51,7 +49,7 @@ export const AnsweredQuestions = () => {
                       username={element.user.name}
                       image={element.user.image}
                     ></ResponseCard>
-                  </li>
+                  </>
                 );
               })
             : asnwered.map((element) => {
@@ -78,6 +76,6 @@ export const AnsweredQuestions = () => {
               })}
         </ul>
       </main>
-    </StyledDashboard>
+    </StyledAnsweredQuestions>
   );
 };
