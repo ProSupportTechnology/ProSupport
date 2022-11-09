@@ -35,7 +35,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
     try {
-      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user");
+      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user&_limit=10");
       setAllQuestions(response.data);
     } catch (error) {
       console.error(error);
