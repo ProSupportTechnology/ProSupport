@@ -23,7 +23,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     async function getUser() {
       setLoading(true);
       const userId = localStorage.getItem("@userID-ProSupport");
-
       if (userId) {
         try {
           const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
@@ -75,15 +74,18 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
 
-    try {
-      await api.post<iRegister>("/users", data);
-      toast.success("Conta criada com sucesso");
-      navigate("/login");
-    } catch (error) {
-      toast.error("Falha ao criar a conta");
-    } finally {
-      setLoading(false);
-    }
+    delete data.confirmPassword;
+
+    console.log(data.confirmPassword);
+    // try {
+    //   await api.post<iRegister>("/users", data);
+    //   toast.success("Conta criada com sucesso");
+    //   navigate("/login");
+    // } catch (error) {
+    //   toast.error("Falha ao criar a conta");
+    // } finally {
+    setLoading(false);
+    // }
   }
 
   async function handleLogin(body: iLogin) {
