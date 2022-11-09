@@ -96,5 +96,6 @@ ul, ol, li {
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  /* overflow-y: auto */
 }
 `;
