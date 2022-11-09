@@ -45,7 +45,7 @@ export const StyledMainUser = styled.div`
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 10px;
     margin-top: 30px;
   }
 

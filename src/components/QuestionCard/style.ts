@@ -80,6 +80,10 @@ export const StyledQuestionCard = styled.li`
       min-width: 278px;
       min-height: 95px;
     }
+    & > p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     span {
       width: 100%;
       overflow-wrap: break-word;
