@@ -23,7 +23,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     async function getUser() {
       setLoading(true);
       const userId = localStorage.getItem("@userID-ProSupport");
-
       if (userId) {
         try {
           const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
@@ -74,6 +73,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     setLoading(true);
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
+    delete data.confirmPassword;
 
     try {
       await api.post<iRegister>("/users", data);
@@ -89,13 +89,13 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   async function handleLogin(body: iLogin) {
     setLoading(true);
     try {
-      const response = await api.post<iResponseLogin>("/login", body);
-      api.defaults.headers.common.authorization = `Bearer ${response.data.accessToken}`;
+      const { data } = await api.post<iResponseLogin>("/login", body);
+      api.defaults.headers.common.authorization = `Bearer ${data.accessToken}`;
 
-      localStorage.setItem("@Token-ProSupport", response.data.accessToken);
-      localStorage.setItem("@userID-ProSupport", response.data.user.id);
+      localStorage.setItem("@Token-ProSupport", data.accessToken);
+      localStorage.setItem("@userID-ProSupport", JSON.stringify(data.user.id));
 
-      setUser(response.data.user);
+      setUser(data.user);
       toast.success("Login efetuado com sucesso");
       navigate("/dashboard");
     } catch (error) {

@@ -5,7 +5,7 @@ export interface iRegister {
   name: string;
   email: string;
   password: string;
-  confirmPassword: string;
+  confirmPassword: string | undefined;
 }
 
 export interface iLogin {
@@ -24,9 +24,9 @@ export interface iUser {
   name: string;
   bio: string;
   image: string;
-  id: string;
+  id: number;
   admin?: boolean;
-  questions?: iQuestion[]
+  questions?: iQuestion[];
 }
 
 export interface iUserContext {
@@ -40,23 +40,24 @@ export interface iUserContext {
   setLoading: Dispatch<SetStateAction<boolean>>;
   setIdUserToDelete: Dispatch<SetStateAction<string | number>>;
   idUserToDelete: string | number;
-  getMyProfile(): Promise<void>
+  getMyProfile(): Promise<void>;
 }
 
 export interface iQuestion {
+  created_at: string;
   title: string;
   description: string;
   tech: string;
-  userId: string;
-  id: string;
+  userId: number;
+  id: number;
   responses: {
-    map(arg0: (element: iResponse) => void): ReactNode;
+    map?(arg0: (element: iResponse) => void): ReactNode;
     title: string;
     description: string;
     tech: string;
     userId: number;
     id: number;
-    length: number;
+    length?: number;
   };
   user: iUser;
 }

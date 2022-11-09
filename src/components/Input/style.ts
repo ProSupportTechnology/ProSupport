@@ -74,6 +74,8 @@ export const StyledInput = styled(Input)`
   }
 
   &.isModal {
+    bottom: 95%;
+
     label {
       position: unset;
       inset: 0;
@@ -92,8 +94,12 @@ export const StyledInput = styled(Input)`
       }
     }
 
-    svg {
+    & > svg {
       top: 97%;
+    }
+
+    div {
+      bottom: 80%;
     }
   }
 `;

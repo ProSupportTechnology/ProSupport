@@ -56,12 +56,12 @@ export const DashboardUser = () => {
                     title={element.title}
                     tech={element.tech}
                     description={element.description}
-                    username={user.name}
-                    image={user.image}
+                    username={name}
+                    image={image}
                     setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
-                    date={new Date().toISOString()}
+                    date={element.created_at}
                   />
                 );
               })
@@ -87,7 +87,7 @@ export const DashboardUser = () => {
                         setQuestionId={setQuestionId}
                         questionId={element.id}
                         userQuestionId={element.userId}
-                        date={new Date().toISOString()}
+                        date={element.created_at}
                       />
                       <ResponseCard array={element.responses} username={user.name} image={user.image} />
                     </>

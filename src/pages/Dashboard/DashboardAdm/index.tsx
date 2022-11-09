@@ -14,13 +14,8 @@ import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuesti
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image } = user;
-  const {
-    allQuestions,
-    searchedQuestion,
-    setQuestionId,
-    isModCreateRespOpen,
-    isModDeleteQuestOpen,
-  } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
+    useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
 
   useEffect(() => {
@@ -28,8 +23,7 @@ export const DashboardAdm = () => {
       element.tech.toLowerCase().includes(searchedQuestion.toLowerCase().trim())
     );
     setAsk(filtered);
-    console.log(filtered)
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchedQuestion]);
 
   if (!user) return null;
@@ -56,8 +50,8 @@ export const DashboardAdm = () => {
           <InputSearch />
         </div>
         <ul className="questionArea">
-          {ask.length ? 
-             ask.map((element) => {
+          {ask.length
+            ? ask.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -73,7 +67,7 @@ export const DashboardAdm = () => {
                   ></QuestionCard>
                 );
               })
-           :  allQuestions.map((element) => {
+            : allQuestions.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -88,8 +82,8 @@ export const DashboardAdm = () => {
                     date={new Date().toISOString()}
                   ></QuestionCard>
                 );
-              })} 
-              {ask.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
+              })}
+          {allQuestions.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
         </ul>
       </main>
     </StyledDashboard>

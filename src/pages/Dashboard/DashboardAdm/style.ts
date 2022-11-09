@@ -51,12 +51,15 @@ export const StyledDashboard = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    height: 650px;
+    height: 313px;
 
     overflow: hidden;
     overflow-y: auto;
 
     margin-top: 30px;
+    @media (min-width: 768px) {
+      height: 395px;
+    }
   }
 
   .questionArea::-webkit-scrollbar {
