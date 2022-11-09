@@ -6,7 +6,6 @@ import userImg from "../../../assets/photo.png";
 import Chat from "../../../assets/chat.png";
 import { StyledButton } from "../../../style/button/style";
 import { StyledAskQuestionsArea, StyledMainUser } from "./style";
-import { StyledList } from "../../AnsweredQuestions/style";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
 import { useEffect } from "react";
@@ -47,20 +46,18 @@ export const DashboardUser = () => {
             {user.questions?.length ? (
               user.questions.map((element) => {
                 return (
-                  <StyledList key={element.id}>
-                    <QuestionCard
-                      key={element.id}
-                      title={element.title}
-                      tech={element.tech}
-                      description={element.description}
-                      username={user.name}
-                      image={user.image}
-                      setQuestionId={setQuestionId}
-                      questionId={element.id}
-                      userQuestionId={element.userId}
-                      date={new Date().toISOString()}
-                    />
-                  </StyledList>
+                  <QuestionCard
+                    key={element.id}
+                    title={element.title}
+                    tech={element.tech}
+                    description={element.description}
+                    username={user.name}
+                    image={user.image}
+                    setQuestionId={setQuestionId}
+                    questionId={element.id}
+                    userQuestionId={element.userId}
+                    date={new Date().toISOString()}
+                  />
                 );
               })
             ) : (
@@ -73,7 +70,7 @@ export const DashboardUser = () => {
               allQuestions.map((element) => {
                 if (user.id === element.userId && element.responses.length) {
                   return (
-                    <StyledList>
+                    <>
                       <QuestionCard
                         key={element.id}
                         title={element.title}
@@ -87,7 +84,7 @@ export const DashboardUser = () => {
                         date={new Date().toISOString()}
                       />
                       <ResponseCard array={element.responses} username={user.name} image={user.image} />
-                    </StyledList>
+                    </>
                   );
                 }
               })

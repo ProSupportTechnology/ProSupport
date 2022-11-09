@@ -12,7 +12,12 @@ import {
 } from "./style";
 import logo from "../../assets/ProSupport.png";
 import photoProfile from "../../assets/photo.png";
-import { HiHome, HiUser, HiChatBubbleLeftRight, HiUsers } from "react-icons/hi2";
+import {
+  HiHome,
+  HiUser,
+  HiChatBubbleLeftRight,
+  HiUsers,
+} from "react-icons/hi2";
 import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
 import { InputSearch } from "../InputSearch";
@@ -33,7 +38,10 @@ export const Header = () => {
 
   if (!user) return null;
 
-  const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true
+  const search =
+    location.pathname === `/profile` || location.pathname === `/users`
+      ? false
+      : true;
 
   return (
     <HeaderContainer>
@@ -51,7 +59,7 @@ export const Header = () => {
           <span>{admin ? `Admin` : `Usuario`}</span>
           <span className="text three">{email}</span>
         </NavBarProfileContainer>
-        {(search &&
+        {search && (
           <div className="divInput">
             <InputSearch />
           </div>
@@ -73,25 +81,36 @@ export const Header = () => {
               </div>
             </StyledButtonLink>
           </LiNavBar>
-          <LiNavBar>
-            <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
-              <h3 className="title two">Perguntas/Respostas</h3>
-              <div title="Perguntas/Respostas">
-                <HiChatBubbleLeftRight />
-              </div>
-            </StyledButtonLink>
-          </LiNavBar>
-          <LiNavBar>
-            <StyledButtonLink variant="theme-menu" to={`/users`}>
-              <h3 className="title two">Usuarios</h3>
-              <div title="Usuario">
-                <HiUsers />
-              </div>
-            </StyledButtonLink>
-          </LiNavBar>
+          {admin && (
+            <>
+              <LiNavBar>
+                <StyledButtonLink
+                  variant="theme-menu"
+                  to={`/answeredQuestions`}
+                >
+                  <h3 className="title two">Perguntas/Respostas</h3>
+                  <div title="Perguntas/Respostas">
+                    <HiChatBubbleLeftRight />
+                  </div>
+                </StyledButtonLink>
+              </LiNavBar>
+              <LiNavBar>
+                <StyledButtonLink variant="theme-menu" to={`/users`}>
+                  <h3 className="title two">Usuarios</h3>
+                  <div title="Usuario">
+                    <HiUsers />
+                  </div>
+                </StyledButtonLink>
+              </LiNavBar>
+            </>
+          )}
         </UlNavBar>
         <LogoutCont>
-          <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
+          <StyledButtonLink
+            variant="theme-menu"
+            to={`/`}
+            onClick={() => localStorage.clear()}
+          >
             <h3 className="title two">Sair</h3>
             <div title="Sair">
               <GiEntryDoor />
@@ -100,7 +119,10 @@ export const Header = () => {
         </LogoutCont>
       </NavBar>
       <MenuMobile>
-        <CheckBox type="checkbox" onChange={(event) => [setNavbarMobile(event.target.checked)]} />
+        <CheckBox
+          type="checkbox"
+          onChange={(event) => [setNavbarMobile(event.target.checked)]}
+        />
         <label htmlFor="checkbox-menu">
           <Barra />
           <Barra />

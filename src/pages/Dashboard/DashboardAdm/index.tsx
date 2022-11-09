@@ -14,13 +14,8 @@ import { ModalDeleteQuestion } from "../../../components/Modal/ModalDeleteQuesti
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, admin, image } = user;
-  const {
-    allQuestions,
-    searchedQuestion,
-    setQuestionId,
-    isModCreateRespOpen,
-    isModDeleteQuestOpen,
-  } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId, isModCreateRespOpen, isModDeleteQuestOpen } =
+    useQuestionContext();
   const [teste, setTeste] = useState([] as iQuestion[]);
 
   useEffect(() => {

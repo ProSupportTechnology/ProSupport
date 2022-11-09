@@ -20,7 +20,6 @@ export const StyledMainUser = styled.div`
   flex-direction: column;
   align-items: center;
 
-  height: 100vh;
   margin-top: 50px;
 
   .title {
@@ -39,10 +38,11 @@ export const StyledMainUser = styled.div`
   }
 
   .userQuestionArea {
-    width: 90%;
-    min-height: 300px;
+    width: 100%;
     overflow-y: scroll;
-
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
     margin-top: 30px;
   }
 
