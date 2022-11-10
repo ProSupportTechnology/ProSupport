@@ -130,6 +130,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
       await getAllQuestions();
+      await getMyProfile();
       toast.success("Pergunta deletada com sucesso!");
     } catch (error) {
       console.error(error);
