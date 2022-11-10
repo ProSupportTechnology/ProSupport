@@ -49,7 +49,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const date = new Date().toLocaleDateString();
     const userId = localStorage.getItem("@userID-ProSupport");
     const body = { ...data, questionId: questionId, userId: userId, created_at: date };
-    console.log(body);
     try {
       await api.post<iDataResponse>("/responses", body);
       await getAllQuestions()
@@ -130,7 +129,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     setLoading(true);
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
-      await getAllQuestions()
+      await getAllQuestions();
       toast.success("Pergunta deletada com sucesso!");
     } catch (error) {
       console.error(error);
