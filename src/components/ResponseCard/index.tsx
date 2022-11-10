@@ -5,9 +5,13 @@ import { iResponseCard } from "./types";
 import { CgClose } from "react-icons/cg";
 import { useQuestionContext } from "../../contexts/QuestionContext";
 import photoProfile from "../../assets/photo.png";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const ResponseCard = ({ username, image, array }: iResponseCard) => {
-  const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } = useQuestionContext();
+  const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } =
+    useQuestionContext();
+  const { user } = useUserContext();
+  const { admin } = user;
   return (
     <>
       {array.map((element: any) => {
@@ -16,7 +20,10 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
             <div className="mobileContainer">
               <div className="imageContainer">
                 <StyledImageQuestion>
-                  <img src={image ? image : photoProfile} alt="foto de perfil" />
+                  <img
+                    src={image ? image : photoProfile}
+                    alt="foto de perfil"
+                  />
                 </StyledImageQuestion>
                 <p>{username}</p>
               </div>
@@ -27,14 +34,16 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
             </div>
             <div className="btnContainer">
               <div className="techConatiner">
-                <button
-                  onClick={() => {
-                    setIsModEditRespOpen(true);
-                    setResponseId(element.id);
-                  }}
-                >
-                  <TiPencil />
-                </button>
+                {admin && (
+                  <button
+                    onClick={() => {
+                      setIsModEditRespOpen(true);
+                      setResponseId(element.id);
+                    }}
+                  >
+                    <TiPencil />
+                  </button>
+                )}
                 <button
                   onClick={() => {
                     setResponseId(element.id);
