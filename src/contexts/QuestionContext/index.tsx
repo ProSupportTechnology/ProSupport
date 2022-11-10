@@ -49,10 +49,9 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const date = new Date().toLocaleDateString();
     const userId = localStorage.getItem("@userID-ProSupport");
     const body = { ...data, questionId: questionId, userId: userId, created_at: date };
-    console.log(body);
     try {
       await api.post<iDataResponse>("/responses", body);
-      await getAllQuestions();
+      await getAllQuestions()
       toast.success("Resposta enviada com sucesso!");
       setIsModCreateRespOpen(false);
     } catch (error) {
@@ -84,6 +83,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
     try {
       await api.delete(`/responses/${responseId}`);
+      await getAllQuestions()
       toast.success("Resposta deletada com sucesso!");
     } catch (error) {
       toast.error("Não foi possível excluir a resposta.");
@@ -129,6 +129,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     setLoading(true);
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
+      await getAllQuestions();
       await getMyProfile();
       toast.success("Pergunta deletada com sucesso!");
     } catch (error) {
