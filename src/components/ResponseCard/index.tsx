@@ -2,10 +2,10 @@ import { StyledImageQuestion } from "../ImageProfile/style";
 import { StyledResponseCard } from "./style";
 import { TiPencil } from "react-icons/ti";
 import { iResponseCard } from "./types";
-import { CgClose } from "react-icons/cg";
 import { useQuestionContext } from "../../contexts/QuestionContext";
 import photoProfile from "../../assets/photo.png";
 import { useUserContext } from "../../contexts/UserContext";
+import { IoMdTrash } from "react-icons/io";
 
 export const ResponseCard = ({ username, image, array }: iResponseCard) => {
   const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } =
@@ -50,7 +50,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
                     setIsModDeleteRespOpen(true);
                   }}
                 >
-                  <CgClose />
+                  <IoMdTrash />
                 </button>
               </div>
             </div>
