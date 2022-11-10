@@ -18,7 +18,8 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } = useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } =
+    useQuestionContext();
   const { user } = useUserContext();
   const { admin } = user;
 
@@ -67,7 +68,7 @@ export const QuestionCard = ({
           )}
         </div>
       </StyledQuestionCard>
-      <span>{normalizeDate()}</span>
+      <span style={{ color: "var(--white)" }}>{normalizeDate()}</span>
     </>
   );
 };
