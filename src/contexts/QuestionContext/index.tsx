@@ -51,7 +51,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const body = { ...data, questionId: questionId, userId: userId, created_at: date };
     try {
       await api.post<iDataResponse>("/responses", body);
-      await getAllQuestions()
+      await getAllQuestions();
       toast.success("Resposta enviada com sucesso!");
       setIsModCreateRespOpen(false);
     } catch (error) {
@@ -83,7 +83,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
     try {
       await api.delete(`/responses/${responseId}`);
-      await getAllQuestions()
+      await getAllQuestions();
       toast.success("Resposta deletada com sucesso!");
     } catch (error) {
       toast.error("Não foi possível excluir a resposta.");

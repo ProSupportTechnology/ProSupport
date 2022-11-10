@@ -41,7 +41,7 @@ export interface iUserContext {
   setIdUserToDelete: Dispatch<SetStateAction<string | number>>;
   idUserToDelete: string | number;
   getMyProfile(): Promise<void>;
-  allUsers:  iAllUsers | null
+  allUsers: iAllUsers[] | null;
 }
 
 export interface iQuestion {
