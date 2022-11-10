@@ -30,7 +30,7 @@ export const AnsweredQuestions = () => {
           {searched.length ? (
             searched.map((element) => {
               return (
-                <>
+                <div key={element.id}>
                   <QuestionCard
                     setQuestionId={setQuestionId}
                     questionId={element.id}
@@ -41,19 +41,19 @@ export const AnsweredQuestions = () => {
                     username={element.user.name}
                     image={element.user.image}
                     date={element.created_at}
-                  ></QuestionCard>
+                  />
                   <ResponseCard
                     array={element.responses}
                     username={element.user.name}
                     image={element.user.image}
-                  ></ResponseCard>
-                </>
+                  />
+                </div>
               );
             })
           ) : asnwered.length ? (
             asnwered.map((element) => {
               return (
-                <li key={element.id}>
+                <div key={element.id}>
                   <QuestionCard
                     setQuestionId={setQuestionId}
                     questionId={element.id}
@@ -64,13 +64,13 @@ export const AnsweredQuestions = () => {
                     username={element.user.name}
                     image={element.user.image}
                     date={element.created_at}
-                  ></QuestionCard>
+                  />
                   <ResponseCard
                     array={element.responses}
                     username={element.user.name}
                     image={element.user.image}
-                  ></ResponseCard>
-                </li>
+                  />
+                </div>
               );
             })
           ) : (

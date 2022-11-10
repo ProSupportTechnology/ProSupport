@@ -12,7 +12,8 @@ import {
 } from "./style";
 import logo from "../../assets/ProSupport.png";
 import photoProfile from "../../assets/photo.png";
-import { HiHome, HiUser, HiChatBubbleLeftRight, HiUsers } from "react-icons/hi2";
+import { FaUserAlt, FaHome, FaUsers } from "react-icons/fa";
+import { IoMdChatbubbles } from "react-icons/io";
 import { GiEntryDoor } from "react-icons/gi";
 import { useState } from "react";
 import { InputSearch } from "../InputSearch";
@@ -66,7 +67,7 @@ export const Header = () => {
             <StyledButtonLink variant="theme-menu" to={`/dashboard`}>
               <h3 className="title two">Home</h3>
               <div title="Home">
-                <HiHome />
+                <FaHome />
               </div>
             </StyledButtonLink>
           </LiNavBar>
@@ -74,7 +75,7 @@ export const Header = () => {
             <StyledButtonLink variant="theme-menu" to={`/profile`}>
               <h3 className="title two">Perfil</h3>
               <div title="Perfil">
-                <HiUser />
+                <FaUserAlt />
               </div>
             </StyledButtonLink>
           </LiNavBar>
@@ -84,7 +85,7 @@ export const Header = () => {
                 <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
                   <h3 className="title two">Perguntas/Respostas</h3>
                   <div title="Perguntas/Respostas">
-                    <HiChatBubbleLeftRight />
+                    <IoMdChatbubbles />
                   </div>
                 </StyledButtonLink>
               </LiNavBar>
@@ -92,7 +93,7 @@ export const Header = () => {
                 <StyledButtonLink variant="theme-menu" to={`/users`}>
                   <h3 className="title two">Usuarios</h3>
                   <div title="Usuario">
-                    <HiUsers />
+                    <FaUsers />
                   </div>
                 </StyledButtonLink>
               </LiNavBar>

@@ -12,7 +12,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
     <>
       {array.map((element: any) => {
         return (
-          <StyledResponseCard>
+          <StyledResponseCard key={element.id}>
             <div className="mobileContainer">
               <div className="imageContainer">
                 <StyledImageQuestion>
