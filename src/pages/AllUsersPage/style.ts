@@ -78,6 +78,18 @@ export const StyledAllUsersPage = styled.div`
 
           span {
             overflow: auto;
+            ::-webkit-scrollbar {
+              width: 10px;
+              height: 10px;
+            }
+            ::-webkit-scrollbar-track-piece {
+              background: var(--gray-1);
+              border-radius: 5px;
+            }
+            ::-webkit-scrollbar-thumb {
+              background: var(--gray-3);
+              border-radius: 5px;
+            }
           }
         }
 
