@@ -6,9 +6,12 @@ import { ResponseCard } from "../../components/ResponseCard";
 import { useEffect, useState } from "react";
 import { iQuestion } from "../../contexts/UserContext/types";
 import { StyledAnsweredQuestions } from "./style";
+import { useUserContext } from "../../contexts/UserContext";
 
 export const AnsweredQuestions = () => {
   const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
+  const { user } = useUserContext();
+  const { name, image } = user;
 
   const [searched, setsearched] = useState([] as iQuestion[]);
 
@@ -44,8 +47,8 @@ export const AnsweredQuestions = () => {
                   />
                   <ResponseCard
                     array={element.responses}
-                    username={element.user.name}
-                    image={element.user.image}
+                    username={name}
+                    image={image}
                   />
                 </div>
               );
