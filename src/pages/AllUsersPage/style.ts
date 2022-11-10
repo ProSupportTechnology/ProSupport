@@ -12,8 +12,23 @@ export const StyledAllUsersPage = styled.div`
       flex-direction: column;
       gap: 20px;
       color: var(--gray-0);
+      overflow: auto;
+      height: 586px;
+      ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+      }
+      ::-webkit-scrollbar-track-piece {
+        background: var(--gray-1);
+        border-radius: 5px;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--gray-3);
+        border-radius: 5px;
+      }
 
       li {
+        width: 99%;
         display: flex;
         justify-content: space-between;
         background-color: var(--gray-3);

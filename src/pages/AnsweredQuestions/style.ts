@@ -11,7 +11,7 @@ export const StyledAnsweredQuestions = styled(StyledDashboard)`
       }
     }
     .questionArea {
-      height: 800px;
+      height: 550px;
       margin-top: 0;
       @media (min-width: 768px) {
         margin-top: 1rem;
