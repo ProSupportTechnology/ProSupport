@@ -19,8 +19,6 @@ export const ModalEditQuestion = () => {
     formState: { errors },
   } = useForm<iDataQuestion>({ resolver: yupResolver(QuestionSchema) });
 
-  //pensar em uma lógica para adicionar aos campos correspondentes(inputs e textarea) os valores já existentes para facilitar edição
-
   return (
     <ModalContainer setIsModOpen={setIsModEditQuestOpen}>
       <StyledModalQuestion>

@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const StyleProfile = styled.div`
-  min-height: 100vh;
-  display: flex;
-  background-image: url("https://i.imgur.com/xNMEX8F.png");
-  background-size: cover;
-  background-repeat: no-repeat;
-`;
 export const StyleMain = styled.main`
   width: 100%;
   display: flex;

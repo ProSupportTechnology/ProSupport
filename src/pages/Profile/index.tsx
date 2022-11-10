@@ -1,6 +1,6 @@
 import { Header } from "../../components/Header";
 import photoProfile from "../../assets/photo.png";
-import { ProfileContainer, StyleMain, StyleProfile } from "./style";
+import { ProfileContainer, StyleMain } from "./style";
 import { StyledButton } from "../../style/button/style";
 import { useUserContext } from "../../contexts/UserContext";
 import { StyledAdminCard } from "../Dashboard/DashboardAdm/style";
@@ -17,7 +17,7 @@ export const Profile = () => {
   if (!user) return <LoadingPage />;
 
   return (
-    <StyleProfile>
+    <div className="backgroundDash">
       <Header />
       <StyleMain className="containerDash">
         <ProfileContainer>
@@ -41,6 +41,6 @@ export const Profile = () => {
         <h1>Descrição:</h1>
         <p>{bio}</p>
       </StyleMain>
-    </StyleProfile>
+    </div>
   );
 };

@@ -27,8 +27,6 @@ export const Header = () => {
   const [navbarMobile, setNavbarMobile] = useState(false);
   const { user } = useUserContext();
   const location = useLocation();
-  // verficar se tem dentro da api o adm pra fazer a condição :D se é ou não admin
-  // verificar se tem img para coloca :D
 
   const { email, name, admin, image } = user;
 
@@ -39,10 +37,7 @@ export const Header = () => {
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
-      <NavBar
-        navbarMobile={navbarMobile}
-        // className={animation}
-      >
+      <NavBar navbarMobile={navbarMobile}>
         <NavBarProfileContainer>
           <StyledImageQuestion>
             <img src={image ? image : photoProfile} alt="foto de perfil" />

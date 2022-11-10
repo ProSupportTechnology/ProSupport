@@ -15,8 +15,6 @@ export const ModalEditResponse = () => {
     resolver: yupResolver(ResponseSchema),
   });
 
-  //pensar numa lógica para renderizar o conteúdo da resposta no textarea
-
   return (
     <ModalContainer setIsModOpen={setIsModEditRespOpen}>
       <StyledModalResponse>

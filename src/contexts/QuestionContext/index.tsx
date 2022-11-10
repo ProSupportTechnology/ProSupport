@@ -56,7 +56,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       setIsModCreateRespOpen(false);
     } catch (error) {
       toast.error("Resposta não enviada.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -65,14 +64,12 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function editAnswer(data: iDataResponse) {
     setLoading(true);
     try {
-      const response = await api.patch<iDataResponse>(`/responses/${responseId}`, data);
-      console.log(response);
+      await api.patch(`/responses/${responseId}`, data);
       await getAllQuestions();
       toast.success("Resposta editada com sucesso!");
       setIsModEditRespOpen(false);
     } catch (error) {
       toast.error("Não foi possível editar a resposta.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -104,7 +101,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       setIsModCreateQuestOpen(false);
     } catch (error) {
       toast.error("Erro ao enviar pergunta.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -119,7 +115,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       await getAllQuestions();
     } catch (error) {
       toast.error("Erro ao editar pergunta.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -133,7 +128,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       await getMyProfile();
       toast.success("Pergunta deletada com sucesso!");
     } catch (error) {
-      console.error(error);
+      toast.error("Erro ao deletar pergunta!");
     } finally {
       setLoading(false);
     }

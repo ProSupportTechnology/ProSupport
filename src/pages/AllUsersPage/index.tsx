@@ -1,22 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { IoMdTrash } from "react-icons/io";
 import { Header } from "../../components/Header";
 import { ImageProfile } from "../../components/ImageProfile";
 import { StyledAllUsersPage } from "./style";
 import defaultUser from "../../assets/photo.png";
-import { iAllUsers } from "./types";
 import { useUserContext } from "../../contexts/UserContext";
 import { useQuestionContext } from "../../contexts/QuestionContext";
 import { LoadingPage } from "../LoadingPage";
 
 export const AllUsersPage = () => {
-  // const [allUsers, setAllUsers] = useState<iAllUsers | null>(null);
-  const { getAllUsers, setIdUserToDelete,  allUsers } = useUserContext();
+  const { getAllUsers, setIdUserToDelete, allUsers } = useUserContext();
   const { setIsModDeleteUser } = useQuestionContext();
 
   useEffect(() => {
     async function getUsers() {
-       await getAllUsers();
+      await getAllUsers();
     }
     getUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps

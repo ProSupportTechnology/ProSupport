@@ -54,7 +54,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
       setUser(data);
     } catch (error) {
-      console.log(error);
       toast.error("Sessão expirada! Faça login novamente.");
       localStorage.clear();
       navigate("/login");
@@ -94,7 +93,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       toast.success("Login efetuado com sucesso");
       navigate("/dashboard");
     } catch (error) {
-      console.error(error);
       toast.error("Falha ao efetuar o login");
     } finally {
       setLoading(false);
@@ -114,7 +112,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       toast.success("Usuário editado com sucesso!");
     } catch (error) {
       toast.error("Não foi possível editar o usuário.");
-      console.error(error);
     } finally {
       setLoading(false);
     }
@@ -130,7 +127,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       await getAllUsers();
       toast.success("Usuário deletado com sucesso!");
     } catch (error) {
-      console.error(error);
+      toast.error("Não foi possível deletar o usuário!");
     } finally {
       setLoading(false);
     }
