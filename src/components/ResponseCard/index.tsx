@@ -44,14 +44,16 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
                     <TiPencil />
                   </button>
                 )}
-                <button
-                  onClick={() => {
-                    setResponseId(element.id);
-                    setIsModDeleteRespOpen(true);
-                  }}
-                >
-                  <IoMdTrash />
-                </button>
+                {admin && (
+                  <button
+                    onClick={() => {
+                      setResponseId(element.id);
+                      setIsModDeleteRespOpen(true);
+                    }}
+                  >
+                    <IoMdTrash />
+                  </button>
+                )}
               </div>
             </div>
           </StyledResponseCard>
