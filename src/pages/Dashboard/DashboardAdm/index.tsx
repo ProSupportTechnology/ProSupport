@@ -27,7 +27,7 @@ export const DashboardAdm = () => {
     );
     setAsk(filtered);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchedQuestion]);
+  }, [searchedQuestion, allQuestions]);
 
   if (!user) return <LoadingPage />;
 

@@ -77,7 +77,7 @@ export const AnsweredQuestions = () => {
               );
             })
           ) : (
-            <h2 className="noQuestions">Não possui perguntas Respondidas</h2>
+            <h2 className="noQuestions">Não possui perguntas respondidas</h2>
           )}
         </ul>
       </main>

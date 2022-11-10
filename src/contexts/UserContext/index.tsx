@@ -18,6 +18,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   const [user, setUser] = useState<iUser>({} as iUser);
   const [loading, setLoading] = useState<boolean>(false);
   const [idUserToDelete, setIdUserToDelete] = useState<string | number>("");
+  const [allUsers, setAllUsers] = useState<iAllUsers[] | null>(null);
 
   useEffect(() => {
     const userId = localStorage.getItem("@userID-ProSupport");
@@ -35,9 +36,10 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     setLoading(true);
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
+
     try {
-      const { data } = await api.get<iAllUsers>("/users");
-      return data;
+      const { data } = await api.get<iAllUsers[]>("/users");
+      setAllUsers(data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -108,6 +110,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     try {
       const response = await api.patch<iUser>(`/users/${id}`, data);
       setUser(response.data);
+      await getMyProfile();
       toast.success("Usuário editado com sucesso!");
     } catch (error) {
       toast.error("Não foi possível editar o usuário.");
@@ -124,6 +127,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
 
     try {
       await api.delete(`/users/${id}`);
+      await getAllUsers();
       toast.success("Usuário deletado com sucesso!");
     } catch (error) {
       console.error(error);
@@ -146,6 +150,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
         getMyProfile,
         setIdUserToDelete,
         idUserToDelete,
+        allUsers,
       }}
     >
       {children}

@@ -35,12 +35,13 @@ export interface iUserContext {
   editUser: any;
   deleteUser: (id: number | string) => Promise<void>;
   user: iUser;
-  getAllUsers(): Promise<iAllUsers | undefined>;
+  getAllUsers(): Promise<void>;
   loading: boolean;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setIdUserToDelete: Dispatch<SetStateAction<string | number>>;
   idUserToDelete: string | number;
   getMyProfile(): Promise<void>;
+  allUsers: iAllUsers[] | null;
 }
 
 export interface iQuestion {

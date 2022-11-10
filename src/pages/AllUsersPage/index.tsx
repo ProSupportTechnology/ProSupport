@@ -10,14 +10,13 @@ import { useQuestionContext } from "../../contexts/QuestionContext";
 import { LoadingPage } from "../LoadingPage";
 
 export const AllUsersPage = () => {
-  const [allUsers, setAllUsers] = useState<iAllUsers | null>(null);
-  const { getAllUsers, setIdUserToDelete } = useUserContext();
+  // const [allUsers, setAllUsers] = useState<iAllUsers | null>(null);
+  const { getAllUsers, setIdUserToDelete,  allUsers } = useUserContext();
   const { setIsModDeleteUser } = useQuestionContext();
 
   useEffect(() => {
     async function getUsers() {
-      const users = await getAllUsers();
-      users && setAllUsers(users);
+       await getAllUsers();
     }
     getUsers();
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -8,15 +8,24 @@ import { StyledAskQuestionsArea, StyledMainUser } from "./style";
 import { QuestionCard } from "../../../components/QuestionCard";
 import { ResponseCard } from "../../../components/ResponseCard";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
-import { HiChatBubbleLeftRight } from "react-icons/hi2";
 import { LoadingPage } from "../../LoadingPage";
+import { useEffect } from "react";
+import { iAllUsers } from "../../AllUsersPage/types";
+import { IoMdChatbubbles } from "react-icons/io";
 
 export const DashboardUser = () => {
-  const { user } = useUserContext();
+  const { user, getAllUsers, allUsers } = useUserContext();
   const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
   const { email, name, admin, image } = user;
+  const userAdmin = allUsers && (allUsers[0] as iAllUsers);
+
+  useEffect(() => {
+    getAllUsers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (!user.questions) return <LoadingPage />;
+  if (!allUsers) return <LoadingPage />;
 
   return (
     <StyledDashboard className="backgroundDash">
@@ -35,7 +44,7 @@ export const DashboardUser = () => {
         <StyledMainUser>
           <h2 className="title">Envie uma pergunta</h2>
           <StyledAskQuestionsArea>
-            <HiChatBubbleLeftRight />
+            <IoMdChatbubbles />
             <p>Qual é sua duvida?</p>
             <StyledButton onClick={() => setIsModCreateQuestOpen(true)} variant="default">
               Postar
@@ -71,9 +80,8 @@ export const DashboardUser = () => {
               allQuestions.map((element) => {
                 if (user.id === element.userId && element.responses.length) {
                   return (
-                    <>
+                    <div key={element.id}>
                       <QuestionCard
-                        key={element.id}
                         title={element.title}
                         tech={element.tech}
                         description={element.description}
@@ -84,8 +92,12 @@ export const DashboardUser = () => {
                         userQuestionId={element.userId}
                         date={element.created_at}
                       />
-                      <ResponseCard array={element.responses} username={user.name} image={user.image} />
-                    </>
+                      <ResponseCard
+                        array={element.responses}
+                        username={userAdmin?.name as string}
+                        image={userAdmin?.image as string}
+                      />
+                    </div>
                   );
                 }
               })
