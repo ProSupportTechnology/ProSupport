@@ -46,7 +46,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
 
   async function answerQuestion(data: iDataResponse) {
     setLoading(true);
-    const date = new Date().toISOString();
+    const date = new Date().toLocaleDateString();
     const userId = localStorage.getItem("@userID-ProSupport");
     const body = { ...data, questionId: questionId, userId: userId, created_at: date };
     console.log(body);
@@ -96,7 +96,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function createQuestion(data: iDataQuestion) {
     setLoading(true);
     const id = Number(localStorage.getItem("@userID-ProSupport"));
-    const date = new Date().toISOString();
+    const date = new Date().toLocaleDateString();
     const body = { ...data, userId: id, created_at: date };
     try {
       await api.post<iQuestion>("/questions", body);
