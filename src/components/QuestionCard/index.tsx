@@ -68,7 +68,9 @@ export const QuestionCard = ({
           )}
         </div>
       </StyledQuestionCard>
-      <span style={{ color: "var(--white)" }}>{normalizeDate()}</span>
+      <span style={{ color: "var(--white)", marginLeft: "1rem" }}>
+        {normalizeDate()}
+      </span>
     </>
   );
 };
