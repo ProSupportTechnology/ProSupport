@@ -108,6 +108,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     try {
       const response = await api.patch<iUser>(`/users/${id}`, data);
       setUser(response.data);
+      await getMyProfile();
       toast.success("Usuário editado com sucesso!");
     } catch (error) {
       toast.error("Não foi possível editar o usuário.");
