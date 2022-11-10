@@ -18,14 +18,9 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } =
-    useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } = useQuestionContext();
   const { user } = useUserContext();
   const { admin } = user;
-
-  function normalizeDate() {
-    return date.split("T", 1).join("").split("-").reverse().join("/");
-  }
 
   return (
     <>
@@ -68,9 +63,7 @@ export const QuestionCard = ({
           )}
         </div>
       </StyledQuestionCard>
-      <span style={{ color: "var(--white)", marginLeft: "1rem" }}>
-        {normalizeDate()}
-      </span>
+      <span style={{ color: "var(--white)", marginLeft: "1rem" }}>{date}</span>
     </>
   );
 };
