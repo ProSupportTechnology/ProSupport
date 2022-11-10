@@ -1,15 +1,16 @@
-import { ReactNode, useState } from "react"
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai"
-import { RiCheckboxBlankFill } from "react-icons/ri"
-import { HiUser } from "react-icons/hi2"
-import { MdEmail } from "react-icons/md"
-import { iInputProps } from "./types"
+import { ReactNode, useState } from "react";
+import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+import { RiCheckboxBlankFill } from "react-icons/ri";
+import { GiBookCover } from "react-icons/gi";
+import { MdEmail, MdPhotoSizeSelectActual } from "react-icons/md";
+import { iInputProps } from "./types";
+import { FaUserAlt } from "react-icons/fa";
 
 export const Input = ({ className, label, name, type, register, errors, modalPlaceholder }: iInputProps) => {
-  const [eyeVisible, setEyeVisible] = useState(false)
+  const [eyeVisible, setEyeVisible] = useState(false);
 
   function handleClickEye() {
-    setEyeVisible(!eyeVisible)
+    setEyeVisible(!eyeVisible);
   }
 
   return (
@@ -24,8 +25,10 @@ export const Input = ({ className, label, name, type, register, errors, modalPla
         {...register}
         className={`text one ${errors?.message ? "input_red" : ""}`}
       />
-      {name === "name" && <HiUser />}
+      {name === "name" && <FaUserAlt />}
       {name === "email" && <MdEmail />}
+      {name === "image" && <MdPhotoSizeSelectActual />}
+      {name === "bio" && <GiBookCover />}
       {name === "password" || name === "confirmPassword" ? (
         eyeVisible ? (
           <AiFillEye onClick={handleClickEye} />
@@ -43,5 +46,5 @@ export const Input = ({ className, label, name, type, register, errors, modalPla
         </div>
       )}
     </div>
-  )
-}
+  );
+};
