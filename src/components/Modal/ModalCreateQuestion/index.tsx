@@ -21,7 +21,7 @@ export const ModalCreateQuestion = () => {
   return (
     <ModalContainer setIsModOpen={setIsModCreateQuestOpen}>
       <StyledModalQuestion>
-        <p>Insira sua questão</p>
+        <p>Informe sua duvida</p>
         <form onSubmit={handleSubmit(createQuestion)}>
           <StyledInput
             errors={errors.title}
