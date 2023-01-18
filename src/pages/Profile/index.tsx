@@ -5,14 +5,14 @@ import { StyledButton } from "../../style/button/style";
 import { useUserContext } from "../../contexts/UserContext";
 import { StyledAdminCard } from "../Dashboard/DashboardAdm/style";
 import { ImageProfile } from "../../components/ImageProfile";
-import { useQuestionContext } from "../../contexts/QuestionContext";
 import { LoadingPage } from "../LoadingPage";
+import { useModalContext } from "../../contexts/ModalContext";
 
 export const Profile = () => {
   const { user } = useUserContext();
   const { email, name, isAdm, image, bio } = user;
 
-  const { setIsModEditProfile } = useQuestionContext();
+  const { setIsModEditProfile } = useModalContext();
 
   if (!user) return <LoadingPage />;
 

@@ -9,9 +9,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { QuestionSchema } from "../../../schemas/questionSchema";
 import { iDataQuestion } from "../../../contexts/QuestionContext/types";
 import { StyledSelectTechs } from "../../SelectTechs/style";
+import { useModalContext } from "../../../contexts/ModalContext";
 
 export const ModalCreateQuestion = () => {
-  const { setIsModCreateQuestOpen, createQuestion } = useQuestionContext();
+  const { createQuestion } = useQuestionContext();
+  const { setIsModCreateQuestOpen } = useModalContext();
   const {
     register,
     handleSubmit,

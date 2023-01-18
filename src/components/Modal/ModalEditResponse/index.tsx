@@ -7,9 +7,11 @@ import { useForm } from "react-hook-form";
 import { iDataResponse } from "../../../contexts/QuestionContext/types";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { ResponseSchema } from "../../../schemas/responseSchemas";
+import { useModalContext } from "../../../contexts/ModalContext";
 
 export const ModalEditResponse = () => {
-  const { setIsModEditRespOpen, editAnswer } = useQuestionContext();
+  const { editAnswer } = useQuestionContext();
+  const { setIsModEditRespOpen } = useModalContext();
 
   const { register, handleSubmit } = useForm<iDataResponse>({
     resolver: yupResolver(ResponseSchema),

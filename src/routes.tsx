@@ -8,7 +8,7 @@ import { ModalDeleteResponse } from "./components/Modal/ModalDeleteResponse";
 import { ModalDeleteUser } from "./components/Modal/ModalDeleteUser";
 import { ModalEditProfile } from "./components/Modal/ModalEditProfile";
 import { ModalEditResponse } from "./components/Modal/ModalEditResponse";
-import { useQuestionContext } from "./contexts/QuestionContext";
+import { useModalContext } from "./contexts/ModalContext";
 import { useUserContext } from "./contexts/UserContext";
 import { AllUsersPage } from "./pages/AllUsersPage";
 import { AnsweredQuestions } from "./pages/AnsweredQuestions";
@@ -29,9 +29,7 @@ const RoutesMain = () => {
     isModDeleteRespOpen,
     isModEditProfile,
     isModCreateQuestOpen,
-  } = useQuestionContext();
-
-  console.log(isModEditProfile);
+  } = useModalContext();
 
   return (
     <>

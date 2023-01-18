@@ -12,15 +12,12 @@ import { LoadingPage } from "../../LoadingPage";
 import { useEffect } from "react";
 import { iAllUsers } from "../../AllUsersPage/types";
 import { IoMdChatbubbles } from "react-icons/io";
+import { useModalContext } from "../../../contexts/ModalContext";
 
 export const DashboardUser = () => {
   const { user, getMyProfile, allUsers } = useUserContext();
-  const {
-    getAllQuestions,
-    allQuestions,
-    setQuestionId,
-    setIsModCreateQuestOpen,
-  } = useQuestionContext();
+  const { getAllQuestions, allQuestions, setQuestionId } = useQuestionContext();
+  const { setIsModCreateQuestOpen } = useModalContext();
   const { email, name, isAdm, image } = user;
   const userAdmin = allUsers && (allUsers[0] as iAllUsers);
 

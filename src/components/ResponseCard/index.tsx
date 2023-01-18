@@ -6,10 +6,11 @@ import { useQuestionContext } from "../../contexts/QuestionContext";
 import photoProfile from "../../assets/photo.png";
 import { useUserContext } from "../../contexts/UserContext";
 import { IoMdTrash } from "react-icons/io";
+import { useModalContext } from "../../contexts/ModalContext";
 
 export const ResponseCard = ({ username, image, array }: iResponseCard) => {
-  const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } =
-    useQuestionContext();
+  const { setResponseId } = useQuestionContext();
+  const { setIsModEditRespOpen, setIsModDeleteRespOpen } = useModalContext();
   const { user } = useUserContext();
   const { isAdm } = user;
   return (

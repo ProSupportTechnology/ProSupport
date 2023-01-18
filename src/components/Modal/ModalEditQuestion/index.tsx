@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { useModalContext } from "../../../contexts/ModalContext";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { iDataQuestion } from "../../../contexts/QuestionContext/types";
 import { QuestionSchema } from "../../../schemas/questionSchema";
@@ -11,7 +12,8 @@ import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
 export const ModalEditQuestion = () => {
-  const { setIsModEditQuestOpen, editQuestion } = useQuestionContext();
+  const { editQuestion } = useQuestionContext();
+  const { setIsModEditQuestOpen } = useModalContext();
 
   const {
     register,

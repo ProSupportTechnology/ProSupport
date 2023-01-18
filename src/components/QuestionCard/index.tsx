@@ -1,11 +1,11 @@
 import { StyledQuestionCard } from "./style";
 import { iQuestionCard } from "./types";
 import photoProfile from "../../assets/photo.png";
-import { useQuestionContext } from "../../contexts/QuestionContext";
 import { StyledButton } from "../../style/button/style";
 import { StyledImageQuestion } from "../ImageProfile/style";
 import { IoMdTrash } from "react-icons/io";
 import { useUserContext } from "../../contexts/UserContext";
+import { useModalContext } from "../../contexts/ModalContext";
 
 export const QuestionCard = ({
   title,
@@ -18,8 +18,7 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } =
-    useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } = useModalContext();
   const { user } = useUserContext();
   const { isAdm } = user;
 
