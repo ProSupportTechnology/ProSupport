@@ -21,7 +21,7 @@ export const DashboardUser = () => {
     setQuestionId,
     setIsModCreateQuestOpen,
   } = useQuestionContext();
-  const { email, name, admin, image } = user;
+  const { email, name, isAdm, image } = user;
   const userAdmin = allUsers && (allUsers[0] as iAllUsers);
 
   useEffect(() => {
@@ -43,7 +43,7 @@ export const DashboardUser = () => {
           </StyledImageQuestion>
           <div className="userContent">
             <h1 className="title one">{name}</h1>
-            <span className="text one">{admin ? `Admin` : `Usuario`}</span>
+            <span className="text one">{isAdm ? `Admin` : `Usuario`}</span>
             <span className="text one">{email}</span>
           </div>
         </StyledAdminCard>

@@ -12,8 +12,9 @@ import { LoadingPage } from "../../LoadingPage";
 
 export const DashboardAdm = () => {
   const { user } = useUserContext();
-  const { email, name, admin, image } = user;
-  const { allQuestions, searchedQuestion, setQuestionId, getAllQuestions } = useQuestionContext();
+  const { email, name, isAdm, image } = user;
+  const { allQuestions, searchedQuestion, setQuestionId, getAllQuestions } =
+    useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
 
   useEffect(() => {
@@ -41,7 +42,7 @@ export const DashboardAdm = () => {
           </StyledImageQuestion>
           <div className="userContent">
             <h1 className="title one">{name}</h1>
-            <span className="text one">{admin ? `Admin` : `Usuario`}</span>
+            <span className="text one">{isAdm ? `Admin` : `Usuario`}</span>
             <span className="text one">{email}</span>
           </div>
         </StyledAdminCard>
@@ -83,7 +84,9 @@ export const DashboardAdm = () => {
                   ></QuestionCard>
                 );
               })}
-          {allQuestions.length === 0 && <h2 className="noQuestions">Não há perguntas no momento</h2>}
+          {allQuestions.length === 0 && (
+            <h2 className="noQuestions">Não há perguntas no momento</h2>
+          )}
         </ul>
       </main>
     </StyledDashboard>

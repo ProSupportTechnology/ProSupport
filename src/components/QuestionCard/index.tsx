@@ -18,9 +18,10 @@ export const QuestionCard = ({
   setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
-  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } = useQuestionContext();
+  const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } =
+    useQuestionContext();
   const { user } = useUserContext();
-  const { admin } = user;
+  const { isAdm } = user;
 
   return (
     <>
@@ -49,7 +50,7 @@ export const QuestionCard = ({
               <IoMdTrash />
             </button>
           </div>
-          {admin && (
+          {isAdm && (
             <StyledButton
               variant={"default"}
               type="button"

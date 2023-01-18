@@ -10,7 +10,7 @@ import { LoadingPage } from "../LoadingPage";
 
 export const Profile = () => {
   const { user } = useUserContext();
-  const { email, name, admin, image, bio } = user;
+  const { email, name, isAdm, image, bio } = user;
 
   const { setIsModEditProfile } = useQuestionContext();
 
@@ -30,11 +30,14 @@ export const Profile = () => {
             </ImageProfile>
             <div className="userContent">
               <h1 className="title one">{name}</h1>
-              <span className="text one">{admin ? `Admin` : `Usuario`}</span>
+              <span className="text one">{isAdm ? `Admin` : `Usuario`}</span>
               <span className="text one">{email}</span>
             </div>
           </StyledAdminCard>
-          <StyledButton variant="theme-register-login" onClick={() => setIsModEditProfile(true)}>
+          <StyledButton
+            variant="theme-register-login"
+            onClick={() => setIsModEditProfile(true)}
+          >
             Editar Perfil
           </StyledButton>
         </ProfileContainer>

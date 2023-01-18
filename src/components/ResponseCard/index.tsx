@@ -11,7 +11,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
   const { setResponseId, setIsModEditRespOpen, setIsModDeleteRespOpen } =
     useQuestionContext();
   const { user } = useUserContext();
-  const { admin } = user;
+  const { isAdm } = user;
   return (
     <>
       {array.map((element: any) => {
@@ -34,7 +34,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
             </div>
             <div className="btnContainer">
               <div className="techConatiner">
-                {admin && (
+                {isAdm && (
                   <button
                     onClick={() => {
                       setIsModEditRespOpen(true);
@@ -44,7 +44,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
                     <TiPencil />
                   </button>
                 )}
-                {admin && (
+                {isAdm && (
                   <button
                     onClick={() => {
                       setResponseId(element.id);

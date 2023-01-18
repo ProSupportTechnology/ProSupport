@@ -51,13 +51,13 @@ const RoutesMain = () => {
         <Route element={<AuthRoutes />}>
           <Route
             path="/dashboard"
-            element={user.admin ? <DashboardAdm /> : <DashboardUser />}
+            element={user.isAdm ? <DashboardAdm /> : <DashboardUser />}
           />
-          <Route path="/users" element={user.admin && <AllUsersPage />} />
+          <Route path="/users" element={user.isAdm && <AllUsersPage />} />
           <Route path="/profile" element={<Profile />} />
           <Route
             path="/answeredQuestions"
-            element={user.admin && <AnsweredQuestions />}
+            element={user.isAdm && <AnsweredQuestions />}
           />
         </Route>
 
