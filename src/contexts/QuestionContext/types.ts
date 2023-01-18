@@ -16,20 +16,6 @@ export interface iQuestionContextProps {
 }
 
 export interface iQuestionProvider {
-  isModCreateQuestOpen: boolean;
-  setIsModCreateQuestOpen: Dispatch<SetStateAction<boolean>>;
-  isModEditQuestOpen: boolean;
-  setIsModEditQuestOpen: Dispatch<SetStateAction<boolean>>;
-  isModCreateRespOpen: boolean;
-  setIsModCreateRespOpen: Dispatch<SetStateAction<boolean>>;
-  isModEditRespOpen: boolean;
-  setIsModEditRespOpen: Dispatch<SetStateAction<boolean>>;
-  isModDeleteQuestOpen: boolean;
-  setIsModDeleteQuestOpen: Dispatch<SetStateAction<boolean>>;
-  isModDeleteUser: boolean;
-  setIsModDeleteUser: Dispatch<SetStateAction<boolean>>;
-  isModEditProfile: boolean;
-  setIsModEditProfile: Dispatch<SetStateAction<boolean>>;
   allQuestions: iQuestion[];
   searchedQuestion: string;
   answeredQuestion: iQuestion[];
@@ -44,8 +30,6 @@ export interface iQuestionProvider {
   deleteQuestion: (id: number) => Promise<void>;
   responseId: number;
   setResponseId: Dispatch<SetStateAction<number>>;
-  setIsModDeleteRespOpen: Dispatch<SetStateAction<boolean>>;
-  isModDeleteRespOpen: boolean;
   deleteAnswer(): Promise<void>;
   getAllQuestions(): Promise<void>;
 }

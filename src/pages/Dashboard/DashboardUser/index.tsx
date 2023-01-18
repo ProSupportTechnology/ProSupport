@@ -12,15 +12,12 @@ import { LoadingPage } from "../../LoadingPage";
 import { useEffect } from "react";
 import { iAllUsers } from "../../AllUsersPage/types";
 import { IoMdChatbubbles } from "react-icons/io";
+import { useModalContext } from "../../../contexts/ModalContext";
 
 export const DashboardUser = () => {
   const { user, getMyProfile, allUsers } = useUserContext();
-  const {
-    getAllQuestions,
-    allQuestions,
-    setQuestionId,
-    setIsModCreateQuestOpen,
-  } = useQuestionContext();
+  const { getAllQuestions, allQuestions, setQuestionId } = useQuestionContext();
+  const { setIsModCreateQuestOpen } = useModalContext();
   const { email, name, admin, image } = user;
   const userAdmin = allUsers && (allUsers[0] as iAllUsers);
 
@@ -52,10 +49,7 @@ export const DashboardUser = () => {
           <StyledAskQuestionsArea>
             <IoMdChatbubbles />
             <p>Qual é sua duvida?</p>
-            <StyledButton
-              onClick={() => setIsModCreateQuestOpen(true)}
-              variant="default"
-            >
+            <StyledButton onClick={() => setIsModCreateQuestOpen(true)} variant="default">
               Postar
             </StyledButton>
           </StyledAskQuestionsArea>
@@ -79,9 +73,7 @@ export const DashboardUser = () => {
                 );
               })
             ) : (
-              <h2 className="noQuestions">
-                Você ainda não fez nenhuma pergunta
-              </h2>
+              <h2 className="noQuestions">Você ainda não fez nenhuma pergunta</h2>
             )}
           </ul>
           <h2 className="title">Perguntas respondidas:</h2>

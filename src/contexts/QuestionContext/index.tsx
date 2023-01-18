@@ -1,28 +1,14 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
+import { useModalContext } from "../ModalContext";
 import { useUserContext } from "../UserContext";
 import { iQuestion } from "../UserContext/types";
-import {
-  iDataQuestion,
-  iDataResponse,
-  iQuestionContextProps,
-  iQuestionProvider,
-} from "./types";
+import { iDataQuestion, iDataResponse, iQuestionContextProps, iQuestionProvider } from "./types";
 
-const QuestionContext = createContext<iQuestionProvider>(
-  {} as iQuestionProvider
-);
+const QuestionContext = createContext<iQuestionProvider>({} as iQuestionProvider);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
-  const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
-  const [isModEditQuestOpen, setIsModEditQuestOpen] = useState(false);
-  const [isModCreateRespOpen, setIsModCreateRespOpen] = useState(false);
-  const [isModEditRespOpen, setIsModEditRespOpen] = useState(false);
-  const [isModDeleteQuestOpen, setIsModDeleteQuestOpen] = useState(false);
-  const [isModDeleteUser, setIsModDeleteUser] = useState(false);
-  const [isModDeleteRespOpen, setIsModDeleteRespOpen] = useState(false);
-  const [isModEditProfile, setIsModEditProfile] = useState(false);
   const [questionId, setQuestionId] = useState<number>(0);
   const [responseId, setResponseId] = useState<number>(0);
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
@@ -31,6 +17,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const { getMyProfile } = useUserContext();
 
   const { setLoading } = useUserContext();
+  const { setIsModCreateRespOpen, setIsModEditRespOpen, setIsModCreateQuestOpen, setIsModEditQuestOpen } =
+    useModalContext();
 
   useEffect(() => {
     getAllQuestions();
@@ -154,20 +142,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         answeredQuestion,
         setAnsweredQuestion,
         setSearchedQuestion,
-        isModCreateQuestOpen,
-        setIsModCreateQuestOpen,
-        isModEditQuestOpen,
-        setIsModEditQuestOpen,
-        isModCreateRespOpen,
-        setIsModCreateRespOpen,
-        isModEditRespOpen,
-        setIsModEditRespOpen,
-        isModDeleteQuestOpen,
-        setIsModDeleteQuestOpen,
-        isModDeleteUser,
-        setIsModDeleteUser,
-        isModEditProfile,
-        setIsModEditProfile,
         createQuestion,
         editQuestion,
         answerQuestion,
@@ -177,8 +151,6 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         deleteQuestion,
         setResponseId,
         responseId,
-        isModDeleteRespOpen,
-        setIsModDeleteRespOpen,
         deleteAnswer,
         getAllQuestions,
       }}

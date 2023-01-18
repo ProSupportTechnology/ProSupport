@@ -5,12 +5,12 @@ import { ImageProfile } from "../../components/ImageProfile";
 import { StyledAllUsersPage } from "./style";
 import defaultUser from "../../assets/photo.png";
 import { useUserContext } from "../../contexts/UserContext";
-import { useQuestionContext } from "../../contexts/QuestionContext";
 import { LoadingPage } from "../LoadingPage";
+import { useModalContext } from "../../contexts/ModalContext";
 
 export const AllUsersPage = () => {
   const { getAllUsers, setIdUserToDelete, allUsers } = useUserContext();
-  const { setIsModDeleteUser } = useQuestionContext();
+  const { setIsModDeleteUser } = useModalContext();
 
   useEffect(() => {
     async function getUsers() {

@@ -1,3 +1,4 @@
+import { ModalProvider } from "./contexts/ModalContext";
 import { UserProvider } from "./contexts/UserContext";
 import Routes from "./routes";
 
@@ -5,7 +6,9 @@ export const App = () => {
   return (
     <>
       <UserProvider>
-        <Routes />
+        <ModalProvider>
+          <Routes />
+        </ModalProvider>
       </UserProvider>
     </>
   );
