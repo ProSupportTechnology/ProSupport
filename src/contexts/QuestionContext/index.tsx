@@ -3,9 +3,16 @@ import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useUserContext } from "../UserContext";
 import { iQuestion } from "../UserContext/types";
-import { iDataQuestion, iDataResponse, iQuestionContextProps, iQuestionProvider } from "./types";
+import {
+  iDataQuestion,
+  iDataResponse,
+  iQuestionContextProps,
+  iQuestionProvider,
+} from "./types";
 
-const QuestionContext = createContext<iQuestionProvider>({} as iQuestionProvider);
+const QuestionContext = createContext<iQuestionProvider>(
+  {} as iQuestionProvider
+);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [isModCreateQuestOpen, setIsModCreateQuestOpen] = useState(false);
@@ -35,7 +42,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
     try {
-      const response = await api.get<iQuestion[]>("/questions?_embed=responses&_expand=user&_limit=10");
+      const response = await api.get<iQuestion[]>("/questions");
       setAllQuestions(response.data);
     } catch (error) {
       console.error(error);
@@ -48,7 +55,12 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     setLoading(true);
     const date = new Date().toLocaleDateString();
     const userId = localStorage.getItem("@userID-ProSupport");
-    const body = { ...data, questionId: questionId, userId: userId, created_at: date };
+    const body = {
+      ...data,
+      questionId: questionId,
+      userId: userId,
+      created_at: date,
+    };
     try {
       await api.post<iDataResponse>("/responses", body);
       await getAllQuestions();

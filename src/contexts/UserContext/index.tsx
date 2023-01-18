@@ -1,4 +1,10 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { iDataEditUser } from "../../components/Modal/ModalEditProfile/types";
@@ -48,14 +54,17 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   }
 
   async function getMyProfile() {
-    const userId = localStorage.getItem("@userID-ProSupport");
+    const userId = JSON.parse(localStorage.getItem("@userID-ProSupport") + "");
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
 
     try {
-      const { data } = await api.get<iUser>(`/users/${userId}?_embed=questions&_embed=responses`);
+      const { data } = await api.get<iUser>(`/users/${userId}`);
       setUser(data);
     } catch (error) {
       toast.error("Sessão expirada! Faça login novamente.");
       localStorage.clear();
+
       navigate("/login");
     } finally {
       setLoading(false);
@@ -83,9 +92,11 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     setLoading(true);
     try {
       const { data } = await api.post<iResponseLogin>("/login", body);
-      api.defaults.headers.common.authorization = `Bearer ${data.accessToken}`;
+      console.log(data);
 
-      localStorage.setItem("@Token-ProSupport", data.accessToken);
+      api.defaults.headers.common.authorization = `Bearer ${data.token}`;
+
+      localStorage.setItem("@Token-ProSupport", data.token);
       localStorage.setItem("@userID-ProSupport", JSON.stringify(data.user.id));
 
       setUser(data.user);

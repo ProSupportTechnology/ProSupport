@@ -14,18 +14,24 @@ import { iAllUsers } from "../../AllUsersPage/types";
 import { IoMdChatbubbles } from "react-icons/io";
 
 export const DashboardUser = () => {
-  const { user, getAllUsers, allUsers } = useUserContext();
-  const { allQuestions, setQuestionId, setIsModCreateQuestOpen } = useQuestionContext();
+  const { user, getMyProfile, allUsers } = useUserContext();
+  const {
+    getAllQuestions,
+    allQuestions,
+    setQuestionId,
+    setIsModCreateQuestOpen,
+  } = useQuestionContext();
   const { email, name, admin, image } = user;
   const userAdmin = allUsers && (allUsers[0] as iAllUsers);
 
   useEffect(() => {
-    getAllUsers();
+    getMyProfile();
+    getAllQuestions();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!user.questions) return <LoadingPage />;
-  if (!allUsers) return <LoadingPage />;
+  if (!allQuestions) return <LoadingPage />;
+  if (!user) return <LoadingPage />;
 
   return (
     <StyledDashboard className="backgroundDash">
@@ -46,7 +52,10 @@ export const DashboardUser = () => {
           <StyledAskQuestionsArea>
             <IoMdChatbubbles />
             <p>Qual é sua duvida?</p>
-            <StyledButton onClick={() => setIsModCreateQuestOpen(true)} variant="default">
+            <StyledButton
+              onClick={() => setIsModCreateQuestOpen(true)}
+              variant="default"
+            >
               Postar
             </StyledButton>
           </StyledAskQuestionsArea>
@@ -70,12 +79,14 @@ export const DashboardUser = () => {
                 );
               })
             ) : (
-              <h2 className="noQuestions">Você ainda não fez nenhuma pergunta</h2>
+              <h2 className="noQuestions">
+                Você ainda não fez nenhuma pergunta
+              </h2>
             )}
           </ul>
           <h2 className="title">Perguntas respondidas:</h2>
           <ul className="userQuestionArea">
-            {user.questions.length ? (
+            {allQuestions.length ? (
               // eslint-disable-next-line array-callback-return
               allQuestions.map((element) => {
                 if (user.id === element.userId && element.responses.length) {

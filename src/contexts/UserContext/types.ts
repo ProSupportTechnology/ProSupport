@@ -14,7 +14,7 @@ export interface iLogin {
 }
 
 export interface iResponseLogin {
-  accessToken: string;
+  token: string;
   user: iUser;
 }
 

@@ -30,6 +30,9 @@ const RoutesMain = () => {
     isModEditProfile,
     isModCreateQuestOpen,
   } = useQuestionContext();
+
+  console.log(isModEditProfile);
+
   return (
     <>
       {loading && <Loading />}
@@ -46,10 +49,16 @@ const RoutesMain = () => {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route element={<AuthRoutes />}>
-          <Route path="/dashboard" element={user.admin ? <DashboardAdm /> : <DashboardUser />} />
+          <Route
+            path="/dashboard"
+            element={user.admin ? <DashboardAdm /> : <DashboardUser />}
+          />
           <Route path="/users" element={user.admin && <AllUsersPage />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/answeredQuestions" element={user.admin && <AnsweredQuestions />} />
+          <Route
+            path="/answeredQuestions"
+            element={user.admin && <AnsweredQuestions />}
+          />
         </Route>
 
         <Route path="*" element={<Navigate to="/" />} />
