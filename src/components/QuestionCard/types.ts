@@ -8,7 +8,6 @@ export interface iQuestionCard {
   date: string;
   image: string;
   children?: ReactNode;
-  setQuestionId: React.Dispatch<React.SetStateAction<number>>;
-  questionId: number;
-  userQuestionId: number;
+  questionId: string;
+  userQuestionId: string;
 }

@@ -13,7 +13,7 @@ import { LoadingPage } from "../../LoadingPage";
 export const DashboardAdm = () => {
   const { user } = useUserContext();
   const { email, name, isAdm, image } = user;
-  const { allQuestions, searchedQuestion, setQuestionId, getAllQuestions } =
+  const { allQuestions, searchedQuestion, getAllQuestions } =
     useQuestionContext();
   const [ask, setAsk] = useState([] as iQuestion[]);
 
@@ -61,7 +61,6 @@ export const DashboardAdm = () => {
                     description={element.description}
                     username={element.user.name}
                     image={element.user.image}
-                    setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
                     date={element.created_at}
@@ -77,7 +76,6 @@ export const DashboardAdm = () => {
                     description={element.description}
                     username={element.user.name}
                     image={element.user.image}
-                    setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
                     date={element.created_at}

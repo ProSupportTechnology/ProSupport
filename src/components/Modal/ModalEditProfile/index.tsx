@@ -76,16 +76,6 @@ export const ModalEditProfile = () => {
           type="text"
           modalPlaceholder="Digite a nova bio"
         />
-
-        <StyledInput
-          className="isModal"
-          errors={errors.image}
-          register={register("image")}
-          label="Editar foto"
-          name="image"
-          type="text"
-          modalPlaceholder="Digite o URL da nova foto"
-        />
         <StyledButton variant="default">Editar</StyledButton>
       </StyledEditUser>
     </ModalContainer>

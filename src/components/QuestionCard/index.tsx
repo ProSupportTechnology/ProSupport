@@ -6,6 +6,7 @@ import { StyledImageQuestion } from "../ImageProfile/style";
 import { IoMdTrash } from "react-icons/io";
 import { useUserContext } from "../../contexts/UserContext";
 import { useModalContext } from "../../contexts/ModalContext";
+import { useQuestionContext } from "../../contexts/QuestionContext";
 
 export const QuestionCard = ({
   title,
@@ -15,11 +16,11 @@ export const QuestionCard = ({
   image,
   date,
   questionId,
-  setQuestionId,
   userQuestionId,
 }: iQuestionCard) => {
   const { setIsModCreateRespOpen, setIsModDeleteQuestOpen } = useModalContext();
   const { user } = useUserContext();
+  const { setQuestionId } = useQuestionContext();
   const { isAdm } = user;
 
   return (
@@ -54,6 +55,7 @@ export const QuestionCard = ({
               variant={"default"}
               type="button"
               onClick={() => {
+                console.log("clicou");
                 setQuestionId(questionId);
                 setIsModCreateRespOpen(true);
               }}

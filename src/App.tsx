@@ -1,5 +1,6 @@
 import { ModalProvider } from "./contexts/ModalContext";
 import { UserProvider } from "./contexts/UserContext";
+import { QuestionProvider } from "./contexts/QuestionContext";
 import Routes from "./routes";
 
 export const App = () => {
@@ -7,7 +8,9 @@ export const App = () => {
     <>
       <UserProvider>
         <ModalProvider>
-          <Routes />
+          <QuestionProvider>
+            <Routes />
+          </QuestionProvider>
         </ModalProvider>
       </UserProvider>
     </>

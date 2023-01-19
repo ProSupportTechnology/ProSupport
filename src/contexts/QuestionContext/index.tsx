@@ -1,29 +1,36 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { api } from "../../services/api";
 import { useModalContext } from "../ModalContext";
 import { useUserContext } from "../UserContext";
 import { iQuestion } from "../UserContext/types";
-import { iDataQuestion, iDataResponse, iQuestionContextProps, iQuestionProvider } from "./types";
+import {
+  iDataQuestion,
+  iDataResponse,
+  iQuestionContextProps,
+  iQuestionProvider,
+} from "./types";
 
-const QuestionContext = createContext<iQuestionProvider>({} as iQuestionProvider);
+const QuestionContext = createContext<iQuestionProvider>(
+  {} as iQuestionProvider
+);
 
 export const QuestionProvider = ({ children }: iQuestionContextProps) => {
-  const [questionId, setQuestionId] = useState<number>(0);
-  const [responseId, setResponseId] = useState<number>(0);
+  const [questionId, setQuestionId] = useState<string>("");
+  const [responseId, setResponseId] = useState<string>("");
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
+  const [userQuestions, setUserQuestions] = useState<iQuestion[] | null>(null);
   const [searchedQuestion, setSearchedQuestion] = useState("");
   const [answeredQuestion, setAnsweredQuestion] = useState([] as iQuestion[]);
   const { getMyProfile } = useUserContext();
 
   const { setLoading } = useUserContext();
-  const { setIsModCreateRespOpen, setIsModEditRespOpen, setIsModCreateQuestOpen, setIsModEditQuestOpen } =
-    useModalContext();
-
-  useEffect(() => {
-    getAllQuestions();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const {
+    setIsModCreateRespOpen,
+    setIsModEditRespOpen,
+    setIsModCreateQuestOpen,
+    setIsModEditQuestOpen,
+  } = useModalContext();
 
   async function getAllQuestions() {
     setLoading(true);
@@ -38,21 +45,34 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
       setLoading(false);
     }
   }
+  async function getQuestionsByOneUser() {
+    setLoading(true);
+    const token = localStorage.getItem("@Token-ProSupport");
+    const userId = JSON.parse(localStorage.getItem("@userID-ProSupport") + "");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+    try {
+      const response = await api.get<iQuestion[]>(`/questions/users/${userId}`);
+      setUserQuestions(response.data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   async function answerQuestion(data: iDataResponse) {
     setLoading(true);
-    const date = new Date().toLocaleDateString();
-    const userId = localStorage.getItem("@userID-ProSupport");
+    const userId = JSON.parse(localStorage.getItem("@userID-ProSupport") + "");
     const body = {
       ...data,
       questionId: questionId,
       userId: userId,
-      created_at: date,
     };
+
     try {
-      await api.post<iDataResponse>("/responses", body);
-      await getAllQuestions();
+      await api.post<iDataResponse>("/answers", body);
       toast.success("Resposta enviada com sucesso!");
+      await getAllQuestions();
       setIsModCreateRespOpen(false);
     } catch (error) {
       toast.error("Resposta não enviada.");
@@ -64,7 +84,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   async function editAnswer(data: iDataResponse) {
     setLoading(true);
     try {
-      await api.patch(`/responses/${responseId}`, data);
+      await api.patch(`/answers/${responseId}`, data);
       await getAllQuestions();
       toast.success("Resposta editada com sucesso!");
       setIsModEditRespOpen(false);
@@ -79,7 +99,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     setLoading(true);
 
     try {
-      await api.delete(`/responses/${responseId}`);
+      await api.delete(`/answers/${responseId}`);
       await getAllQuestions();
       toast.success("Resposta deletada com sucesso!");
     } catch (error) {
@@ -120,7 +140,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
     }
   }
 
-  async function deleteQuestion(id: number) {
+  async function deleteQuestion(id: string) {
     setLoading(true);
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
@@ -153,6 +173,8 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
         responseId,
         deleteAnswer,
         getAllQuestions,
+        getQuestionsByOneUser,
+        userQuestions,
       }}
     >
       {children}

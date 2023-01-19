@@ -16,18 +16,19 @@ import { useModalContext } from "../../../contexts/ModalContext";
 
 export const DashboardUser = () => {
   const { user, getMyProfile, allUsers } = useUserContext();
-  const { getAllQuestions, allQuestions, setQuestionId } = useQuestionContext();
+  const { userQuestions, getQuestionsByOneUser } = useQuestionContext();
+
   const { setIsModCreateQuestOpen } = useModalContext();
   const { email, name, isAdm, image } = user;
   const userAdmin = allUsers && (allUsers[0] as iAllUsers);
 
   useEffect(() => {
     getMyProfile();
-    getAllQuestions();
+    getQuestionsByOneUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (!allQuestions) return <LoadingPage />;
+  if (!userQuestions) return <LoadingPage />;
   if (!user) return <LoadingPage />;
 
   return (
@@ -58,8 +59,8 @@ export const DashboardUser = () => {
           </StyledAskQuestionsArea>
           <h2 className="title">Perguntas feitas por você:</h2>
           <ul className="userQuestionArea">
-            {user.questions?.length ? (
-              user.questions.map((element) => {
+            {userQuestions?.length ? (
+              userQuestions.map((element) => {
                 return (
                   <QuestionCard
                     key={element.id}
@@ -68,7 +69,6 @@ export const DashboardUser = () => {
                     description={element.description}
                     username={name}
                     image={image}
-                    setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
                     date={element.created_at}
@@ -83,10 +83,10 @@ export const DashboardUser = () => {
           </ul>
           <h2 className="title">Perguntas respondidas:</h2>
           <ul className="userQuestionArea">
-            {allQuestions.length ? (
+            {userQuestions.length ? (
               // eslint-disable-next-line array-callback-return
-              allQuestions.map((element) => {
-                if (user.id === element.userId && element.responses.length) {
+              userQuestions.map((element) => {
+                if (user.id === element.userId && element.answer.length) {
                   return (
                     <div key={element.id}>
                       <QuestionCard
@@ -95,13 +95,12 @@ export const DashboardUser = () => {
                         description={element.description}
                         username={user.name}
                         image={user.image}
-                        setQuestionId={setQuestionId}
                         questionId={element.id}
                         userQuestionId={element.userId}
                         date={element.created_at}
                       />
                       <ResponseCard
-                        array={element.responses}
+                        array={element.answer}
                         username={userAdmin?.name as string}
                         image={userAdmin?.image as string}
                       />

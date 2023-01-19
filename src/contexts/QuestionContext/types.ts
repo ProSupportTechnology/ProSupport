@@ -17,6 +17,8 @@ export interface iQuestionContextProps {
 
 export interface iQuestionProvider {
   allQuestions: iQuestion[];
+  getQuestionsByOneUser(): Promise<void>;
+  userQuestions: iQuestion[] | null;
   searchedQuestion: string;
   answeredQuestion: iQuestion[];
   setAnsweredQuestion: Dispatch<React.SetStateAction<iQuestion[]>>;
@@ -25,11 +27,11 @@ export interface iQuestionProvider {
   editQuestion: (data: iDataQuestion) => Promise<void>;
   answerQuestion: (data: iDataResponse) => Promise<void>;
   editAnswer: (data: iDataResponse) => Promise<void>;
-  setQuestionId: Dispatch<SetStateAction<number>>;
-  questionId: number;
-  deleteQuestion: (id: number) => Promise<void>;
-  responseId: number;
-  setResponseId: Dispatch<SetStateAction<number>>;
+  setQuestionId: Dispatch<SetStateAction<string>>;
+  questionId: string;
+  deleteQuestion: (id: string) => Promise<void>;
+  responseId: string;
+  setResponseId: Dispatch<SetStateAction<string>>;
   deleteAnswer(): Promise<void>;
   getAllQuestions(): Promise<void>;
 }

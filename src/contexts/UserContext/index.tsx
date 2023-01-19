@@ -111,7 +111,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
   }
 
   async function editUser(data: iDataEditUser) {
-    const id = localStorage.getItem("@userID-ProSupport");
+    const id = JSON.parse(localStorage.getItem("@userID-ProSupport") + "");
     const token = localStorage.getItem("@Token-ProSupport");
     api.defaults.headers.common.authorization = `Bearer ${token}`;
 
