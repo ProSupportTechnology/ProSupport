@@ -55,7 +55,6 @@ export const QuestionCard = ({
               variant={"default"}
               type="button"
               onClick={() => {
-                console.log("clicou");
                 setQuestionId(questionId);
                 setIsModCreateRespOpen(true);
               }}
