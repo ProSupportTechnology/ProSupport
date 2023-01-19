@@ -6,6 +6,7 @@ import henrique from "../../assets/henrique.png";
 import thomas from "../../assets/thomas.png";
 import victoria from "../../assets/victoria.png";
 import wesley from "../../assets/wesley.png";
+import lucas from "../../assets/lucas.png";
 import { BsLinkedin, BsInstagram, BsGithub } from "react-icons/bs";
 import { SectionServices, SectionTeam, StyledLandingPage } from "./style";
 
@@ -18,9 +19,13 @@ export const LandingPage = () => {
           <div className="servicesContent">
             <div>
               <p className="text one">Contrate nossos serviços.</p>
-              <h1 className="title one">Seus desenvolvedores têm perguntas, nós temos as respostas!</h1>
+              <h1 className="title one">
+                Seus desenvolvedores têm perguntas, nós temos as respostas!
+              </h1>
             </div>
-            <p className="text one">Obtenha nosso suporte em desenvolvimento web para sua empresa.</p>
+            <p className="text one">
+              Obtenha nosso suporte em desenvolvimento web para sua empresa.
+            </p>
           </div>
           <figure className="servicesImage">
             <img src={imageService} alt="Imagem serviços oferecidos" />
@@ -40,7 +45,10 @@ export const LandingPage = () => {
                 <BsInstagram />
                 Instagram
               </a>
-              <a target="blank" href="https://www.linkedin.com/in/altierissouza/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/altierissouza/"
+              >
                 <BsLinkedin />
                 LinkedIn
               </a>
@@ -62,7 +70,10 @@ export const LandingPage = () => {
                 <BsInstagram />
                 Instagram
               </a>
-              <a target="blank" href="https://www.linkedin.com/in/biancavellego/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/biancavellego/"
+              >
                 <BsLinkedin />
                 LinkedIn
               </a>
@@ -84,7 +95,10 @@ export const LandingPage = () => {
                 <BsInstagram />
                 Instagram
               </a>
-              <a target="blank" href="https://www.linkedin.com/in/henrique-jesus128/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/henrique-jesus128/"
+              >
                 <BsLinkedin />
                 LinkedIn
               </a>
@@ -102,11 +116,17 @@ export const LandingPage = () => {
             </div>
 
             <div className="memberLinks">
-              <a target="blank" href="https://www.instagram.com/thomas__schreiner/">
+              <a
+                target="blank"
+                href="https://www.instagram.com/thomas__schreiner/"
+              >
                 <BsInstagram />
                 Instagram
               </a>
-              <a target="blank" href="https://www.linkedin.com/in/thomschreiner/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/thomschreiner/"
+              >
                 <BsLinkedin />
                 LinkedIn
               </a>
@@ -128,7 +148,10 @@ export const LandingPage = () => {
                 <BsInstagram />
                 Instagram
               </a>
-              <a target="blank" href="https://www.linkedin.com/in/victoriapmilan/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/victoriapmilan/"
+              >
                 <BsLinkedin />
                 LinkedIn
               </a>
@@ -150,11 +173,38 @@ export const LandingPage = () => {
                 <BsInstagram />
                 Instagram
               </a>
-              <a target="blank" href="https://www.linkedin.com/in/wesley-matos/">
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/wesley-matos/"
+              >
                 <BsLinkedin />
                 LinkedIn
               </a>
               <a target="blank" href="https://github.com/wesleydematos">
+                <BsGithub />
+                Git Hub
+              </a>
+            </div>
+          </li>
+          <li>
+            <div className="infoMember">
+              <img src={lucas} alt="Foto Lucas" />
+              <h2>Lucas Mitori</h2>
+            </div>
+
+            <div className="memberLinks">
+              <a target="blank" href="https://www.instagram.com/lucasokumura/">
+                <BsInstagram />
+                Instagram
+              </a>
+              <a
+                target="blank"
+                href="https://www.linkedin.com/in/lucas-okumura-2446a478/"
+              >
+                <BsLinkedin />
+                LinkedIn
+              </a>
+              <a target="blank" href="https://github.com/LucasMitori">
                 <BsGithub />
                 Git Hub
               </a>
