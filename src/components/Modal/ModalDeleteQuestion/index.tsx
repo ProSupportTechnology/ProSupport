@@ -1,11 +1,12 @@
+import { useModalContext } from "../../../contexts/ModalContext";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { StyledButton } from "../../../style/button/style";
 import { ModalContainer } from "../ModalContainer";
 import { StyledDeleteQuestion } from "./styles";
 
 export const ModalDeleteQuestion = () => {
-  const { setIsModDeleteQuestOpen, deleteQuestion, questionId } =
-    useQuestionContext();
+  const { deleteQuestion, questionId } = useQuestionContext();
+  const { setIsModDeleteQuestOpen } = useModalContext();
 
   return (
     <div>
@@ -22,10 +23,7 @@ export const ModalDeleteQuestion = () => {
             >
               Sim
             </StyledButton>
-            <StyledButton
-              variant="theme-modal-red"
-              onClick={() => setIsModDeleteQuestOpen(false)}
-            >
+            <StyledButton variant="theme-modal-red" onClick={() => setIsModDeleteQuestOpen(false)}>
               Não
             </StyledButton>
           </div>

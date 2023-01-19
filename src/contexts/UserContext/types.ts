@@ -24,8 +24,8 @@ export interface iUser {
   name: string;
   bio: string;
   image: string;
-  id: number;
-  admin?: boolean;
+  id: string;
+  isAdm?: boolean;
   questions?: iQuestion[];
 }
 
@@ -49,15 +49,15 @@ export interface iQuestion {
   title: string;
   description: string;
   tech: string;
-  userId: number;
-  id: number;
-  responses: {
+  userId: string;
+  id: string;
+  answer: {
     map?(arg0: (element: iResponse) => void): ReactNode;
     title: string;
     description: string;
     tech: string;
-    userId: number;
-    id: number;
+    userId: string;
+    id: string;
     length?: number;
   };
   user: iUser;

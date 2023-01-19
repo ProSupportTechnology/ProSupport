@@ -1,5 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
+import { useModalContext } from "../../../contexts/ModalContext";
 import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { iDataResponse } from "../../../contexts/QuestionContext/types";
 import { ResponseSchema } from "../../../schemas/responseSchemas";
@@ -9,7 +10,8 @@ import { StyledTextArea } from "../../TextArea/style";
 import { ModalContainer } from "../ModalContainer";
 
 export const ModalCreateResponse = () => {
-  const { setIsModCreateRespOpen, answerQuestion } = useQuestionContext();
+  const { answerQuestion } = useQuestionContext();
+  const { setIsModCreateRespOpen } = useModalContext();
 
   const { register, handleSubmit } = useForm<iDataResponse>({
     resolver: yupResolver(ResponseSchema),

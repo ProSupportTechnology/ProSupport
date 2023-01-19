@@ -9,7 +9,8 @@ import { StyledAnsweredQuestions } from "./style";
 import { useUserContext } from "../../contexts/UserContext";
 
 export const AnsweredQuestions = () => {
-  const { allQuestions, searchedQuestion, setQuestionId } = useQuestionContext();
+  const { allQuestions, searchedQuestion, setQuestionId } =
+    useQuestionContext();
   const { user } = useUserContext();
   const { name, image } = user;
 
@@ -22,7 +23,7 @@ export const AnsweredQuestions = () => {
     setsearched(searched);
   }, [searchedQuestion, allQuestions]);
 
-  const asnwered = allQuestions.filter((element) => element.responses.length);
+  const asnwered = allQuestions.filter((element) => element.answer.length);
 
   return (
     <StyledAnsweredQuestions className="backgroundDash">
@@ -35,7 +36,6 @@ export const AnsweredQuestions = () => {
               return (
                 <div key={element.id}>
                   <QuestionCard
-                    setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
                     title={element.title}
@@ -46,7 +46,7 @@ export const AnsweredQuestions = () => {
                     date={element.created_at}
                   />
                   <ResponseCard
-                    array={element.responses}
+                    array={element.answer}
                     username={name}
                     image={image}
                   />
@@ -58,7 +58,6 @@ export const AnsweredQuestions = () => {
               return (
                 <div key={element.id}>
                   <QuestionCard
-                    setQuestionId={setQuestionId}
                     questionId={element.id}
                     userQuestionId={element.userId}
                     title={element.title}
@@ -69,7 +68,7 @@ export const AnsweredQuestions = () => {
                     date={element.created_at}
                   />
                   <ResponseCard
-                    array={element.responses}
+                    array={element.answer}
                     username={element.user.name}
                     image={element.user.image}
                   />

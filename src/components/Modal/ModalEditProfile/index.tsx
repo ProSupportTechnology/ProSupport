@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { useQuestionContext } from "../../../contexts/QuestionContext";
 import { StyledButton } from "../../../style/button/style";
 import { ModalContainer } from "../ModalContainer";
 import { StyledEditUser } from "./style";
@@ -8,9 +7,10 @@ import { iDataEditUser, iKeys } from "./types";
 import { StyledInput } from "../../Input/style";
 import { userSchema } from "../../../schemas/userSchema";
 import { useUserContext } from "../../../contexts/UserContext";
+import { useModalContext } from "../../../contexts/ModalContext";
 
 export const ModalEditProfile = () => {
-  const { setIsModEditProfile } = useQuestionContext();
+  const { setIsModEditProfile } = useModalContext();
   const { editUser } = useUserContext();
 
   const {
@@ -75,16 +75,6 @@ export const ModalEditProfile = () => {
           name="bio"
           type="text"
           modalPlaceholder="Digite a nova bio"
-        />
-
-        <StyledInput
-          className="isModal"
-          errors={errors.image}
-          register={register("image")}
-          label="Editar foto"
-          name="image"
-          type="text"
-          modalPlaceholder="Digite o URL da nova foto"
         />
         <StyledButton variant="default">Editar</StyledButton>
       </StyledEditUser>

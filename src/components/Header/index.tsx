@@ -28,12 +28,18 @@ export const Header = () => {
   const { user } = useUserContext();
   const location = useLocation();
 
-  const { email, name, admin, image } = user;
+  const { email, name, isAdm, image } = user;
 
   if (!user) return <LoadingPage />;
 
-  const search = location.pathname === `/profile` || location.pathname === `/users` ? false : true;
-  const searchUser = location.pathname === `/profile` || location.pathname === `/dashboard` ? false : true;
+  const search =
+    location.pathname === `/profile` || location.pathname === `/users`
+      ? false
+      : true;
+  const searchUser =
+    location.pathname === `/profile` || location.pathname === `/dashboard`
+      ? false
+      : true;
   return (
     <HeaderContainer>
       <Logo src={logo} alt="Logo" />
@@ -43,10 +49,10 @@ export const Header = () => {
             <img src={image ? image : photoProfile} alt="foto de perfil" />
           </StyledImageQuestion>
           <h2 className="title three">{name}</h2>
-          <span>{admin ? `Admin` : `Usuario`}</span>
+          <span>{isAdm ? `Admin` : `Usuario`}</span>
           <span className="text three">{email}</span>
         </NavBarProfileContainer>
-        {admin
+        {isAdm
           ? search && (
               <div className="divInput">
                 <InputSearch />
@@ -74,10 +80,13 @@ export const Header = () => {
               </div>
             </StyledButtonLink>
           </LiNavBar>
-          {admin && (
+          {isAdm && (
             <>
               <LiNavBar>
-                <StyledButtonLink variant="theme-menu" to={`/answeredQuestions`}>
+                <StyledButtonLink
+                  variant="theme-menu"
+                  to={`/answeredQuestions`}
+                >
                   <h3 className="title two">Perguntas/Respostas</h3>
                   <div title="Perguntas/Respostas">
                     <IoMdChatbubbles />
@@ -96,7 +105,11 @@ export const Header = () => {
           )}
         </UlNavBar>
         <LogoutCont>
-          <StyledButtonLink variant="theme-menu" to={`/`} onClick={() => localStorage.clear()}>
+          <StyledButtonLink
+            variant="theme-menu"
+            to={`/`}
+            onClick={() => localStorage.clear()}
+          >
             <h3 className="title two">Sair</h3>
             <div title="Sair">
               <GiEntryDoor />
@@ -105,7 +118,10 @@ export const Header = () => {
         </LogoutCont>
       </NavBar>
       <MenuMobile>
-        <CheckBox type="checkbox" onChange={(event) => [setNavbarMobile(event.target.checked)]} />
+        <CheckBox
+          type="checkbox"
+          onChange={(event) => [setNavbarMobile(event.target.checked)]}
+        />
         <label htmlFor="checkbox-menu">
           <Barra />
           <Barra />
