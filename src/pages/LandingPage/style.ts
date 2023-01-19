@@ -107,7 +107,7 @@ export const SectionTeam = styled.section`
       border-radius: 10px;
       min-width: 260px;
       height: 200px;
-      background: radial-gradient(circle, rgba(252, 70, 107, 1) 0%, rgba(63, 94, 251, 1) 100%);
+      background: linear-gradient(90deg, #8d09ec 0%, #807ddb 55%, #8d09ec 100%);
     }
 
     @media (min-width: 768px) {
