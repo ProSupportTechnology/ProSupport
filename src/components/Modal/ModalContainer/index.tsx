@@ -3,7 +3,10 @@ import { CgClose } from "react-icons/cg";
 import { Modal } from "./style";
 import { iContainerModalProps } from "./types";
 
-export const ModalContainer = ({ children, setIsModOpen }: iContainerModalProps) => {
+export const ModalContainer = ({
+  children,
+  setIsModOpen,
+}: iContainerModalProps) => {
   function closeModal() {
     setIsModOpen((oldIsMod) => !oldIsMod);
   }
@@ -12,7 +15,6 @@ export const ModalContainer = ({ children, setIsModOpen }: iContainerModalProps)
     let target = e.target as HTMLElement;
     !target.closest(".content") && closeModal();
   }
-
   return (
     <Modal onClick={(e) => handleClick(e)}>
       <div className="content">

@@ -13,6 +13,7 @@ export const ResponseCard = ({ username, image, array }: iResponseCard) => {
   const { setIsModEditRespOpen, setIsModDeleteRespOpen } = useModalContext();
   const { user } = useUserContext();
   const { isAdm } = user;
+
   return (
     <>
       {array.map((element: any) => {

@@ -19,7 +19,7 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   const [questionId, setQuestionId] = useState<string>("");
   const [responseId, setResponseId] = useState<string>("");
   const [allQuestions, setAllQuestions] = useState([] as iQuestion[]);
-  const [userQuestions, setUserQuestions] = useState<iQuestion[] | null>(null);
+  const [userQuestions, setUserQuestions] = useState<iQuestion[] | any>(null);
   const [searchedQuestion, setSearchedQuestion] = useState("");
   const [answeredQuestion, setAnsweredQuestion] = useState([] as iQuestion[]);
   const { getMyProfile } = useUserContext();
@@ -110,13 +110,14 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   }
 
   async function createQuestion(data: iDataQuestion) {
-    setLoading(true);
     const id = Number(localStorage.getItem("@userID-ProSupport"));
     const date = new Date().toLocaleDateString();
     const body = { ...data, userId: id, created_at: date };
     try {
-      await api.post<iQuestion>("/questions", body);
+      const response = await api.post<iQuestion>("/questions", body);
+      setUserQuestions({ ...response.data, ...userQuestions });
       await getMyProfile();
+      await getQuestionsByOneUser();
       toast.success("Pergunta enviada com sucesso.");
       setIsModCreateQuestOpen(false);
     } catch (error) {
@@ -141,11 +142,11 @@ export const QuestionProvider = ({ children }: iQuestionContextProps) => {
   }
 
   async function deleteQuestion(id: string) {
-    setLoading(true);
     try {
       await api.delete<iQuestion[]>(`/questions/${id}`);
       await getAllQuestions();
       await getMyProfile();
+      await getQuestionsByOneUser();
       toast.success("Pergunta deletada com sucesso!");
     } catch (error) {
       toast.error("Erro ao deletar pergunta!");

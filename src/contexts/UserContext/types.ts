@@ -29,6 +29,10 @@ export interface iUser {
   questions?: iQuestion[];
 }
 
+export interface iUserImage {
+  path: string;
+}
+
 export interface iUserContext {
   handleRegister(data: iRegister): Promise<void>;
   handleLogin(data: iLogin): Promise<void>;
@@ -42,6 +46,7 @@ export interface iUserContext {
   idUserToDelete: string | number;
   getMyProfile(): Promise<void>;
   allUsers: iAllUsers[] | null;
+  editUserImage: (image: any) => Promise<void>;
 }
 
 export interface iQuestion {
@@ -53,11 +58,12 @@ export interface iQuestion {
   id: string;
   answer: {
     map?(arg0: (element: iResponse) => void): ReactNode;
-    title: string;
-    description: string;
-    tech: string;
-    userId: string;
     id: string;
+    description: string;
+    createdAt: Date;
+    updatedAt: Date;
+    user: iUser;
+    question: iQuestion;
     length?: number;
   };
   user: iUser;

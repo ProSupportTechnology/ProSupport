@@ -8,6 +8,7 @@ import { ModalDeleteResponse } from "./components/Modal/ModalDeleteResponse";
 import { ModalDeleteUser } from "./components/Modal/ModalDeleteUser";
 import { ModalEditProfile } from "./components/Modal/ModalEditProfile";
 import { ModalEditResponse } from "./components/Modal/ModalEditResponse";
+import { ProfileImageModal } from "./components/Modal/ModalProfileImage";
 import { useModalContext } from "./contexts/ModalContext";
 import { useUserContext } from "./contexts/UserContext";
 import { AllUsersPage } from "./pages/AllUsersPage";
@@ -29,6 +30,7 @@ const RoutesMain = () => {
     isModDeleteRespOpen,
     isModEditProfile,
     isModCreateQuestOpen,
+    isModProfileImage,
   } = useModalContext();
 
   return (
@@ -41,6 +43,7 @@ const RoutesMain = () => {
       {isModDeleteRespOpen && <ModalDeleteResponse />}
       {isModEditProfile && <ModalEditProfile />}
       {isModCreateQuestOpen && <ModalCreateQuestion />}
+      {isModProfileImage && <ProfileImageModal />}
 
       <Routes>
         <Route path="/" element={<LandingPage />} />

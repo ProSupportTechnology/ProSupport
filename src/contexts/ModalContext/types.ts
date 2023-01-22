@@ -21,4 +21,6 @@ export interface iModalProvider {
   setIsModEditProfile: Dispatch<SetStateAction<boolean>>;
   setIsModDeleteRespOpen: Dispatch<SetStateAction<boolean>>;
   isModDeleteRespOpen: boolean;
+  isModProfileImage: boolean;
+  setIsModProfileImageIsOpen: Dispatch<SetStateAction<boolean>>;
 }

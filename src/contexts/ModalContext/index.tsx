@@ -12,10 +12,13 @@ export const ModalProvider = ({ children }: iModalContextProps) => {
   const [isModDeleteUser, setIsModDeleteUser] = useState(false);
   const [isModDeleteRespOpen, setIsModDeleteRespOpen] = useState(false);
   const [isModEditProfile, setIsModEditProfile] = useState(false);
+  const [isModProfileImage, setIsModProfileImageIsOpen] = useState(false);
 
   return (
     <ModalContext.Provider
       value={{
+        isModProfileImage,
+        setIsModProfileImageIsOpen,
         isModCreateQuestOpen,
         setIsModCreateQuestOpen,
         isModEditQuestOpen,

@@ -12,7 +12,7 @@ export const Profile = () => {
   const { user } = useUserContext();
   const { email, name, isAdm, image, bio } = user;
 
-  const { setIsModEditProfile } = useModalContext();
+  const { setIsModEditProfile, setIsModProfileImageIsOpen } = useModalContext();
 
   if (!user) return <LoadingPage />;
 
@@ -24,7 +24,10 @@ export const Profile = () => {
           <StyledAdminCard>
             <ImageProfile>
               <img src={image ? image : photoProfile} alt="foto de perfil" />
-              <button type="button" onClick={() => setIsModEditProfile(true)}>
+              <button
+                type="button"
+                onClick={() => setIsModProfileImageIsOpen(true)}
+              >
                 Editar foto
               </button>
             </ImageProfile>

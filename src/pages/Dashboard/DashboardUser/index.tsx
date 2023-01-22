@@ -21,11 +21,9 @@ export const DashboardUser = () => {
   const { setIsModCreateQuestOpen } = useModalContext();
   const { email, name, isAdm, image } = user;
   const userAdmin = allUsers && (allUsers[0] as iAllUsers);
-
   useEffect(() => {
     getMyProfile();
     getQuestionsByOneUser();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (!userQuestions) return <LoadingPage />;
@@ -84,9 +82,8 @@ export const DashboardUser = () => {
           <h2 className="title">Perguntas respondidas:</h2>
           <ul className="userQuestionArea">
             {userQuestions.length ? (
-              // eslint-disable-next-line array-callback-return
               userQuestions.map((element) => {
-                if (user.id === element.userId && element.answer.length) {
+                if (element.answer.length) {
                   return (
                     <div key={element.id}>
                       <QuestionCard

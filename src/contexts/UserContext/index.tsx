@@ -92,7 +92,6 @@ export const UserProvider = ({ children }: iUserContextProps) => {
     setLoading(true);
     try {
       const { data } = await api.post<iResponseLogin>("/login", body);
-      console.log(data);
 
       api.defaults.headers.common.authorization = `Bearer ${data.token}`;
 
@@ -123,6 +122,27 @@ export const UserProvider = ({ children }: iUserContextProps) => {
       toast.success("Usuário editado com sucesso!");
     } catch (error) {
       toast.error("Não foi possível editar o usuário.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function editUserImage(image: any) {
+    const id = JSON.parse(localStorage.getItem("@userID-ProSupport") + "");
+    const token = localStorage.getItem("@Token-ProSupport");
+    api.defaults.headers.common.authorization = `Bearer ${token}`;
+
+    setLoading(true);
+    try {
+      console.log(image);
+      const response = await api.post(`users/upload/${id}`, image, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      toast.error("Não foi possível editar a foto.");
     } finally {
       setLoading(false);
     }
@@ -159,6 +179,7 @@ export const UserProvider = ({ children }: iUserContextProps) => {
         setIdUserToDelete,
         idUserToDelete,
         allUsers,
+        editUserImage,
       }}
     >
       {children}
